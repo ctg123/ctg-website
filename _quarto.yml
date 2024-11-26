@@ -3,7 +3,7 @@ project:
   output-dir: docs # <-- For setting on Github
 
 website:
-  title: "Example Site"
+  title: "Chaance Graves"
   navbar:
     left:
       - href: index.qmd
