@@ -1,0 +1,75 @@
+---
+title: "Awesome Sites! 😎"
+description: "Essential Resource Collections for Developers"
+author: "Chaance Graves"
+date: "2024-11-05"
+categories: [resources]
+#image: "code-img.jpg"
+
+format: 
+  html:
+    toc: true
+    toc-title: Contents
+    toc-location: right
+---
+
+# What Are Awesome Lists?
+
+As developers, we're constantly searching for high-quality resources to enhance our skills and discover new tools. The "awesome" lists on GitHub have become a cornerstone of community-curated knowledge sharing. These collections are meticulously maintained by passionate developers worldwide, offering carefully selected resources across various technological domains.
+
+The concept started with [Sindre Sorhus's original awesome list](https://github.com/sindresorhus/awesome), which has since spawned thousands of specialized collections. These lists follow strict guidelines to ensure quality and relevance, making them invaluable for both beginners and experienced developers.
+
+## Must-Bookmark Collections
+
+### For AI and Machine Learning Enthusiasts
+- **[Awesome Machine Learning](https://github.com/josephmisiti/awesome-machine-learning)**
+  - A comprehensive collection of ML frameworks, libraries, and software
+  - Covers multiple programming languages including Python, R, Java, and more
+  - Includes sections on computer vision, natural language processing, and deep learning
+
+### For Language-Specific Development
+- **[Awesome Python](https://github.com/dylanhogg/awesome-python)**
+  - Essential Python frameworks, libraries, and resources
+  - Organized by application domain (web development, data science, testing, etc.)
+  - Perfect for both Python beginners and advanced developers
+
+- **[Awesome Rust](https://github.com/rust-unofficial/awesome-rust)**
+  - Curated resources for Rust programming language
+  - Applications, development tools, and learning materials
+  - Great for those interested in systems programming and performance
+
+### For Specialized Domains
+- **[Awesome Embedded](https://github.com/nhivp/Awesome-Embedded)**
+  - Resources for embedded systems development
+  - Hardware platforms, tools, and frameworks
+  - Essential for IoT and hardware developers
+
+- **[Awesome Self Hosted](https://github.com/awesome-selfhosted/awesome-selfhosted)**
+  - Software solutions you can host on your own servers
+  - Alternatives to popular cloud services
+  - Perfect for privacy-conscious developers and organizations
+
+### For Web Development
+- **[Awesome Static Site Generators](https://github.com/myles/awesome-static-generators)**
+  - Tools for building modern static websites
+  - Frameworks across multiple programming languages
+  - Includes JAMstack resources and deployment options
+
+### For AI Prompt Engineering
+- **[Awesome Prompts](https://prompts.chat/)**
+  - Collection of effective prompts for AI models
+  - Best practices for prompt engineering
+  - Examples for various use cases and applications
+
+## Staying Updated
+
+To keep track of changes and new additions to these collections, I recommend using [Track Awesome List](https://www.trackawesomelist.com/#top-50-awesome-list). This tool helps you monitor updates to your favorite awesome lists and discover new resources regularly.
+
+## Final Thoughts
+
+These curated collections represent countless hours of community effort to organize and validate the best resources in each field. Whether you're exploring a new technology or deepening your expertise in a familiar domain, these awesome lists are invaluable starting points for your journey.
+
+Remember to contribute back to these collections if you discover valuable resources that aren't already included. The strength of these lists comes from active community participation and sharing.
+
+--
+*Last updated: November 2024*-

@@ -1,0 +1,21 @@
+---
+title: "My Blog"
+listing:
+  contents: blog  # <-- the sub-directory with blog content
+  type: default
+  image-align: left
+  fields: 
+    - title
+    - description
+    - date
+    - image
+    - categories
+    - reading-time
+
+  categories: true
+  sort: "date desc"
+  page-size: 5
+
+---
+
+Welcome to my blog! We'll embark on an a journey of learning together. I'll be using this space to write about what I'm learning, working on, and am curious about.

@@ -19,5 +19,35 @@
   },
   "404.qmd": {
     "404.html": "ce379445"
+  },
+  "posts/post-with-code/index.qmd": {
+    "index.html": "f6a09783"
+  },
+  "posts/awesome/index.qmd": {
+    "index.html": "cded0f52"
+  },
+  "posts/code-example-post/index.qmd": {
+    "index.html": "6802b035"
+  },
+  "posts/welcome/index.qmd": {
+    "index.html": "2f069d19"
+  },
+  "posts/my-post/index.qmd": {
+    "index.html": "10c20975"
+  },
+  "posts.qmd": {
+    "posts.html": "bb2729b3"
+  },
+  "blog.qmd": {
+    "blog.html": "7c1316ef"
+  },
+  "blog/post-with-code/index.qmd": {
+    "index.html": "67d99f17"
+  },
+  "blog/awesome/index.qmd": {
+    "index.html": "f2f8f5b6"
+  },
+  "blog/code-example-post/index.qmd": {
+    "index.html": "f1ee486c"
   }
 }

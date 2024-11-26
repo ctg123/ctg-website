@@ -1,0 +1,226 @@
+---
+title: "Programming Syntax Comparisons and Examples"
+description: "Post description"
+author: "Chaance Graves"
+date: "2024-11-23"
+categories: [resources, code, python]
+image: "code-img.jpg"
+
+format: 
+  html:
+    toc: true
+    toc-title: Contents
+    toc-location: right
+---
+
+> A comparative guide for my Second Brain - Quick reference for common programming patterns across languages
+
+# Code Snippets: Python vs Rust vs JavaScript
+
+Here's a collection of common programming patterns implemented across different languages. These examples highlight the unique characteristics and syntax of each language.
+
+## 1. Hello World Examples
+
+Let's start with the classic hello world program in each language:
+
+### Python
+```python
+def say_hello(name: str) -> str:
+    return f"Hello, {name}!"
+
+print(say_hello("World"))
+```
+
+### Rust
+```rust
+fn say_hello(name: &str) -> String {
+    format!("Hello, {}!", name)
+}
+
+fn main() {
+    println!("{}", say_hello("World"));
+}
+```
+
+### JavaScript
+```javascript
+const sayHello = (name) => {
+    return `Hello, ${name}!`;
+};
+
+console.log(sayHello("World"));
+```
+
+## 2. Working with Arrays/Lists
+
+Here's how to perform common operations on collections:
+
+### Python
+```python
+# List comprehension and filtering
+numbers = [1, 2, 3, 4, 5]
+squares = [x**2 for x in numbers if x % 2 == 0]
+print(squares)  # [4, 16]
+
+# Reduce operation
+from functools import reduce
+sum_all = reduce(lambda x, y: x + y, numbers)
+print(sum_all)  # 15
+```
+
+### Rust
+```rust
+fn main() {
+    let numbers = vec![1, 2, 3, 4, 5];
+    
+    // Iterator and filter
+    let squares: Vec<i32> = numbers
+        .iter()
+        .filter(|&x| x % 2 == 0)
+        .map(|x| x * x)
+        .collect();
+    println!("{:?}", squares);  // [4, 16]
+    
+    // Sum reduction
+    let sum: i32 = numbers.iter().sum();
+    println!("{}", sum);  // 15
+}
+```
+
+### JavaScript
+```javascript
+const numbers = [1, 2, 3, 4, 5];
+
+// Array methods and arrow functions
+const squares = numbers
+    .filter(x => x % 2 === 0)
+    .map(x => x ** 2);
+console.log(squares);  // [4, 16]
+
+// Reduce method
+const sum = numbers.reduce((acc, curr) => acc + curr, 0);
+console.log(sum);  // 15
+```
+
+## 3. Error Handling
+
+Different approaches to handling errors across languages:
+
+### Python
+```python
+def divide(a: float, b: float) -> float:
+    try:
+        return a / b
+    except ZeroDivisionError:
+        raise ValueError("Cannot divide by zero!")
+    except TypeError:
+        raise TypeError("Arguments must be numbers!")
+```
+
+### Rust
+```rust
+fn divide(a: f64, b: f64) -> Result<f64, String> {
+    if b == 0.0 {
+        Err(String::from("Cannot divide by zero!"))
+    } else {
+        Ok(a / b)
+    }
+}
+```
+
+### JavaScript
+```javascript
+function divide(a, b) {
+    if (typeof a !== 'number' || typeof b !== 'number') {
+        throw new TypeError('Arguments must be numbers!');
+    }
+    if (b === 0) {
+        throw new Error('Cannot divide by zero!');
+    }
+    return a / b;
+}
+```
+
+## 4. Working with Objects/Structs
+
+Defining and working with custom data structures:
+
+### Python
+```python
+from dataclasses import dataclass
+from typing import List
+
+@dataclass
+class Person:
+    name: str
+    age: int
+    hobbies: List[str]
+
+    def add_hobby(self, hobby: str):
+        self.hobbies.append(hobby)
+
+person = Person("Alice", 30, ["reading", "hiking"])
+person.add_hobby("painting")
+```
+
+### Rust
+```rust
+struct Person {
+    name: String,
+    age: u32,
+    hobbies: Vec<String>,
+}
+
+impl Person {
+    fn add_hobby(&mut self, hobby: String) {
+        self.hobbies.push(hobby);
+    }
+}
+
+fn main() {
+    let mut person = Person {
+        name: String::from("Alice"),
+        age: 30,
+        hobbies: vec![
+            String::from("reading"),
+            String::from("hiking")
+        ],
+    };
+    person.add_hobby(String::from("painting"));
+}
+```
+
+### JavaScript
+```javascript
+class Person {
+    constructor(name, age, hobbies) {
+        this.name = name;
+        this.age = age;
+        this.hobbies = hobbies;
+    }
+
+    addHobby(hobby) {
+        this.hobbies.push(hobby);
+    }
+}
+
+const person = new Person("Alice", 30, ["reading", "hiking"]);
+person.addHobby("painting");
+```
+
+## Key Takeaways
+
+- **Python** excels in readability and has powerful list comprehensions
+- **Rust** provides strong safety guarantees and explicit error handling
+- **JavaScript** offers flexible object handling and functional programming features
+
+## Notes for Future Reference
+
+- Python's type hints are optional but helpful for documentation
+- Rust's ownership system requires explicit handling of references
+- JavaScript's flexibility can be both a blessing and a curse
+
+Remember to check the official documentation for each language for best practices and more detailed explanations:
+- [Python Docs](https://docs.python.org/)
+- [Rust Book](https://doc.rust-lang.org/book/)
+- [MDN JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)

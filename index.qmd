@@ -17,7 +17,11 @@ about:
 
     - icon: linkedin
       text: LinkedIn
-      href: https://www.linkedin.com/in/chaancegraves/
+      href: https://www.linkedin.com/in/chaancegraves
+
+    - icon: discord
+      text: Discord
+      href:  https://discord.com/users/ctgadget
 
     - icon: envelope-at-fill
       text: Email Me
@@ -32,7 +36,7 @@ execute:
 ::: {#about-block}
 :::
 
-Welcome to my website! 👋🏾
+<p style="text-align:center;">Welcome to my website! 👋🏾</p>
 
-My name is Chaance Graves. Welcome to my website, where I share the projects that I’ve worked on or still tinkering with. I’m a creative problem solver eager to implement solutions to many issues foreseen in our modern society. In addition to that, I am also a big advocate for giving back to others who aspire to follow a path like mine.
+My name is Chaance Graves. Welcome to my website, where I share my blog on `topics` and projects that I’ve worked on or still tinkering with. I’m a creative problem solver eager to implement solutions to many issues foreseen in our modern society. In addition to that, I am also a big advocate for giving back to others who aspire to follow a path like mine.
 

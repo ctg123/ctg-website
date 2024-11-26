@@ -7,12 +7,20 @@ project:
     browser: true
     watch-inputs: true
     navigate: true
+    timeout: 3600
+
+# Freeze code execution locally prior to deployment to CI server
+execute:
+  freeze: auto
 
 # Website settings
 website:
   title: "Chaance T. Graves"
   #site-url:
   description: "My personal blog about engineering projects"
+  #site-url:
+  #repo-url:
+  favicon: assets/img/favicon.png
   navbar:
     collapse: false
     tools:
@@ -20,21 +28,27 @@ website:
         href: https://github.com/ctg123
       - icon: linkedin
         href: https://linkedin.com/in/chaancegraves
+
     left:
       #- href: index.qmd
       #  text: About
+
       - href: resume.qmd
         text: Resume
+
+      - href: blog.qmd
+        text: Blog
+
       - href: projects.qmd
         text: Projects
+      
 
-
+# Formatting the website appearance
 format:
   html:
     theme: simplex
     css: styles.css
     toc: true
-execute:
-  freeze: auto
+
 
 
