@@ -4,6 +4,9 @@ author: Chaance Graves
 date: today
 format: 
   html:
+    toc: true
+    toc-title: Contents
+    toc-location: left
     code-fold: true
 ---
 
