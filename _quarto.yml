@@ -1,0 +1,25 @@
+project:
+  type: website
+  output-dir: docs # <-- For setting on Github
+
+website:
+  title: "Example Site"
+  navbar:
+    left:
+      - href: index.qmd
+        text: About
+      - href: resume.qmd
+        text: Resume
+      - href: projects.qmd
+        text: Projects
+
+
+format:
+  html:
+    theme: simplex
+    css: styles.css
+    toc: true
+execute:
+  freeze: true
+
+

@@ -1,0 +1,20 @@
+---
+title: "Chaance Graves"
+image: "files/profile-pic-transparent-head.png"
+about:
+  template: jolla
+  links:
+    - icon: envelope-at-fill
+      href: mailto:chaance.graves@ctginnovations.io
+
+    - icon: linkedin
+      text: LinkedIn
+      href: https://www.linkedin.com/in/chaancegraves/
+
+    - icon: github
+      text: Github
+      href: https://github.com/ctg123
+
+---
+
+Welcome to my website! 👋🏾
