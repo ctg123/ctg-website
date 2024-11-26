@@ -5,6 +5,9 @@ date: "2024-11-20"
 date-modified: "2024-11-23"
 format:
   html:
+    toc: true
+    toc-title: Contents
+    toc-location: right
     code-fold: true
 ---
 
