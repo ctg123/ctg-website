@@ -1,20 +1,38 @@
 ---
-title: "Chaance Graves"
-image: "files/profile-pic-transparent-head.png"
+pagetitle: "Chaance Graves | About"
+title: "Chaance T. Graves"
+subtitle: "Whatever the mind can conceive and believe, it can achieve."
+#image: assets/img/...
+#image-alt: "image description"
+
 about:
+  id: about-block
   template: jolla
+  image: assets/img/headshot.png
+  #image-width: 10em
   links:
-    - icon: envelope-at-fill
-      href: mailto:chaance.graves@ctginnovations.io
+    - icon: github
+      text: GitHub
+      href: https://github.com/ctg123
 
     - icon: linkedin
       text: LinkedIn
       href: https://www.linkedin.com/in/chaancegraves/
 
-    - icon: github
-      text: Github
-      href: https://github.com/ctg123
-
+    - icon: envelope-at-fill
+      text: Email Me
+      href: mailto:chaance.graves@ctginnovations.io
+   
+toc: false
+anchor-sections: false
+execute: 
+  freeze: true
 ---
 
+::: {#about-block}
+:::
+
 Welcome to my website! 👋🏾
+
+My name is Chaance Graves. Welcome to my website, where I share the projects that I’ve worked on or still tinkering with. I’m a creative problem solver eager to implement solutions to many issues foreseen in our modern society. In addition to that, I am also a big advocate for giving back to others who aspire to follow a path like mine.
+

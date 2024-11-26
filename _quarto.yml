@@ -2,12 +2,27 @@ project:
   type: website
   output-dir: docs # <-- For setting on Github
 
+  preview: 
+    port: 2810
+    browser: true
+    watch-inputs: true
+    navigate: true
+
+# Website settings
 website:
-  title: "Chaance Graves"
+  title: "Chaance T. Graves"
+  #site-url:
+  description: "My personal blog about engineering projects"
   navbar:
+    collapse: false
+    tools:
+      - icon: github
+        href: https://github.com/ctg123
+      - icon: linkedin
+        href: https://linkedin.com/in/chaancegraves
     left:
-      - href: index.qmd
-        text: About
+      #- href: index.qmd
+      #  text: About
       - href: resume.qmd
         text: Resume
       - href: projects.qmd
