@@ -41,7 +41,13 @@ website:
 
       - href: projects.qmd
         text: Projects
-      
+  # page footer settings
+  page-footer: 
+    border: true
+    left: "&#169; 2024 Chaance T. Graves | Made with [Quarto](https://quarto.org)"  
+    right:
+      - text: License
+        href: license.qmd
 
 # Formatting the website appearance
 format:

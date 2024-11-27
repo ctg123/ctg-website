@@ -9,7 +9,7 @@ about:
   id: about-block
   template: jolla
   image: assets/img/headshot.png
-  #image-width: 10em
+  image-width: 17em
   links:
     - icon: github
       text: GitHub
