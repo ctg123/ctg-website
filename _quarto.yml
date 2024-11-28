@@ -16,11 +16,13 @@ execute:
 # Website settings
 website:
   title: "Chaance T. Graves"
-  #site-url:
   description: "My personal blog about engineering projects"
   #site-url:
-  #repo-url:
   favicon: assets/img/favicon.png
+  #repo-url:
+  #repo-actions:
+  #search: true
+
   navbar:
     collapse: false
     tools:
@@ -30,17 +32,22 @@ website:
         href: https://linkedin.com/in/chaancegraves
 
     left:
-      #- href: index.qmd
-      #  text: About
+      - text: Home
+        icon: house-gear-fill
+        href: index.qmd
 
-      - href: resume.qmd
-        text: Resume
+      - text: Resume
+        icon: file-text-fill
+        href: resume.qmd
 
-      - href: blog.qmd
-        text: Blog
+      - text: Blog
+        icon: layout-text-sidebar
+        href: blog.qmd
 
-      - href: projects.qmd
-        text: Projects
+      - text: Projects
+        icon: kanban
+        href: projects.qmd
+
   # page footer settings
   page-footer: 
     border: true
@@ -52,8 +59,10 @@ website:
 # Formatting the website appearance
 format:
   html:
-    theme: simplex
-    css: styles.css
+    theme: 
+      - sandstone
+      - styles.scss
+    #css: styles.css
     toc: true
 
 
