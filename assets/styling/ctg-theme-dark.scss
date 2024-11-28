@@ -1,24 +1,30 @@
 /*-- scss:defaults --*/
 
-// use litera as the base
-$theme: "litera" !default;
+// select fonts WIP ...
+$font-family-sans-serif: arial;
 
-// import google fonts
-@import 'https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&display=swap';
-@import 'https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&display=swap';
+// Base document colors
 
-// use Atkinson Hyperlegible font if available
-$font-family-sans-serif:      "Atkinson Hyperlegible", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !default;
+$black: #212529;
+$mine-shaft: #323232; // https://www.color-hex.com/color/323232
+$dark-gray: #23252F;
+$denim-blue: #1F4ABB; // https://colorhub.art/color/%231F4ABB
+$off-white: #FAF9F6;
+$reddish-orange: #fB2E01;
+$light-green: #6FCB9F;
+$purple: #9158A2; // here for testing
 
+// settings for elements
+
+$navbar-bg: $denim-blue; // navbar color
+$navbar-fg: $off-white; // navbar text color
+
+$body-bg: $dark-gray; // page background 
+$body-color: $off-white; // page text 
+$link-color: $light-green; // link color
+
+//$code-color: rgb(80, 182, 49);
+$code-block-bg: rgba(25, 25, 25, 0.9);
+//$code-block-bg: $black;
 
 /*-- scss:rules --*/
-
-// litera is serif by default: revert to san-serif
-p {
-  font-family: $font-family-sans-serif;
-}
-
-.subtitle > a {
-  color: #666;
-  font-weight: bold
-}

@@ -49,6 +49,9 @@ The concept started with [Sindre Sorhus's original awesome list](https://github.
   - Alternatives to popular cloud services
   - Perfect for privacy-conscious developers and organizations
 
+- **[Awesome Quarto](https://github.com/mcanouil/awesome-quarto)**
+  - Quarto specific curated content!
+
 ### For Web Development
 - **[Awesome Static Site Generators](https://github.com/myles/awesome-static-generators)**
   - Tools for building modern static websites

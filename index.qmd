@@ -1,5 +1,5 @@
 ---
-pagetitle: "Chaance T. Graves | About"
+pagetitle: "About"
 title: "Chaance T. Graves"
 subtitle: Engineer | Innovator
 #image: assets/img/...

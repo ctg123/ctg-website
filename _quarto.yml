@@ -60,10 +60,16 @@ website:
 format:
   html:
     theme: 
-      - sandstone
-      - styles.scss
-    #css: styles.css
+      light: [united, assets/styling/test-light.scss]
+      dark: [united, assets/styling/test-dark.scss]
+    mainfont: Nunito
+    css: styles.css
     toc: true
+    smooth-scroll: true
+    link-external-newwindow: true
+    code-link: true
+    highlight-style: a11y
+    pagetitle: "{{< meta title >}}"
 
 
 
