@@ -18,13 +18,19 @@ website:
   title: "Chaance T. Graves"
   description: "My personal blog about engineering projects"
   #site-url:
-  favicon: assets/img/favicon.png
   #repo-url:
   #repo-actions:
   #search: true
+  favicon: assets/img/favicon.png
+  page-navigation: true
+  back-to-top-navigation: true
+  #open-graph: 
 
   navbar:
-    collapse: false
+    pinned: true
+    #logo: 
+    #logo-alt: 
+    collapse: true
     tools:
       - icon: github
         href: https://github.com/ctg123
@@ -60,16 +66,17 @@ website:
 format:
   html:
     theme: 
-      light: [united, assets/styling/test-light.scss]
-      dark: [united, assets/styling/test-dark.scss]
-    mainfont: Nunito
+      light: assets/styling/ctg-theme-light.scss
+      dark: assets/styling/ctg-theme-dark.scss
+    mainfont: Rubik
     css: styles.css
     toc: true
     smooth-scroll: true
     link-external-newwindow: true
     code-link: true
-    highlight-style: a11y
-    pagetitle: "{{< meta title >}}"
+    footnotes-hover: true
+    highlight-style: monokai
+    #pagetitle: "{{< meta title >}}"
 
 
 

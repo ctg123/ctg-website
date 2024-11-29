@@ -1,30 +1,115 @@
 /*-- scss:defaults --*/
 
-// select fonts WIP ...
-$font-family-sans-serif: arial;
+// Import Google fonts
 
-// Base document colors
+// -> Roboto
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+// -> Ubuntu 
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+// -> Rubik
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+// -> Fira Mono for code
+@import url('https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;500;700&display=swap');
 
+// select fonts
+$ubuntu: "Ubuntu", sans-serif;
+
+// Base document color pallete
+
+$white: rgb(248, 248, 242);
+$off-white: #FAF9F6;
 $black: #212529;
 $mine-shaft: #323232; // https://www.color-hex.com/color/323232
 $dark-gray: #23252F;
 $denim-blue: #1F4ABB; // https://colorhub.art/color/%231F4ABB
-$off-white: #FAF9F6;
-$reddish-orange: #fB2E01;
+$reddish-orange: #FB2E01;
 $light-green: #6FCB9F;
 $purple: #9158A2; // here for testing
 
 // settings for elements
 
-$navbar-bg: $denim-blue; // navbar color
-$navbar-fg: $off-white; // navbar text color
-
+$navbar-bg: $denim-blue; // navbar
+$navbar-fg: $off-white; // navbar foreground elements
+$navbar-hl: $white; // highlight color when hovering over navbar links
 $body-bg: $dark-gray; // page background 
 $body-color: $off-white; // page text 
-$link-color: $light-green; // link color
+$footer-bg: $dark-gray; // footer 
+$link-color: $light-green; // hyperlinks 
 
-//$code-color: rgb(80, 182, 49);
-$code-block-bg: rgba(25, 25, 25, 0.9);
-//$code-block-bg: $black;
+// Inline code
+//$code-bg: // inline code background color
+//$code-color: // inline code text color
+
+// Code blocks
+$code-block-bg: rgba(25, 25, 25, 0.9); // code block background color 
+$code-block-border-left: $light-green;
 
 /*-- scss:rules --*/
+
+// Global Settings
+
+.navbar-title {
+    font-family: $ubuntu;
+    font-weight: 700;
+  }
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: $ubuntu;
+  }
+
+// -> Hover
+
+// -> Headers
+
+h1 {
+    font-size: 1.8em;
+    font-weight: 900;
+}
+  
+h2 {
+    font-size: 1.0em;
+}
+
+h3, h4 {
+    font-weight: 700;
+    //font-family: Domine, serif;
+    //color: $teal;
+}
+  
+h3 {
+    font-size: 1.15em;
+}
+  
+h4 {
+    font-size: 1.1em;
+}
+  
+h5, h6 {
+    font-size: 1.05em;
+    font-weight: 600;
+    //font-family: Domine, serif;
+    //color: $secondary;
+}
+
+// -> Navbar
+
+/// Adaptable View (all icons in one row);
+/* Source: Andrew Heiss's blog - https://github.com/andrewheiss/ath-quarto/blob/8bad8578379a83f9aaf6cadd3bc75cb227e76f1b/html/ath.scss#L137-L140) */
+
+.navbar-nav.navbar-nav-scroll.ms-auto {
+    flex-direction: row;
+}
+
+// code
+
+code {
+   font-family: Fira Mono, monospace;
+}
+
+pre.sourceCode {
+    font-size: 0.9em;
+}
+  
+.sourceCode pre code {
+    padding: 0.9em;
+}
