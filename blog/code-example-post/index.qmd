@@ -3,6 +3,7 @@ title: "Programming Syntax Comparisons and Examples"
 description: "Post description"
 author: "Chaance Graves"
 date: "2024-11-23"
+date-modified: "2024-11-27"
 categories: [resources, code, python]
 image: "code-img.jpg"
 

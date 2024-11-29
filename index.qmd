@@ -1,15 +1,16 @@
 ---
-pagetitle: "Chaance Graves | About"
+pagetitle: "About"
 title: "Chaance T. Graves"
-subtitle: "Whatever the mind can conceive and believe, it can achieve."
+subtitle: Engineer | Innovator
 #image: assets/img/...
 #image-alt: "image description"
 
 about:
-  id: about-block
-  template: jolla
+  #id: about-block
+  template: trestles
   image: assets/img/headshot.png
-  #image-width: 10em
+  image-width: 17em
+  image-shape: round
   links:
     - icon: github
       text: GitHub
@@ -21,9 +22,9 @@ about:
 
     - icon: discord
       text: Discord
-      href:  https://discord.com/users/ctgadget
+      href: https://discord.com/users/ctgadget
 
-    - icon: envelope-at-fill
+    - icon: send-fill
       text: Email Me
       href: mailto:chaance.graves@ctginnovations.io
    
@@ -33,10 +34,24 @@ execute:
   freeze: true
 ---
 
-::: {#about-block}
+::: {.column-page}
+
+# About Me
+
+Welcome to my website! 👋🏾
+
+My name is Chaance Graves. Welcome to my website, where I share my blog on `topics ...` and projects that I’ve worked on or still tinkering with. I’m a creative problem solver eager to implement solutions to many issues foreseen in our modern society. In addition to that, I am also a big advocate for giving back to others who aspire to follow a path like mine.
+
+## Navigation
+
+On this site I keep a list of my [projects](projects.html), **notes**, my [resume](resume.html), as well as a [technical blog](blog.html).
+
+## Interests
+
+- Systems Engineering 💡
+- Computer Architecture
+- Artificial Intelligence (Machine Learning)
+- Wireless Communications
+- Renewable Energy
+
 :::
-
-<p style="text-align:center;">Welcome to my website! 👋🏾</p>
-
-My name is Chaance Graves. Welcome to my website, where I share my blog on `topics` and projects that I’ve worked on or still tinkering with. I’m a creative problem solver eager to implement solutions to many issues foreseen in our modern society. In addition to that, I am also a big advocate for giving back to others who aspire to follow a path like mine.
-

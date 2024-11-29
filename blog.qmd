@@ -9,6 +9,7 @@ listing:
     - description
     - date
     - image
+    - image-alt
     - categories
     - reading-time
 

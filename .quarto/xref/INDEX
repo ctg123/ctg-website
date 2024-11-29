@@ -49,5 +49,8 @@
   },
   "blog/code-example-post/index.qmd": {
     "index.html": "f1ee486c"
+  },
+  "license.qmd": {
+    "license.html": "d6b57bfc"
   }
 }

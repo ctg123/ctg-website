@@ -46,21 +46,21 @@
     "href": "blog.html",
     "title": "My Blog",
     "section": "",
-    "text": "Welcome to my blog! We’ll embark on an a journey of learning together. I’ll be using this space to write about what I’m learning, working on, and am curious about.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nProgramming Syntax Comparisons and Examples\n\n\n\n\n\n\nresources\n\n\ncode\n\n\npython\n\n\n\nPost description\n\n\n\n\n\nNov 23, 2024\n\n\n5 min\n\n\n\n\n\n\n\n\n\n\n\n\nAwesome Sites! 😎\n\n\n\n\n\n\nresources\n\n\n\nEssential Resource Collections for Developers\n\n\n\n\n\nNov 5, 2024\n\n\n3 min\n\n\n\n\n\n\n\n\n\n\n\n\nAre you getting started learning Python? 🐍\n\n\n\n\n\n\nresources\n\n\ncode\n\n\npython\n\n\n\n\n\n\n\n\n\nJan 20, 2021\n\n\n2 min\n\n\n\n\n\n\nNo matching items"
+    "text": "Welcome to my blog! We’ll embark on an a journey of learning together. I’ll be using this space to write about what I’m learning, working on, and am curious about.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nProgramming Syntax Comparisons and Examples\n\n\n\n\n\n\nresources\n\n\ncode\n\n\npython\n\n\n\nPost description\n\n\n\n\n\nNov 23, 2024\n\n\n5 min\n\n\n\n\n\n\n\n\n\n\n\n\nAwesome Sites! 😎\n\n\n\n\n\n\nresources\n\n\n\nEssential Resource Collections for Developers\n\n\n\n\n\nNov 5, 2024\n\n\n3 min\n\n\n\n\n\n\n\n\n\n\n\n\nAre you getting started learning Python? 🐍\n\n\n\n\n\n\nresources\n\n\ncode\n\n\npython\n\n\n\n\n\n\n\n\n\nJan 20, 2021\n\n\n2 min\n\n\n\n\n\n\nNo matching items\n\n Back to top"
   },
   {
     "objectID": "blog/awesome/index.html",
     "href": "blog/awesome/index.html",
     "title": "Awesome Sites! 😎",
     "section": "",
-    "text": "As developers, we’re constantly searching for high-quality resources to enhance our skills and discover new tools. The “awesome” lists on GitHub have become a cornerstone of community-curated knowledge sharing. These collections are meticulously maintained by passionate developers worldwide, offering carefully selected resources across various technological domains.\nThe concept started with Sindre Sorhus’s original awesome list, which has since spawned thousands of specialized collections. These lists follow strict guidelines to ensure quality and relevance, making them invaluable for both beginners and experienced developers.\n\n\n\n\n\nAwesome Machine Learning\n\nA comprehensive collection of ML frameworks, libraries, and software\nCovers multiple programming languages including Python, R, Java, and more\nIncludes sections on computer vision, natural language processing, and deep learning\n\n\n\n\n\n\nAwesome Python\n\nEssential Python frameworks, libraries, and resources\nOrganized by application domain (web development, data science, testing, etc.)\nPerfect for both Python beginners and advanced developers\n\nAwesome Rust\n\nCurated resources for Rust programming language\nApplications, development tools, and learning materials\nGreat for those interested in systems programming and performance\n\n\n\n\n\n\nAwesome Embedded\n\nResources for embedded systems development\nHardware platforms, tools, and frameworks\nEssential for IoT and hardware developers\n\nAwesome Self Hosted\n\nSoftware solutions you can host on your own servers\nAlternatives to popular cloud services\nPerfect for privacy-conscious developers and organizations\n\n\n\n\n\n\nAwesome Static Site Generators\n\nTools for building modern static websites\nFrameworks across multiple programming languages\nIncludes JAMstack resources and deployment options\n\n\n\n\n\n\nAwesome Prompts\n\nCollection of effective prompts for AI models\nBest practices for prompt engineering\nExamples for various use cases and applications\n\n\n\n\n\n\nTo keep track of changes and new additions to these collections, I recommend using Track Awesome List. This tool helps you monitor updates to your favorite awesome lists and discover new resources regularly.\n\n\n\nThese curated collections represent countless hours of community effort to organize and validate the best resources in each field. Whether you’re exploring a new technology or deepening your expertise in a familiar domain, these awesome lists are invaluable starting points for your journey.\nRemember to contribute back to these collections if you discover valuable resources that aren’t already included. The strength of these lists comes from active community participation and sharing.\n– Last updated: November 2024-"
+    "text": "As developers, we’re constantly searching for high-quality resources to enhance our skills and discover new tools. The “awesome” lists on GitHub have become a cornerstone of community-curated knowledge sharing. These collections are meticulously maintained by passionate developers worldwide, offering carefully selected resources across various technological domains.\nThe concept started with Sindre Sorhus’s original awesome list, which has since spawned thousands of specialized collections. These lists follow strict guidelines to ensure quality and relevance, making them invaluable for both beginners and experienced developers.\n\n\n\n\n\nAwesome Machine Learning\n\nA comprehensive collection of ML frameworks, libraries, and software\nCovers multiple programming languages including Python, R, Java, and more\nIncludes sections on computer vision, natural language processing, and deep learning\n\n\n\n\n\n\nAwesome Python\n\nEssential Python frameworks, libraries, and resources\nOrganized by application domain (web development, data science, testing, etc.)\nPerfect for both Python beginners and advanced developers\n\nAwesome Rust\n\nCurated resources for Rust programming language\nApplications, development tools, and learning materials\nGreat for those interested in systems programming and performance\n\n\n\n\n\n\nAwesome Embedded\n\nResources for embedded systems development\nHardware platforms, tools, and frameworks\nEssential for IoT and hardware developers\n\nAwesome Self Hosted\n\nSoftware solutions you can host on your own servers\nAlternatives to popular cloud services\nPerfect for privacy-conscious developers and organizations\n\nAwesome Quarto\n\nQuarto specific curated content!\n\n\n\n\n\n\nAwesome Static Site Generators\n\nTools for building modern static websites\nFrameworks across multiple programming languages\nIncludes JAMstack resources and deployment options\n\n\n\n\n\n\nAwesome Prompts\n\nCollection of effective prompts for AI models\nBest practices for prompt engineering\nExamples for various use cases and applications\n\n\n\n\n\n\nTo keep track of changes and new additions to these collections, I recommend using Track Awesome List. This tool helps you monitor updates to your favorite awesome lists and discover new resources regularly.\n\n\n\nThese curated collections represent countless hours of community effort to organize and validate the best resources in each field. Whether you’re exploring a new technology or deepening your expertise in a familiar domain, these awesome lists are invaluable starting points for your journey.\nRemember to contribute back to these collections if you discover valuable resources that aren’t already included. The strength of these lists comes from active community participation and sharing.\n– Last updated: November 2024-"
   },
   {
     "objectID": "blog/awesome/index.html#must-bookmark-collections",
     "href": "blog/awesome/index.html#must-bookmark-collections",
     "title": "Awesome Sites! 😎",
     "section": "",
-    "text": "Awesome Machine Learning\n\nA comprehensive collection of ML frameworks, libraries, and software\nCovers multiple programming languages including Python, R, Java, and more\nIncludes sections on computer vision, natural language processing, and deep learning\n\n\n\n\n\n\nAwesome Python\n\nEssential Python frameworks, libraries, and resources\nOrganized by application domain (web development, data science, testing, etc.)\nPerfect for both Python beginners and advanced developers\n\nAwesome Rust\n\nCurated resources for Rust programming language\nApplications, development tools, and learning materials\nGreat for those interested in systems programming and performance\n\n\n\n\n\n\nAwesome Embedded\n\nResources for embedded systems development\nHardware platforms, tools, and frameworks\nEssential for IoT and hardware developers\n\nAwesome Self Hosted\n\nSoftware solutions you can host on your own servers\nAlternatives to popular cloud services\nPerfect for privacy-conscious developers and organizations\n\n\n\n\n\n\nAwesome Static Site Generators\n\nTools for building modern static websites\nFrameworks across multiple programming languages\nIncludes JAMstack resources and deployment options\n\n\n\n\n\n\nAwesome Prompts\n\nCollection of effective prompts for AI models\nBest practices for prompt engineering\nExamples for various use cases and applications"
+    "text": "Awesome Machine Learning\n\nA comprehensive collection of ML frameworks, libraries, and software\nCovers multiple programming languages including Python, R, Java, and more\nIncludes sections on computer vision, natural language processing, and deep learning\n\n\n\n\n\n\nAwesome Python\n\nEssential Python frameworks, libraries, and resources\nOrganized by application domain (web development, data science, testing, etc.)\nPerfect for both Python beginners and advanced developers\n\nAwesome Rust\n\nCurated resources for Rust programming language\nApplications, development tools, and learning materials\nGreat for those interested in systems programming and performance\n\n\n\n\n\n\nAwesome Embedded\n\nResources for embedded systems development\nHardware platforms, tools, and frameworks\nEssential for IoT and hardware developers\n\nAwesome Self Hosted\n\nSoftware solutions you can host on your own servers\nAlternatives to popular cloud services\nPerfect for privacy-conscious developers and organizations\n\nAwesome Quarto\n\nQuarto specific curated content!\n\n\n\n\n\n\nAwesome Static Site Generators\n\nTools for building modern static websites\nFrameworks across multiple programming languages\nIncludes JAMstack resources and deployment options\n\n\n\n\n\n\nAwesome Prompts\n\nCollection of effective prompts for AI models\nBest practices for prompt engineering\nExamples for various use cases and applications"
   },
   {
     "objectID": "blog/awesome/index.html#staying-updated",
@@ -81,28 +81,28 @@
     "href": "projects.html",
     "title": "My Projects",
     "section": "",
-    "text": "Household Energy Consumption Analysis\n\n\n\n\n\n\nChaance Graves\n\n\nNov 26, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nSynthetic Data Generation and Analysis\n\n\n\n\n\n\nChaance Graves\n\n\nNov 20, 2024\n\n\n\n\n\n\n\n\nNo matching items"
+    "text": "Household Energy Consumption Analysis\n\n\n\n\n\n\nNov 29, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nSynthetic Data Generation and Analysis\n\n\n\n\n\n\nNov 20, 2024\n\n\n\n\n\n\n\n\nNo matching items\n\n Back to top"
   },
   {
     "objectID": "resume.html",
     "href": "resume.html",
     "title": "My Resume",
     "section": "",
-    "text": "Download PDF file."
+    "text": "Download PDF file.\n\n\n\n Back to top"
   },
   {
     "objectID": "index.html",
     "href": "index.html",
     "title": "Chaance T. Graves",
     "section": "",
-    "text": "GitHub\n  \n  \n    \n     LinkedIn\n  \n  \n    \n     Discord\n  \n  \n    \n     Email Me\n  \n\n\n\n\nWelcome to my website! 👋🏾\n\nMy name is Chaance Graves. Welcome to my website, where I share my blog on topics and projects that I’ve worked on or still tinkering with. I’m a creative problem solver eager to implement solutions to many issues foreseen in our modern society. In addition to that, I am also a big advocate for giving back to others who aspire to follow a path like mine."
+    "text": "Welcome to my website! 👋🏾\nMy name is Chaance Graves. Welcome to my website, where I share my blog on topics ... and projects that I’ve worked on or still tinkering with. I’m a creative problem solver eager to implement solutions to many issues foreseen in our modern society. In addition to that, I am also a big advocate for giving back to others who aspire to follow a path like mine.\n\n\nOn this site I keep a list of my projects, notes, my resume, as well as a technical blog.\n\n\n\n\nSystems Engineering 💡\nComputer Architecture\nArtificial Intelligence (Machine Learning)\nWireless Communications\nRenewable Energy"
   },
   {
     "objectID": "blog/post-with-code/index.html",
     "href": "blog/post-with-code/index.html",
     "title": "Are you getting started learning Python? 🐍",
     "section": "",
-    "text": "Are you new to programming? Have questions about which language would be a good one to start?\nChoosing which programming language to learn is more a personal preference depending on what project and solution you’re looking to achieve. However, for a beginner, you have lots of flexibility to experiment with which one is right for you. One programming language I enjoy working with and others have found helpful is Python. I recommend installing Python 3 to have more community support to be developed and used for years to come.\nThere are likely millions of developers worldwide using Python to build projects, tools and using it to teach others the fundamentals of programming. You can do all kinds of other fantastic work in a multitude of domains.\n\nExample applications:\n\nWeb applications\nMachine Learning / Deep learning\nAutomating weekly emails\nSetting up jobs to update a spreadsheet\netc.\n\n\n\nHelpful online resources & books\nYou can find plentiful resources to teach yourself Python or pair with a small group to work on projects!\nCodeacademy: Codeacademy offers free code tutorials that are very popular for a good reason. The tutorials should give you a good idea of what it’s like to code Python with hands-on lessons to write code.\nLearn Python the Hard Way by Zed Shaw: This book is well received and aims to teach beginners how to read and write basic Python to understand other books on Python. It is high quality which I recommend regardless of where your current skill is. You can try the free sample to see if it would work for you.\nReal Python: This website offers in-depth tutorials to learn any aspect of Python you may be curious to explore. Check it out and keep a list of articles for future reference!\nAutomate the boring stuff with Python by Al Sweigart: This is an enjoyable read and practical for anyone who is currently working a tedious, routine job! He also offers a video course provided through Udemy.\nUdemy: You can find all sorts of courses and projects offered on this online education website. They range from beginner to advanced and have instructors teaching financial topics such as predicting stock prices, data science, full-stack web development, and more.\nI’m confident your programming journey will be well on its way towards success. Feel free to discuss any other valuable resources or projects you’ve discovered learning Python. 👌🏾"
+    "text": "Are you new to programming? Have questions about which language would be a good one to start?\nChoosing which programming language to learn is more a personal preference depending on what project and solution you’re looking to achieve. However, for a beginner, you have lots of flexibility to experiment with which one is right for you. One programming language I enjoy working with and others have found helpful is Python. I recommend installing Python 3 to have more community support to be developed and used for years to come.\nThere are likely millions of developers worldwide using Python to build projects, tools and using it to teach others the fundamentals of programming. You can do all kinds of other fantastic work in a multitude of domains.\n\nExample applications:\n\nWeb applications\nMachine Learning / Deep learning\nAutomating weekly emails\nSetting up jobs to update a spreadsheet\netc.\n\n\n\nHelpful online resources & books\nYou can find plentiful resources to teach yourself Python or pair with a small group to work on projects!\nCodeacademy: Codeacademy offers free code tutorials that are very popular for a good reason. The tutorials should give you a good idea of what it’s like to code Python with hands-on lessons to write code.\nLearn Python the Hard Way by Zed Shaw: This book is well received and aims to teach beginners how to read and write basic Python to understand other books on Python. It is high quality which I recommend regardless of where your current skill is. You can try the free sample to see if it would work for you.\nReal Python: This website offers in-depth tutorials to learn any aspect of Python you may be curious to explore. Check it out and keep a list of articles for future reference!\nAutomate the boring stuff with Python by Al Sweigart: This is an enjoyable read and practical for anyone who is currently working a tedious, routine job! He also offers a video course provided through Udemy.\nUdemy: You can find all sorts of courses and projects offered on this online education website. They range from beginner to advanced and have instructors teaching financial topics such as predicting stock prices, data science, full-stack web development, and more.\nI’m confident your programming journey will be well on its way towards success. Feel free to discuss any other valuable resources or projects you’ve discovered learning Python. 👌🏾\n\n\n\n\n Back to top"
   },
   {
     "objectID": "blog/code-example-post/index.html",
@@ -187,5 +187,40 @@
     "title": "Household Energy Consumption Analysis",
     "section": "",
     "text": "Focus on heating efficiency during winter months\nImplement smart cooling strategies in summer\nConsider energy-efficient lighting solutions"
+  },
+  {
+    "objectID": "license.html",
+    "href": "license.html",
+    "title": "CC BY-NC-SA 4.0 license",
+    "section": "",
+    "text": "© 2024 Chaance T. Graves.\nMy content is released under the CC BY NC ND 4.0 license.\n   \nYou may share and adapt this content with appropriate credit and notation of any changes. You may not use this material for any commercial purposes.\n\n\n\n\n\n\nNote\n\n\n\nNote that my Opinions expressed are solely my own and do not express the views of my employer or any organizations I am associated with."
+  },
+  {
+    "objectID": "index.html#welcome-to-my-website",
+    "href": "index.html#welcome-to-my-website",
+    "title": "Chaance T. Graves",
+    "section": "",
+    "text": "My name is Chaance Graves. Welcome to my website, where I share my blog on topics and projects that I’ve worked on or still tinkering with. I’m a creative problem solver eager to implement solutions to many issues foreseen in our modern society. In addition to that, I am also a big advocate for giving back to others who aspire to follow a path like mine."
+  },
+  {
+    "objectID": "index.html#placeholder",
+    "href": "index.html#placeholder",
+    "title": "Chaance T. Graves",
+    "section": "",
+    "text": "On this site I keep a list of my projects, notes, my resume, as well as a technical blog."
+  },
+  {
+    "objectID": "index.html#navigation",
+    "href": "index.html#navigation",
+    "title": "Chaance T. Graves",
+    "section": "",
+    "text": "On this site I keep a list of my projects, notes, my resume, as well as a technical blog."
+  },
+  {
+    "objectID": "index.html#interests",
+    "href": "index.html#interests",
+    "title": "Chaance T. Graves",
+    "section": "",
+    "text": "Systems Engineering 💡\nComputer Architecture\nArtificial Intelligence (Machine Learning)\nWireless Communications\nRenewable Energy"
   }
 ]
