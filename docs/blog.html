@@ -187,7 +187,7 @@ window.Quarto = {
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(3)</span></div><div class="category" data-category="Y29kZQ==">code <span class="quarto-category-count">(2)</span></div><div class="category" data-category="cHl0aG9u">python <span class="quarto-category-count">(2)</span></div><div class="category" data-category="cmVzb3VyY2Vz">resources <span class="quarto-category-count">(3)</span></div></div></div>
+    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(4)</span></div><div class="category" data-category="Y29kZQ==">code <span class="quarto-category-count">(2)</span></div><div class="category" data-category="cHl0aG9u">python <span class="quarto-category-count">(2)</span></div><div class="category" data-category="cmVzb3VyY2Vz">resources <span class="quarto-category-count">(4)</span></div></div></div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
@@ -216,8 +216,63 @@ window.Quarto = {
 
 
 <div class="quarto-listing quarto-listing-container-default" id="listing-listing">
+<div class="listing-actions-group">
+   <div class="input-group input-group-sm quarto-listing-sort">
+     <span class="input-group-text"><i class="bi bi-sort-down"></i></span>
+     <select id="listing-listing-sort" class="form-select" aria-label="Order By" onchange="window['quarto-listings']['listing-listing'].sort(this.options[this.selectedIndex].value, { order: this.options[this.selectedIndex].getAttribute('data-direction')})">
+       <option value="" disabled="" selected="" hidden="">Order By</option>
+       <option value="index" data-direction="asc">Default</option>
+         <option value="listing-title" data-direction="asc">
+          Title
+        </option>
+         <option value="listing-date-sort" data-direction="asc">
+          Date - Oldest
+        </option>
+         <option value="listing-date-sort" data-direction="desc">
+          Date - Newest
+        </option>
+     </select>
+  </div>
+    <div class="input-group input-group-sm quarto-listing-filter">
+      <span class="input-group-text"><i class="bi bi-search"></i></span>
+      <input type="text" class="search form-control" placeholder="Filter">
+    </div>
+</div>
 <div class="list quarto-listing-default">
-<div class="quarto-post image-left" data-index="0" data-categories="cmVzb3VyY2VzJTJDY29kZSUyQ3B5dGhvbg==" data-listing-date-sort="1732341600000" data-listing-file-modified-sort="1732802296533" data-listing-date-modified-sort="1732687200000" data-listing-reading-time-sort="5" data-listing-word-count-sort="809">
+<div class="quarto-post image-left" data-index="0" data-categories="cmVzb3VyY2Vz" data-listing-date-sort="1732860000000" data-listing-file-modified-sort="1732902053709" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="22">
+<div class="thumbnail">
+<p><a href="./blog/mtn-post-test/index.html" class="no-external"></a></p><a href="./blog/mtn-post-test/index.html" class="no-external">
+<p><img loading="lazy" src="https://res.cloudinary.com/dx9zk8v6q/image/upload/v1732898126/cld-sample-2.jpg" class="thumbnail-image"></p>
+</a><p><a href="./blog/mtn-post-test/index.html" class="no-external"></a></p>
+</div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./blog/mtn-post-test/index.html" class="no-external">Cloudinary Image testing</a>
+</h3>
+<div class="listing-subtitle">
+<a href="./blog/mtn-post-test/index.html" class="no-external"></a>
+</div>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('cmVzb3VyY2Vz'); return false;">
+resources
+</div>
+</div>
+<div class="listing-description">
+<a href="./blog/mtn-post-test/index.html" class="no-external">testing image display in posts</a>
+</div>
+</div>
+<div class="metadata">
+<a href="./blog/mtn-post-test/index.html" class="no-external">
+<div class="listing-date">
+Nov 29, 2024
+</div>
+<div class="listing-reading-time">
+1 min
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-left" data-index="1" data-categories="cmVzb3VyY2VzJTJDY29kZSUyQ3B5dGhvbg==" data-listing-date-sort="1732341600000" data-listing-file-modified-sort="1732897955081" data-listing-date-modified-sort="1732687200000" data-listing-reading-time-sort="5" data-listing-word-count-sort="809">
 <div class="thumbnail">
 <p><a href="./blog/code-example-post/index.html" class="no-external"></a></p><a href="./blog/code-example-post/index.html" class="no-external">
 <p><img loading="lazy" src="./blog/code-example-post/code-img.jpg" class="thumbnail-image"></p>
@@ -256,7 +311,7 @@ Nov 23, 2024
 </a>
 </div>
 </div>
-<div class="quarto-post image-left" data-index="1" data-categories="cmVzb3VyY2Vz" data-listing-date-sort="1730786400000" data-listing-file-modified-sort="1732823562315" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="425">
+<div class="quarto-post image-left" data-index="2" data-categories="cmVzb3VyY2Vz" data-listing-date-sort="1730786400000" data-listing-file-modified-sort="1732897955061" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="425">
 <div class="thumbnail">
 <p><a href="./blog/awesome/index.html" class="no-external"></a></p><a href="./blog/awesome/index.html" class="no-external">
 <div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
@@ -289,7 +344,7 @@ Nov 5, 2024
 </a>
 </div>
 </div>
-<div class="quarto-post image-left" data-index="2" data-categories="cmVzb3VyY2VzJTJDY29kZSUyQ3B5dGhvbg==" data-listing-date-sort="1611122400000" data-listing-file-modified-sort="1732730852552" data-listing-date-modified-sort="1732341600000" data-listing-reading-time-sort="2" data-listing-word-count-sort="388">
+<div class="quarto-post image-left" data-index="3" data-categories="cmVzb3VyY2VzJTJDY29kZSUyQ3B5dGhvbg==" data-listing-date-sort="1611122400000" data-listing-file-modified-sort="1732897955081" data-listing-date-modified-sort="1732341600000" data-listing-reading-time-sort="2" data-listing-word-count-sort="388">
 <div class="thumbnail">
 <p><a href="./blog/post-with-code/index.html" class="no-external"></a></p><a href="./blog/post-with-code/index.html" class="no-external">
 <p><img loading="lazy" src="./blog/post-with-code/image.jpg" class="thumbnail-image"></p>

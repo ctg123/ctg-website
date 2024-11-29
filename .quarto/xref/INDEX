@@ -52,5 +52,17 @@
   },
   "license.qmd": {
     "license.html": "d6b57bfc"
+  },
+  "blog/mtn-post-test/index.qmd": {
+    "index.html": "38ff7b08"
+  },
+  "projects/wordpress-with-lamp-stack/index.qmd": {
+    "index.html": "241f2665"
+  },
+  "projects/ansible-kops/index.md": {
+    "index.html": "93e5b365"
+  },
+  "projects/ansible-kops/index.qmd": {
+    "index.html": "c16ebdc7"
   }
 }

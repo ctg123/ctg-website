@@ -1,0 +1,20 @@
+---
+title: "Cloudinary Image testing"
+description: testing image display in posts
+author: "Chaance Graves"
+date: "2024-11-29"
+categories: [resources]
+image: https://res.cloudinary.com/dx9zk8v6q/image/upload/v1732898126/cld-sample-2.jpg
+
+format: 
+  html:
+    toc: true
+    toc-title: Contents
+    toc-location: right
+---
+
+Welcome to my post about this mountain pic. I'm testing the external display of my assets hosted via Cloudinary.
+
+![](https://res.cloudinary.com/dx9zk8v6q/image/upload/v1732898126/cld-sample-2.jpg)
+
+Check for more here!

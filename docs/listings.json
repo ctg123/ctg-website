@@ -2,6 +2,7 @@
   {
     "listing": "/blog.html",
     "items": [
+      "/blog/mtn-post-test/index.html",
       "/blog/code-example-post/index.html",
       "/blog/awesome/index.html",
       "/blog/post-with-code/index.html"
@@ -11,7 +12,9 @@
     "listing": "/projects.html",
     "items": [
       "/projects/project1/index.html",
-      "/projects/project2/index.html"
+      "/projects/project2/index.html",
+      "/projects/ansible-kops/index.html",
+      "/projects/wordpress-with-lamp-stack/index.html"
     ]
   }
 ]
