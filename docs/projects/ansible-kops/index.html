@@ -75,8 +75,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-325f3ff2f131f9421fc6e27256f8a6fd.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-942181c96405210cc59e2fbb5c3c4ea0.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/bootstrap/bootstrap-dark-f0c0fb766a9e7a5e4a7a68cad5710c48.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-5841b2850b71ea8b79ede7177f5c8f9c.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-0e20ba0ad156186785a8763ee1ee4038.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -305,66 +305,66 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><a href="https://github.com/kubernetes/ingress-nginx/tree/main/charts/ingress-nginx">Ingress NGINX</a>&nbsp;- Ingress-nginx is an Ingress controller for Kubernetes using NGINX as a reverse proxy and load balancer.</li>
 <li><a href="https://github.com/jetstack/cert-manager">Cert-manager</a>&nbsp;- Automatically provision and manage TLS certificates in Kubernetes.</li>
 </ul>
-<pre class="shell"><code>$ vagrant up &amp;&amp; vagrant ssh</code></pre>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> vagrant up <span class="kw">&amp;&amp;</span> <span class="ex">vagrant</span> ssh</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Once inside the virtual machine, clone down the <code>ansible-kops</code> repo and set up the environment with the <code>install_prereqs.sh</code>.</p>
-<pre class="shell"><code>$ git clone https://github.com/ctg123/ansible-kops.git
-$ cd ansible-kops
-$ chmod +x install_prereqs.sh
-$ ./install_prereqs.sh</code></pre>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git clone https://github.com/ctg123/ansible-kops.git</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cd ansible-kops</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> chmod +x install_prereqs.sh</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ./install_prereqs.sh</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>You may need to reboot the machine for all the commands to appear. Once finished, check the following commands to verify that AWS CLI, Docker, and Ansible are correctly installed.</p>
-<pre class="shell"><code>$ aws --version
-
-aws-cli/2.2.29 Python/3.8.8 Linux/5.4.0-58-generic exe/x86_64.ubuntu.20 prompt/off
-
-$ docker version
-
-Client: Docker Engine - Community
- Version:           20.10.8
- API version:       1.41
- Go version:        go1.16.6
- Git commit:        3967b7d
- Built:             Fri Jul 30 19:54:27 2021
- OS/Arch:           linux/amd64
- Context:           default
- Experimental:      true
-
-Server: Docker Engine - Community
- Engine:
-  Version:          20.10.8
-  API version:      1.41 (minimum version 1.12)
-  Go version:       go1.16.6
-  Git commit:       75249d8
-  Built:            Fri Jul 30 19:52:33 2021
-  OS/Arch:          linux/amd64
-  Experimental:     false
- containerd:
-  Version:          1.4.9
-  GitCommit:        e25210fe30a0a703442421b0f60afac609f950a3
- runc:
-  Version:          1.0.1
-  GitCommit:        v1.0.1-0-g4144b63
- docker-init:
-  Version:          0.19.0
-  GitCommit:        de40ad0
-
-$ docker-compose version
-
-docker-compose version 1.27.4, build 40524192
-docker-py version: 4.3.1
-CPython version: 3.7.7
-OpenSSL version: OpenSSL 1.1.0l  10 Sep 2019
-
-$ ansible --version
-
-ansible [core 2.11.3] 
-  config file = None
-  configured module search path = ['/home/vagrant/.ansible/plugins/modules', '/usr/share/ansible/plugins/modules']
-  ansible python module location = /home/vagrant/.local/lib/python3.8/site-packages/ansible
-  ansible collection location = /home/vagrant/.ansible/collections:/usr/share/ansible/collections
-  executable location = /home/vagrant/.local/bin/ansible
-  python version = 3.8.10 (default, Jun  2 2021, 10:49:15) [GCC 9.4.0]
-  jinja version = 3.0.1
-  libyaml = True</code></pre>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> aws <span class="at">--version</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="ex">aws-cli/2.2.29</span> Python/3.8.8 Linux/5.4.0-58-generic exe/x86_64.ubuntu.20 prompt/off</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> docker version</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="ex">Client:</span> Docker Engine <span class="at">-</span> Community</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a> <span class="ex">Version:</span>           20.10.8</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a> <span class="ex">API</span> version:       1.41</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a> <span class="ex">Go</span> version:        go1.16.6</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a> <span class="ex">Git</span> commit:        3967b7d</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a> <span class="ex">Built:</span>             Fri Jul 30 19:54:27 2021</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a> <span class="ex">OS/Arch:</span>           linux/amd64</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a> <span class="ex">Context:</span>           default</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a> <span class="ex">Experimental:</span>      true</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a><span class="ex">Server:</span> Docker Engine <span class="at">-</span> Community</span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a> <span class="ex">Engine:</span></span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>  <span class="ex">Version:</span>          20.10.8</span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>  <span class="ex">API</span> version:      1.41 <span class="er">(</span><span class="ex">minimum</span> version 1.12<span class="kw">)</span></span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>  <span class="ex">Go</span> version:       go1.16.6</span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>  <span class="ex">Git</span> commit:       75249d8</span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>  <span class="ex">Built:</span>            Fri Jul 30 19:52:33 2021</span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>  <span class="ex">OS/Arch:</span>          linux/amd64</span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>  <span class="ex">Experimental:</span>     false</span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a> <span class="ex">containerd:</span></span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a>  <span class="ex">Version:</span>          1.4.9</span>
+<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a>  <span class="ex">GitCommit:</span>        e25210fe30a0a703442421b0f60afac609f950a3</span>
+<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a> <span class="ex">runc:</span></span>
+<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a>  <span class="ex">Version:</span>          1.0.1</span>
+<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a>  <span class="ex">GitCommit:</span>        v1.0.1-0-g4144b63</span>
+<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a> <span class="ex">docker-init:</span></span>
+<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a>  <span class="ex">Version:</span>          0.19.0</span>
+<span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a>  <span class="ex">GitCommit:</span>        de40ad0</span>
+<span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-36"><a href="#cb4-36" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> docker-compose version</span>
+<span id="cb4-37"><a href="#cb4-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-38"><a href="#cb4-38" aria-hidden="true" tabindex="-1"></a><span class="ex">docker-compose</span> version 1.27.4, build 40524192</span>
+<span id="cb4-39"><a href="#cb4-39" aria-hidden="true" tabindex="-1"></a><span class="ex">docker-py</span> version: 4.3.1</span>
+<span id="cb4-40"><a href="#cb4-40" aria-hidden="true" tabindex="-1"></a><span class="ex">CPython</span> version: 3.7.7</span>
+<span id="cb4-41"><a href="#cb4-41" aria-hidden="true" tabindex="-1"></a><span class="ex">OpenSSL</span> version: OpenSSL 1.1.0l  10 Sep 2019</span>
+<span id="cb4-42"><a href="#cb4-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-43"><a href="#cb4-43" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ansible <span class="at">--version</span></span>
+<span id="cb4-44"><a href="#cb4-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-45"><a href="#cb4-45" aria-hidden="true" tabindex="-1"></a><span class="ex">ansible</span> [core 2.11.3] </span>
+<span id="cb4-46"><a href="#cb4-46" aria-hidden="true" tabindex="-1"></a>  <span class="ex">config</span> file = None</span>
+<span id="cb4-47"><a href="#cb4-47" aria-hidden="true" tabindex="-1"></a>  <span class="ex">configured</span> module search path = [<span class="st">'/home/vagrant/.ansible/plugins/modules'</span>, <span class="st">'/usr/share/ansible/plugins/modules'</span>]</span>
+<span id="cb4-48"><a href="#cb4-48" aria-hidden="true" tabindex="-1"></a>  <span class="ex">ansible</span> python module location = /home/vagrant/.local/lib/python3.8/site-packages/ansible</span>
+<span id="cb4-49"><a href="#cb4-49" aria-hidden="true" tabindex="-1"></a>  <span class="ex">ansible</span> collection location = /home/vagrant/.ansible/collections:/usr/share/ansible/collections</span>
+<span id="cb4-50"><a href="#cb4-50" aria-hidden="true" tabindex="-1"></a>  <span class="ex">executable</span> location = /home/vagrant/.local/bin/ansible</span>
+<span id="cb4-51"><a href="#cb4-51" aria-hidden="true" tabindex="-1"></a>  <span class="ex">python</span> version = 3.8.10 <span class="er">(</span><span class="ex">default,</span> Jun  2 2021, 10:49:15<span class="kw">)</span> <span class="ex">[GCC</span> 9.4.0]</span>
+<span id="cb4-52"><a href="#cb4-52" aria-hidden="true" tabindex="-1"></a>  <span class="ex">jinja</span> version = 3.0.1</span>
+<span id="cb4-53"><a href="#cb4-53" aria-hidden="true" tabindex="-1"></a>  <span class="ex">libyaml</span> = True</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 </section>
 <section id="environment-setup" class="level2">
@@ -372,7 +372,7 @@ ansible [core 2.11.3]
 <p>The ansible packages for Kops &amp; Kubectl are compatible with Linux-AMD64 and Darwin-AMD64 architectures. The following diagram is a visual representation of the infrastructure we will deploy to AWS.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="img/aws-kops-ansible-1.png" class="img-fluid figure-img"></p>
+<p><img src="https://res.cloudinary.com/website-assets-mgmt/image/upload/aws-kops-ansible-1_yiejvt.png" class="img-fluid figure-img"></p>
 <figcaption>aws-kops-ansible</figcaption>
 </figure>
 </div>
@@ -386,16 +386,16 @@ ansible [core 2.11.3]
 <li>IAMFullAccess</li>
 </ul>
 <p>Once you have all the permissions, run the following command. Enter your AWS user credentials and select the region you will use in your environment.</p>
-<pre class="shell"><code>$ aws configure
-
-# Optionally you can specify the AWS Profile
-$ aws configure --profile &lt;profile_name&gt;
-
-# You will be prompted for your access keys
-AWS Access Key ID [None]: AKIA************
-AWS Secret Access Key [None]: kCcT****************
-Default region name [None]: us-east-1
-Default output format [None]: json</code></pre>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> aws configure</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Optionally you can specify the AWS Profile</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> aws configure <span class="at">--profile</span> <span class="op">&lt;</span>profile_name<span class="op">&gt;</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="co"># You will be prompted for your access keys</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="ex">AWS</span> Access Key ID <span class="pp">[</span><span class="ss">None</span><span class="pp">]</span>: AKIA<span class="pp">************</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="ex">AWS</span> Secret Access Key <span class="pp">[</span><span class="ss">None</span><span class="pp">]</span>: kCcT<span class="pp">****************</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="ex">Default</span> region name <span class="pp">[</span><span class="ss">None</span><span class="pp">]</span>: us-east-1</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="ex">Default</span> output format <span class="pp">[</span><span class="ss">None</span><span class="pp">]</span>: json</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="register-your-domain" class="level3">
 <h3 class="anchored" data-anchor-id="register-your-domain">Register your Domain</h3>
@@ -411,22 +411,22 @@ Default output format [None]: json</code></pre>
 <li>Create the corresponding NS record to let your domain know that your subdomain is hosted on AWS.</li>
 </ul></li>
 </ol>
-<pre class="shell"><code>DOMAIN                   TTL       TYPE                     TARGET
-example.mydomain.com.      0         NS      ns-xxxx.awsdns-xx.org
-example.mydomain.com.      0         NS      ns-yyy.awsdns-yy.org
-...</code></pre>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">DOMAIN</span>                   TTL       TYPE                     TARGET</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="ex">example.mydomain.com.</span>      0         NS      ns-xxxx.awsdns-xx.org</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="ex">example.mydomain.com.</span>      0         NS      ns-yyy.awsdns-yy.org</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="ex">...</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="certbot" class="level3">
 <h3 class="anchored" data-anchor-id="certbot">Certbot</h3>
 <hr>
 <p>We’ll use the Route53 DNS plugin for Certbot. This plugin automates completing a DNS-01 challenge (DNS01) by creating and subsequently removing TXT records using the Amazon Web Services Route 53 API. My example is for my registered domain. To initiate a DNS challenge, please execute the following command:</p>
-<pre class="shell"><code>$ python3 -m pip install certbot-dns-route53 --user
-
-$ certbot certonly --dns-route53 -d ctgkube.com \
---config-dir ~/.config/letsencrypt \
---logs-dir /tmp/letsencrypt \
---work-dir /tmp/letsencrypt \
---dns-route53-propagation-seconds 30</code></pre>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> python3 <span class="at">-m</span> pip install certbot-dns-route53 <span class="at">--user</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> certbot certonly <span class="at">--dns-route53</span> <span class="at">-d</span> ctgkube.com <span class="dt">\</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>--config-dir ~/.config/letsencrypt <span class="dt">\</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>--logs-dir /tmp/letsencrypt <span class="dt">\</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>--work-dir /tmp/letsencrypt <span class="dt">\</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>--dns-route53-propagation-seconds 30</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="environment-variables" class="level3">
 <h3 class="anchored" data-anchor-id="environment-variables">Environment variables</h3>
@@ -480,8 +480,8 @@ $ certbot certonly --dns-route53 -d ctgkube.com \
 <h3 class="anchored" data-anchor-id="generate-the-ssh-keys-and-deploy-the-cluster">Generate the SSH Keys and deploy the cluster</h3>
 <hr>
 <p>When the environment and the pre-requisites configures, run the following playbooks with Ansible. The <code>generate-ssh-key.yml</code> will create the SSH key pair to access Kubernetes API, which you can use to log in to the master node with. Once generated, make sure the path matches the variable specified in the <code>group_vars</code> directory. You’re now ready to run the <code>deploy-cluster.yml</code> playbook!</p>
-<pre class="shell"><code>$ ansible-playbook generate-ssh-key.yml
-$ ansible-playbook deploy-cluster.yml --ask-become-pass</code></pre>
+<div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ansible-playbook generate-ssh-key.yml</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ansible-playbook deploy-cluster.yml <span class="at">--ask-become-pass</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>It should take approximately 8 - 10 minutes to complete.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -495,24 +495,24 @@ $ ansible-playbook deploy-cluster.yml --ask-become-pass</code></pre>
 <p>A critical feature for any Kubernetes cluster is efficient monitoring of all resources with an accessible UI. The Kubernetes dashboard enables the ability to deploy containerized applications, troubleshoot pods, and manage other cluster resources such as scaling a deployment, initiating rolling updates, resetting pods instead of using the kubectl command.</p>
 <p>Run the <code>deploy_dashboard.sh</code> to pull from the latest version of the Kubernetes dashboard stored in the official Github repo. You can check at this <strong><a href="https://github.com/kubernetes/dashboard/releases">link</a></strong> to see which version is the latest release and update the script accordingly.</p>
 <p>Once complete, the default service type configures as a ClusterIP. We will change this to LoadBalancer to access it externally. You can find the service type and edit it with the following command:</p>
-<pre class="shell"><code>$ kubectl -n kubernetes-dashboard edit svc kubernetes-dashboard</code></pre>
+<div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> kubectl <span class="at">-n</span> kubernetes-dashboard edit svc kubernetes-dashboard</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Make sure the service type changed to <strong>LoadBalancer</strong> successfully. You should get an AWS ELB address as an output.</p>
-<pre class="shell"><code>$ kubectl -n kubernetes-dashboard get svc
-NAME                        TYPE           CLUSTER-IP      EXTERNAL-IP                                                               PORT(S)         AGE
-dashboard-metrics-scraper   ClusterIP      100.67.72.147   &lt;none&gt;                                                                    8000/TCP        5h20m
-kubernetes-dashboard        LoadBalancer   100.69.145.80   a6c1db00d3d9d42659150be7771c2ba5-1256148891.us-east-1.elb.amazonaws.com   443:31463/TCP   5h20m</code></pre>
+<div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> kubectl <span class="at">-n</span> kubernetes-dashboard get svc</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="ex">NAME</span>                        TYPE           CLUSTER-IP      EXTERNAL-IP                                                               PORT<span class="er">(</span><span class="ex">S</span><span class="kw">)</span>         <span class="ex">AGE</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="ex">dashboard-metrics-scraper</span>   ClusterIP      100.67.72.147   <span class="op">&lt;</span>none<span class="op">&gt;</span>                                                                    8000/TCP        5h20m</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="ex">kubernetes-dashboard</span>        LoadBalancer   100.69.145.80   a6c1db00d3d9d42659150be7771c2ba5-1256148891.us-east-1.elb.amazonaws.com   443:31463/TCP   5h20m</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>An output of the script produced a security token needed to log in. Copy the token and enter it in the dashboard. You will then sign into the Kubernetes dashboard. You can retrieve the token when needed with this command:</p>
-<pre class="shell"><code>$ kubectl get secret $(kubectl get serviceaccount dashboard -o jsonpath="{.secrets[0].name}") -o jsonpath="{.data.token}" | base64 --decode</code></pre>
+<div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> kubectl get secret <span class="va">$(</span><span class="ex">kubectl</span> get serviceaccount dashboard <span class="at">-o</span> jsonpath=<span class="st">"{.secrets[0].name}"</span><span class="va">)</span> <span class="at">-o</span> jsonpath=<span class="st">"{.data.token}"</span> <span class="kw">|</span> <span class="fu">base64</span> <span class="at">--decode</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="img/kubernetes-dashboard-login.png" class="img-fluid figure-img"></p>
-<figcaption>kubernetes-dashboard-login</figcaption>
+<p><img src="https://res.cloudinary.com/website-assets-mgmt/image/upload/kubernetes-dashboard-login_gatccu.png" class="img-fluid figure-img"></p>
+<figcaption>Kubernetes Dashboard Login</figcaption>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="img/example-kubernetes-dashboard-ui.png" class="img-fluid figure-img"></p>
-<figcaption>example-kubernetes-dashboard-UI</figcaption>
+<p><img src="https://res.cloudinary.com/website-assets-mgmt/image/upload/example-kubernetes-dashboard-ui_hxtgxx.png" class="img-fluid figure-img"></p>
+<figcaption>Example Kubernetes Dashboard UI</figcaption>
 </figure>
 </div>
 </section>
@@ -523,16 +523,16 @@ kubernetes-dashboard        LoadBalancer   100.69.145.80   a6c1db00d3d9d42659150
 <section id="prerequisites-for-development-on-a-local-machine" class="level3">
 <h3 class="anchored" data-anchor-id="prerequisites-for-development-on-a-local-machine">Prerequisites for development on a local machine</h3>
 <p>Install the following python libraries using pip located in the <code>requirements.txt</code> file in the <code>payment-app</code> directory. You will have Flask running locally on your machine prior to deploying the Docker image to Kubernetes.</p>
-<pre class="shell"><code>$ cd ansible-kops/payment-app
-$ python3 -m pip install -r requirements.txt --user
-$ pip list</code></pre>
+<div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cd ansible-kops/payment-app</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> python3 <span class="at">-m</span> pip install <span class="at">-r</span> requirements.txt <span class="at">--user</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> pip list</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="creating-the-flask-payment-application" class="level3">
 <h3 class="anchored" data-anchor-id="creating-the-flask-payment-application">Creating the Flask Payment application</h3>
 <hr>
 <p>We’ll produce a simple RESTful API to create, read, update, and delete (CRUD) payment entries. The app will store the data in a MongoDB database, an open-source database that stores flexible JSON-like documents that is Non-relational (often called NoSQL databases).</p>
 <p>By default, when a MongoDB Server instance starts on a machine, it listens to port <code>27017</code>. The Flask-PyMongo module helps us to bridge Flask and MongoDB and provides some convenience helpers. An objectId module is a tool for working with MongoDB ObjectId, the default value of _id field of each document, generated during the creation of any document.</p>
-<p>The <code>app.py</code> which can run on any host (python app.py), can be accessed at <code>http://localhost:5000/</code>.</p>
+<p>The <code>app.py</code> which can run on any host (python app.py), can be accessed at <strong>http://localhost:5000/</strong>.</p>
 <div class="sourceCode" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> flask <span class="im">import</span> Flask, request, jsonify</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> flask_pymongo <span class="im">import</span> PyMongo</span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> bson.objectid <span class="im">import</span> ObjectId</span>
@@ -650,21 +650,21 @@ $ pip list</code></pre>
 <span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a><span class="kw">CMD</span> [ <span class="st">"app.py"</span> ]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>We are using the official Python3.9 image, based on the Alpine Linux project, as the base image and copying our working directory’s contents to a new directory on the image. We are instructing the image to expose the port <code>5000</code> when run as a container, on which we can access our app. Finally, our app container configures to run <code>python app.py</code> automatically when deployed to a pod.</p>
 <p>Here, we build our image with the tag <code>&lt;username&gt;/&lt;image-name&gt;:&lt;version&gt;</code> format using the below command:</p>
-<pre class="shell"><code>$ docker build -t ctgraves16/paymentapp-python:1.0.0 .</code></pre>
+<div class="sourceCode" id="cb16"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> docker build <span class="at">-t</span> ctgraves16/paymentapp-python:1.0.0 .</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>and then push it to the Docker Hub registry. It will be publicly available where anyone in the world can download and run it:</p>
-<pre class="shell"><code>$ docker push ctgraves16/paymentapp-python:1.0.0</code></pre>
+<div class="sourceCode" id="cb17"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> docker push ctgraves16/paymentapp-python:1.0.0</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <blockquote class="blockquote">
 <p>👉🏾 <strong>NOTE</strong>: Ensure to replace <strong>“ctgraves16”</strong> with your Docker Hub username.</p>
 </blockquote>
 <p>Now that we containerized the app, what about the database? How can we containerize that? We don’t have to worry about it as we can easily use the official <code>mongo</code> Docker image and run it on the same network as the app container.</p>
 <p>Run the below commands to test the image locally where it can be accessible at <a href="http://localhost:5000/" class="uri">http://localhost:5000/</a></p>
-<pre class="shell"><code>$ docker network create payment-app-net
-$ docker run --name=mongo --rm -d --network=payment-app-net mongo
-$ docker run --name=paymentapp-python --rm -p 5000:5000 -d --network=payment-app-net ctgraves16/paymentapp-python:1.0.0</code></pre>
+<div class="sourceCode" id="cb18"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> docker network create payment-app-net</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> docker run <span class="at">--name</span><span class="op">=</span>mongo <span class="at">--rm</span> <span class="at">-d</span> <span class="at">--network</span><span class="op">=</span>payment-app-net mongo</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> docker run <span class="at">--name</span><span class="op">=</span>paymentapp-python <span class="at">--rm</span> <span class="at">-p</span> 5000:5000 <span class="at">-d</span> <span class="at">--network</span><span class="op">=</span>payment-app-net ctgraves16/paymentapp-python:1.0.0</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="img/payment-app-localhost.png" class="img-fluid figure-img"></p>
-<figcaption>payment-app-localhost</figcaption>
+<p><img src="https://res.cloudinary.com/website-assets-mgmt/image/upload/payment-app-localhost_xq6ys2.png" class="img-fluid figure-img"></p>
+<figcaption>Payment App on Localhost</figcaption>
 </figure>
 </div>
 </section>
@@ -672,12 +672,12 @@ $ docker run --name=paymentapp-python --rm -p 5000:5000 -d --network=payment-app
 <h3 class="anchored" data-anchor-id="deploy-the-application-and-mongodb-database-to-kubernetes">Deploy the application and MongoDB database to Kubernetes</h3>
 <hr>
 <p>We can check on how the nodes are set up by running <code>kubectl get nodes</code>.</p>
-<pre class="shell"><code>~/ansible-kops$ kubectl get nodes
-NAME                             STATUS   ROLES                  AGE   VERSION
-ip-172-20-125-204.ec2.internal   Ready    node                   17h   v1.21.3
-ip-172-20-42-157.ec2.internal    Ready    control-plane,master   17h   v1.21.3
-ip-172-20-50-137.ec2.internal    Ready    node                   17h   v1.21.3
-ip-172-20-81-89.ec2.internal     Ready    node                   17h   v1.21.3</code></pre>
+<div class="sourceCode" id="cb19"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="ex">~/ansible-kops$</span> kubectl get nodes</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="ex">NAME</span>                             STATUS   ROLES                  AGE   VERSION</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="ex">ip-172-20-125-204.ec2.internal</span>   Ready    node                   17h   v1.21.3</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="ex">ip-172-20-42-157.ec2.internal</span>    Ready    control-plane,master   17h   v1.21.3</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="ex">ip-172-20-50-137.ec2.internal</span>    Ready    node                   17h   v1.21.3</span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a><span class="ex">ip-172-20-81-89.ec2.internal</span>     Ready    node                   17h   v1.21.3</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>The <code>deploy.sh</code> script automates all the steps for setting up the deployments and services. The deployment of the resources are in the following order:</p>
 <ol type="1">
 <li><code>mongo-pv.yml</code> Persistent Volume:</li>
@@ -701,11 +701,11 @@ ip-172-20-81-89.ec2.internal     Ready    node                   17h   v1.21.3</
 <blockquote class="blockquote">
 <p>👉🏾 <strong>NOTE</strong>: Both PVC and PV must have the same class, otherwise, a PVC will not find a PV, and STATUS of such a PVC will be Pending.</p>
 </blockquote>
-<pre class="shell"><code>$ kubectl get storageclass -o wide
-NAME                      PROVISIONER             RECLAIMPOLICY   VOLUMEBINDINGMODE      ALLOWVOLUMEEXPANSION   AGE
-default                   kubernetes.io/aws-ebs   Delete          Immediate              false                  17h
-gp2                       kubernetes.io/aws-ebs   Delete          Immediate              false                  17h
-kops-ssd-1-17 (default)   kubernetes.io/aws-ebs   Delete          WaitForFirstConsumer   true                   17h</code></pre>
+<div class="sourceCode" id="cb21"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> kubectl get storageclass <span class="at">-o</span> wide</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="ex">NAME</span>                      PROVISIONER             RECLAIMPOLICY   VOLUMEBINDINGMODE      ALLOWVOLUMEEXPANSION   AGE</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="ex">default</span>                   kubernetes.io/aws-ebs   Delete          Immediate              false                  17h</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="ex">gp2</span>                       kubernetes.io/aws-ebs   Delete          Immediate              false                  17h</span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a><span class="ex">kops-ssd-1-17</span> <span class="er">(</span><span class="ex">default</span><span class="kw">)</span>   <span class="ex">kubernetes.io/aws-ebs</span>   Delete          WaitForFirstConsumer   true                   17h</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ol start="2" type="1">
 <li><code>mongo-pvc</code> Persistent Volume Claim:</li>
 </ol>
@@ -721,12 +721,12 @@ kops-ssd-1-17 (default)   kubernetes.io/aws-ebs   Delete          WaitForFirstCo
 <span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">requests</span><span class="kw">:</span></span>
 <span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">storage</span><span class="kw">:</span><span class="at"> 256Mi</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>The Persistent Volume Claim will show that the volume status is now changed to <strong>Bound</strong> when the scripts are complete.</p>
-<pre class="shell"><code>$ kubectl get pv &amp;&amp; kubectl get pvc
-NAME                                       CAPACITY   ACCESS MODES   RECLAIM POLICY   STATUS      CLAIM               STORAGECLASS    REASON   AGE
-mongo-pv                                   256Mi      RWO            Retain           Available                       default                  17h
-pvc-ee7ae28d-a7ad-478e-ba5f-038aa830b1b2   1Gi        RWO            Delete           Bound       default/mongo-pvc   kops-ssd-1-17            17h
-NAME        STATUS   VOLUME                                     CAPACITY   ACCESS MODES   STORAGECLASS    AGE
-mongo-pvc   Bound    pvc-ee7ae28d-a7ad-478e-ba5f-038aa830b1b2   1Gi        RWO            kops-ssd-1-17   17h</code></pre>
+<div class="sourceCode" id="cb23"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> kubectl get pv <span class="kw">&amp;&amp;</span> <span class="ex">kubectl</span> get pvc</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="ex">NAME</span>                                       CAPACITY   ACCESS MODES   RECLAIM POLICY   STATUS      CLAIM               STORAGECLASS    REASON   AGE</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="ex">mongo-pv</span>                                   256Mi      RWO            Retain           Available                       default                  17h</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a><span class="ex">pvc-ee7ae28d-a7ad-478e-ba5f-038aa830b1b2</span>   1Gi        RWO            Delete           Bound       default/mongo-pvc   kops-ssd-1-17            17h</span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a><span class="ex">NAME</span>        STATUS   VOLUME                                     CAPACITY   ACCESS MODES   STORAGECLASS    AGE</span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a><span class="ex">mongo-pvc</span>   Bound    pvc-ee7ae28d-a7ad-478e-ba5f-038aa830b1b2   1Gi        RWO            kops-ssd-1-17   17h</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ol start="3" type="1">
 <li><code>mongo</code> Deployment:</li>
 </ol>
@@ -811,34 +811,34 @@ mongo-pvc   Bound    pvc-ee7ae28d-a7ad-478e-ba5f-038aa830b1b2   1Gi        RWO  
 <span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">targetPort</span><span class="kw">:</span><span class="at"> </span><span class="dv">5000</span></span>
 <span id="cb27-11"><a href="#cb27-11" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">type</span><span class="kw">:</span><span class="at"> LoadBalancer</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Here, port <code>8080</code> of the service <code>payment-app-svc</code> is bound to port 5000 of the pods attached.</p>
-<pre class="shell"><code>$ kubectl get svc payment-app-svc
-NAME              TYPE           CLUSTER-IP      EXTERNAL-IP                                                               PORT(S)          AGE
-payment-app-svc   LoadBalancer   100.66.62.244   ac0a73109d80b449d8b2094246ab3e18-1598075260.us-east-1.elb.amazonaws.com   8080:30164/TCP   17h</code></pre>
+<div class="sourceCode" id="cb28"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> kubectl get svc payment-app-svc</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="ex">NAME</span>              TYPE           CLUSTER-IP      EXTERNAL-IP                                                               PORT<span class="er">(</span><span class="ex">S</span><span class="kw">)</span>          <span class="ex">AGE</span></span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="ex">payment-app-svc</span>   LoadBalancer   100.66.62.244   ac0a73109d80b449d8b2094246ab3e18-1598075260.us-east-1.elb.amazonaws.com   8080:30164/TCP   17h</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>We are now able to access the payment app at the ELB address:</p>
-<pre class="shell"><code>vagrant@ansible-controller:~/ansible-kops/kubernetes$ curl http://ac0a73109d80b449d8b2094246ab3e18-1598075260.us-east-1.elb.amazonaws.com:8080
-{
-  "message": "Welcome to the EasyPay app. I am running inside the payment-app-99695c66b-dv776 pod!"
-}
-vagrant@ansible-controller:~/ansible-kops/kubernetes$ curl http://ac0a73109d80b449d8b2094246ab3e18-1598075260.us-east-1.elb.amazonaws.com:8080
-{
-  "message": "Welcome to the EasyPay app. I am running inside the payment-app-99695c66b-2bk98 pod!"
-}
-vagrant@ansible-controller:~/ansible-kops/kubernetes$ curl http://ac0a73109d80b449d8b2094246ab3e18-1598075260.us-east-1.elb.amazonaws.com:8080
-{
-  "message": "Welcome to the EasyPay app. I am running inside the payment-app-99695c66b-dv776 pod!"
-}
-vagrant@ansible-controller:~/ansible-kops/kubernetes$ curl http://ac0a73109d80b449d8b2094246ab3e18-1598075260.us-east-1.elb.amazonaws.com:8080
-{
-  "message": "Welcome to the EasyPay app. I am running inside the payment-app-99695c66b-2bk98 pod!"
-}
-vagrant@ansible-controller:~/ansible-kops/kubernetes$ curl http://ac0a73109d80b449d8b2094246ab3e18-1598075260.us-east-1.elb.amazonaws.com:8080
-{
-  "message": "Welcome to the EasyPay app. I am running inside the payment-app-99695c66b-dv776 pod!"
-}
-vagrant@ansible-controller:~/ansible-kops/kubernetes$ curl http://ac0a73109d80b449d8b2094246ab3e18-1598075260.us-east-1.elb.amazonaws.com:8080
-{
-  "message": "Welcome to the EasyPay app. I am running inside the payment-app-99695c66b-6n4kg pod!"
-}</code></pre>
+<div class="sourceCode" id="cb29"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="ex">vagrant@ansible-controller:~/ansible-kops/kubernetes$</span> curl http://ac0a73109d80b449d8b2094246ab3e18-1598075260.us-east-1.elb.amazonaws.com:8080</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="kw">{</span></span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">"message"</span><span class="ex">:</span> <span class="st">"Welcome to the EasyPay app. I am running inside the payment-app-99695c66b-dv776 pod!"</span></span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a><span class="kw">}</span></span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a><span class="ex">vagrant@ansible-controller:~/ansible-kops/kubernetes$</span> curl http://ac0a73109d80b449d8b2094246ab3e18-1598075260.us-east-1.elb.amazonaws.com:8080</span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a><span class="kw">{</span></span>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a>  <span class="st">"message"</span><span class="ex">:</span> <span class="st">"Welcome to the EasyPay app. I am running inside the payment-app-99695c66b-2bk98 pod!"</span></span>
+<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a><span class="kw">}</span></span>
+<span id="cb29-9"><a href="#cb29-9" aria-hidden="true" tabindex="-1"></a><span class="ex">vagrant@ansible-controller:~/ansible-kops/kubernetes$</span> curl http://ac0a73109d80b449d8b2094246ab3e18-1598075260.us-east-1.elb.amazonaws.com:8080</span>
+<span id="cb29-10"><a href="#cb29-10" aria-hidden="true" tabindex="-1"></a><span class="kw">{</span></span>
+<span id="cb29-11"><a href="#cb29-11" aria-hidden="true" tabindex="-1"></a>  <span class="st">"message"</span><span class="ex">:</span> <span class="st">"Welcome to the EasyPay app. I am running inside the payment-app-99695c66b-dv776 pod!"</span></span>
+<span id="cb29-12"><a href="#cb29-12" aria-hidden="true" tabindex="-1"></a><span class="kw">}</span></span>
+<span id="cb29-13"><a href="#cb29-13" aria-hidden="true" tabindex="-1"></a><span class="ex">vagrant@ansible-controller:~/ansible-kops/kubernetes$</span> curl http://ac0a73109d80b449d8b2094246ab3e18-1598075260.us-east-1.elb.amazonaws.com:8080</span>
+<span id="cb29-14"><a href="#cb29-14" aria-hidden="true" tabindex="-1"></a><span class="kw">{</span></span>
+<span id="cb29-15"><a href="#cb29-15" aria-hidden="true" tabindex="-1"></a>  <span class="st">"message"</span><span class="ex">:</span> <span class="st">"Welcome to the EasyPay app. I am running inside the payment-app-99695c66b-2bk98 pod!"</span></span>
+<span id="cb29-16"><a href="#cb29-16" aria-hidden="true" tabindex="-1"></a><span class="kw">}</span></span>
+<span id="cb29-17"><a href="#cb29-17" aria-hidden="true" tabindex="-1"></a><span class="ex">vagrant@ansible-controller:~/ansible-kops/kubernetes$</span> curl http://ac0a73109d80b449d8b2094246ab3e18-1598075260.us-east-1.elb.amazonaws.com:8080</span>
+<span id="cb29-18"><a href="#cb29-18" aria-hidden="true" tabindex="-1"></a><span class="kw">{</span></span>
+<span id="cb29-19"><a href="#cb29-19" aria-hidden="true" tabindex="-1"></a>  <span class="st">"message"</span><span class="ex">:</span> <span class="st">"Welcome to the EasyPay app. I am running inside the payment-app-99695c66b-dv776 pod!"</span></span>
+<span id="cb29-20"><a href="#cb29-20" aria-hidden="true" tabindex="-1"></a><span class="kw">}</span></span>
+<span id="cb29-21"><a href="#cb29-21" aria-hidden="true" tabindex="-1"></a><span class="ex">vagrant@ansible-controller:~/ansible-kops/kubernetes$</span> curl http://ac0a73109d80b449d8b2094246ab3e18-1598075260.us-east-1.elb.amazonaws.com:8080</span>
+<span id="cb29-22"><a href="#cb29-22" aria-hidden="true" tabindex="-1"></a><span class="kw">{</span></span>
+<span id="cb29-23"><a href="#cb29-23" aria-hidden="true" tabindex="-1"></a>  <span class="st">"message"</span><span class="ex">:</span> <span class="st">"Welcome to the EasyPay app. I am running inside the payment-app-99695c66b-6n4kg pod!"</span></span>
+<span id="cb29-24"><a href="#cb29-24" aria-hidden="true" tabindex="-1"></a><span class="kw">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>We can see that the LoadBalancer sends the traffic to any random pod each time we try to access our app.</p>
 <ol start="7" type="1">
 <li><code>payment-app</code> Ingress</li>
@@ -846,8 +846,8 @@ vagrant@ansible-controller:~/ansible-kops/kubernetes$ curl http://ac0a73109d80b4
 <p>The Ingress service allows external interfaces with the payment app using a single load balancer provided by the NGINX Ingress Controller created when Ansible deployed the Helm chart onto the cluster. We will create a domain name at <a href="http://easypay.ctgkube.com/">easypay.ctgkube.com</a>.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="img/payment-app-ingress.png" class="img-fluid figure-img"></p>
-<figcaption>payment-app-ingress</figcaption>
+<p><img src="https://res.cloudinary.com/website-assets-mgmt/image/upload/payment-app-ingress_k0rzxq.png" class="img-fluid figure-img"></p>
+<figcaption>Payment App Ingress</figcaption>
 </figure>
 </div>
 <div class="sourceCode" id="cb30"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
@@ -872,33 +872,33 @@ vagrant@ansible-controller:~/ansible-kops/kubernetes$ curl http://ac0a73109d80b4
 <p>👉🏾 <strong>NOTE</strong>: The Ingress resource defines rules that redirect anything for easypay.ctgkube.com to payment-app-svc. Any request that doesn’t match the rule returns a 404 “Not Found” error message.</p>
 </blockquote>
 <p>If we describe the Ingress, you’ll receive a message similar to the following:</p>
-<pre class="shell"><code>$ kubectl describe ingress
-Name:             payment-app-ingress
-Namespace:        default
-Address:          ab58e1ce3541e475f8365c9ddfcd4496-883895960.us-east-1.elb.amazonaws.com
-Default backend:  default-http-backend:80 (&lt;error: endpoints "default-http-backend" not found&gt;)
-Rules:
-  Host                 Path  Backends
-  ----                 ----  --------
-  easypay.ctgkube.com  
-                       /   payment-app-svc:8080 (100.117.243.5:5000,100.125.236.198:5000,100.125.236.199:5000)
-Annotations:           &lt;none&gt;
-Events:                &lt;none&gt;</code></pre>
+<div class="sourceCode" id="cb31"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> kubectl describe ingress</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="ex">Name:</span>             payment-app-ingress</span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a><span class="ex">Namespace:</span>        default</span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a><span class="ex">Address:</span>          ab58e1ce3541e475f8365c9ddfcd4496-883895960.us-east-1.elb.amazonaws.com</span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a><span class="ex">Default</span> backend:  default-http-backend:80 <span class="er">(</span><span class="op">&lt;</span>error: <span class="ex">endpoints</span> <span class="st">"default-http-backend"</span> not found<span class="op">&gt;</span><span class="kw">)</span></span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a><span class="ex">Rules:</span></span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a>  <span class="ex">Host</span>                 Path  Backends</span>
+<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a>  <span class="ex">----</span>                 <span class="at">----</span>  <span class="at">--------</span></span>
+<span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a>  <span class="ex">easypay.ctgkube.com</span>  </span>
+<span id="cb31-10"><a href="#cb31-10" aria-hidden="true" tabindex="-1"></a>                       <span class="ex">/</span>   payment-app-svc:8080 <span class="er">(</span><span class="ex">100.117.243.5:5000,100.125.236.198:5000,100.125.236.199:5000</span><span class="kw">)</span></span>
+<span id="cb31-11"><a href="#cb31-11" aria-hidden="true" tabindex="-1"></a><span class="ex">Annotations:</span>           <span class="op">&lt;</span>none<span class="op">&gt;</span></span>
+<span id="cb31-12"><a href="#cb31-12" aria-hidden="true" tabindex="-1"></a><span class="ex">Events:</span>                <span class="op">&lt;</span>none<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>You can test the NGINX Ingress Controller using the DNS URL of the ELB load balancer:</p>
-<pre class="shell"><code>$ curl -I http://ab58e1ce3xxxxxxx-8xxxx960.us-east-1.elb.amazonaws.com/
-HTTP/1.1 404 Not Found
-Date: Sat, 21 Aug 2021 21:11:28 GMT
-Content-Type: text/html
-Content-Length: 146
-Connection: keep-alive</code></pre>
+<div class="sourceCode" id="cb32"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> curl <span class="at">-I</span> http://ab58e1ce3xxxxxxx-8xxxx960.us-east-1.elb.amazonaws.com/</span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="ex">HTTP/1.1</span> 404 Not Found</span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a><span class="ex">Date:</span> Sat, 21 Aug 2021 21:11:28 GMT</span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a><span class="ex">Content-Type:</span> text/html</span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a><span class="ex">Content-Length:</span> 146</span>
+<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a><span class="ex">Connection:</span> keep-alive</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>The default server returns a <strong>“Not Found”</strong> page with a 404 status code for all the requests for domains where no Ingress rules are defined. Based on the prescribed rules, the Ingress Controller doesn’t divert traffic to the specified backend service unless the request matches the configuration. Because the host field configures for the Ingress object, you must supply the Host header of the request with the same hostname.</p>
-<pre class="shell"><code>$ curl -I -H "Host: easypay.ctgkube.com" http://ab58e1ce3541e475f8365c9ddfcd4496-883895960.us-east-1.elb.amazonaws.com/
-HTTP/1.1 200 OK
-Date: Sat, 21 Aug 2021 21:17:46 GMT
-Content-Type: application/json
-Content-Length: 104
-Connection: keep-alive
-Access-Control-Allow-Origin: *</code></pre>
+<div class="sourceCode" id="cb33"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> curl <span class="at">-I</span> <span class="at">-H</span> <span class="st">"Host: easypay.ctgkube.com"</span> http://ab58e1ce3541e475f8365c9ddfcd4496-883895960.us-east-1.elb.amazonaws.com/</span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="ex">HTTP/1.1</span> 200 OK</span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="ex">Date:</span> Sat, 21 Aug 2021 21:17:46 GMT</span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a><span class="ex">Content-Type:</span> application/json</span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a><span class="ex">Content-Length:</span> 104</span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a><span class="ex">Connection:</span> keep-alive</span>
+<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a><span class="ex">Access-Control-Allow-Origin:</span> <span class="pp">*</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ol start="8" type="1">
 <li><code>payment-app</code> Horizontal Pod Autoscaler</li>
 </ol>
@@ -918,92 +918,92 @@ Access-Control-Allow-Origin: *</code></pre>
 <p>Now that the complete application setup is ready, we can interact with the Flask app at <code>easypay.ctgkube.com</code>.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="img/payment-app-kubernetes.png" class="img-fluid figure-img"></p>
+<p><img src="https://res.cloudinary.com/website-assets-mgmt/image/upload/payment-app-kubernetes_ceshgs.png" class="img-fluid figure-img"></p>
 <figcaption>payment-app-kubernetes</figcaption>
 </figure>
 </div>
 <p>We can try all the API methods specified in the app to interact with the data from the command line.</p>
-<pre class="shell"><code>$ curl http://easypay.ctgkube.com
-{
-  "message": "Welcome to the EasyPay app. I am running inside the payment-app-99695c66b-dv776 pod!"
-}
-
-$ curl http://easypay.ctgkube.com/payments
-{
-  "data": [ 
-    {
-      "id": "61207498207b153038b3b0b3", 
-      "payment": "00.00"
-    }, 
-    {
-      "id": "612074b5207b153038b3b0b4", 
-      "payment": "500.00"
-    }, 
-    {
-      "id": "612074df879dd6b7458ac593", 
-      "payment": "99.99"
-    }, 
-    {
-      "id": "61207582879dd6b7458ac594", 
-      "payment": "199.99"
-    }
-  ]
-}
-
-$ curl -X POST -d "{\"payment\": \"19.99\"}" http://easypay.ctgkube.com/payments
-{
-  "message": "Payment saved successfully to your account!"
-}
-
-$ curl -X DELETE easypay.ctgkube.com/payments/61217595207b153038b3b0b6
-{
-  "message": "Payment deleted successfully!"
-}
-
-$ curl easypay.ctgkube.com/payments
-{
-  "data": [
-    {
-      "id": "61206c7864a10df0ec229aca", 
-      "payment": "29.99"
-    }, 
-    {
-      "id": "61206c8764a10df0ec229acb", 
-      "payment": "2000.00"
-    }, 
-    {
-      "id": "612074b5207b153038b3b0b4", 
-      "payment": "500.00"
-    }, 
-    {
-      "id": "61207573207b153038b3b0b5", 
-      "payment": "99.99"
-    }, 
-    {
-      "id": "61207582879dd6b7458ac594", 
-      "payment": "199.99"
-    }
-  ]
-}
-
-$ curl -X POST easypay.ctgkube.com/payments/delete
-{
-  "message": "All Payments deleted!"
-}
-
-$ curl easypay.ctgkube.com/payments
-{
-  "data": []
-}</code></pre>
+<div class="sourceCode" id="cb35"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> curl http://easypay.ctgkube.com</span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="kw">{</span></span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">"message"</span><span class="ex">:</span> <span class="st">"Welcome to the EasyPay app. I am running inside the payment-app-99695c66b-dv776 pod!"</span></span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a><span class="kw">}</span></span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> curl http://easypay.ctgkube.com/payments</span>
+<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a><span class="kw">{</span></span>
+<span id="cb35-8"><a href="#cb35-8" aria-hidden="true" tabindex="-1"></a>  <span class="st">"data"</span><span class="ex">:</span> [ </span>
+<span id="cb35-9"><a href="#cb35-9" aria-hidden="true" tabindex="-1"></a>    <span class="kw">{</span></span>
+<span id="cb35-10"><a href="#cb35-10" aria-hidden="true" tabindex="-1"></a>      <span class="st">"id"</span><span class="ex">:</span> <span class="st">"61207498207b153038b3b0b3"</span>, </span>
+<span id="cb35-11"><a href="#cb35-11" aria-hidden="true" tabindex="-1"></a>      <span class="st">"payment"</span><span class="ex">:</span> <span class="st">"00.00"</span></span>
+<span id="cb35-12"><a href="#cb35-12" aria-hidden="true" tabindex="-1"></a>    <span class="ex">},</span> </span>
+<span id="cb35-13"><a href="#cb35-13" aria-hidden="true" tabindex="-1"></a>    <span class="kw">{</span></span>
+<span id="cb35-14"><a href="#cb35-14" aria-hidden="true" tabindex="-1"></a>      <span class="st">"id"</span><span class="ex">:</span> <span class="st">"612074b5207b153038b3b0b4"</span>, </span>
+<span id="cb35-15"><a href="#cb35-15" aria-hidden="true" tabindex="-1"></a>      <span class="st">"payment"</span><span class="ex">:</span> <span class="st">"500.00"</span></span>
+<span id="cb35-16"><a href="#cb35-16" aria-hidden="true" tabindex="-1"></a>    <span class="ex">},</span> </span>
+<span id="cb35-17"><a href="#cb35-17" aria-hidden="true" tabindex="-1"></a>    <span class="kw">{</span></span>
+<span id="cb35-18"><a href="#cb35-18" aria-hidden="true" tabindex="-1"></a>      <span class="st">"id"</span><span class="ex">:</span> <span class="st">"612074df879dd6b7458ac593"</span>, </span>
+<span id="cb35-19"><a href="#cb35-19" aria-hidden="true" tabindex="-1"></a>      <span class="st">"payment"</span><span class="ex">:</span> <span class="st">"99.99"</span></span>
+<span id="cb35-20"><a href="#cb35-20" aria-hidden="true" tabindex="-1"></a>    <span class="ex">},</span> </span>
+<span id="cb35-21"><a href="#cb35-21" aria-hidden="true" tabindex="-1"></a>    <span class="kw">{</span></span>
+<span id="cb35-22"><a href="#cb35-22" aria-hidden="true" tabindex="-1"></a>      <span class="st">"id"</span><span class="ex">:</span> <span class="st">"61207582879dd6b7458ac594"</span>, </span>
+<span id="cb35-23"><a href="#cb35-23" aria-hidden="true" tabindex="-1"></a>      <span class="st">"payment"</span><span class="ex">:</span> <span class="st">"199.99"</span></span>
+<span id="cb35-24"><a href="#cb35-24" aria-hidden="true" tabindex="-1"></a>    <span class="kw">}</span></span>
+<span id="cb35-25"><a href="#cb35-25" aria-hidden="true" tabindex="-1"></a>  <span class="ex">]</span></span>
+<span id="cb35-26"><a href="#cb35-26" aria-hidden="true" tabindex="-1"></a><span class="kw">}</span></span>
+<span id="cb35-27"><a href="#cb35-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-28"><a href="#cb35-28" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> curl <span class="at">-X</span> POST <span class="at">-d</span> <span class="st">"{</span><span class="dt">\"</span><span class="st">payment</span><span class="dt">\"</span><span class="st">: </span><span class="dt">\"</span><span class="st">19.99</span><span class="dt">\"</span><span class="st">}"</span> http://easypay.ctgkube.com/payments</span>
+<span id="cb35-29"><a href="#cb35-29" aria-hidden="true" tabindex="-1"></a><span class="kw">{</span></span>
+<span id="cb35-30"><a href="#cb35-30" aria-hidden="true" tabindex="-1"></a>  <span class="st">"message"</span><span class="ex">:</span> <span class="st">"Payment saved successfully to your account!"</span></span>
+<span id="cb35-31"><a href="#cb35-31" aria-hidden="true" tabindex="-1"></a><span class="kw">}</span></span>
+<span id="cb35-32"><a href="#cb35-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-33"><a href="#cb35-33" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> curl <span class="at">-X</span> DELETE easypay.ctgkube.com/payments/61217595207b153038b3b0b6</span>
+<span id="cb35-34"><a href="#cb35-34" aria-hidden="true" tabindex="-1"></a><span class="kw">{</span></span>
+<span id="cb35-35"><a href="#cb35-35" aria-hidden="true" tabindex="-1"></a>  <span class="st">"message"</span><span class="ex">:</span> <span class="st">"Payment deleted successfully!"</span></span>
+<span id="cb35-36"><a href="#cb35-36" aria-hidden="true" tabindex="-1"></a><span class="kw">}</span></span>
+<span id="cb35-37"><a href="#cb35-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-38"><a href="#cb35-38" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> curl easypay.ctgkube.com/payments</span>
+<span id="cb35-39"><a href="#cb35-39" aria-hidden="true" tabindex="-1"></a><span class="kw">{</span></span>
+<span id="cb35-40"><a href="#cb35-40" aria-hidden="true" tabindex="-1"></a>  <span class="st">"data"</span><span class="ex">:</span> [</span>
+<span id="cb35-41"><a href="#cb35-41" aria-hidden="true" tabindex="-1"></a>    <span class="kw">{</span></span>
+<span id="cb35-42"><a href="#cb35-42" aria-hidden="true" tabindex="-1"></a>      <span class="st">"id"</span><span class="ex">:</span> <span class="st">"61206c7864a10df0ec229aca"</span>, </span>
+<span id="cb35-43"><a href="#cb35-43" aria-hidden="true" tabindex="-1"></a>      <span class="st">"payment"</span><span class="ex">:</span> <span class="st">"29.99"</span></span>
+<span id="cb35-44"><a href="#cb35-44" aria-hidden="true" tabindex="-1"></a>    <span class="ex">},</span> </span>
+<span id="cb35-45"><a href="#cb35-45" aria-hidden="true" tabindex="-1"></a>    <span class="kw">{</span></span>
+<span id="cb35-46"><a href="#cb35-46" aria-hidden="true" tabindex="-1"></a>      <span class="st">"id"</span><span class="ex">:</span> <span class="st">"61206c8764a10df0ec229acb"</span>, </span>
+<span id="cb35-47"><a href="#cb35-47" aria-hidden="true" tabindex="-1"></a>      <span class="st">"payment"</span><span class="ex">:</span> <span class="st">"2000.00"</span></span>
+<span id="cb35-48"><a href="#cb35-48" aria-hidden="true" tabindex="-1"></a>    <span class="ex">},</span> </span>
+<span id="cb35-49"><a href="#cb35-49" aria-hidden="true" tabindex="-1"></a>    <span class="kw">{</span></span>
+<span id="cb35-50"><a href="#cb35-50" aria-hidden="true" tabindex="-1"></a>      <span class="st">"id"</span><span class="ex">:</span> <span class="st">"612074b5207b153038b3b0b4"</span>, </span>
+<span id="cb35-51"><a href="#cb35-51" aria-hidden="true" tabindex="-1"></a>      <span class="st">"payment"</span><span class="ex">:</span> <span class="st">"500.00"</span></span>
+<span id="cb35-52"><a href="#cb35-52" aria-hidden="true" tabindex="-1"></a>    <span class="ex">},</span> </span>
+<span id="cb35-53"><a href="#cb35-53" aria-hidden="true" tabindex="-1"></a>    <span class="kw">{</span></span>
+<span id="cb35-54"><a href="#cb35-54" aria-hidden="true" tabindex="-1"></a>      <span class="st">"id"</span><span class="ex">:</span> <span class="st">"61207573207b153038b3b0b5"</span>, </span>
+<span id="cb35-55"><a href="#cb35-55" aria-hidden="true" tabindex="-1"></a>      <span class="st">"payment"</span><span class="ex">:</span> <span class="st">"99.99"</span></span>
+<span id="cb35-56"><a href="#cb35-56" aria-hidden="true" tabindex="-1"></a>    <span class="ex">},</span> </span>
+<span id="cb35-57"><a href="#cb35-57" aria-hidden="true" tabindex="-1"></a>    <span class="kw">{</span></span>
+<span id="cb35-58"><a href="#cb35-58" aria-hidden="true" tabindex="-1"></a>      <span class="st">"id"</span><span class="ex">:</span> <span class="st">"61207582879dd6b7458ac594"</span>, </span>
+<span id="cb35-59"><a href="#cb35-59" aria-hidden="true" tabindex="-1"></a>      <span class="st">"payment"</span><span class="ex">:</span> <span class="st">"199.99"</span></span>
+<span id="cb35-60"><a href="#cb35-60" aria-hidden="true" tabindex="-1"></a>    <span class="kw">}</span></span>
+<span id="cb35-61"><a href="#cb35-61" aria-hidden="true" tabindex="-1"></a>  <span class="ex">]</span></span>
+<span id="cb35-62"><a href="#cb35-62" aria-hidden="true" tabindex="-1"></a><span class="kw">}</span></span>
+<span id="cb35-63"><a href="#cb35-63" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-64"><a href="#cb35-64" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> curl <span class="at">-X</span> POST easypay.ctgkube.com/payments/delete</span>
+<span id="cb35-65"><a href="#cb35-65" aria-hidden="true" tabindex="-1"></a><span class="kw">{</span></span>
+<span id="cb35-66"><a href="#cb35-66" aria-hidden="true" tabindex="-1"></a>  <span class="st">"message"</span><span class="ex">:</span> <span class="st">"All Payments deleted!"</span></span>
+<span id="cb35-67"><a href="#cb35-67" aria-hidden="true" tabindex="-1"></a><span class="kw">}</span></span>
+<span id="cb35-68"><a href="#cb35-68" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-69"><a href="#cb35-69" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> curl easypay.ctgkube.com/payments</span>
+<span id="cb35-70"><a href="#cb35-70" aria-hidden="true" tabindex="-1"></a><span class="kw">{</span></span>
+<span id="cb35-71"><a href="#cb35-71" aria-hidden="true" tabindex="-1"></a>  <span class="st">"data"</span><span class="ex">:</span> []</span>
+<span id="cb35-72"><a href="#cb35-72" aria-hidden="true" tabindex="-1"></a><span class="kw">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="img/easypay.ctgkube.com-payments.png" class="img-fluid figure-img"></p>
+<p><img src="https://res.cloudinary.com/website-assets-mgmt/image/upload/easypay.ctgkube.com-payments_u0f6dj.png" class="img-fluid figure-img"></p>
 <figcaption>easypay.ctgkube.com-payments</figcaption>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="img/default-deployments-kubernetes-dashboard.png" class="img-fluid figure-img"></p>
+<p><img src="https://res.cloudinary.com/website-assets-mgmt/image/upload/default-deployments-kubernetes-dashboard_mghb6r.png" class="img-fluid figure-img"></p>
 <figcaption>default-deployments-kubernetes-dashboard</figcaption>
 </figure>
 </div>
@@ -1012,108 +1012,108 @@ $ curl easypay.ctgkube.com/payments
 <h3 class="anchored" data-anchor-id="installing-the-metrics-server">Installing the Metrics server</h3>
 <hr>
 <p>Within the <code>ansible-kops</code> repository, we have the metrics server resource files stored in the <code>kubernetes/metrics-server</code> folder. Run the <code>kubectl apply -f.</code> to deploy all the resources at the same time.</p>
-<pre class="shell"><code>~ ansible-kops/kubernetes/metrics-server
-
-$ ls -l
-total 32
--rw-rw-r-- 1 vagrant vagrant  410 Aug 19 14:44 aggregated-metrics-reader.yaml
--rw-rw-r-- 1 vagrant vagrant  316 Aug 19 14:44 auth-delegator.yaml
--rw-rw-r-- 1 vagrant vagrant  338 Aug 19 14:44 auth-reader.yaml
--rw-rw-r-- 1 vagrant vagrant  307 Aug 19 14:44 metrics-apiservice.yaml
--rw-rw-r-- 1 vagrant vagrant 1002 Aug 19 14:44 metrics-server-deployment.yaml
--rw-rw-r-- 1 vagrant vagrant  307 Aug 19 14:44 metrics-server-service.yaml
--rw-rw-r-- 1 vagrant vagrant  563 Aug 19 14:44 resource-reader.yaml
--rwxrwxr-x 1 vagrant vagrant  695 Aug 19 14:44 rm-metrics-server.sh
-
-$ kubectl apply -f.
-clusterrole.rbac.authorization.k8s.io/system:aggregated-metrics-reader created
-clusterrolebinding.rbac.authorization.k8s.io/metrics-server:system:auth-delegator created
-rolebinding.rbac.authorization.k8s.io/metrics-server-auth-reader created
-Warning: apiregistration.k8s.io/v1beta1 APIService is deprecated in v1.19+, unavailable in v1.22+; use apiregistration.k8s.io/v1 APIService
-apiservice.apiregistration.k8s.io/v1beta1.metrics.k8s.io created
-serviceaccount/metrics-server created
-deployment.apps/metrics-server created
-service/metrics-server created
-clusterrole.rbac.authorization.k8s.io/system:metrics-server created
-clusterrolebinding.rbac.authorization.k8s.io/system:metrics-server created
-
-$ kubectl get pods -n kube-system
-NAME                                                      READY   STATUS    RESTARTS   AGE
-calico-kube-controllers-78d6f96c7b-c4pjk                  1/1     Running   0          20h
-calico-node-4bjcm                                         1/1     Running   0          20h
-calico-node-74m42                                         1/1     Running   0          20h
-calico-node-gnrh2                                         1/1     Running   0          20h
-calico-node-sbfzl                                         1/1     Running   0          20h
-coredns-autoscaler-6f594f4c58-k8xpx                       1/1     Running   0          20h
-coredns-f45c4bf76-m6d9g                                   1/1     Running   0          20h
-coredns-f45c4bf76-tk77l                                   1/1     Running   0          20h
-dns-controller-64f8b56bdc-k82kx                           1/1     Running   0          20h
-etcd-manager-events-ip-172-20-42-157.ec2.internal         1/1     Running   0          20h
-etcd-manager-main-ip-172-20-42-157.ec2.internal           1/1     Running   0          20h
-kops-controller-8kp2r                                     1/1     Running   0          20h
-kube-apiserver-ip-172-20-42-157.ec2.internal              2/2     Running   1          20h
-kube-controller-manager-ip-172-20-42-157.ec2.internal     1/1     Running   0          20h
-kube-proxy-ip-172-20-125-204.ec2.internal                 1/1     Running   0          20h
-kube-proxy-ip-172-20-42-157.ec2.internal                  1/1     Running   0          20h
-kube-proxy-ip-172-20-50-137.ec2.internal                  1/1     Running   0          20h
-kube-proxy-ip-172-20-81-89.ec2.internal                   1/1     Running   0          20h
-kube-scheduler-ip-172-20-42-157.ec2.internal              1/1     Running   0          20h
-kube2iam-9tfsx                                            1/1     Running   0          20h
-kube2iam-m8ls4                                            1/1     Running   0          20h
-kube2iam-xnp8z                                            1/1     Running   0          20h
-metrics-server-6fcb6cbf6f-mrsgl                           1/1     Running   0          19h
-nginx-ingress-ingress-nginx-controller-84bf68bdd7-shkj4   1/1     Running   0          20h
-
-$ kubectl get svc -n kube-system
-NAME                                               TYPE           CLUSTER-IP       EXTERNAL-IP                                                              PORT(S)                      AGE
-kube-dns                                           ClusterIP      100.64.0.10      &lt;none&gt;                                                                   53/UDP,53/TCP,9153/TCP       20h
-metrics-server                                     ClusterIP      100.68.52.42     &lt;none&gt;                                                                   443/TCP                      19h
-nginx-ingress-ingress-nginx-controller             LoadBalancer   100.64.25.22     ab58e1ce3541e475f8365c9ddfcd4496-883895960.us-east-1.elb.amazonaws.com   80:32111/TCP,443:30841/TCP   20h
-nginx-ingress-ingress-nginx-controller-admission   ClusterIP      100.69.127.174   &lt;none&gt;                                                                   443/TCP                      20h</code></pre>
+<div class="sourceCode" id="cb36"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="ex">~</span> ansible-kops/kubernetes/metrics-server</span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ls <span class="at">-l</span></span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a><span class="ex">total</span> 32</span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a><span class="ex">-rw-rw-r--</span> 1 vagrant vagrant  410 Aug 19 14:44 aggregated-metrics-reader.yaml</span>
+<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a><span class="ex">-rw-rw-r--</span> 1 vagrant vagrant  316 Aug 19 14:44 auth-delegator.yaml</span>
+<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a><span class="ex">-rw-rw-r--</span> 1 vagrant vagrant  338 Aug 19 14:44 auth-reader.yaml</span>
+<span id="cb36-8"><a href="#cb36-8" aria-hidden="true" tabindex="-1"></a><span class="ex">-rw-rw-r--</span> 1 vagrant vagrant  307 Aug 19 14:44 metrics-apiservice.yaml</span>
+<span id="cb36-9"><a href="#cb36-9" aria-hidden="true" tabindex="-1"></a><span class="ex">-rw-rw-r--</span> 1 vagrant vagrant 1002 Aug 19 14:44 metrics-server-deployment.yaml</span>
+<span id="cb36-10"><a href="#cb36-10" aria-hidden="true" tabindex="-1"></a><span class="ex">-rw-rw-r--</span> 1 vagrant vagrant  307 Aug 19 14:44 metrics-server-service.yaml</span>
+<span id="cb36-11"><a href="#cb36-11" aria-hidden="true" tabindex="-1"></a><span class="ex">-rw-rw-r--</span> 1 vagrant vagrant  563 Aug 19 14:44 resource-reader.yaml</span>
+<span id="cb36-12"><a href="#cb36-12" aria-hidden="true" tabindex="-1"></a><span class="ex">-rwxrwxr-x</span> 1 vagrant vagrant  695 Aug 19 14:44 rm-metrics-server.sh</span>
+<span id="cb36-13"><a href="#cb36-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-14"><a href="#cb36-14" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> kubectl apply <span class="at">-f.</span></span>
+<span id="cb36-15"><a href="#cb36-15" aria-hidden="true" tabindex="-1"></a><span class="ex">clusterrole.rbac.authorization.k8s.io/system:aggregated-metrics-reader</span> created</span>
+<span id="cb36-16"><a href="#cb36-16" aria-hidden="true" tabindex="-1"></a><span class="ex">clusterrolebinding.rbac.authorization.k8s.io/metrics-server:system:auth-delegator</span> created</span>
+<span id="cb36-17"><a href="#cb36-17" aria-hidden="true" tabindex="-1"></a><span class="ex">rolebinding.rbac.authorization.k8s.io/metrics-server-auth-reader</span> created</span>
+<span id="cb36-18"><a href="#cb36-18" aria-hidden="true" tabindex="-1"></a><span class="ex">Warning:</span> apiregistration.k8s.io/v1beta1 APIService is deprecated in v1.19+, unavailable in v1.22+<span class="kw">;</span> <span class="ex">use</span> apiregistration.k8s.io/v1 APIService</span>
+<span id="cb36-19"><a href="#cb36-19" aria-hidden="true" tabindex="-1"></a><span class="ex">apiservice.apiregistration.k8s.io/v1beta1.metrics.k8s.io</span> created</span>
+<span id="cb36-20"><a href="#cb36-20" aria-hidden="true" tabindex="-1"></a><span class="ex">serviceaccount/metrics-server</span> created</span>
+<span id="cb36-21"><a href="#cb36-21" aria-hidden="true" tabindex="-1"></a><span class="ex">deployment.apps/metrics-server</span> created</span>
+<span id="cb36-22"><a href="#cb36-22" aria-hidden="true" tabindex="-1"></a><span class="ex">service/metrics-server</span> created</span>
+<span id="cb36-23"><a href="#cb36-23" aria-hidden="true" tabindex="-1"></a><span class="ex">clusterrole.rbac.authorization.k8s.io/system:metrics-server</span> created</span>
+<span id="cb36-24"><a href="#cb36-24" aria-hidden="true" tabindex="-1"></a><span class="ex">clusterrolebinding.rbac.authorization.k8s.io/system:metrics-server</span> created</span>
+<span id="cb36-25"><a href="#cb36-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-26"><a href="#cb36-26" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> kubectl get pods <span class="at">-n</span> kube-system</span>
+<span id="cb36-27"><a href="#cb36-27" aria-hidden="true" tabindex="-1"></a><span class="ex">NAME</span>                                                      READY   STATUS    RESTARTS   AGE</span>
+<span id="cb36-28"><a href="#cb36-28" aria-hidden="true" tabindex="-1"></a><span class="ex">calico-kube-controllers-78d6f96c7b-c4pjk</span>                  1/1     Running   0          20h</span>
+<span id="cb36-29"><a href="#cb36-29" aria-hidden="true" tabindex="-1"></a><span class="ex">calico-node-4bjcm</span>                                         1/1     Running   0          20h</span>
+<span id="cb36-30"><a href="#cb36-30" aria-hidden="true" tabindex="-1"></a><span class="ex">calico-node-74m42</span>                                         1/1     Running   0          20h</span>
+<span id="cb36-31"><a href="#cb36-31" aria-hidden="true" tabindex="-1"></a><span class="ex">calico-node-gnrh2</span>                                         1/1     Running   0          20h</span>
+<span id="cb36-32"><a href="#cb36-32" aria-hidden="true" tabindex="-1"></a><span class="ex">calico-node-sbfzl</span>                                         1/1     Running   0          20h</span>
+<span id="cb36-33"><a href="#cb36-33" aria-hidden="true" tabindex="-1"></a><span class="ex">coredns-autoscaler-6f594f4c58-k8xpx</span>                       1/1     Running   0          20h</span>
+<span id="cb36-34"><a href="#cb36-34" aria-hidden="true" tabindex="-1"></a><span class="ex">coredns-f45c4bf76-m6d9g</span>                                   1/1     Running   0          20h</span>
+<span id="cb36-35"><a href="#cb36-35" aria-hidden="true" tabindex="-1"></a><span class="ex">coredns-f45c4bf76-tk77l</span>                                   1/1     Running   0          20h</span>
+<span id="cb36-36"><a href="#cb36-36" aria-hidden="true" tabindex="-1"></a><span class="ex">dns-controller-64f8b56bdc-k82kx</span>                           1/1     Running   0          20h</span>
+<span id="cb36-37"><a href="#cb36-37" aria-hidden="true" tabindex="-1"></a><span class="ex">etcd-manager-events-ip-172-20-42-157.ec2.internal</span>         1/1     Running   0          20h</span>
+<span id="cb36-38"><a href="#cb36-38" aria-hidden="true" tabindex="-1"></a><span class="ex">etcd-manager-main-ip-172-20-42-157.ec2.internal</span>           1/1     Running   0          20h</span>
+<span id="cb36-39"><a href="#cb36-39" aria-hidden="true" tabindex="-1"></a><span class="ex">kops-controller-8kp2r</span>                                     1/1     Running   0          20h</span>
+<span id="cb36-40"><a href="#cb36-40" aria-hidden="true" tabindex="-1"></a><span class="ex">kube-apiserver-ip-172-20-42-157.ec2.internal</span>              2/2     Running   1          20h</span>
+<span id="cb36-41"><a href="#cb36-41" aria-hidden="true" tabindex="-1"></a><span class="ex">kube-controller-manager-ip-172-20-42-157.ec2.internal</span>     1/1     Running   0          20h</span>
+<span id="cb36-42"><a href="#cb36-42" aria-hidden="true" tabindex="-1"></a><span class="ex">kube-proxy-ip-172-20-125-204.ec2.internal</span>                 1/1     Running   0          20h</span>
+<span id="cb36-43"><a href="#cb36-43" aria-hidden="true" tabindex="-1"></a><span class="ex">kube-proxy-ip-172-20-42-157.ec2.internal</span>                  1/1     Running   0          20h</span>
+<span id="cb36-44"><a href="#cb36-44" aria-hidden="true" tabindex="-1"></a><span class="ex">kube-proxy-ip-172-20-50-137.ec2.internal</span>                  1/1     Running   0          20h</span>
+<span id="cb36-45"><a href="#cb36-45" aria-hidden="true" tabindex="-1"></a><span class="ex">kube-proxy-ip-172-20-81-89.ec2.internal</span>                   1/1     Running   0          20h</span>
+<span id="cb36-46"><a href="#cb36-46" aria-hidden="true" tabindex="-1"></a><span class="ex">kube-scheduler-ip-172-20-42-157.ec2.internal</span>              1/1     Running   0          20h</span>
+<span id="cb36-47"><a href="#cb36-47" aria-hidden="true" tabindex="-1"></a><span class="ex">kube2iam-9tfsx</span>                                            1/1     Running   0          20h</span>
+<span id="cb36-48"><a href="#cb36-48" aria-hidden="true" tabindex="-1"></a><span class="ex">kube2iam-m8ls4</span>                                            1/1     Running   0          20h</span>
+<span id="cb36-49"><a href="#cb36-49" aria-hidden="true" tabindex="-1"></a><span class="ex">kube2iam-xnp8z</span>                                            1/1     Running   0          20h</span>
+<span id="cb36-50"><a href="#cb36-50" aria-hidden="true" tabindex="-1"></a><span class="ex">metrics-server-6fcb6cbf6f-mrsgl</span>                           1/1     Running   0          19h</span>
+<span id="cb36-51"><a href="#cb36-51" aria-hidden="true" tabindex="-1"></a><span class="ex">nginx-ingress-ingress-nginx-controller-84bf68bdd7-shkj4</span>   1/1     Running   0          20h</span>
+<span id="cb36-52"><a href="#cb36-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-53"><a href="#cb36-53" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> kubectl get svc <span class="at">-n</span> kube-system</span>
+<span id="cb36-54"><a href="#cb36-54" aria-hidden="true" tabindex="-1"></a><span class="ex">NAME</span>                                               TYPE           CLUSTER-IP       EXTERNAL-IP                                                              PORT<span class="er">(</span><span class="ex">S</span><span class="kw">)</span>                      <span class="ex">AGE</span></span>
+<span id="cb36-55"><a href="#cb36-55" aria-hidden="true" tabindex="-1"></a><span class="ex">kube-dns</span>                                           ClusterIP      100.64.0.10      <span class="op">&lt;</span>none<span class="op">&gt;</span>                                                                   53/UDP,53/TCP,9153/TCP       20h</span>
+<span id="cb36-56"><a href="#cb36-56" aria-hidden="true" tabindex="-1"></a><span class="ex">metrics-server</span>                                     ClusterIP      100.68.52.42     <span class="op">&lt;</span>none<span class="op">&gt;</span>                                                                   443/TCP                      19h</span>
+<span id="cb36-57"><a href="#cb36-57" aria-hidden="true" tabindex="-1"></a><span class="ex">nginx-ingress-ingress-nginx-controller</span>             LoadBalancer   100.64.25.22     ab58e1ce3541e475f8365c9ddfcd4496-883895960.us-east-1.elb.amazonaws.com   80:32111/TCP,443:30841/TCP   20h</span>
+<span id="cb36-58"><a href="#cb36-58" aria-hidden="true" tabindex="-1"></a><span class="ex">nginx-ingress-ingress-nginx-controller-admission</span>   ClusterIP      100.69.127.174   <span class="op">&lt;</span>none<span class="op">&gt;</span>                                                                   443/TCP                      20h</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="testing-the-payment-app-hpa" class="level3">
 <h3 class="anchored" data-anchor-id="testing-the-payment-app-hpa">Testing the payment app HPA</h3>
 <hr>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="img/kops-hpa-ca-architecture.png" class="img-fluid figure-img"></p>
+<p><img src="https://res.cloudinary.com/website-assets-mgmt/image/upload/kops-hpa-ca-architecture_yh06g1.png" class="img-fluid figure-img"></p>
 <figcaption>kops-hpa-ca-architecture</figcaption>
 </figure>
 </div>
 <p>Before installing and running an open-source load testing generator to test the <code>payment-app-hpa</code>, let’s run the <code>kubectl describe hpa</code> to see all the conditions affecting the HorizontalPodAutoscaler.</p>
-<pre class="shell"><code>$ kubectl describe hpa
-Name:                                                  payment-app-hpa
-Namespace:                                             default
-Labels:                                                &lt;none&gt;
-Annotations:                                           &lt;none&gt;
-CreationTimestamp:                                     Sat, 21 Aug 2021 02:54:24 +0000
-Reference:                                             Deployment/payment-app
-Metrics:                                               ( current / target )
-  resource cpu on pods  (as a percentage of request):  1% (1m) / 50%
-Min replicas:                                          3
-Max replicas:                                          10
-Deployment pods:                                       3 current / 3 desired
-Conditions:
-  Type            Status  Reason            Message
-  ----            ------  ------            -------
-  AbleToScale     True    ReadyForNewScale  recommended size matches current size
-  ScalingActive   True    ValidMetricFound  the HPA was able to successfully calculate a replica count from cpu resource utilization (percentage of request)
-  ScalingLimited  True    TooFewReplicas    the desired replica count is less than the minimum replica count
-Events:
-  Type     Reason                        Age                From                       Message
-  ----     ------                        ----               ----                       -------
-  Normal   SuccessfulRescale             22m (x2 over 19h)  horizontal-pod-autoscaler  New size: 3; reason: Current number of replicas below Spec.MinReplicas
-  Warning  FailedGetResourceMetric       21m (x4 over 22m)  horizontal-pod-autoscaler  failed to get cpu utilization: did not receive metrics for any ready pods
-  Warning  FailedComputeMetricsReplicas  21m (x4 over 22m)  horizontal-pod-autoscaler  invalid metrics (1 invalid out of 1), first error is: failed to get cpu utilization: did not receive metrics for any ready pods</code></pre>
+<div class="sourceCode" id="cb37"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> kubectl describe hpa</span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="ex">Name:</span>                                                  payment-app-hpa</span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a><span class="ex">Namespace:</span>                                             default</span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a><span class="ex">Labels:</span>                                                <span class="op">&lt;</span>none<span class="op">&gt;</span></span>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a><span class="ex">Annotations:</span>                                           <span class="op">&lt;</span>none<span class="op">&gt;</span></span>
+<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a><span class="ex">CreationTimestamp:</span>                                     Sat, 21 Aug 2021 02:54:24 +0000</span>
+<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a><span class="ex">Reference:</span>                                             Deployment/payment-app</span>
+<span id="cb37-8"><a href="#cb37-8" aria-hidden="true" tabindex="-1"></a><span class="ex">Metrics:</span>                                               <span class="er">(</span> <span class="ex">current</span> / target <span class="kw">)</span></span>
+<span id="cb37-9"><a href="#cb37-9" aria-hidden="true" tabindex="-1"></a>  <span class="ex">resource</span> cpu on pods  <span class="er">(</span><span class="fu">as</span> a percentage of request<span class="kw">)</span><span class="bu">:</span>  1% <span class="er">(</span><span class="ex">1m</span><span class="kw">)</span> <span class="ex">/</span> 50%</span>
+<span id="cb37-10"><a href="#cb37-10" aria-hidden="true" tabindex="-1"></a><span class="ex">Min</span> replicas:                                          3</span>
+<span id="cb37-11"><a href="#cb37-11" aria-hidden="true" tabindex="-1"></a><span class="ex">Max</span> replicas:                                          10</span>
+<span id="cb37-12"><a href="#cb37-12" aria-hidden="true" tabindex="-1"></a><span class="ex">Deployment</span> pods:                                       3 current / 3 desired</span>
+<span id="cb37-13"><a href="#cb37-13" aria-hidden="true" tabindex="-1"></a><span class="ex">Conditions:</span></span>
+<span id="cb37-14"><a href="#cb37-14" aria-hidden="true" tabindex="-1"></a>  <span class="ex">Type</span>            Status  Reason            Message</span>
+<span id="cb37-15"><a href="#cb37-15" aria-hidden="true" tabindex="-1"></a>  <span class="ex">----</span>            <span class="at">------</span>  <span class="at">------</span>            <span class="at">-------</span></span>
+<span id="cb37-16"><a href="#cb37-16" aria-hidden="true" tabindex="-1"></a>  <span class="ex">AbleToScale</span>     True    ReadyForNewScale  recommended size matches current size</span>
+<span id="cb37-17"><a href="#cb37-17" aria-hidden="true" tabindex="-1"></a>  <span class="ex">ScalingActive</span>   True    ValidMetricFound  the HPA was able to successfully calculate a replica count from cpu resource utilization <span class="er">(</span><span class="ex">percentage</span> of request<span class="kw">)</span></span>
+<span id="cb37-18"><a href="#cb37-18" aria-hidden="true" tabindex="-1"></a>  <span class="ex">ScalingLimited</span>  True    TooFewReplicas    the desired replica count is less than the minimum replica count</span>
+<span id="cb37-19"><a href="#cb37-19" aria-hidden="true" tabindex="-1"></a><span class="ex">Events:</span></span>
+<span id="cb37-20"><a href="#cb37-20" aria-hidden="true" tabindex="-1"></a>  <span class="ex">Type</span>     Reason                        Age                From                       Message</span>
+<span id="cb37-21"><a href="#cb37-21" aria-hidden="true" tabindex="-1"></a>  <span class="ex">----</span>     <span class="at">------</span>                        <span class="at">----</span>               <span class="at">----</span>                       <span class="at">-------</span></span>
+<span id="cb37-22"><a href="#cb37-22" aria-hidden="true" tabindex="-1"></a>  <span class="ex">Normal</span>   SuccessfulRescale             22m <span class="er">(</span><span class="ex">x2</span> over 19h<span class="kw">)</span>  <span class="ex">horizontal-pod-autoscaler</span>  New size: 3<span class="kw">;</span> <span class="ex">reason:</span> Current number of replicas below Spec.MinReplicas</span>
+<span id="cb37-23"><a href="#cb37-23" aria-hidden="true" tabindex="-1"></a>  <span class="ex">Warning</span>  FailedGetResourceMetric       21m <span class="er">(</span><span class="ex">x4</span> over 22m<span class="kw">)</span>  <span class="ex">horizontal-pod-autoscaler</span>  failed to get cpu utilization: did not receive metrics for any ready pods</span>
+<span id="cb37-24"><a href="#cb37-24" aria-hidden="true" tabindex="-1"></a>  <span class="ex">Warning</span>  FailedComputeMetricsReplicas  21m <span class="er">(</span><span class="ex">x4</span> over 22m<span class="kw">)</span>  <span class="ex">horizontal-pod-autoscaler</span>  invalid metrics <span class="er">(</span><span class="ex">1</span> invalid out of 1<span class="kw">)</span><span class="ex">,</span> first error is: failed to get cpu utilization: did not receive metrics for any ready pods</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 </section>
 <section id="testing-the-payment-application-with-load-testing-tools" class="level2">
 <h2 class="anchored" data-anchor-id="testing-the-payment-application-with-load-testing-tools">Testing the payment application with Load testing tools</h2>
 <p>For our load testing tool, we will use <strong>Apache bench</strong>. Apache bench (also called Apache benchmark) is a helpful load testing tool for websites that run on Apache webserver. It is easy to install and allows you to simulate &amp; test different kinds of website loads to enable your website to cope with real-world situations.</p>
 <p>For Ubuntu 20.04, the following command will install Apache bench:</p>
-<pre class="shell"><code>sudo apt-get install apache2-utils -y</code></pre>
+<div class="sourceCode" id="cb38"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt-get install apache2-utils <span class="at">-y</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Once installed, you can directly use it for load testing. Here’s the syntax for Apache bench.</p>
-<pre class="shell"><code>$ ab &lt;OPTIONS&gt; &lt;WEB_SERVER_ADDRESS&gt;/&lt;PATH&gt;</code></pre>
+<div class="sourceCode" id="cb39"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ab <span class="op">&lt;</span>OPTIONS<span class="op">&gt;</span> <span class="op">&lt;</span>WEB_SERVER_ADDRESS<span class="op">&gt;</span>/<span class="op">&lt;</span>PATH<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Using the above command, we will specify the address from the <code>easypay-payment-ingress</code> at <code>easypay.ctgkube.com</code>. We will simulate 100,000 requests with 1000 concurrent connections to see how it will scale like it would be if it were in production.</p>
 <pre><code>$ kubectl get pods
 NAME                            READY   STATUS    RESTARTS   AGE
@@ -1187,49 +1187,49 @@ Percentage of the requests served within a certain time (ms)
   99%  10187
  100%  100599 (longest request)</code></pre>
 <p>The auto-scaling functionality, as we can see, was successful once Apache bench completed all the requests. The <code>kubectl get hpa -w</code> command monitors the performance of the cluster deployments in real time. The replica set went from 3 <code>payment-app</code> pods running in service to 10 to handle a 500% or higher CPU utilization, which exceeds the 50% threshold. Once the load decreases, the replica set will scale back down to its orginal state of 3.</p>
-<pre class="shell"><code>$ kubectl get hpa -w
-NAME              REFERENCE                TARGETS   MINPODS   MAXPODS   REPLICAS   AGE
-payment-app-hpa   Deployment/payment-app   1%/50%    3         10        3          4d4h
-payment-app-hpa   Deployment/payment-app   559%/50%   3         10        3          4d4h
-payment-app-hpa   Deployment/payment-app   559%/50%   3         10        6          4d4h
-payment-app-hpa   Deployment/payment-app   559%/50%   3         10        10         4d4h
-payment-app-hpa   Deployment/payment-app   247%/50%   3         10        10         4d4h
-payment-app-hpa   Deployment/payment-app   1%/50%     3         10        10         4d4h
-payment-app-hpa   Deployment/payment-app   1%/50%     3         10        10         4d5h
-payment-app-hpa   Deployment/payment-app   1%/50%     3         10        3          4d5h
-
-$ kubectl top pods --use-protocol-buffers
-NAME                            CPU(cores)   MEMORY(bytes)   
-external-dns-7ff5ccbb48-p8wdd   1m           17Mi            
-mongo-786f4cb565-dr62t          129m         97Mi            
-payment-app-767748b689-2r54p    170m         24Mi            
-payment-app-767748b689-46hzw    169m         25Mi            
-payment-app-767748b689-4vl9t    177m         31Mi            
-payment-app-767748b689-6vbhw    174m         25Mi            
-payment-app-767748b689-g6l7c    180m         25Mi            
-payment-app-767748b689-pkwnz    177m         31Mi            
-payment-app-767748b689-q6b7l    170m         24Mi            
-payment-app-767748b689-s42wl    173m         25Mi            
-payment-app-767748b689-sjwm2    170m         24Mi            
-payment-app-767748b689-xkpct    180m         25Mi
-
-$ kubectl get pods
-NAME                            READY   STATUS    RESTARTS   AGE
-external-dns-7ff5ccbb48-p8wdd   1/1     Running   0          20h
-mongo-786f4cb565-dr62t          1/1     Running   0          20h
-payment-app-767748b689-2r54p    1/1     Running   0          77s
-payment-app-767748b689-46hzw    1/1     Running   0          92s
-payment-app-767748b689-4vl9t    1/1     Running   0          49m
-payment-app-767748b689-6vbhw    1/1     Running   0          48m
-payment-app-767748b689-g6l7c    1/1     Running   0          92s
-payment-app-767748b689-pkwnz    1/1     Running   0          48m
-payment-app-767748b689-q6b7l    1/1     Running   0          77s
-payment-app-767748b689-s42wl    1/1     Running   0          92s
-payment-app-767748b689-sjwm2    1/1     Running   0          77s
-payment-app-767748b689-xkpct    1/1     Running   0          77s</code></pre>
+<div class="sourceCode" id="cb41"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> kubectl get hpa <span class="at">-w</span></span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="ex">NAME</span>              REFERENCE                TARGETS   MINPODS   MAXPODS   REPLICAS   AGE</span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a><span class="ex">payment-app-hpa</span>   Deployment/payment-app   1%/50%    3         10        3          4d4h</span>
+<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a><span class="ex">payment-app-hpa</span>   Deployment/payment-app   559%/50%   3         10        3          4d4h</span>
+<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a><span class="ex">payment-app-hpa</span>   Deployment/payment-app   559%/50%   3         10        6          4d4h</span>
+<span id="cb41-6"><a href="#cb41-6" aria-hidden="true" tabindex="-1"></a><span class="ex">payment-app-hpa</span>   Deployment/payment-app   559%/50%   3         10        10         4d4h</span>
+<span id="cb41-7"><a href="#cb41-7" aria-hidden="true" tabindex="-1"></a><span class="ex">payment-app-hpa</span>   Deployment/payment-app   247%/50%   3         10        10         4d4h</span>
+<span id="cb41-8"><a href="#cb41-8" aria-hidden="true" tabindex="-1"></a><span class="ex">payment-app-hpa</span>   Deployment/payment-app   1%/50%     3         10        10         4d4h</span>
+<span id="cb41-9"><a href="#cb41-9" aria-hidden="true" tabindex="-1"></a><span class="ex">payment-app-hpa</span>   Deployment/payment-app   1%/50%     3         10        10         4d5h</span>
+<span id="cb41-10"><a href="#cb41-10" aria-hidden="true" tabindex="-1"></a><span class="ex">payment-app-hpa</span>   Deployment/payment-app   1%/50%     3         10        3          4d5h</span>
+<span id="cb41-11"><a href="#cb41-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-12"><a href="#cb41-12" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> kubectl top pods <span class="at">--use-protocol-buffers</span></span>
+<span id="cb41-13"><a href="#cb41-13" aria-hidden="true" tabindex="-1"></a><span class="ex">NAME</span>                            CPU<span class="er">(</span><span class="ex">cores</span><span class="kw">)</span>   <span class="ex">MEMORY</span><span class="er">(</span><span class="ex">bytes</span><span class="kw">)</span>   </span>
+<span id="cb41-14"><a href="#cb41-14" aria-hidden="true" tabindex="-1"></a><span class="ex">external-dns-7ff5ccbb48-p8wdd</span>   1m           17Mi            </span>
+<span id="cb41-15"><a href="#cb41-15" aria-hidden="true" tabindex="-1"></a><span class="ex">mongo-786f4cb565-dr62t</span>          129m         97Mi            </span>
+<span id="cb41-16"><a href="#cb41-16" aria-hidden="true" tabindex="-1"></a><span class="ex">payment-app-767748b689-2r54p</span>    170m         24Mi            </span>
+<span id="cb41-17"><a href="#cb41-17" aria-hidden="true" tabindex="-1"></a><span class="ex">payment-app-767748b689-46hzw</span>    169m         25Mi            </span>
+<span id="cb41-18"><a href="#cb41-18" aria-hidden="true" tabindex="-1"></a><span class="ex">payment-app-767748b689-4vl9t</span>    177m         31Mi            </span>
+<span id="cb41-19"><a href="#cb41-19" aria-hidden="true" tabindex="-1"></a><span class="ex">payment-app-767748b689-6vbhw</span>    174m         25Mi            </span>
+<span id="cb41-20"><a href="#cb41-20" aria-hidden="true" tabindex="-1"></a><span class="ex">payment-app-767748b689-g6l7c</span>    180m         25Mi            </span>
+<span id="cb41-21"><a href="#cb41-21" aria-hidden="true" tabindex="-1"></a><span class="ex">payment-app-767748b689-pkwnz</span>    177m         31Mi            </span>
+<span id="cb41-22"><a href="#cb41-22" aria-hidden="true" tabindex="-1"></a><span class="ex">payment-app-767748b689-q6b7l</span>    170m         24Mi            </span>
+<span id="cb41-23"><a href="#cb41-23" aria-hidden="true" tabindex="-1"></a><span class="ex">payment-app-767748b689-s42wl</span>    173m         25Mi            </span>
+<span id="cb41-24"><a href="#cb41-24" aria-hidden="true" tabindex="-1"></a><span class="ex">payment-app-767748b689-sjwm2</span>    170m         24Mi            </span>
+<span id="cb41-25"><a href="#cb41-25" aria-hidden="true" tabindex="-1"></a><span class="ex">payment-app-767748b689-xkpct</span>    180m         25Mi</span>
+<span id="cb41-26"><a href="#cb41-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-27"><a href="#cb41-27" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> kubectl get pods</span>
+<span id="cb41-28"><a href="#cb41-28" aria-hidden="true" tabindex="-1"></a><span class="ex">NAME</span>                            READY   STATUS    RESTARTS   AGE</span>
+<span id="cb41-29"><a href="#cb41-29" aria-hidden="true" tabindex="-1"></a><span class="ex">external-dns-7ff5ccbb48-p8wdd</span>   1/1     Running   0          20h</span>
+<span id="cb41-30"><a href="#cb41-30" aria-hidden="true" tabindex="-1"></a><span class="ex">mongo-786f4cb565-dr62t</span>          1/1     Running   0          20h</span>
+<span id="cb41-31"><a href="#cb41-31" aria-hidden="true" tabindex="-1"></a><span class="ex">payment-app-767748b689-2r54p</span>    1/1     Running   0          77s</span>
+<span id="cb41-32"><a href="#cb41-32" aria-hidden="true" tabindex="-1"></a><span class="ex">payment-app-767748b689-46hzw</span>    1/1     Running   0          92s</span>
+<span id="cb41-33"><a href="#cb41-33" aria-hidden="true" tabindex="-1"></a><span class="ex">payment-app-767748b689-4vl9t</span>    1/1     Running   0          49m</span>
+<span id="cb41-34"><a href="#cb41-34" aria-hidden="true" tabindex="-1"></a><span class="ex">payment-app-767748b689-6vbhw</span>    1/1     Running   0          48m</span>
+<span id="cb41-35"><a href="#cb41-35" aria-hidden="true" tabindex="-1"></a><span class="ex">payment-app-767748b689-g6l7c</span>    1/1     Running   0          92s</span>
+<span id="cb41-36"><a href="#cb41-36" aria-hidden="true" tabindex="-1"></a><span class="ex">payment-app-767748b689-pkwnz</span>    1/1     Running   0          48m</span>
+<span id="cb41-37"><a href="#cb41-37" aria-hidden="true" tabindex="-1"></a><span class="ex">payment-app-767748b689-q6b7l</span>    1/1     Running   0          77s</span>
+<span id="cb41-38"><a href="#cb41-38" aria-hidden="true" tabindex="-1"></a><span class="ex">payment-app-767748b689-s42wl</span>    1/1     Running   0          92s</span>
+<span id="cb41-39"><a href="#cb41-39" aria-hidden="true" tabindex="-1"></a><span class="ex">payment-app-767748b689-sjwm2</span>    1/1     Running   0          77s</span>
+<span id="cb41-40"><a href="#cb41-40" aria-hidden="true" tabindex="-1"></a><span class="ex">payment-app-767748b689-xkpct</span>    1/1     Running   0          77s</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="img/hpa-deployments-kubernetes-dashboard.png" class="img-fluid figure-img"></p>
+<p><img src="https://res.cloudinary.com/website-assets-mgmt/image/upload/hpa-deployments-kubernetes-dashboard_f7anpe.png" class="img-fluid figure-img"></p>
 <figcaption>hpa-deployments-kubernetes-dashboard</figcaption>
 </figure>
 </div>

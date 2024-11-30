@@ -9,8 +9,9 @@ format:
     toc: true
     toc-title: Contents
     toc-location: right
-    code-fold: true
+    code-fold: false
 ---
+
 ## Background of the problem statement:
 
 A popular payment application, EasyPay where users add money to their wallet accounts, faces an issue in its payment success rate. The timeout that occurs with the connectivity of the database has been the reason for the issue.
@@ -83,13 +84,13 @@ The purpose of this repository is to provide a Kubernetes cluster in a Public Cl
 * [Ingress NGINX](https://github.com/kubernetes/ingress-nginx/tree/main/charts/ingress-nginx) - Ingress-nginx is an Ingress controller for Kubernetes using NGINX as a reverse proxy and load balancer.
 * [Cert-manager](https://github.com/jetstack/cert-manager) - Automatically provision and manage TLS certificates in Kubernetes.
 
-```shell
+```bash
 $ vagrant up && vagrant ssh
 ```
 
 Once inside the virtual machine, clone down the `ansible-kops` repo and set up the environment with the `install_prereqs.sh`.
 
-```shell
+```bash
 $ git clone https://github.com/ctg123/ansible-kops.git
 $ cd ansible-kops
 $ chmod +x install_prereqs.sh
@@ -98,7 +99,7 @@ $ ./install_prereqs.sh
 
 You may need to reboot the machine for all the commands to appear. Once finished, check the following commands to verify that AWS CLI, Docker, and Ansible are correctly installed.
 
-```shell
+```bash
 $ aws --version
 
 aws-cli/2.2.29 Python/3.8.8 Linux/5.4.0-58-generic exe/x86_64.ubuntu.20 prompt/off
@@ -158,7 +159,7 @@ ansible [core 2.11.3]
 
 The ansible packages for Kops & Kubectl are compatible with Linux-AMD64 and Darwin-AMD64 architectures. The following diagram is a visual representation of the infrastructure we will deploy to AWS.
 
-![aws-kops-ansible](img/aws-kops-ansible-1.png)
+![aws-kops-ansible](https://res.cloudinary.com/website-assets-mgmt/image/upload/aws-kops-ansible-1_yiejvt.png)
 
 ### AWS account
 
@@ -171,7 +172,7 @@ For the Kubernetes to be fully operational, you need to create an IAM user for y
 
 Once you have all the permissions, run the following command. Enter your AWS user credentials and select the region you will use in your environment.
 
-```shell
+```bash
 $ aws configure
 
 # Optionally you can specify the AWS Profile
@@ -198,7 +199,7 @@ You must own a registered domain to complete the Kubernetes cluster deployment b
    * Log into your domain registrar account.
    * Create the corresponding NS record to let your domain know that your subdomain is hosted on AWS.
 
-```shell
+```bash
 DOMAIN                   TTL       TYPE                     TARGET
 example.mydomain.com.      0         NS      ns-xxxx.awsdns-xx.org
 example.mydomain.com.      0         NS      ns-yyy.awsdns-yy.org
@@ -211,7 +212,7 @@ example.mydomain.com.      0         NS      ns-yyy.awsdns-yy.org
 
 We'll use the Route53 DNS plugin for Certbot. This plugin automates completing a DNS-01 challenge (DNS01) by creating and subsequently removing TXT records using the Amazon Web Services Route 53 API. My example is for my registered domain. To initiate a DNS challenge, please execute the following command:
 
-```shell
+```bash
 $ python3 -m pip install certbot-dns-route53 --user
 
 $ certbot certonly --dns-route53 -d ctgkube.com \
@@ -279,7 +280,7 @@ email_owner: chaance.graves@ctginnovations.io
 When the environment and the pre-requisites configures, run the following playbooks with Ansible. The `generate-ssh-key.yml` will create the SSH key pair to access Kubernetes API, which you can use to log in to the master node with.
 Once generated, make sure the path matches the variable specified in the `group_vars` directory. You're now ready to run the `deploy-cluster.yml` playbook!
 
-```shell
+```bash
 $ ansible-playbook generate-ssh-key.yml
 $ ansible-playbook deploy-cluster.yml --ask-become-pass
 ```
@@ -296,13 +297,13 @@ Run the `deploy_dashboard.sh` to pull from the latest version of the Kubernetes 
 
 Once complete, the default service type configures as a ClusterIP. We will change this to LoadBalancer to access it externally. You can find the service type and edit it with the following command:
 
-```shell
+```bash
 $ kubectl -n kubernetes-dashboard edit svc kubernetes-dashboard
 ```
 
 Make sure the service type changed to **LoadBalancer** successfully. You should get an AWS ELB address as an output.
 
-```shell
+```bash
 $ kubectl -n kubernetes-dashboard get svc
 NAME                        TYPE           CLUSTER-IP      EXTERNAL-IP                                                               PORT(S)         AGE
 dashboard-metrics-scraper   ClusterIP      100.67.72.147   <none>                                                                    8000/TCP        5h20m
@@ -311,13 +312,13 @@ kubernetes-dashboard        LoadBalancer   100.69.145.80   a6c1db00d3d9d42659150
 
 An output of the script produced a security token needed to log in. Copy the token and enter it in the dashboard. You will then sign into the Kubernetes dashboard. You can retrieve the token when needed with this command:
 
-```shell
+```bash
 $ kubectl get secret $(kubectl get serviceaccount dashboard -o jsonpath="{.secrets[0].name}") -o jsonpath="{.data.token}" | base64 --decode
 ```
 
-![kubernetes-dashboard-login](img/kubernetes-dashboard-login.png)
+![Kubernetes Dashboard Login](https://res.cloudinary.com/website-assets-mgmt/image/upload/kubernetes-dashboard-login_gatccu.png)
 
-![example-kubernetes-dashboard-UI](img/example-kubernetes-dashboard-ui.png)
+![Example Kubernetes Dashboard UI](https://res.cloudinary.com/website-assets-mgmt/image/upload/example-kubernetes-dashboard-ui_hxtgxx.png)
 
 ## Deploy Flask API + MongoDB app on Kubernetes
 
@@ -327,7 +328,7 @@ We will develop a simple Python Flask API application, which will communicate to
 
 Install the following python libraries using pip located in the `requirements.txt` file in the `payment-app` directory. You will have Flask running locally on your machine prior to deploying the Docker image to Kubernetes.
 
-```shell
+```bash
 $ cd ansible-kops/payment-app
 $ python3 -m pip install -r requirements.txt --user
 $ pip list
@@ -341,7 +342,7 @@ We'll produce a simple RESTful API to create, read, update, and delete (CRUD) pa
 
 By default, when a MongoDB Server instance starts on a machine, it listens to port `27017`. The Flask-PyMongo module helps us to bridge Flask and MongoDB and provides some convenience helpers. An objectId module is a tool for working with MongoDB ObjectId, the default value of _id field of each document, generated during the creation of any document.
 
-The `app.py` which can run on any host (python app.py), can be accessed at `http://localhost:5000/`. 
+The `app.py` which can run on any host (python app.py), can be accessed at **http://localhost:5000/**. 
 
 ```python
 from flask import Flask, request, jsonify
@@ -472,13 +473,13 @@ We are using the official Python3.9 image, based on the Alpine Linux project, as
 
 Here, we build our image with the tag `<username>/<image-name>:<version>` format using the below command:
 
-```shell
+```bash
 $ docker build -t ctgraves16/paymentapp-python:1.0.0 .
 ```
 
 and then push it to the Docker Hub registry. It will be publicly available where anyone in the world can download and run it:
 
-```shell
+```bash
 $ docker push ctgraves16/paymentapp-python:1.0.0
 ```
 
@@ -488,13 +489,13 @@ Now that we containerized the app, what about the database? How can we container
 
 Run the below commands to test the image locally where it can be accessible at <http://localhost:5000/>
 
-```shell
+```bash
 $ docker network create payment-app-net
 $ docker run --name=mongo --rm -d --network=payment-app-net mongo
 $ docker run --name=paymentapp-python --rm -p 5000:5000 -d --network=payment-app-net ctgraves16/paymentapp-python:1.0.0
 ```
 
-![payment-app-localhost](img/payment-app-localhost.png)
+![Payment App on Localhost](https://res.cloudinary.com/website-assets-mgmt/image/upload/payment-app-localhost_xq6ys2.png)
 
 ### Deploy the application and MongoDB database to Kubernetes
 
@@ -502,7 +503,7 @@ $ docker run --name=paymentapp-python --rm -p 5000:5000 -d --network=payment-app
 
 We can check on how the nodes are set up by running `kubectl get nodes`.
 
-```shell
+```bash
 ~/ansible-kops$ kubectl get nodes
 NAME                             STATUS   ROLES                  AGE   VERSION
 ip-172-20-125-204.ec2.internal   Ready    node                   17h   v1.21.3
@@ -538,7 +539,7 @@ We'll use a local path `/tmp/db` on the host as the disk path for simplicity.
 
 > 👉🏾 **NOTE**: Both PVC and PV must have the same class, otherwise, a PVC will not find a PV, and STATUS of such a PVC will be Pending.
 
-```shell
+```bash
 $ kubectl get storageclass -o wide
 NAME                      PROVISIONER             RECLAIMPOLICY   VOLUMEBINDINGMODE      ALLOWVOLUMEEXPANSION   AGE
 default                   kubernetes.io/aws-ebs   Delete          Immediate              false                  17h
@@ -565,7 +566,7 @@ spec:
 
 The Persistent Volume Claim will show that the volume status is now changed to **Bound** when the scripts are complete.
 
-```shell
+```bash
 $ kubectl get pv && kubectl get pvc
 NAME                                       CAPACITY   ACCESS MODES   RECLAIM POLICY   STATUS      CLAIM               STORAGECLASS    REASON   AGE
 mongo-pv                                   256Mi      RWO            Retain           Available                       default                  17h
@@ -671,7 +672,7 @@ spec:
 
 Here, port `8080` of the service `payment-app-svc` is bound to port 5000 of the pods attached.
 
-```shell
+```bash
 $ kubectl get svc payment-app-svc
 NAME              TYPE           CLUSTER-IP      EXTERNAL-IP                                                               PORT(S)          AGE
 payment-app-svc   LoadBalancer   100.66.62.244   ac0a73109d80b449d8b2094246ab3e18-1598075260.us-east-1.elb.amazonaws.com   8080:30164/TCP   17h
@@ -679,7 +680,7 @@ payment-app-svc   LoadBalancer   100.66.62.244   ac0a73109d80b449d8b2094246ab3e1
 
 We are now able to access the payment app at the ELB address:
 
-```shell
+```bash
 vagrant@ansible-controller:~/ansible-kops/kubernetes$ curl http://ac0a73109d80b449d8b2094246ab3e18-1598075260.us-east-1.elb.amazonaws.com:8080
 {
   "message": "Welcome to the EasyPay app. I am running inside the payment-app-99695c66b-dv776 pod!"
@@ -712,7 +713,7 @@ We can see that the LoadBalancer sends the traffic to any random pod each time w
 
 The Ingress service allows external interfaces with the payment app using a single load balancer provided by the NGINX Ingress Controller created when Ansible deployed the Helm chart onto the cluster. We will create a domain name at [easypay.ctgkube.com](http://easypay.ctgkube.com/).
 
-![payment-app-ingress](img/payment-app-ingress.png)
+![Payment App Ingress](https://res.cloudinary.com/website-assets-mgmt/image/upload/payment-app-ingress_k0rzxq.png)
 
 
 ```yaml
@@ -740,7 +741,7 @@ spec:
 
 If we describe the Ingress, you'll receive a message similar to the following:
 
-```shell
+```bash
 $ kubectl describe ingress
 Name:             payment-app-ingress
 Namespace:        default
@@ -757,7 +758,7 @@ Events:                <none>
 
 You can test the NGINX Ingress Controller using the DNS URL of the ELB load balancer:
 
-```shell
+```bash
 $ curl -I http://ab58e1ce3xxxxxxx-8xxxx960.us-east-1.elb.amazonaws.com/
 HTTP/1.1 404 Not Found
 Date: Sat, 21 Aug 2021 21:11:28 GMT
@@ -768,7 +769,7 @@ Connection: keep-alive
 
 The default server returns a **"Not Found"** page with a 404 status code for all the requests for domains where no Ingress rules are defined. Based on the prescribed rules, the Ingress Controller doesn't divert traffic to the specified backend service unless the request matches the configuration. Because the host field configures for the Ingress object, you must supply the Host header of the request with the same hostname.
 
-```shell
+```bash
 $ curl -I -H "Host: easypay.ctgkube.com" http://ab58e1ce3541e475f8365c9ddfcd4496-883895960.us-east-1.elb.amazonaws.com/
 HTTP/1.1 200 OK
 Date: Sat, 21 Aug 2021 21:17:46 GMT
@@ -799,11 +800,11 @@ spec:
 
 Now that the complete application setup is ready, we can interact with the Flask app at `easypay.ctgkube.com`.
 
-![payment-app-kubernetes](img/payment-app-kubernetes.png)
+![payment-app-kubernetes](https://res.cloudinary.com/website-assets-mgmt/image/upload/payment-app-kubernetes_ceshgs.png)
 
 We can try all the API methods specified in the app to interact with the data from the command line.
 
-```shell
+```bash
 $ curl http://easypay.ctgkube.com
 {
   "message": "Welcome to the EasyPay app. I am running inside the payment-app-99695c66b-dv776 pod!"
@@ -878,9 +879,9 @@ $ curl easypay.ctgkube.com/payments
 }
 ```
 
-![easypay.ctgkube.com-payments](img/easypay.ctgkube.com-payments.png)
+![easypay.ctgkube.com-payments](https://res.cloudinary.com/website-assets-mgmt/image/upload/easypay.ctgkube.com-payments_u0f6dj.png)
 
-![default-deployments-kubernetes-dashboard](img/default-deployments-kubernetes-dashboard.png)
+![default-deployments-kubernetes-dashboard](https://res.cloudinary.com/website-assets-mgmt/image/upload/default-deployments-kubernetes-dashboard_mghb6r.png)
 
 ### Installing the Metrics server
 
@@ -888,7 +889,7 @@ $ curl easypay.ctgkube.com/payments
 
 Within the `ansible-kops` repository, we have the metrics server resource files stored in the `kubernetes/metrics-server` folder. Run the `kubectl apply -f.` to deploy all the resources at the same time.
 
-```shell
+```bash
 ~ ansible-kops/kubernetes/metrics-server
 
 $ ls -l
@@ -953,11 +954,11 @@ nginx-ingress-ingress-nginx-controller-admission   ClusterIP      100.69.127.174
 
 ---
 
-![kops-hpa-ca-architecture](img/kops-hpa-ca-architecture.png)
+![kops-hpa-ca-architecture](https://res.cloudinary.com/website-assets-mgmt/image/upload/kops-hpa-ca-architecture_yh06g1.png)
 
 Before installing and running an open-source load testing generator to test the `payment-app-hpa`, let's run the `kubectl describe hpa` to see all the conditions affecting the HorizontalPodAutoscaler.
 
-```shell
+```bash
 $ kubectl describe hpa
 Name:                                                  payment-app-hpa
 Namespace:                                             default
@@ -989,13 +990,13 @@ For our load testing tool, we will use **Apache bench**. Apache bench (also call
 
 For Ubuntu 20.04, the following command will install Apache bench:
 
-```shell
+```bash
 sudo apt-get install apache2-utils -y
 ```
 
 Once installed, you can directly use it for load testing. Here's the syntax for Apache bench.
 
-```shell
+```bash
 $ ab <OPTIONS> <WEB_SERVER_ADDRESS>/<PATH>
 ```
 
@@ -1077,7 +1078,7 @@ Percentage of the requests served within a certain time (ms)
 
 The auto-scaling functionality, as we can see, was successful once Apache bench completed all the requests. The `kubectl get hpa -w` command monitors the performance of the cluster deployments in real time. The replica set went from 3 `payment-app` pods running in service to 10 to handle a 500% or higher CPU utilization, which exceeds the 50% threshold. Once the load decreases, the replica set will scale back down to its orginal state of 3.
 
-```shell
+```bash
 $ kubectl get hpa -w
 NAME              REFERENCE                TARGETS   MINPODS   MAXPODS   REPLICAS   AGE
 payment-app-hpa   Deployment/payment-app   1%/50%    3         10        3          4d4h
@@ -1119,7 +1120,7 @@ payment-app-767748b689-s42wl    1/1     Running   0          92s
 payment-app-767748b689-sjwm2    1/1     Running   0          77s
 payment-app-767748b689-xkpct    1/1     Running   0          77s
 ```
-![hpa-deployments-kubernetes-dashboard](img/hpa-deployments-kubernetes-dashboard.png)
+![hpa-deployments-kubernetes-dashboard](https://res.cloudinary.com/website-assets-mgmt/image/upload/hpa-deployments-kubernetes-dashboard_f7anpe.png)
 
 ## Conclusion
 

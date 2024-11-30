@@ -1,10 +1,10 @@
 ---
-title: "Cloudinary Image testing"
-description: testing image display in posts
+title: "Digital Asset Display"
+description: Testing image, videos, and terminal sessions display in posts
 author: "Chaance Graves"
 date: "2024-11-29"
 categories: [resources]
-image: https://res.cloudinary.com/dx9zk8v6q/image/upload/v1732898126/cld-sample-2.jpg
+image: https://res.cloudinary.com/website-assets-mgmt/image/upload/cld-sample-2.jpg
 
 format: 
   html:
@@ -13,12 +13,22 @@ format:
     toc-location: right
 ---
 
-Welcome to my post about this mountain pic. I'm testing the external display of my assets hosted via Cloudinary.
+## Testing the image display
 
-![](https://res.cloudinary.com/dx9zk8v6q/image/upload/v1732898126/cld-sample-2.jpg)
+Welcome to my post about this mountain pic. I'm testing the external display of my assets hosted via [Cloudinary](https://cloudinary.com/documentation).
 
-Check for more here!
+![](https://res.cloudinary.com/website-assets-mgmt/image/upload/cld-sample-2.jpg)
 
-<iframe src="https://giphy.com/embed/eUY28umFBB2TnvBE6Z" width="600" height="600" style="" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/eUY28umFBB2TnvBE6Z">via GIPHY</a></p>
+Cloudinary is a software–as-a-service (SaaS) solution for developers. It provides programmable media APIs that enable you to automate the entire lifecycle of your image and video assets.
+
+## Testing the Terminal recording on the website
+
+Check out [asciinema](https://asciinema.org/):
 
 <script src="https://asciinema.org/a/pNnmBhhVbOkm6vFqVtPvgYbPl.js" id="asciicast-pNnmBhhVbOkm6vFqVtPvgYbPl" async="true"></script>
+
+## Testing the video displays
+
+This example video shows its display also hosted via Cloudinary.
+
+![Sea Turtle Example Video](https://res.cloudinary.com/website-assets-mgmt/video/upload/samples/sea-turtle.mp4)
