@@ -18,9 +18,11 @@ website:
   title: "Chaance T. Graves"
   description: "My personal blog about engineering projects"
   #site-url:
-  #repo-url:
-  #repo-actions:
-  #search: true
+  repo-url: https://github.com/ctg123/quarto-example-site
+  repo-actions:
+    - source
+    - issue
+  search: true
   favicon: assets/img/favicon.png
   page-navigation: true
   back-to-top-navigation: true

@@ -20,29 +20,39 @@ $white: rgb(248, 248, 242);
 $off-white: #FAF9F6;
 $black: #212529;
 $mine-shaft: #323232; // https://www.color-hex.com/color/323232
-$dark-gray: #23252F;
+$gray-dark: #23252F;
+$gray-light: #f3f3f3;
 $denim-blue: #1F4ABB; // https://colorhub.art/color/%231F4ABB
+$blue-pale: #afeeee;
 $reddish-orange: #FB2E01;
-$light-green: #6FCB9F;
-$purple: #9158A2; // here for testing
+$green-light: #6FCB9F;
+
+$primary:           $denim-blue;
+$secondary:         $green-light;
+$secondary-light:   $blue-pale;
+$light-accent:      $gray-light;
+$dark:              $gray-dark;
 
 // settings for elements
 
-$navbar-bg: $denim-blue; // navbar
+$navbar-bg: $primary; // navbar
 $navbar-fg: $off-white; // navbar foreground elements
-$navbar-hl: $white; // highlight color when hovering over navbar links
-$body-bg: $dark-gray; // page background 
+$navbar-hl: $gray-light; // highlight color when hovering over navbar links
+$body-bg: $gray-dark; // page background 
 $body-color: $off-white; // page text 
-$footer-bg: $dark-gray; // footer 
-$link-color: $light-green; // hyperlinks 
+$footer-bg: $gray-dark; // footer 
+$link-color: $green-light; // hyperlinks 
 
-// Inline code
-//$code-bg: // inline code background color
-//$code-color: // inline code text color
+// Inline code ->  with backticks `{text}`
+$code-bg: $mine-shaft; // inline background color
+$code-color: $green-light; // inline code text color
 
 // Code blocks
 $code-block-bg: rgba(25, 25, 25, 0.9); // code block background color 
-$code-block-border-left: $light-green;
+$code-block-border-left: $green-light;
+
+// Contrast
+$min-contrast-ratio: 7;
 
 /*-- scss:rules --*/
 
@@ -55,9 +65,20 @@ $code-block-border-left: $light-green;
 
 h1, h2, h3, h4, h5, h6 {
     font-family: $ubuntu;
-  }
+}
+
+/// Hyperlinks 
+
+//-> Default
+a {
+    color: $secondary; /* Change this to the desired default color */
+}
 
 // -> Hover
+
+a:hover {
+    color: $secondary-light;
+}
 
 // -> Headers
 
@@ -103,13 +124,80 @@ h5, h6 {
 // code
 
 code {
-   font-family: Fira Mono, monospace;
+    font-family: Fira Mono, monospace;
+ }
+ 
+ pre.sourceCode {
+     font-size: 0.9em;
+ }
+   
+ .sourceCode pre code {
+     padding: 0.9em;
+ }
+
+// footer
+
+// -> links on left side
+.nav-footer a {
+    color: $secondary;
+    // link on hover
+    &:hover {
+      color: $secondary-light;
+    }
 }
 
-pre.sourceCode {
-    font-size: 0.9em;
+// -> links on right side
+.nav-footer .nav-link {
+    &:hover {
+      text-decoration: underline;
+    }
+}
+
+// images
+
+// listing buttons
+
+div.quarto-post .listing-categories .listing-category, .quarto-category, .btn {
+    opacity: 0.8 !important;
+    color: $secondary;
+    border-color: $secondary;
+    text-align: center;
+    border-style: solid;
+    text-decoration: none;
+    transition-delay: 0s;
+    transition-duration: 0.2s;
+    transition-timing-function: ease-in-out;
 }
   
-.sourceCode pre code {
-    padding: 0.9em;
+.btn {
+    opacity: 1 !important;
+    padding: 0.5em;
+    border-radius: 6px;
+}
+  
+// -> About Links Buttons Hover
+div.quarto-post .listing-categories .listing-category:hover, .quarto-category:hover, .btn:hover {
+    background-color: $secondary;
+    color: $off-white;
+}
+
+.listing-btn-group {
+    display: inline-flex;
+    gap: 1em;
+}
+
+// page buttons
+
+.page-link {
+    background-color: $gray-light;
+    color: $secondary;
+}
+
+.page-link:hover {
+    background-color: $secondary;
+    color: $off-white;
+}
+
+.page-item.active .page-link {
+    background-color: $secondary;
 }
