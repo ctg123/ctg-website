@@ -46,7 +46,7 @@ website:
 
       - text: Resume
         icon: file-text-fill
-        href: resume.qmd
+        href: https://resume.chaancegraves.com/
 
       - text: Blog
         icon: layout-text-sidebar
@@ -55,6 +55,10 @@ website:
       - text: Projects
         icon: kanban
         href: projects.qmd
+
+      - text: Notes
+        icon: journals
+        href: notes.qmd
 
   # page footer settings
   page-footer: 

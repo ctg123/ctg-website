@@ -334,5 +334,12 @@
     "title": "Digital Asset Display",
     "section": "",
     "text": "Welcome to my post about this mountain pic. I’m testing the external display of my assets hosted via Cloudinary.\n\nCloudinary is a software–as-a-service (SaaS) solution for developers. It provides programmable media APIs that enable you to automate the entire lifecycle of your image and video assets."
+  },
+  {
+    "objectID": "notes.html",
+    "href": "notes.html",
+    "title": "My Notes",
+    "section": "",
+    "text": "I’ll publish my “Digital Garden” that’ll be associated with the navbar link.\nCOMING SOON …\n\n\n\n Back to top"
   }
 ]

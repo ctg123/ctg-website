@@ -64,5 +64,8 @@
   },
   "projects/ansible-kops/index.qmd": {
     "index.html": "c16ebdc7"
+  },
+  "notes.qmd": {
+    "notes.html": "7a173755"
   }
 }
