@@ -1,5 +1,6 @@
 ---
 title: "WordPress with LAMP Stack"
+description: Configuration Mgmt. Demo using LAMP application.
 author: Chaance Graves
 date: "2021-08-23" #  Aug 23, 2021
 date-modified: "2024-11-23"

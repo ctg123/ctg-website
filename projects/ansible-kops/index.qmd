@@ -1,5 +1,6 @@
 ---
 title: "Optimizing a Flask API microservice with Kubernetes"
+description: Personal Project integrating custom app deployment on AWS and Kubernetes
 author: Chaance Graves
 date: "2021-10-07" #  Oct 7, 2021
 date-modified: "2024-11-23"

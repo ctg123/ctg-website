@@ -1,5 +1,6 @@
 ---
 title: "Household Energy Consumption Analysis"
+description: This is an example project for testing 
 author: Chaance Graves
 date: today
 format: 
