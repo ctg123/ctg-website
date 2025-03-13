@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.6.37">
+<meta name="generator" content="quarto-1.6.42">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -72,12 +72,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-325f3ff2f131f9421fc6e27256f8a6fd.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-325f3ff2f131f9421fc6e27256f8a6fd.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-17c909d5fd25ae21b861c0c7a49b2096.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-17c909d5fd25ae21b861c0c7a49b2096.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-78ab4ded9b4e35d5573adbc95ffd61c9.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/bootstrap/bootstrap-dark-1d1b95b11e214a8abdd7a422569beea7.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-dd21803b97a1d27df921d45c79425bd7.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-97a8ef588699ba17f47810686df7db77.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -1121,77 +1121,77 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Once installed, you can directly use it for load testing. Here’s the syntax for Apache bench.</p>
 <div class="sourceCode" id="cb39"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ab <span class="op">&lt;</span>OPTIONS<span class="op">&gt;</span> <span class="op">&lt;</span>WEB_SERVER_ADDRESS<span class="op">&gt;</span>/<span class="op">&lt;</span>PATH<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Using the above command, we will specify the address from the <code>easypay-payment-ingress</code> at <code>easypay.ctgkube.com</code>. We will simulate 100,000 requests with 1000 concurrent connections to see how it will scale like it would be if it were in production.</p>
-<pre><code>$ kubectl get pods
-NAME                            READY   STATUS    RESTARTS   AGE
-external-dns-7ff5ccbb48-p8wdd   1/1     Running   0          20h
-mongo-786f4cb565-dr62t          1/1     Running   0          19h
-payment-app-767748b689-4vl9t    1/1     Running   0          40m
-payment-app-767748b689-6vbhw    1/1     Running   0          40m
-payment-app-767748b689-pkwnz    1/1     Running   0          40m
-
-$ kubectl top pods --use-protocol-buffers
-NAME                            CPU(cores)   MEMORY(bytes)   
-external-dns-7ff5ccbb48-p8wdd   1m           16Mi            
-mongo-786f4cb565-dr62t          9m           71Mi            
-payment-app-767748b689-4vl9t    1m           23Mi            
-payment-app-767748b689-6vbhw    1m           23Mi            
-payment-app-767748b689-pkwnz    1m           23Mi
-
-$ ab -n 100000 -c 1000 http://easypay.ctgkube.com/payments
-This is ApacheBench, Version 2.3 &lt;$Revision: 1843412 $&gt;
-Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
-Licensed to The Apache Software Foundation, http://www.apache.org/
-
-Benchmarking easypay.ctgkube.com (be patient)
-Completed 10000 requests
-Completed 20000 requests
-Completed 30000 requests
-Completed 40000 requests
-Completed 50000 requests
-Completed 60000 requests
-Completed 70000 requests
-Completed 80000 requests
-Completed 90000 requests
-Completed 100000 requests
-Finished 100000 requests
-
-
-Server Software:        
-Server Hostname:        easypay.ctgkube.com
-Server Port:            80
-
-Document Path:          /payments
-Document Length:        340 bytes
-
-Concurrency Level:      1000
-Time taken for tests:   212.537 seconds
-Complete requests:      100000
-Failed requests:        76
-   (Connect: 0, Receive: 0, Length: 76, Exceptions: 0)
-Total transferred:      49964000 bytes
-HTML transferred:       33975520 bytes
-Requests per second:    470.51 [#/sec] (mean)
-Time per request:       2125.374 [ms] (mean)
-Time per request:       2.125 [ms] (mean, across all concurrent requests)
-Transfer rate:          229.57 [Kbytes/sec] received
-
-Connection Times (ms)
-              min  mean[+/-sd] median   max
-Connect:        0  630 1540.3    208   65609
-Processing:    95  897 2306.1    254   99451
-Waiting:        0  834 1647.1    248   99451
-Total:        189 1527 2762.2    865  100599
-
-Percentage of the requests served within a certain time (ms)
-  50%    865
-  66%   1395
-  75%   1519
-  80%   1884
-  90%   3392
-  95%   4694
-  98%   7501
-  99%  10187
- 100%  100599 (longest request)</code></pre>
+<div class="sourceCode" id="cb40"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> kubectl get pods</span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="ex">NAME</span>                            READY   STATUS    RESTARTS   AGE</span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a><span class="ex">external-dns-7ff5ccbb48-p8wdd</span>   1/1     Running   0          20h</span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a><span class="ex">mongo-786f4cb565-dr62t</span>          1/1     Running   0          19h</span>
+<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a><span class="ex">payment-app-767748b689-4vl9t</span>    1/1     Running   0          40m</span>
+<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a><span class="ex">payment-app-767748b689-6vbhw</span>    1/1     Running   0          40m</span>
+<span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a><span class="ex">payment-app-767748b689-pkwnz</span>    1/1     Running   0          40m</span>
+<span id="cb40-8"><a href="#cb40-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-9"><a href="#cb40-9" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> kubectl top pods <span class="at">--use-protocol-buffers</span></span>
+<span id="cb40-10"><a href="#cb40-10" aria-hidden="true" tabindex="-1"></a><span class="ex">NAME</span>                            CPU<span class="er">(</span><span class="ex">cores</span><span class="kw">)</span>   <span class="ex">MEMORY</span><span class="er">(</span><span class="ex">bytes</span><span class="kw">)</span>   </span>
+<span id="cb40-11"><a href="#cb40-11" aria-hidden="true" tabindex="-1"></a><span class="ex">external-dns-7ff5ccbb48-p8wdd</span>   1m           16Mi            </span>
+<span id="cb40-12"><a href="#cb40-12" aria-hidden="true" tabindex="-1"></a><span class="ex">mongo-786f4cb565-dr62t</span>          9m           71Mi            </span>
+<span id="cb40-13"><a href="#cb40-13" aria-hidden="true" tabindex="-1"></a><span class="ex">payment-app-767748b689-4vl9t</span>    1m           23Mi            </span>
+<span id="cb40-14"><a href="#cb40-14" aria-hidden="true" tabindex="-1"></a><span class="ex">payment-app-767748b689-6vbhw</span>    1m           23Mi            </span>
+<span id="cb40-15"><a href="#cb40-15" aria-hidden="true" tabindex="-1"></a><span class="ex">payment-app-767748b689-pkwnz</span>    1m           23Mi</span>
+<span id="cb40-16"><a href="#cb40-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-17"><a href="#cb40-17" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ab <span class="at">-n</span> 100000 <span class="at">-c</span> 1000 http://easypay.ctgkube.com/payments</span>
+<span id="cb40-18"><a href="#cb40-18" aria-hidden="true" tabindex="-1"></a><span class="ex">This</span> is ApacheBench, Version 2.3 <span class="op">&lt;</span><span class="va">$Revision</span>: 1843412 $<span class="op">&gt;</span></span>
+<span id="cb40-19"><a href="#cb40-19" aria-hidden="true" tabindex="-1"></a><span class="ex">Copyright</span> 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/</span>
+<span id="cb40-20"><a href="#cb40-20" aria-hidden="true" tabindex="-1"></a><span class="ex">Licensed</span> to The Apache Software Foundation, http://www.apache.org/</span>
+<span id="cb40-21"><a href="#cb40-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-22"><a href="#cb40-22" aria-hidden="true" tabindex="-1"></a><span class="ex">Benchmarking</span> easypay.ctgkube.com <span class="er">(</span><span class="ex">be</span> patient<span class="kw">)</span></span>
+<span id="cb40-23"><a href="#cb40-23" aria-hidden="true" tabindex="-1"></a><span class="ex">Completed</span> 10000 requests</span>
+<span id="cb40-24"><a href="#cb40-24" aria-hidden="true" tabindex="-1"></a><span class="ex">Completed</span> 20000 requests</span>
+<span id="cb40-25"><a href="#cb40-25" aria-hidden="true" tabindex="-1"></a><span class="ex">Completed</span> 30000 requests</span>
+<span id="cb40-26"><a href="#cb40-26" aria-hidden="true" tabindex="-1"></a><span class="ex">Completed</span> 40000 requests</span>
+<span id="cb40-27"><a href="#cb40-27" aria-hidden="true" tabindex="-1"></a><span class="ex">Completed</span> 50000 requests</span>
+<span id="cb40-28"><a href="#cb40-28" aria-hidden="true" tabindex="-1"></a><span class="ex">Completed</span> 60000 requests</span>
+<span id="cb40-29"><a href="#cb40-29" aria-hidden="true" tabindex="-1"></a><span class="ex">Completed</span> 70000 requests</span>
+<span id="cb40-30"><a href="#cb40-30" aria-hidden="true" tabindex="-1"></a><span class="ex">Completed</span> 80000 requests</span>
+<span id="cb40-31"><a href="#cb40-31" aria-hidden="true" tabindex="-1"></a><span class="ex">Completed</span> 90000 requests</span>
+<span id="cb40-32"><a href="#cb40-32" aria-hidden="true" tabindex="-1"></a><span class="ex">Completed</span> 100000 requests</span>
+<span id="cb40-33"><a href="#cb40-33" aria-hidden="true" tabindex="-1"></a><span class="ex">Finished</span> 100000 requests</span>
+<span id="cb40-34"><a href="#cb40-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-35"><a href="#cb40-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-36"><a href="#cb40-36" aria-hidden="true" tabindex="-1"></a><span class="ex">Server</span> Software:        </span>
+<span id="cb40-37"><a href="#cb40-37" aria-hidden="true" tabindex="-1"></a><span class="ex">Server</span> Hostname:        easypay.ctgkube.com</span>
+<span id="cb40-38"><a href="#cb40-38" aria-hidden="true" tabindex="-1"></a><span class="ex">Server</span> Port:            80</span>
+<span id="cb40-39"><a href="#cb40-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-40"><a href="#cb40-40" aria-hidden="true" tabindex="-1"></a><span class="ex">Document</span> Path:          /payments</span>
+<span id="cb40-41"><a href="#cb40-41" aria-hidden="true" tabindex="-1"></a><span class="ex">Document</span> Length:        340 bytes</span>
+<span id="cb40-42"><a href="#cb40-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-43"><a href="#cb40-43" aria-hidden="true" tabindex="-1"></a><span class="ex">Concurrency</span> Level:      1000</span>
+<span id="cb40-44"><a href="#cb40-44" aria-hidden="true" tabindex="-1"></a><span class="ex">Time</span> taken for tests:   212.537 seconds</span>
+<span id="cb40-45"><a href="#cb40-45" aria-hidden="true" tabindex="-1"></a><span class="ex">Complete</span> requests:      100000</span>
+<span id="cb40-46"><a href="#cb40-46" aria-hidden="true" tabindex="-1"></a><span class="ex">Failed</span> requests:        76</span>
+<span id="cb40-47"><a href="#cb40-47" aria-hidden="true" tabindex="-1"></a>   <span class="kw">(</span><span class="ex">Connect:</span> 0, Receive: 0, Length: 76, Exceptions: 0<span class="kw">)</span></span>
+<span id="cb40-48"><a href="#cb40-48" aria-hidden="true" tabindex="-1"></a><span class="ex">Total</span> transferred:      49964000 bytes</span>
+<span id="cb40-49"><a href="#cb40-49" aria-hidden="true" tabindex="-1"></a><span class="ex">HTML</span> transferred:       33975520 bytes</span>
+<span id="cb40-50"><a href="#cb40-50" aria-hidden="true" tabindex="-1"></a><span class="ex">Requests</span> per second:    470.51 <span class="pp">[</span><span class="ss">#/sec</span><span class="pp">]</span> <span class="er">(</span><span class="ex">mean</span><span class="kw">)</span></span>
+<span id="cb40-51"><a href="#cb40-51" aria-hidden="true" tabindex="-1"></a><span class="ex">Time</span> per request:       2125.374 <span class="pp">[</span><span class="ss">ms</span><span class="pp">]</span> <span class="er">(</span><span class="ex">mean</span><span class="kw">)</span></span>
+<span id="cb40-52"><a href="#cb40-52" aria-hidden="true" tabindex="-1"></a><span class="ex">Time</span> per request:       2.125 <span class="pp">[</span><span class="ss">ms</span><span class="pp">]</span> <span class="er">(</span><span class="ex">mean,</span> across all concurrent requests<span class="kw">)</span></span>
+<span id="cb40-53"><a href="#cb40-53" aria-hidden="true" tabindex="-1"></a><span class="ex">Transfer</span> rate:          229.57 <span class="pp">[</span><span class="ss">Kbytes/sec</span><span class="pp">]</span> received</span>
+<span id="cb40-54"><a href="#cb40-54" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-55"><a href="#cb40-55" aria-hidden="true" tabindex="-1"></a><span class="ex">Connection</span> Times <span class="er">(</span><span class="ex">ms</span><span class="kw">)</span></span>
+<span id="cb40-56"><a href="#cb40-56" aria-hidden="true" tabindex="-1"></a>              <span class="ex">min</span>  mean<span class="pp">[</span><span class="ss">+/</span><span class="pp">-</span><span class="ss">sd</span><span class="pp">]</span> median   max</span>
+<span id="cb40-57"><a href="#cb40-57" aria-hidden="true" tabindex="-1"></a><span class="ex">Connect:</span>        0  630 1540.3    208   65609</span>
+<span id="cb40-58"><a href="#cb40-58" aria-hidden="true" tabindex="-1"></a><span class="ex">Processing:</span>    95  897 2306.1    254   99451</span>
+<span id="cb40-59"><a href="#cb40-59" aria-hidden="true" tabindex="-1"></a><span class="ex">Waiting:</span>        0  834 1647.1    248   99451</span>
+<span id="cb40-60"><a href="#cb40-60" aria-hidden="true" tabindex="-1"></a><span class="ex">Total:</span>        189 1527 2762.2    865  100599</span>
+<span id="cb40-61"><a href="#cb40-61" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-62"><a href="#cb40-62" aria-hidden="true" tabindex="-1"></a><span class="ex">Percentage</span> of the requests served within a certain time <span class="er">(</span><span class="ex">ms</span><span class="kw">)</span></span>
+<span id="cb40-63"><a href="#cb40-63" aria-hidden="true" tabindex="-1"></a>  <span class="ex">50%</span>    865</span>
+<span id="cb40-64"><a href="#cb40-64" aria-hidden="true" tabindex="-1"></a>  <span class="ex">66%</span>   1395</span>
+<span id="cb40-65"><a href="#cb40-65" aria-hidden="true" tabindex="-1"></a>  <span class="ex">75%</span>   1519</span>
+<span id="cb40-66"><a href="#cb40-66" aria-hidden="true" tabindex="-1"></a>  <span class="ex">80%</span>   1884</span>
+<span id="cb40-67"><a href="#cb40-67" aria-hidden="true" tabindex="-1"></a>  <span class="ex">90%</span>   3392</span>
+<span id="cb40-68"><a href="#cb40-68" aria-hidden="true" tabindex="-1"></a>  <span class="ex">95%</span>   4694</span>
+<span id="cb40-69"><a href="#cb40-69" aria-hidden="true" tabindex="-1"></a>  <span class="ex">98%</span>   7501</span>
+<span id="cb40-70"><a href="#cb40-70" aria-hidden="true" tabindex="-1"></a>  <span class="ex">99%</span>  10187</span>
+<span id="cb40-71"><a href="#cb40-71" aria-hidden="true" tabindex="-1"></a> <span class="ex">100%</span>  100599 <span class="er">(</span><span class="ex">longest</span> request<span class="kw">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>The auto-scaling functionality, as we can see, was successful once Apache bench completed all the requests. The <code>kubectl get hpa -w</code> command monitors the performance of the cluster deployments in real time. The replica set went from 3 <code>payment-app</code> pods running in service to 10 to handle a 500% or higher CPU utilization, which exceeds the 50% threshold. Once the load decreases, the replica set will scale back down to its orginal state of 3.</p>
 <div class="sourceCode" id="cb41"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> kubectl get hpa <span class="at">-w</span></span>
 <span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="ex">NAME</span>              REFERENCE                TARGETS   MINPODS   MAXPODS   REPLICAS   AGE</span>
@@ -1819,7 +1819,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <footer class="footer">
   <div class="nav-footer">
     <div class="nav-footer-left">
-<p>© 2024 Chaance T. Graves | Made with <a href="https://quarto.org">Quarto</a></p>
+<p>© 2025 Chaance T. Graves | Made with <a href="https://quarto.org">Quarto</a></p>
 </div>   
     <div class="nav-footer-center">
       &nbsp;

@@ -1003,7 +1003,7 @@ $ ab <OPTIONS> <WEB_SERVER_ADDRESS>/<PATH>
 
 Using the above command, we will specify the address from the `easypay-payment-ingress` at `easypay.ctgkube.com`. We will simulate 100,000 requests with 1000 concurrent connections to see how it will scale like it would be if it were in production.
 
-```
+```bash
 $ kubectl get pods
 NAME                            READY   STATUS    RESTARTS   AGE
 external-dns-7ff5ccbb48-p8wdd   1/1     Running   0          20h

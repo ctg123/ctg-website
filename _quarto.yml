@@ -63,7 +63,7 @@ website:
   # page footer settings
   page-footer: 
     border: true
-    left: "&#169; 2024 Chaance T. Graves | Made with [Quarto](https://quarto.org)"  
+    left: "&#169; 2025 Chaance T. Graves | Made with [Quarto](https://quarto.org)"  
     right:
       - text: License
         href: license.qmd
