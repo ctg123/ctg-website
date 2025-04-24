@@ -12,6 +12,8 @@
     "listing": "/projects.html",
     "items": [
       "/projects/boat-classifier/index.html",
+      "/projects/face-recognition/index.html",
+      "/projects/heart-disease-prediction/index.html",
       "/projects/customer-service-analysis/index.html",
       "/projects/ansible-kops/index.html",
       "/projects/wordpress-with-lamp-stack/index.html"

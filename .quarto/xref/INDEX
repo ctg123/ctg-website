@@ -73,5 +73,11 @@
   },
   "projects/customer-service-analysis/index.qmd": {
     "index.html": "05e7c38c"
+  },
+  "projects/heart-disease-prediction/index.qmd": {
+    "index.html": "492a4eec"
+  },
+  "projects/face-recognition/index.qmd": {
+    "index.html": "22b6b145"
   }
 }

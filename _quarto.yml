@@ -48,13 +48,13 @@ website:
         icon: file-text-fill
         href: https://resume.chaancegraves.com/
 
+      - text: Projects
+        icon: lightning-charge
+        href: projects.qmd
+
       - text: Blog
         icon: layout-text-sidebar
         href: blog.qmd
-
-      - text: Projects
-        icon: kanban
-        href: projects.qmd
 
       - text: Notes
         icon: journals
