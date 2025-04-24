@@ -4,7 +4,7 @@ description: Data analysis of service request calls from public dataset.
 author: Chaance Graves
 date: "2023-05-09" #  May 9, 2023
 categories: [applied data science, visualization]
-#image: "boat_thumbnail.jpg"
+#image: none
 jupyter: python3
 
 format: 

@@ -73,8 +73,9 @@ from keras.models import save_model, load_model
 # For MobileNetV2
 from keras.applications import MobileNetV2
 
+# suppress warnings output messages
 import warnings
-warnings.filterwarnings(action='ignore')
+warnings.filterwarnings('ignore')
 ```
 
 ```{python}
