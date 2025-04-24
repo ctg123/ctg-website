@@ -1,7 +1,8 @@
 ---
 pagetitle: "About"
 title: "Chaance T. Graves"
-subtitle: Engineer | Innovator
+subtitle: Sr. Electrical Engineer | AI-Driven Solutions | Transformative Leader
+
 #image: assets/img/...
 #image-alt: "image description"
 
@@ -40,18 +41,29 @@ execute:
 
 Welcome to my website! 👋🏾
 
-My name is Chaance Graves. Welcome to my website, where I share my blog on `topics ...` and projects that I’ve worked on or still tinkering with. I’m a creative problem solver eager to implement solutions to many issues foreseen in our modern society. In addition to that, I am also a big advocate for giving back to others who aspire to follow a path like mine.
+I'm an Electrical Engineer specializing in hardware systems development, automation, and AI-driven solutions. I'm currently includes a master's degree in Electrical and Computer Engineering interested in digging deeper into areas such Embedded Systems Engineering, and Low Power Design & Optimization.
 
-## Navigation
+## What I Do
 
-On this site I keep a list of my [projects](projects.html), **notes**, my [resume](https://resume.chaancegraves.com/), as well as a [technical blog](blog.html).
+I bring experience in analyzing and troubleshooting complex systems, developing automation scripts, and optimizing system performance, particularly within the context of x86 and ARM-based hardware and software. My technical experience spans:
 
-## Interests
+- OEM/ODM Product Development support for Cloud & Enterprise
+- AI Infrastructure and Operations with familarity in Networking
+- FPGA development
+- Embedded Systems
 
-- Systems Engineering 💡
-- Computer Architecture
-- Artificial Intelligence (Machine Learning)
-- Wireless Communications
-- Renewable Energy
+## What You'll Find Here
+
+My site here will serve as my hub where I share:
+
+- [Projects](projects.html): In-depth studies of my technical work and experiments, which are all open source.
+- [Blog](blog.html): Insights on tech trends, tutorials, and my perspective on industry developments.
+- [Resume](https://resume.chaancegraves.com): My professional background and skillset.
+
+## Let's Connect
+
+I'm always open to collaborating, mentoring, and exchanging ideas with fellow technology enthusiasts. Feel free to reach out through LinkedIn or check out my detailed experience on my resume.
+
+As a strong believer in knowledge sharing and continous learning, I'm committed to helping others who are curious or eager to grow. Whether you're a experienced professional or just starting your tech journey, I'd love to connect!
 
 :::

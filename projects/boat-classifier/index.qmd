@@ -1,0 +1,581 @@
+---
+title: Boat Image Classification with CNN and Transfer Learning
+description: Building and comparing custom CNN and MobileNetV2 models for an image classification example.
+author: Chaance Graves
+date: "2023-11-04" #  Nov 04, 2023
+categories: [deep learning, computer vision, transfer learning, CNN]
+#image: "boat_thumbnail.jpg"
+jupyter: python3
+
+format: 
+  html:
+    toc: true
+    toc-title: Contents
+    toc-location: right
+    code-fold: false
+---
+
+<a href="https://colab.research.google.com/github/ctg123/ml-projects/blob/main/boat-image-classifier/boat_img_classifier.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a>
+
+# Project Description
+
+We'll examine an image classification dataset to build a bias-free/ corruption-free automatic system that reports & avoids faulty situations caused by human error. Examples of human error include misclassifying the correct type of boat. The type of boat that enters the port region is as follows:
+
+- Buoy
+- Cruise_ship
+- Ferry_boat
+- Freight_boar
+- Gondola
+- Inflatable_boat
+- Kayak
+- Paper_boat
+- Sailboat
+
+I apply some Deep Learning techniques with `Keras` to build an automatic reporting system that recognizes the boat. We compare a custome model to a transfer learning approach of any lightweight pre-trained model to compare their training and accuracy results.
+
+
+## Importing Libraries
+
+Import the necessary packages and load the dataset
+
+```{python}
+#| tags: []
+# Python built-in libraries
+import os
+from pathlib import Path
+
+# Data pre-preprocessing and visualization
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+import matplotlib.image as image
+import seaborn as sns
+
+# Sci-kit learn functions
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import confusion_matrix, classification_report
+
+# Keras functions
+import tensorflow as tf
+from tensorflow.keras.preprocessing.image import ImageDataGenerator
+
+# For model training and compilation
+from keras import layers, models
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import Conv2D, MaxPooling2D, GlobalAveragePooling2D, Dense, Dropout, BatchNormalization
+from keras.callbacks import ModelCheckpoint, EarlyStopping
+from keras import optimizers
+from keras import losses
+from keras import metrics
+from keras.metrics import Precision, Recall
+from keras.models import save_model, load_model
+
+# For MobileNetV2
+from keras.applications import MobileNetV2
+
+import warnings
+warnings.filterwarnings(action='ignore')
+```
+
+```{python}
+#| tags: []
+image_dir = Path('datasets/Automating_Port_Operations')
+```
+
+```{python}
+#| tags: []
+image_dir
+```
+
+```{python}
+#| tags: []
+image_files = list(image_dir.glob(r'**/*.jpg'))
+```
+
+In order to collect the `labels` from the name of the classes,  Pathlib's `parts` attribute can directly extract the second-to-last part of the path, which corresponds to the class label.
+
+```{python}
+#| tags: []
+labels = [x.parts[-2] for x in image_files]
+```
+
+```{python}
+#| tags: []
+image_df = pd.DataFrame({'Filepath': image_files, 'Label': labels}).astype(str).sample(frac=1.0, random_state=43).reset_index(drop=True)
+
+image_df
+```
+
+```{python}
+#| tags: []
+class_names = image_df['Label'].value_counts()
+
+print(f' The number of classes found: {len(class_names)}')
+print('\n')
+print(class_names)
+```
+
+```{python}
+#| tags: []
+train_df, test_df = train_test_split(image_df, train_size=0.8, shuffle=True, random_state=43)
+```
+
+## Load the Image Data
+
+Let's determine the image dimensions for the building the dataset and CNN architecture.
+
+Our data is of shape `224×224` and the channel is `3(RGB)`, so for example if we are to create the first layer of a CNN, then `(224,224,3)` input shape. Hence, we used the input_shape to make sure that this layer accepts the data.
+
+```{python}
+#| tags: []
+train_generator = ImageDataGenerator(
+	rescale=1. / 255,
+    validation_split=0.2
+	)
+
+test_generator = ImageDataGenerator(rescale=1. / 255)
+
+batch_size = 32
+img_width, img_height = (224, 224)
+```
+
+```{python}
+#| tags: []
+train_images = train_generator.flow_from_dataframe(
+    dataframe=train_df,
+    x_col='Filepath',
+    y_col='Label',
+    target_size=(img_width, img_height),
+    color_mode='rgb',
+    class_mode='categorical',
+    batch_size=batch_size,
+    shuffle=True,
+    seed=42,
+    subset='training'
+)
+
+val_images = train_generator.flow_from_dataframe(
+    dataframe=train_df,
+    x_col='Filepath',
+    y_col='Label',
+    target_size=(img_width, img_height),
+    color_mode='rgb',
+    class_mode='categorical',
+    batch_size=batch_size,
+    shuffle=True,
+    seed=42,
+    subset='validation'
+)
+
+
+test_images = test_generator.flow_from_dataframe(
+    dataframe=test_df,
+    x_col='Filepath',
+    y_col='Label',
+    target_size=(img_width, img_height),
+    color_mode='rgb',
+    class_mode='categorical',
+    batch_size=batch_size,
+    shuffle=False
+)
+```
+
+## Visualize the Data
+
+Here are the first `25` images from the training dataset.
+
+```{python}
+#| tags: []
+train_df.head(n=25)
+```
+
+```{python}
+#| tags: []
+# Get the image filepaths and labels from the training data
+train_image_filepaths = train_df['Filepath'].values
+train_labels = train_df['Label'].values
+
+def display_examples(num_images, image_filepaths, labels):
+    """
+    Display the specified number of images from the images array with its corresponding labels
+    """
+    figsize = (20, 20)
+    fig = plt.figure(figsize=figsize)
+    fig.suptitle("Some examples of images of the dataset", fontsize=24)
+
+    for i in range(num_images):
+        plt.subplot(5,5,i+1)
+        plt.xticks([])
+        plt.yticks([])
+        plt.grid(False)
+        # Load and display the image
+        img = image.imread(image_filepaths[i])
+        plt.title(labels[i])
+        plt.imshow(img)
+        #plt.xlabel([labels[i]])
+    plt.show()
+```
+
+```{python}
+#| tags: []
+display_examples(25, train_image_filepaths, train_labels)
+```
+
+# Section 1: Building the CNN in order to classify boats
+
+## Build the Model
+
+```{python}
+#| tags: []
+channel = 3
+num_classes = len(class_names)
+
+# Adding the hidden layers and the output layer to our model
+model = Sequential([
+    layers.Conv2D(32, (3, 3), activation='relu', input_shape=(img_width, img_height, channel)),
+    layers.MaxPooling2D((2, 2)),
+    layers.Conv2D(32, (3, 3), activation='relu'),
+    layers.MaxPooling2D((2, 2)),
+    layers.GlobalAveragePooling2D(),
+    layers.Flatten(),
+    layers.Dense(128, activation='relu'),
+    layers.Dense(128, activation='relu'),
+    layers.Dense(num_classes, activation='softmax')
+])
+
+# Display the summary of the model architecture and the number of parameters
+model.summary()
+```
+
+## Compile the Model
+
+```{python}
+#| tags: []
+model.compile(
+    optimizer = 'adam',
+    loss = 'categorical_crossentropy',
+    metrics = ['accuracy',
+                Precision(),
+               Recall(),
+    ]
+)
+```
+
+## Train the Model
+
+Train the model with `20` epochs and we'll plot training loss and accuracy against epochs.
+
+```{python}
+#| tags: []
+# Define checkpoints
+checkpoint = ModelCheckpoint('best_model.weights.h5',
+                             save_best_only= True)
+```
+
+```{python}
+#| tags: []
+epochs=20
+
+history = model.fit(
+  train_images,
+  validation_data=val_images,
+  epochs=epochs,
+  callbacks=[checkpoint]
+)
+```
+
+```{python}
+#| tags: []
+def plot_accuracy_loss(history):
+    """
+    Plot the accuracy and the loss during the training of the CNN.
+    """
+    fig = plt.figure(figsize=(10,5))
+
+    # Plot accuracy
+    plt.subplot(221)
+    plt.plot(history.history['accuracy'], 'bo--', label = "acc")
+    plt.plot(history.history['val_accuracy'], 'ro--', label = "val_acc")
+    plt.title("train_acc vs val_acc")
+    plt.ylabel("accuracy")
+    plt.xlabel("epochs")
+    plt.legend()
+
+    # Plot loss function
+    plt.subplot(222)
+    plt.plot(history.history['loss'],'bo--', label = "loss")
+    plt.plot(history.history['val_loss'], 'ro--', label = "val_loss")
+    plt.title("train_loss vs val_loss")
+    plt.ylabel("loss")
+    plt.xlabel("epochs")
+
+    plt.legend()
+    plt.show()
+```
+
+```{python}
+#| tags: []
+plot_accuracy_loss(history)
+```
+
+## Evaluate the Model
+
+```{python}
+#| tags: []
+best_model = save_model(model, "best_model.keras")
+```
+
+```{python}
+#| tags: []
+# Load the model, including both architecture and weights
+saved_model = load_model('best_model.keras')
+
+results = saved_model.evaluate(test_images)
+print(f"Test Loss: {results[0]:.4f}")
+print(f"Test Accuracy: {results[1]*100:.2f} %")
+print(f"Test Precision: {results[2]*100:.2f} %")
+```
+
+## Plot Heatmap of the Confusion Matrix and Print Classification Report
+
+```{python}
+#| tags: []
+predictions = np.argmax(model.predict(test_images), axis=1)
+
+cm = confusion_matrix(test_images.labels, predictions)
+report = classification_report(test_images.labels, predictions, target_names=list(train_images.class_indices.keys()))
+
+plt.figure(figsize=(12, 12))
+sns.heatmap(cm, annot=True, fmt='g', vmin=0, cmap='Greens', cbar=False)
+plt.xticks(ticks=np.arange(9) + 0.5, labels=list(train_images.class_indices.keys()))
+plt.yticks(ticks=np.arange(9) + 0.5, labels=list(train_images.class_indices.keys()))
+plt.xlabel("Predicted")
+plt.ylabel("Actual")
+plt.title("Confusion Matrix")
+plt.show()
+print("\n")
+print("Classification Report:\n----------------------\n", report)
+```
+
+# Section 2: Transfer Learning via MobileNetV2
+
+## Create a new dataset to use with the MobileNetV2 pre-trained model
+
+```{python}
+#| tags: []
+mn_train_df, mn_test_df = train_test_split(image_df, train_size=0.7, shuffle=True, random_state=1)
+```
+
+## Load the Image Data
+
+```{python}
+#| tags: []
+mn_train_generator = ImageDataGenerator(
+	rescale=1. / 255,
+    validation_split=0.2
+	)
+
+mn_test_generator = ImageDataGenerator(rescale=1. / 255)
+
+batch_size = 32
+img_width, img_height = (224, 224)
+```
+
+```{python}
+#| tags: []
+mn_train_images = train_generator.flow_from_dataframe(
+    dataframe=mn_train_df,
+    x_col='Filepath',
+    y_col='Label',
+    target_size=(img_width, img_height),
+    color_mode='rgb',
+    class_mode='categorical',
+    batch_size=batch_size,
+    shuffle=True,
+    seed=1,
+    subset='training'
+)
+
+mn_val_images = train_generator.flow_from_dataframe(
+    dataframe=mn_train_df,
+    x_col='Filepath',
+    y_col='Label',
+    target_size=(img_width, img_height),
+    color_mode='rgb',
+    class_mode='categorical',
+    batch_size=batch_size,
+    shuffle=True,
+    seed=1,
+    subset='validation'
+)
+
+
+mn_test_images = test_generator.flow_from_dataframe(
+    dataframe=mn_test_df,
+    x_col='Filepath',
+    y_col='Label',
+    target_size=(img_width, img_height),
+    color_mode='rgb',
+    class_mode='categorical',
+    batch_size=batch_size,
+    shuffle=False
+)
+```
+
+## Build the Model
+
+```{python}
+#| tags: []
+channel = 3
+num_classes = len(class_names)
+
+# Load MobileNetV2 - Light Model
+mn_v2_light = MobileNetV2(include_top=False, weights='imagenet', input_shape=(img_width, img_height, channel))
+
+# Create a Sequential model
+mn_model = Sequential()
+
+# Add MobileNetV2 as the first layer
+mn_model.add(mn_v2_light)
+
+# Add other layers
+mn_model.add(GlobalAveragePooling2D())
+mn_model.add(Dropout(0.2))
+mn_model.add(Dense(256, activation='relu'))
+mn_model.add(BatchNormalization())
+mn_model.add(Dropout(0.1))
+mn_model.add(Dense(128, activation='relu'))
+mn_model.add(BatchNormalization())
+mn_model.add(Dropout(0.1))
+mn_model.add(Dense(128, activation='relu'))
+mn_model.add(Dense(128, activation='relu'))
+mn_model.add(Dense(num_classes, activation='softmax'))
+
+# Display the summary of the model architecture and the number of parameters
+mn_model.summary()
+```
+
+## Compile the Model
+
+```{python}
+#| tags: []
+mn_model.compile(
+    optimizer = 'adam',
+    loss = 'categorical_crossentropy',
+    metrics = ['accuracy',
+                Precision(),
+               Recall(),
+    ]
+)
+```
+
+## Train the Model
+
+Train the model with `50` epochs and we'll plot training loss and accuracy against epochs. We want to monitor the validation loss at each epoch and after the validation loss has not improved after two epochs, training is interrupted.
+
+```{python}
+#| tags: []
+# Define the early stopping callback
+early_stopping = EarlyStopping(monitor='val_loss',
+                               patience=10,
+                               restore_best_weights=True)
+
+# Define checkpoints
+checkpoint = ModelCheckpoint('best_mn_model.weights.h5',
+                             save_best_only= True,
+                             save_weights_only=True,
+                             monitor='val_loss',
+                             mode='min',
+                             verbose=1)
+```
+
+```{python}
+#| tags: []
+epochs=50
+
+# Train the model with early stopping and model checkpointing
+history = mn_model.fit(
+    mn_train_images,
+    epochs=epochs,
+    validation_data=mn_val_images,
+    callbacks=[early_stopping, checkpoint]
+)
+```
+
+```{python}
+#| tags: []
+def plot_accuracy_loss(history):
+    """
+    Plot the accuracy and the loss during the training of the CNN.
+    """
+    fig = plt.figure(figsize=(10,5))
+
+    # Plot accuracy
+    plt.subplot(221)
+    plt.plot(history.history['accuracy'], 'bo--', label = "acc")
+    plt.plot(history.history['val_accuracy'], 'ro--', label = "val_acc")
+    plt.title("train_acc vs val_acc")
+    plt.ylabel("accuracy")
+    plt.xlabel("epochs")
+    plt.legend()
+
+    # Plot loss function
+    plt.subplot(222)
+    plt.plot(history.history['loss'],'bo--', label = "loss")
+    plt.plot(history.history['val_loss'], 'ro--', label = "val_loss")
+    plt.title("train_loss vs val_loss")
+    plt.ylabel("loss")
+    plt.xlabel("epochs")
+
+    plt.legend()
+    plt.show()
+```
+
+```{python}
+#| tags: []
+plot_accuracy_loss(history)
+```
+
+## Evaluate the Model
+
+```{python}
+#| tags: []
+best_model = save_model(mn_model, "best_mn_model.weights.h5")
+```
+
+```{python}
+#| tags: []
+# Load the model, including both architecture and weights
+saved_model = load_model('best_mn_model.weights.h5')
+
+results = saved_model.evaluate(mn_test_images)
+print(f"Test Loss: {results[0]:.4f}")
+print(f"Test Accuracy: {results[1]*100:.2f} %")
+print(f"Test Precision: {results[2]*100:.2f} %")
+```
+
+# Section 3: Conclusion
+
+In this project, we explored two approaches for boat classification: a custom Convolutional Neural Network (CNN) and Transfer Learning with MobileNetV2. Here are the key takeaways:
+
+- **Model Comparison**:
+  - The custom CNN (Model 1) was built from scratch for boat classification.
+  - Transfer Learning with MobileNetV2 (Model 2) used a pre-trained model for feature extraction.
+
+- **Model Performance**:
+  - Both models did not achieve accuracy above 80% when evaluating the test images.
+  - Notably, Model 2 (MobileNetV2 with transfer learning) exhibited a significant gap between its training and test accuracy, indicating a potential issue with overfitting.
+
+- **Challenges for Accuracy**:
+  - The inability to surpass the 80% accuracy threshold may be attributed to:
+    - Class Imbalance: Variations in the number of examples across boat types.
+    - Limited Data: A relatively small dataset, which may lead to overfitting.
+    - Complex Task: Boat classification requires capturing nuanced features.
+  
+- **Recommendations**:
+  - Address class imbalance with techniques like data augmentation, oversampling, or class weights.
+  - Consider collecting more labeled data, especially for minority classes.
+  - Fine-tune model architectures and hyperparameters to reduce overfitting.
+
+In conclusion, while both models fell short of achieving accuracy above `80%`, the more significant disparity in training and test accuracy observed in Model 2 indicates a potential overfitting issue. This project lays the groundwork for further refinement and optimization of boat classification models.
+

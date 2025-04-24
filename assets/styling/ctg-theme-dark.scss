@@ -121,7 +121,7 @@ h5, h6 {
     flex-direction: row;
 }
 
-// code
+// code + cell output
 
 code {
     font-family: Fira Mono, monospace;
@@ -135,6 +135,18 @@ code {
      padding: 0.9em;
  }
 
+ .cell-output pre {
+    background-color: $gray-light; /* off white background */
+    border-radius: 5px; /* Rounded corners */
+    padding: 10px; /* Add some padding */
+  }
+
+  .cell-output pre { border: $secondary-light 1px solid; }
+
+//blockquote code {
+//    color: red; // Use any color that contrasts well with your dark background
+//  }
+ 
 // footer
 
 // -> links on left side

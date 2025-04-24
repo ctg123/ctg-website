@@ -67,5 +67,11 @@
   },
   "notes.qmd": {
     "notes.html": "7a173755"
+  },
+  "projects/boat-classifier/index.qmd": {
+    "index.html": "e9e81221"
+  },
+  "projects/customer-service-analysis/index.qmd": {
+    "index.html": "05e7c38c"
   }
 }

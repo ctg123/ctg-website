@@ -133,6 +133,14 @@ code {
      padding: 0.9em;
  }
 
+ .cell-output pre {
+    background-color: $gray-light; /* off white background */
+    border-radius: 5px; /* Rounded corners */
+    padding: 10px; /* Add some padding */
+  }
+
+  .cell-output pre { border: $secondary-light 1px solid; }
+
 // footer
 
 // -> links on left side

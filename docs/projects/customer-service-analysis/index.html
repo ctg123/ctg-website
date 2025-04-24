@@ -1,0 +1,3550 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.37">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Chaance Graves">
+<meta name="dcterms.date" content="2023-05-09">
+<meta name="description" content="Data analysis of service request calls from public dataset.">
+
+<title>NYC 311 Customer Service Requests Analysis – Chaance T. Graves</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../assets/img/favicon.png" rel="icon" type="image/png">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-325f3ff2f131f9421fc6e27256f8a6fd.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-325f3ff2f131f9421fc6e27256f8a6fd.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-69be4a782a4394c175109f4bcae8848c.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-e5501386b19f07ed7e69765dad1752ff.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<style>html{ scroll-behavior: smooth; }</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Chaance T. Graves</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> <i class="bi bi-house-gear-fill" role="img">
+</i> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://resume.chaancegraves.com/"> <i class="bi bi-file-text-fill" role="img">
+</i> 
+<span class="menu-text">Resume</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../blog.html"> <i class="bi bi-layout-text-sidebar" role="img">
+</i> 
+<span class="menu-text">Blog</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../projects.html"> <i class="bi bi-kanban" role="img">
+</i> 
+<span class="menu-text">Projects</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../notes.html"> <i class="bi bi-journals" role="img">
+</i> 
+<span class="menu-text">Notes</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools tools-wide">
+    <a href="https://github.com/ctg123" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-github"></i></a>
+    <a href="https://linkedin.com/in/chaancegraves" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-linkedin"></i></a>
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Contents</h2>
+   
+  <ul>
+  <li><a href="#customer-service-requests-analysis" id="toc-customer-service-requests-analysis" class="nav-link active" data-scroll-target="#customer-service-requests-analysis">Customer Service Requests Analysis</a>
+  <ul class="collapse">
+  <li><a href="#problem-statement" id="toc-problem-statement" class="nav-link" data-scroll-target="#problem-statement">Problem Statement</a></li>
+  <li><a href="#import-the-libraries-for-analysis" id="toc-import-the-libraries-for-analysis" class="nav-link" data-scroll-target="#import-the-libraries-for-analysis">Import the libraries for analysis</a></li>
+  <li><a href="#understanding-the-dataset" id="toc-understanding-the-dataset" class="nav-link" data-scroll-target="#understanding-the-dataset">Understanding the dataset</a></li>
+  <li><a href="#exploratory-data-analysis-eda" id="toc-exploratory-data-analysis-eda" class="nav-link" data-scroll-target="#exploratory-data-analysis-eda">Exploratory Data Analysis (EDA)</a></li>
+  <li><a href="#finding-the-major-type-of-complaints" id="toc-finding-the-major-type-of-complaints" class="nav-link" data-scroll-target="#finding-the-major-type-of-complaints">Finding the major type of complaints</a></li>
+  <li><a href="#data-visualization-of-the-major-type-of-complaints" id="toc-data-visualization-of-the-major-type-of-complaints" class="nav-link" data-scroll-target="#data-visualization-of-the-major-type-of-complaints">Data Visualization of the major type of complaints</a></li>
+  <li><a href="#statistical-analysis-of-request_closing_time" id="toc-statistical-analysis-of-request_closing_time" class="nav-link" data-scroll-target="#statistical-analysis-of-request_closing_time">Statistical Analysis of <code>Request_Closing_Time</code></a>
+  <ul class="collapse">
+  <li><a href="#hypothesis-testing" id="toc-hypothesis-testing" class="nav-link" data-scroll-target="#hypothesis-testing">Hypothesis Testing</a></li>
+  </ul></li>
+  <li><a href="#kruskal-wallis-h-test---one-way-anova" id="toc-kruskal-wallis-h-test---one-way-anova" class="nav-link" data-scroll-target="#kruskal-wallis-h-test---one-way-anova">Kruskal-Wallis H Test - One-way ANOVA</a></li>
+  <li><a href="#observations-and-outcomes" id="toc-observations-and-outcomes" class="nav-link" data-scroll-target="#observations-and-outcomes">Observations and Outcomes</a></li>
+  </ul></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/ctg123/quarto-example-site/blob/main/projects/customer-service-analysis/index.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/ctg123/quarto-example-site/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">NYC 311 Customer Service Requests Analysis</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">applied data science</div>
+    <div class="quarto-category">visualization</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    Data analysis of service request calls from public dataset.
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Chaance Graves </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">May 9, 2023</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p><a href="https://colab.research.google.com/github/ctg123/ml-projects/blob/main/customer-service-analysis/customer_service_analysis.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"></a></p>
+<section id="customer-service-requests-analysis" class="level1">
+<h1>Customer Service Requests Analysis</h1>
+<section id="problem-statement" class="level2">
+<h2 class="anchored" data-anchor-id="problem-statement">Problem Statement</h2>
+<p>Analyze the data on service request (311) call from New York City. Utilize Data Wrangling techniques to understand the patterns in the data and visualize the major type of complaints.</p>
+</section>
+<section id="import-the-libraries-for-analysis" class="level2">
+<h2 class="anchored" data-anchor-id="import-the-libraries-for-analysis">Import the libraries for analysis</h2>
+<div id="67ac4092" class="cell" data-tags="[]" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>matplotlib inline</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> ydata_profiling <span class="im">import</span> ProfileReport</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> warnings</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>warnings.filterwarnings(<span class="st">'ignore'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+
+            <div>
+                <ins><a href="https://ydata.ai/register">Upgrade to ydata-sdk</a></ins>
+                <p>
+                    Improve your data and profiling with ydata-sdk, featuring data quality scoring, redundancy detection, outlier identification, text validation, and synthetic data generation.
+                </p>
+            </div>
+            
+</div>
+</div>
+</section>
+<section id="understanding-the-dataset" class="level2">
+<h2 class="anchored" data-anchor-id="understanding-the-dataset">Understanding the dataset</h2>
+<div id="b73d4e0c" class="cell" data-tags="[]" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># checking the info about the installed pandas package version</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(pd.show_versions())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+INSTALLED VERSIONS
+------------------
+commit                : 0691c5cf90477d3503834d983f69350f250a6ff7
+python                : 3.12.2
+python-bits           : 64
+OS                    : Linux
+OS-release            : 5.15.167.4-microsoft-standard-WSL2
+Version               : #1 SMP Tue Nov 5 00:21:55 UTC 2024
+machine               : x86_64
+processor             : x86_64
+byteorder             : little
+LC_ALL                : None
+LANG                  : C.UTF-8
+LOCALE                : C.UTF-8
+
+pandas                : 2.2.3
+numpy                 : 2.1.3
+pytz                  : 2024.2
+dateutil              : 2.9.0.post0
+pip                   : 25.0.1
+Cython                : None
+sphinx                : None
+IPython               : 8.29.0
+adbc-driver-postgresql: None
+adbc-driver-sqlite    : None
+bs4                   : 4.12.3
+blosc                 : None
+bottleneck            : None
+dataframe-api-compat  : None
+fastparquet           : None
+fsspec                : None
+html5lib              : None
+hypothesis            : None
+gcsfs                 : None
+jinja2                : 3.1.4
+lxml.etree            : None
+matplotlib            : 3.9.2
+numba                 : 0.61.0
+numexpr               : None
+odfpy                 : None
+openpyxl              : None
+pandas_gbq            : None
+psycopg2              : None
+pymysql               : None
+pyarrow               : None
+pyreadstat            : None
+pytest                : None
+python-calamine       : None
+pyxlsb                : None
+s3fs                  : None
+scipy                 : 1.15.2
+sqlalchemy            : None
+tables                : None
+tabulate              : None
+xarray                : None
+xlrd                  : None
+xlsxwriter            : None
+zstandard             : None
+tzdata                : 2024.2
+qtpy                  : None
+pyqt5                 : None
+None</code></pre>
+</div>
+</div>
+<div id="84f66270" class="cell" data-tags="[]" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Setting the constants to use throughout the notebook</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>DATA_PATH <span class="op">=</span> <span class="st">"data/"</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>DATASETS_PATH <span class="op">=</span> <span class="st">"datasets/"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="5478cf88" class="cell" data-tags="[]" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(DATASETS_PATH <span class="op">+</span> <span class="st">"311_Service_Requests_from_2010_to_Present.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="3579b949" class="cell" data-tags="[]" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>df.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="5">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Unique Key</th>
+<th data-quarto-table-cell-role="th">Created Date</th>
+<th data-quarto-table-cell-role="th">Closed Date</th>
+<th data-quarto-table-cell-role="th">Agency</th>
+<th data-quarto-table-cell-role="th">Agency Name</th>
+<th data-quarto-table-cell-role="th">Complaint Type</th>
+<th data-quarto-table-cell-role="th">Descriptor</th>
+<th data-quarto-table-cell-role="th">Location Type</th>
+<th data-quarto-table-cell-role="th">Incident Zip</th>
+<th data-quarto-table-cell-role="th">Incident Address</th>
+<th data-quarto-table-cell-role="th">...</th>
+<th data-quarto-table-cell-role="th">Bridge Highway Name</th>
+<th data-quarto-table-cell-role="th">Bridge Highway Direction</th>
+<th data-quarto-table-cell-role="th">Road Ramp</th>
+<th data-quarto-table-cell-role="th">Bridge Highway Segment</th>
+<th data-quarto-table-cell-role="th">Garage Lot Name</th>
+<th data-quarto-table-cell-role="th">Ferry Direction</th>
+<th data-quarto-table-cell-role="th">Ferry Terminal Name</th>
+<th data-quarto-table-cell-role="th">Latitude</th>
+<th data-quarto-table-cell-role="th">Longitude</th>
+<th data-quarto-table-cell-role="th">Location</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>32310363</td>
+<td>12/31/2015 11:59:45 PM</td>
+<td>01/01/2016 12:55:15 AM</td>
+<td>NYPD</td>
+<td>New York City Police Department</td>
+<td>Noise - Street/Sidewalk</td>
+<td>Loud Music/Party</td>
+<td>Street/Sidewalk</td>
+<td>10034.0</td>
+<td>71 VERMILYEA AVENUE</td>
+<td>...</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>40.865682</td>
+<td>-73.923501</td>
+<td>(40.86568153633767, -73.92350095571744)</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>32309934</td>
+<td>12/31/2015 11:59:44 PM</td>
+<td>01/01/2016 01:26:57 AM</td>
+<td>NYPD</td>
+<td>New York City Police Department</td>
+<td>Blocked Driveway</td>
+<td>No Access</td>
+<td>Street/Sidewalk</td>
+<td>11105.0</td>
+<td>27-07 23 AVENUE</td>
+<td>...</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>40.775945</td>
+<td>-73.915094</td>
+<td>(40.775945312321085, -73.91509393898605)</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>32309159</td>
+<td>12/31/2015 11:59:29 PM</td>
+<td>01/01/2016 04:51:03 AM</td>
+<td>NYPD</td>
+<td>New York City Police Department</td>
+<td>Blocked Driveway</td>
+<td>No Access</td>
+<td>Street/Sidewalk</td>
+<td>10458.0</td>
+<td>2897 VALENTINE AVENUE</td>
+<td>...</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>40.870325</td>
+<td>-73.888525</td>
+<td>(40.870324522111424, -73.88852464418646)</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>32305098</td>
+<td>12/31/2015 11:57:46 PM</td>
+<td>01/01/2016 07:43:13 AM</td>
+<td>NYPD</td>
+<td>New York City Police Department</td>
+<td>Illegal Parking</td>
+<td>Commercial Overnight Parking</td>
+<td>Street/Sidewalk</td>
+<td>10461.0</td>
+<td>2940 BAISLEY AVENUE</td>
+<td>...</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>40.835994</td>
+<td>-73.828379</td>
+<td>(40.83599404683083, -73.82837939584206)</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>32306529</td>
+<td>12/31/2015 11:56:58 PM</td>
+<td>01/01/2016 03:24:42 AM</td>
+<td>NYPD</td>
+<td>New York City Police Department</td>
+<td>Illegal Parking</td>
+<td>Blocked Sidewalk</td>
+<td>Street/Sidewalk</td>
+<td>11373.0</td>
+<td>87-14 57 ROAD</td>
+<td>...</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>40.733060</td>
+<td>-73.874170</td>
+<td>(40.733059618956815, -73.87416975810375)</td>
+</tr>
+</tbody>
+</table>
+
+<p>5 rows × 53 columns</p>
+</div>
+</div>
+</div>
+<div id="d750b777" class="cell" data-tags="[]" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Let's get the info about the dataset, shape of the dimensions</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>df.info()</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">"</span>)</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>( <span class="ss">f"The shape of the dataset is </span><span class="sc">{</span>df<span class="sc">.</span>shape<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>&lt;class 'pandas.core.frame.DataFrame'&gt;
+RangeIndex: 364558 entries, 0 to 364557
+Data columns (total 53 columns):
+ #   Column                          Non-Null Count   Dtype  
+---  ------                          --------------   -----  
+ 0   Unique Key                      364558 non-null  int64  
+ 1   Created Date                    364558 non-null  object 
+ 2   Closed Date                     362177 non-null  object 
+ 3   Agency                          364558 non-null  object 
+ 4   Agency Name                     364558 non-null  object 
+ 5   Complaint Type                  364558 non-null  object 
+ 6   Descriptor                      358057 non-null  object 
+ 7   Location Type                   364425 non-null  object 
+ 8   Incident Zip                    361560 non-null  float64
+ 9   Incident Address                312859 non-null  object 
+ 10  Street Name                     312859 non-null  object 
+ 11  Cross Street 1                  307370 non-null  object 
+ 12  Cross Street 2                  306753 non-null  object 
+ 13  Intersection Street 1           51120 non-null   object 
+ 14  Intersection Street 2           50512 non-null   object 
+ 15  Address Type                    361306 non-null  object 
+ 16  City                            361561 non-null  object 
+ 17  Landmark                        375 non-null     object 
+ 18  Facility Type                   362169 non-null  object 
+ 19  Status                          364558 non-null  object 
+ 20  Due Date                        364555 non-null  object 
+ 21  Resolution Description          364558 non-null  object 
+ 22  Resolution Action Updated Date  362156 non-null  object 
+ 23  Community Board                 364558 non-null  object 
+ 24  Borough                         364558 non-null  object 
+ 25  X Coordinate (State Plane)      360528 non-null  float64
+ 26  Y Coordinate (State Plane)      360528 non-null  float64
+ 27  Park Facility Name              364558 non-null  object 
+ 28  Park Borough                    364558 non-null  object 
+ 29  School Name                     364558 non-null  object 
+ 30  School Number                   364558 non-null  object 
+ 31  School Region                   364557 non-null  object 
+ 32  School Code                     364557 non-null  object 
+ 33  School Phone Number             364558 non-null  object 
+ 34  School Address                  364558 non-null  object 
+ 35  School City                     364558 non-null  object 
+ 36  School State                    364558 non-null  object 
+ 37  School Zip                      364557 non-null  object 
+ 38  School Not Found                364558 non-null  object 
+ 39  School or Citywide Complaint    0 non-null       float64
+ 40  Vehicle Type                    0 non-null       float64
+ 41  Taxi Company Borough            0 non-null       float64
+ 42  Taxi Pick Up Location           0 non-null       float64
+ 43  Bridge Highway Name             297 non-null     object 
+ 44  Bridge Highway Direction        297 non-null     object 
+ 45  Road Ramp                       262 non-null     object 
+ 46  Bridge Highway Segment          262 non-null     object 
+ 47  Garage Lot Name                 0 non-null       float64
+ 48  Ferry Direction                 1 non-null       object 
+ 49  Ferry Terminal Name             2 non-null       object 
+ 50  Latitude                        360528 non-null  float64
+ 51  Longitude                       360528 non-null  float64
+ 52  Location                        360528 non-null  object 
+dtypes: float64(10), int64(1), object(42)
+memory usage: 147.4+ MB
+
+
+The shape of the dataset is (364558, 53)
+
+</code></pre>
+</div>
+</div>
+<div id="29403522" class="cell" data-tags="[]" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Let's check if any null values exists</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>null_counts <span class="op">=</span> df.isnull().<span class="bu">sum</span>()</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(null_counts)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Unique Key                             0
+Created Date                           0
+Closed Date                         2381
+Agency                                 0
+Agency Name                            0
+Complaint Type                         0
+Descriptor                          6501
+Location Type                        133
+Incident Zip                        2998
+Incident Address                   51699
+Street Name                        51699
+Cross Street 1                     57188
+Cross Street 2                     57805
+Intersection Street 1             313438
+Intersection Street 2             314046
+Address Type                        3252
+City                                2997
+Landmark                          364183
+Facility Type                       2389
+Status                                 0
+Due Date                               3
+Resolution Description                 0
+Resolution Action Updated Date      2402
+Community Board                        0
+Borough                                0
+X Coordinate (State Plane)          4030
+Y Coordinate (State Plane)          4030
+Park Facility Name                     0
+Park Borough                           0
+School Name                            0
+School Number                          0
+School Region                          1
+School Code                            1
+School Phone Number                    0
+School Address                         0
+School City                            0
+School State                           0
+School Zip                             1
+School Not Found                       0
+School or Citywide Complaint      364558
+Vehicle Type                      364558
+Taxi Company Borough              364558
+Taxi Pick Up Location             364558
+Bridge Highway Name               364261
+Bridge Highway Direction          364261
+Road Ramp                         364296
+Bridge Highway Segment            364296
+Garage Lot Name                   364558
+Ferry Direction                   364557
+Ferry Terminal Name               364556
+Latitude                            4030
+Longitude                           4030
+Location                            4030
+dtype: int64</code></pre>
+</div>
+</div>
+<p><strong>Observations:</strong></p>
+<p>There are null values present in the <code>df</code> dataframe for the following variables:</p>
+<ol type="1">
+<li>Closed Date</li>
+<li>Descriptor</li>
+<li>Location Type etc…</li>
+</ol>
+</section>
+<section id="exploratory-data-analysis-eda" class="level2">
+<h2 class="anchored" data-anchor-id="exploratory-data-analysis-eda">Exploratory Data Analysis (EDA)</h2>
+<p>we use <code>plt.style.use('ggplot')</code> to set the ggplot style for Matplotlib. We then use the same code as before to count the null values and create the bar chart, and set the chart title and axis labels using <code>plt.title()</code>, <code>plt.xlabel()</code>, and <code>plt.ylabel()</code>.</p>
+<div id="fba8f7ee" class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>plt.style.use(<span class="st">'ggplot'</span>)</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Create bar chart of null value counts</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>null_counts.plot.barh(figsize<span class="op">=</span>(<span class="dv">15</span>,<span class="dv">10</span>), stacked<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Set chart title and axis labels</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Null Value Counts'</span>)</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Columns'</span>, labelpad<span class="op">=</span><span class="dv">10</span>)</span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Count'</span>)</span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Show chart</span></span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/cell-9-output-1.png" width="1378" height="832" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="91b84ba0" class="cell" data-tags="[]" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Remove null values from "Closed Date" column</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>df.dropna(subset<span class="op">=</span>[<span class="st">"Closed Date"</span>], inplace<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Show sample of dataset with null values removed</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>df.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="9">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Unique Key</th>
+<th data-quarto-table-cell-role="th">Created Date</th>
+<th data-quarto-table-cell-role="th">Closed Date</th>
+<th data-quarto-table-cell-role="th">Agency</th>
+<th data-quarto-table-cell-role="th">Agency Name</th>
+<th data-quarto-table-cell-role="th">Complaint Type</th>
+<th data-quarto-table-cell-role="th">Descriptor</th>
+<th data-quarto-table-cell-role="th">Location Type</th>
+<th data-quarto-table-cell-role="th">Incident Zip</th>
+<th data-quarto-table-cell-role="th">Incident Address</th>
+<th data-quarto-table-cell-role="th">...</th>
+<th data-quarto-table-cell-role="th">Bridge Highway Name</th>
+<th data-quarto-table-cell-role="th">Bridge Highway Direction</th>
+<th data-quarto-table-cell-role="th">Road Ramp</th>
+<th data-quarto-table-cell-role="th">Bridge Highway Segment</th>
+<th data-quarto-table-cell-role="th">Garage Lot Name</th>
+<th data-quarto-table-cell-role="th">Ferry Direction</th>
+<th data-quarto-table-cell-role="th">Ferry Terminal Name</th>
+<th data-quarto-table-cell-role="th">Latitude</th>
+<th data-quarto-table-cell-role="th">Longitude</th>
+<th data-quarto-table-cell-role="th">Location</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>32310363</td>
+<td>12/31/2015 11:59:45 PM</td>
+<td>01/01/2016 12:55:15 AM</td>
+<td>NYPD</td>
+<td>New York City Police Department</td>
+<td>Noise - Street/Sidewalk</td>
+<td>Loud Music/Party</td>
+<td>Street/Sidewalk</td>
+<td>10034.0</td>
+<td>71 VERMILYEA AVENUE</td>
+<td>...</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>40.865682</td>
+<td>-73.923501</td>
+<td>(40.86568153633767, -73.92350095571744)</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>32309934</td>
+<td>12/31/2015 11:59:44 PM</td>
+<td>01/01/2016 01:26:57 AM</td>
+<td>NYPD</td>
+<td>New York City Police Department</td>
+<td>Blocked Driveway</td>
+<td>No Access</td>
+<td>Street/Sidewalk</td>
+<td>11105.0</td>
+<td>27-07 23 AVENUE</td>
+<td>...</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>40.775945</td>
+<td>-73.915094</td>
+<td>(40.775945312321085, -73.91509393898605)</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>32309159</td>
+<td>12/31/2015 11:59:29 PM</td>
+<td>01/01/2016 04:51:03 AM</td>
+<td>NYPD</td>
+<td>New York City Police Department</td>
+<td>Blocked Driveway</td>
+<td>No Access</td>
+<td>Street/Sidewalk</td>
+<td>10458.0</td>
+<td>2897 VALENTINE AVENUE</td>
+<td>...</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>40.870325</td>
+<td>-73.888525</td>
+<td>(40.870324522111424, -73.88852464418646)</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>32305098</td>
+<td>12/31/2015 11:57:46 PM</td>
+<td>01/01/2016 07:43:13 AM</td>
+<td>NYPD</td>
+<td>New York City Police Department</td>
+<td>Illegal Parking</td>
+<td>Commercial Overnight Parking</td>
+<td>Street/Sidewalk</td>
+<td>10461.0</td>
+<td>2940 BAISLEY AVENUE</td>
+<td>...</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>40.835994</td>
+<td>-73.828379</td>
+<td>(40.83599404683083, -73.82837939584206)</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>32306529</td>
+<td>12/31/2015 11:56:58 PM</td>
+<td>01/01/2016 03:24:42 AM</td>
+<td>NYPD</td>
+<td>New York City Police Department</td>
+<td>Illegal Parking</td>
+<td>Blocked Sidewalk</td>
+<td>Street/Sidewalk</td>
+<td>11373.0</td>
+<td>87-14 57 ROAD</td>
+<td>...</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>40.733060</td>
+<td>-73.874170</td>
+<td>(40.733059618956815, -73.87416975810375)</td>
+</tr>
+</tbody>
+</table>
+
+<p>5 rows × 53 columns</p>
+</div>
+</div>
+</div>
+<div id="50234314" class="cell" data-tags="[]" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Check if null values are still present in "Closed Date" column</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> df[<span class="st">'Closed Date'</span>].isnull().<span class="bu">any</span>():</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">'Null values still present in "Closed Date" column.'</span>)</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">'No null values present in "Closed Date" column.'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>No null values present in "Closed Date" column.</code></pre>
+</div>
+</div>
+<div id="eafdf6ef" class="cell" data-tags="[]" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert the "Closed Date" and "Created Date" columns to datetime format</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"Created Date"</span>] <span class="op">=</span> pd.to_datetime(df[<span class="st">"Created Date"</span>], <span class="bu">format</span><span class="op">=</span><span class="st">"%m/</span><span class="sc">%d</span><span class="st">/%Y %I:%M:%S %p"</span>)</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"Closed Date"</span>] <span class="op">=</span> pd.to_datetime(df[<span class="st">"Closed Date"</span>], <span class="bu">format</span><span class="op">=</span><span class="st">"%m/</span><span class="sc">%d</span><span class="st">/%Y %I:%M:%S %p"</span>)</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>df.info()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>&lt;class 'pandas.core.frame.DataFrame'&gt;
+Index: 362177 entries, 0 to 364557
+Data columns (total 53 columns):
+ #   Column                          Non-Null Count   Dtype         
+---  ------                          --------------   -----         
+ 0   Unique Key                      362177 non-null  int64         
+ 1   Created Date                    362177 non-null  datetime64[ns]
+ 2   Closed Date                     362177 non-null  datetime64[ns]
+ 3   Agency                          362177 non-null  object        
+ 4   Agency Name                     362177 non-null  object        
+ 5   Complaint Type                  362177 non-null  object        
+ 6   Descriptor                      355681 non-null  object        
+ 7   Location Type                   362047 non-null  object        
+ 8   Incident Zip                    361502 non-null  float64       
+ 9   Incident Address                310491 non-null  object        
+ 10  Street Name                     310491 non-null  object        
+ 11  Cross Street 1                  306846 non-null  object        
+ 12  Cross Street 2                  306713 non-null  object        
+ 13  Intersection Street 1           50628 non-null   object        
+ 14  Intersection Street 2           50504 non-null   object        
+ 15  Address Type                    361248 non-null  object        
+ 16  City                            361503 non-null  object        
+ 17  Landmark                        375 non-null     object        
+ 18  Facility Type                   362159 non-null  object        
+ 19  Status                          362177 non-null  object        
+ 20  Due Date                        362176 non-null  object        
+ 21  Resolution Description          362177 non-null  object        
+ 22  Resolution Action Updated Date  362138 non-null  object        
+ 23  Community Board                 362177 non-null  object        
+ 24  Borough                         362177 non-null  object        
+ 25  X Coordinate (State Plane)      360470 non-null  float64       
+ 26  Y Coordinate (State Plane)      360470 non-null  float64       
+ 27  Park Facility Name              362177 non-null  object        
+ 28  Park Borough                    362177 non-null  object        
+ 29  School Name                     362177 non-null  object        
+ 30  School Number                   362177 non-null  object        
+ 31  School Region                   362176 non-null  object        
+ 32  School Code                     362176 non-null  object        
+ 33  School Phone Number             362177 non-null  object        
+ 34  School Address                  362177 non-null  object        
+ 35  School City                     362177 non-null  object        
+ 36  School State                    362177 non-null  object        
+ 37  School Zip                      362176 non-null  object        
+ 38  School Not Found                362177 non-null  object        
+ 39  School or Citywide Complaint    0 non-null       float64       
+ 40  Vehicle Type                    0 non-null       float64       
+ 41  Taxi Company Borough            0 non-null       float64       
+ 42  Taxi Pick Up Location           0 non-null       float64       
+ 43  Bridge Highway Name             297 non-null     object        
+ 44  Bridge Highway Direction        297 non-null     object        
+ 45  Road Ramp                       262 non-null     object        
+ 46  Bridge Highway Segment          262 non-null     object        
+ 47  Garage Lot Name                 0 non-null       float64       
+ 48  Ferry Direction                 0 non-null       object        
+ 49  Ferry Terminal Name             0 non-null       object        
+ 50  Latitude                        360470 non-null  float64       
+ 51  Longitude                       360470 non-null  float64       
+ 52  Location                        360470 non-null  object        
+dtypes: datetime64[ns](2), float64(10), int64(1), object(40)
+memory usage: 149.2+ MB</code></pre>
+</div>
+</div>
+<div id="14627b60" class="cell" data-tags="[]" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a new column called "Time Delta" and calculate the time delta between "Closed Date" and "Created Date"</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"request_closing_time_sec"</span>] <span class="op">=</span> (df[<span class="st">"Closed Date"</span>] <span class="op">-</span> df[<span class="st">"Created Date"</span>]).dt.total_seconds()</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="co"># View descriptive statistics of the "Time Delta" column</span></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"request_closing_time_sec"</span>].describe()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="12">
+<pre><code>count    3.621770e+05
+mean     1.511330e+04
+std      2.110255e+04
+min      6.100000e+01
+25%      4.533000e+03
+50%      9.616000e+03
+75%      1.887800e+04
+max      2.134342e+06
+Name: request_closing_time_sec, dtype: float64</code></pre>
+</div>
+</div>
+</section>
+<section id="finding-the-major-type-of-complaints" class="level2">
+<h2 class="anchored" data-anchor-id="finding-the-major-type-of-complaints">Finding the major type of complaints</h2>
+<div id="2427a650" class="cell" data-tags="[]" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Check the number of null values in the "Complaint_Type" and "City" columns using f-strings</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'Number of null values in "Complaint_Type" column: </span><span class="sc">{</span>df[<span class="st">"Complaint Type"</span>]<span class="sc">.</span>isnull()<span class="sc">.</span><span class="bu">sum</span>()<span class="sc">}</span><span class="ss">'</span>)</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'Number of null values in "City" column: </span><span class="sc">{</span>df[<span class="st">"City"</span>]<span class="sc">.</span>isnull()<span class="sc">.</span><span class="bu">sum</span>()<span class="sc">}</span><span class="ss">'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Number of null values in "Complaint_Type" column: 0
+Number of null values in "City" column: 674</code></pre>
+</div>
+</div>
+<div id="e17725d5" class="cell" data-tags="[]" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># fill in missing values (nan) in the 'City' column with 'Unknown City'</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'City'</span>].fillna(<span class="st">'Unknown City'</span>, inplace<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Get Unique Count using Series.unique()</span></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>city_count <span class="op">=</span> df.City.unique().size</span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Let's check what all unique values are in the 'City' column</span></span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>city_col <span class="op">=</span> df[<span class="st">'City'</span>].unique()</span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"There are </span><span class="sc">{</span>city_count<span class="sc">}</span><span class="ss"> values in the dataset that contain the following info: </span><span class="ch">\n</span><span class="ss"> </span><span class="sc">{</span>city_col<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>There are 54 values in the dataset that contain the following info: 
+ ['NEW YORK' 'ASTORIA' 'BRONX' 'ELMHURST' 'BROOKLYN' 'KEW GARDENS'
+ 'JACKSON HEIGHTS' 'MIDDLE VILLAGE' 'REGO PARK' 'SAINT ALBANS' 'JAMAICA'
+ 'SOUTH RICHMOND HILL' 'Unknown City' 'RIDGEWOOD' 'HOWARD BEACH'
+ 'FOREST HILLS' 'STATEN ISLAND' 'OZONE PARK' 'RICHMOND HILL' 'WOODHAVEN'
+ 'FLUSHING' 'CORONA' 'QUEENS VILLAGE' 'OAKLAND GARDENS' 'HOLLIS' 'MASPETH'
+ 'EAST ELMHURST' 'SOUTH OZONE PARK' 'WOODSIDE' 'FRESH MEADOWS'
+ 'LONG ISLAND CITY' 'ROCKAWAY PARK' 'SPRINGFIELD GARDENS' 'COLLEGE POINT'
+ 'BAYSIDE' 'GLEN OAKS' 'FAR ROCKAWAY' 'BELLEROSE' 'LITTLE NECK'
+ 'CAMBRIA HEIGHTS' 'ROSEDALE' 'SUNNYSIDE' 'WHITESTONE' 'ARVERNE'
+ 'FLORAL PARK' 'NEW HYDE PARK' 'CENTRAL PARK' 'BREEZY POINT' 'QUEENS'
+ 'Astoria' 'Long Island City' 'Woodside' 'East Elmhurst' 'Howard Beach']</code></pre>
+</div>
+</div>
+<div id="c61e9ab1" class="cell" data-tags="[]" data-execution_count="15">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>total_city_complaints <span class="op">=</span> df.groupby([<span class="st">'City'</span>,<span class="st">'Complaint Type'</span>]).size().unstack().fillna(<span class="dv">0</span>)</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>total_city_complaints.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="15">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">Complaint Type</th>
+<th data-quarto-table-cell-role="th">Agency Issues</th>
+<th data-quarto-table-cell-role="th">Animal Abuse</th>
+<th data-quarto-table-cell-role="th">Animal in a Park</th>
+<th data-quarto-table-cell-role="th">Bike/Roller/Skate Chronic</th>
+<th data-quarto-table-cell-role="th">Blocked Driveway</th>
+<th data-quarto-table-cell-role="th">Derelict Vehicle</th>
+<th data-quarto-table-cell-role="th">Disorderly Youth</th>
+<th data-quarto-table-cell-role="th">Drinking</th>
+<th data-quarto-table-cell-role="th">Graffiti</th>
+<th data-quarto-table-cell-role="th">Homeless Encampment</th>
+<th data-quarto-table-cell-role="th">...</th>
+<th data-quarto-table-cell-role="th">Noise - House of Worship</th>
+<th data-quarto-table-cell-role="th">Noise - Park</th>
+<th data-quarto-table-cell-role="th">Noise - Street/Sidewalk</th>
+<th data-quarto-table-cell-role="th">Noise - Vehicle</th>
+<th data-quarto-table-cell-role="th">Panhandling</th>
+<th data-quarto-table-cell-role="th">Posting Advertisement</th>
+<th data-quarto-table-cell-role="th">Squeegee</th>
+<th data-quarto-table-cell-role="th">Traffic</th>
+<th data-quarto-table-cell-role="th">Urinating in Public</th>
+<th data-quarto-table-cell-role="th">Vending</th>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">City</th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">ARVERNE</td>
+<td>0.0</td>
+<td>46.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>50.0</td>
+<td>32.0</td>
+<td>2.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>4.0</td>
+<td>...</td>
+<td>14.0</td>
+<td>2.0</td>
+<td>29.0</td>
+<td>10.0</td>
+<td>1.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">ASTORIA</td>
+<td>0.0</td>
+<td>170.0</td>
+<td>0.0</td>
+<td>16.0</td>
+<td>3436.0</td>
+<td>426.0</td>
+<td>5.0</td>
+<td>43.0</td>
+<td>4.0</td>
+<td>32.0</td>
+<td>...</td>
+<td>21.0</td>
+<td>64.0</td>
+<td>409.0</td>
+<td>236.0</td>
+<td>2.0</td>
+<td>3.0</td>
+<td>0.0</td>
+<td>60.0</td>
+<td>10.0</td>
+<td>57.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Astoria</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>159.0</td>
+<td>14.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>...</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>145.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">BAYSIDE</td>
+<td>0.0</td>
+<td>53.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>514.0</td>
+<td>231.0</td>
+<td>2.0</td>
+<td>1.0</td>
+<td>3.0</td>
+<td>2.0</td>
+<td>...</td>
+<td>3.0</td>
+<td>4.0</td>
+<td>17.0</td>
+<td>24.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>9.0</td>
+<td>0.0</td>
+<td>2.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">BELLEROSE</td>
+<td>0.0</td>
+<td>15.0</td>
+<td>0.0</td>
+<td>1.0</td>
+<td>138.0</td>
+<td>120.0</td>
+<td>2.0</td>
+<td>1.0</td>
+<td>0.0</td>
+<td>1.0</td>
+<td>...</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>13.0</td>
+<td>11.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>0.0</td>
+<td>9.0</td>
+<td>1.0</td>
+<td>0.0</td>
+</tr>
+</tbody>
+</table>
+
+<p>5 rows × 23 columns</p>
+</div>
+</div>
+</div>
+<div id="6c1363b7" class="cell" data-tags="[]" data-execution_count="16">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>total_city_complaints.plot.bar(figsize<span class="op">=</span>(<span class="dv">15</span>,<span class="dv">10</span>), stacked<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="co"># set the axis labels and title</span></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Number of Complaints'</span>)</span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'City'</span>)</span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Frequency of Complaints by City'</span>)</span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a><span class="co"># show the plot</span></span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/cell-17-output-1.png" width="1216" height="969" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="data-visualization-of-the-major-type-of-complaints" class="level2">
+<h2 class="anchored" data-anchor-id="data-visualization-of-the-major-type-of-complaints">Data Visualization of the major type of complaints</h2>
+<p>In order to find the major type of complaints in the dataset, the following code groups the dataset by complaint type, counts the number of occurrences for each type, and then sorts the counts in descending order. The resulting bar graph shows the counts for each complaint type.</p>
+<div id="c926c8e2" class="cell" data-execution_count="17">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Group by complaint type and count the number of occurrences</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>complaint_counts <span class="op">=</span> df.groupby(<span class="st">'Complaint Type'</span>).size().reset_index(name<span class="op">=</span><span class="st">'counts'</span>)</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Sort the counts in descending order</span></span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>complaint_counts <span class="op">=</span> complaint_counts.sort_values(<span class="st">'counts'</span>, ascending<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>complaint_counts</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="17">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Complaint Type</th>
+<th data-quarto-table-cell-role="th">counts</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>Blocked Driveway</td>
+<td>100624</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">11</td>
+<td>Illegal Parking</td>
+<td>91716</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">15</td>
+<td>Noise - Street/Sidewalk</td>
+<td>51139</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">12</td>
+<td>Noise - Commercial</td>
+<td>43751</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">5</td>
+<td>Derelict Vehicle</td>
+<td>21518</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">16</td>
+<td>Noise - Vehicle</td>
+<td>19301</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">1</td>
+<td>Animal Abuse</td>
+<td>10530</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">20</td>
+<td>Traffic</td>
+<td>5196</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">9</td>
+<td>Homeless Encampment</td>
+<td>4879</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">22</td>
+<td>Vending</td>
+<td>4185</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">14</td>
+<td>Noise - Park</td>
+<td>4089</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">7</td>
+<td>Drinking</td>
+<td>1404</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">13</td>
+<td>Noise - House of Worship</td>
+<td>1068</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">18</td>
+<td>Posting Advertisement</td>
+<td>679</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">21</td>
+<td>Urinating in Public</td>
+<td>641</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>Bike/Roller/Skate Chronic</td>
+<td>475</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">17</td>
+<td>Panhandling</td>
+<td>325</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">6</td>
+<td>Disorderly Youth</td>
+<td>315</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">10</td>
+<td>Illegal Fireworks</td>
+<td>172</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">8</td>
+<td>Graffiti</td>
+<td>157</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>Agency Issues</td>
+<td>8</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">19</td>
+<td>Squeegee</td>
+<td>4</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>Animal in a Park</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<div id="c55983d1" class="cell" data-tags="[]" data-execution_count="18">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot the bar graph</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>plt.bar(complaint_counts[<span class="st">'Complaint Type'</span>], complaint_counts[<span class="st">'counts'</span>])</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>plt.xticks(rotation<span class="op">=</span><span class="dv">90</span>)</span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Complaint Type'</span>)</span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Counts'</span>)</span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Types of Complaints in the Total Dataset'</span>)</span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/cell-19-output-1.png" width="621" height="608" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>From our bar chart analysis, the top 10 major complaint types are the following:</p>
+<ol type="1">
+<li><code>Blocked Driveway</code></li>
+<li><code>Illegal Parking</code></li>
+<li><code>Noisy Street/Sidewalk</code></li>
+<li><code>Noise - Commerical buildings</code></li>
+<li><code>Derelict Vehicle</code></li>
+<li><code>Noise - Vehicle</code></li>
+<li><code>Animal Abuse</code></li>
+<li><code>Traffic</code></li>
+<li><code>Homeless Encampment</code></li>
+<li><code>Vending</code></li>
+</ol>
+<p>Let’s explore the complaint data specifically for NYC …</p>
+<p>This code filters the dataset to only include complaints from New York City, groups the remaining data by complaint type, counts the number of occurrences for each type, and then sorts the counts in descending order. The resulting output shows the frequency of each complaint type for New York City.</p>
+<div id="870ac54f" class="cell" data-tags="[]" data-execution_count="19">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>nyc_data <span class="op">=</span> df.loc[df[<span class="st">'City'</span>] <span class="op">==</span> <span class="st">'NEW YORK'</span>]</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>nyc_data.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="19">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Unique Key</th>
+<th data-quarto-table-cell-role="th">Created Date</th>
+<th data-quarto-table-cell-role="th">Closed Date</th>
+<th data-quarto-table-cell-role="th">Agency</th>
+<th data-quarto-table-cell-role="th">Agency Name</th>
+<th data-quarto-table-cell-role="th">Complaint Type</th>
+<th data-quarto-table-cell-role="th">Descriptor</th>
+<th data-quarto-table-cell-role="th">Location Type</th>
+<th data-quarto-table-cell-role="th">Incident Zip</th>
+<th data-quarto-table-cell-role="th">Incident Address</th>
+<th data-quarto-table-cell-role="th">...</th>
+<th data-quarto-table-cell-role="th">Bridge Highway Direction</th>
+<th data-quarto-table-cell-role="th">Road Ramp</th>
+<th data-quarto-table-cell-role="th">Bridge Highway Segment</th>
+<th data-quarto-table-cell-role="th">Garage Lot Name</th>
+<th data-quarto-table-cell-role="th">Ferry Direction</th>
+<th data-quarto-table-cell-role="th">Ferry Terminal Name</th>
+<th data-quarto-table-cell-role="th">Latitude</th>
+<th data-quarto-table-cell-role="th">Longitude</th>
+<th data-quarto-table-cell-role="th">Location</th>
+<th data-quarto-table-cell-role="th">request_closing_time_sec</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>32310363</td>
+<td>2015-12-31 23:59:45</td>
+<td>2016-01-01 00:55:15</td>
+<td>NYPD</td>
+<td>New York City Police Department</td>
+<td>Noise - Street/Sidewalk</td>
+<td>Loud Music/Party</td>
+<td>Street/Sidewalk</td>
+<td>10034.0</td>
+<td>71 VERMILYEA AVENUE</td>
+<td>...</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>40.865682</td>
+<td>-73.923501</td>
+<td>(40.86568153633767, -73.92350095571744)</td>
+<td>3330.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">6</td>
+<td>32306559</td>
+<td>2015-12-31 23:55:32</td>
+<td>2016-01-01 01:53:54</td>
+<td>NYPD</td>
+<td>New York City Police Department</td>
+<td>Illegal Parking</td>
+<td>Blocked Hydrant</td>
+<td>Street/Sidewalk</td>
+<td>10032.0</td>
+<td>524 WEST 169 STREET</td>
+<td>...</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>40.840848</td>
+<td>-73.937375</td>
+<td>(40.840847591440415, -73.9373750864581)</td>
+<td>7102.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">19</td>
+<td>32308195</td>
+<td>2015-12-31 23:40:55</td>
+<td>2016-01-01 00:28:31</td>
+<td>NYPD</td>
+<td>New York City Police Department</td>
+<td>Noise - Street/Sidewalk</td>
+<td>Loud Music/Party</td>
+<td>Street/Sidewalk</td>
+<td>10026.0</td>
+<td>264 WEST 118 STREET</td>
+<td>...</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>40.805267</td>
+<td>-73.953353</td>
+<td>(40.80526715877265, -73.9533526205901)</td>
+<td>2856.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">23</td>
+<td>32308765</td>
+<td>2015-12-31 23:32:46</td>
+<td>2016-01-01 00:25:21</td>
+<td>NYPD</td>
+<td>New York City Police Department</td>
+<td>Illegal Parking</td>
+<td>Double Parked Blocking Vehicle</td>
+<td>Street/Sidewalk</td>
+<td>10030.0</td>
+<td>133 WEST 134 STREET</td>
+<td>...</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>40.814002</td>
+<td>-73.942664</td>
+<td>(40.814001537165495, -73.94266395083876)</td>
+<td>3155.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">26</td>
+<td>32305916</td>
+<td>2015-12-31 23:26:41</td>
+<td>2015-12-31 23:53:31</td>
+<td>NYPD</td>
+<td>New York City Police Department</td>
+<td>Noise - House of Worship</td>
+<td>Loud Music/Party</td>
+<td>House of Worship</td>
+<td>10031.0</td>
+<td>452 WEST 147 STREET</td>
+<td>...</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>40.826102</td>
+<td>-73.945663</td>
+<td>(40.826101709196, -73.94566339279595)</td>
+<td>1610.0</td>
+</tr>
+</tbody>
+</table>
+
+<p>5 rows × 54 columns</p>
+</div>
+</div>
+</div>
+<div id="27c66fa6" class="cell" data-tags="[]" data-execution_count="20">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract and count the unique values in the "Complaint Type" column</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>nyc_complaint_types <span class="op">=</span> <span class="bu">len</span>(nyc_data[<span class="st">'Complaint Type'</span>].unique())</span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the complaint types</span></span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"there are </span><span class="sc">{</span>nyc_complaint_types<span class="sc">}</span><span class="ss"> complaint types in New York City."</span>)</span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Group by complaint type and count the number of occurrences</span></span>
+<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a>nyc_complaint_counts <span class="op">=</span> nyc_data.groupby(<span class="st">'Complaint Type'</span>).size().reset_index(name<span class="op">=</span><span class="st">'counts'</span>)</span>
+<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-10"><a href="#cb28-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Sort the counts in descending order</span></span>
+<span id="cb28-11"><a href="#cb28-11" aria-hidden="true" tabindex="-1"></a>nyc_complaint_counts <span class="op">=</span> nyc_complaint_counts.sort_values(<span class="st">'counts'</span>, ascending<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb28-12"><a href="#cb28-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-13"><a href="#cb28-13" aria-hidden="true" tabindex="-1"></a>nyc_data[<span class="st">'Complaint Type'</span>].value_counts()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>there are 21 complaint types in New York City.</code></pre>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="20">
+<pre><code>Complaint Type
+Noise - Street/Sidewalk      22245
+Noise - Commercial           18686
+Illegal Parking              14549
+Noise - Vehicle               6294
+Homeless Encampment           3060
+Blocked Driveway              2705
+Vending                       2638
+Animal Abuse                  1941
+Traffic                       1769
+Noise - Park                  1243
+Derelict Vehicle               695
+Drinking                       321
+Urinating in Public            264
+Bike/Roller/Skate Chronic      254
+Noise - House of Worship       222
+Panhandling                    206
+Disorderly Youth                81
+Posting Advertisement           49
+Illegal Fireworks               38
+Graffiti                        25
+Squeegee                         4
+Name: count, dtype: int64</code></pre>
+</div>
+</div>
+<div id="4a87581e" class="cell" data-tags="[]" data-execution_count="21">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot the bar graph</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>plt.bar(nyc_complaint_counts[<span class="st">'Complaint Type'</span>], nyc_complaint_counts[<span class="st">'counts'</span>], color<span class="op">=</span><span class="st">'green'</span>)</span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>plt.xticks(rotation<span class="op">=</span><span class="dv">90</span>)</span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Complaint Type'</span>)</span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Counts'</span>)</span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Types of Complaints in New York City'</span>)</span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/cell-22-output-1.png" width="612" height="608" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Let’s explore the complaint data specifically for Brooklyn …</p>
+<p>This code filters the dataset to only include complaints from Brooklyn, groups the remaining data by complaint type, counts the number of occurrences for each type, and then sorts the counts in descending order. The resulting output shows the frequency of each complaint type for Brooklyn.</p>
+<div id="c8d8fbbb" class="cell" data-tags="[]" data-execution_count="22">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>bk_data <span class="op">=</span> df.loc[df[<span class="st">'City'</span>] <span class="op">==</span> <span class="st">'BROOKLYN'</span>]</span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>bk_data.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="22">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Unique Key</th>
+<th data-quarto-table-cell-role="th">Created Date</th>
+<th data-quarto-table-cell-role="th">Closed Date</th>
+<th data-quarto-table-cell-role="th">Agency</th>
+<th data-quarto-table-cell-role="th">Agency Name</th>
+<th data-quarto-table-cell-role="th">Complaint Type</th>
+<th data-quarto-table-cell-role="th">Descriptor</th>
+<th data-quarto-table-cell-role="th">Location Type</th>
+<th data-quarto-table-cell-role="th">Incident Zip</th>
+<th data-quarto-table-cell-role="th">Incident Address</th>
+<th data-quarto-table-cell-role="th">...</th>
+<th data-quarto-table-cell-role="th">Bridge Highway Direction</th>
+<th data-quarto-table-cell-role="th">Road Ramp</th>
+<th data-quarto-table-cell-role="th">Bridge Highway Segment</th>
+<th data-quarto-table-cell-role="th">Garage Lot Name</th>
+<th data-quarto-table-cell-role="th">Ferry Direction</th>
+<th data-quarto-table-cell-role="th">Ferry Terminal Name</th>
+<th data-quarto-table-cell-role="th">Latitude</th>
+<th data-quarto-table-cell-role="th">Longitude</th>
+<th data-quarto-table-cell-role="th">Location</th>
+<th data-quarto-table-cell-role="th">request_closing_time_sec</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">5</td>
+<td>32306554</td>
+<td>2015-12-31 23:56:30</td>
+<td>2016-01-01 01:50:11</td>
+<td>NYPD</td>
+<td>New York City Police Department</td>
+<td>Illegal Parking</td>
+<td>Posted Parking Sign Violation</td>
+<td>Street/Sidewalk</td>
+<td>11215.0</td>
+<td>260 21 STREET</td>
+<td>...</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>40.660823</td>
+<td>-73.992568</td>
+<td>(40.66082272389114, -73.99256786342693)</td>
+<td>6821.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">9</td>
+<td>32308391</td>
+<td>2015-12-31 23:53:58</td>
+<td>2016-01-01 01:17:40</td>
+<td>NYPD</td>
+<td>New York City Police Department</td>
+<td>Blocked Driveway</td>
+<td>No Access</td>
+<td>Street/Sidewalk</td>
+<td>11219.0</td>
+<td>1408 66 STREET</td>
+<td>...</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>40.623793</td>
+<td>-73.999539</td>
+<td>(40.623793065806524, -73.99953890121567)</td>
+<td>5022.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">13</td>
+<td>32305074</td>
+<td>2015-12-31 23:47:58</td>
+<td>2016-01-01 08:18:47</td>
+<td>NYPD</td>
+<td>New York City Police Department</td>
+<td>Illegal Parking</td>
+<td>Posted Parking Sign Violation</td>
+<td>Street/Sidewalk</td>
+<td>11208.0</td>
+<td>38 COX PLACE</td>
+<td>...</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>40.687511</td>
+<td>-73.874505</td>
+<td>(40.68751060232221, -73.87450451131276)</td>
+<td>30649.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">17</td>
+<td>32310273</td>
+<td>2015-12-31 23:44:52</td>
+<td>2016-01-01 00:36:10</td>
+<td>NYPD</td>
+<td>New York City Police Department</td>
+<td>Noise - Commercial</td>
+<td>Loud Music/Party</td>
+<td>Club/Bar/Restaurant</td>
+<td>11217.0</td>
+<td>622 DEGRAW STREET</td>
+<td>...</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>40.679154</td>
+<td>-73.983430</td>
+<td>(40.679154133157326, -73.98342992763081)</td>
+<td>3078.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">18</td>
+<td>32306617</td>
+<td>2015-12-31 23:40:59</td>
+<td>2016-01-01 02:37:28</td>
+<td>NYPD</td>
+<td>New York City Police Department</td>
+<td>Noise - Commercial</td>
+<td>Loud Music/Party</td>
+<td>Club/Bar/Restaurant</td>
+<td>11234.0</td>
+<td>2192 FLATBUSH AVENUE</td>
+<td>...</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>40.616550</td>
+<td>-73.930202</td>
+<td>(40.61655032892211, -73.93020153359745)</td>
+<td>10589.0</td>
+</tr>
+</tbody>
+</table>
+
+<p>5 rows × 54 columns</p>
+</div>
+</div>
+</div>
+<div id="76296158" class="cell" data-tags="[]" data-execution_count="23">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract and count the unique values in the "Complaint Type" column</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>bk_complaint_types <span class="op">=</span> <span class="bu">len</span>(bk_data[<span class="st">'Complaint Type'</span>].unique())</span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the complaint types</span></span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"there are </span><span class="sc">{</span>bk_complaint_types<span class="sc">}</span><span class="ss"> complaint types in Brooklyn."</span>)</span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Group by complaint type and count the number of occurrences</span></span>
+<span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a>bk_complaint_counts <span class="op">=</span> bk_data.groupby(<span class="st">'Complaint Type'</span>).size().reset_index(name<span class="op">=</span><span class="st">'counts'</span>)</span>
+<span id="cb33-9"><a href="#cb33-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-10"><a href="#cb33-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Sort the counts in descending order</span></span>
+<span id="cb33-11"><a href="#cb33-11" aria-hidden="true" tabindex="-1"></a>bk_complaint_counts <span class="op">=</span> bk_complaint_counts.sort_values(<span class="st">'counts'</span>, ascending<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb33-12"><a href="#cb33-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-13"><a href="#cb33-13" aria-hidden="true" tabindex="-1"></a>bk_data[<span class="st">'Complaint Type'</span>].value_counts()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>there are 20 complaint types in Brooklyn.</code></pre>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="23">
+<pre><code>Complaint Type
+Blocked Driveway             36445
+Illegal Parking              33532
+Noise - Street/Sidewalk      13982
+Noise - Commercial           13855
+Derelict Vehicle              6257
+Noise - Vehicle               5965
+Animal Abuse                  3191
+Noise - Park                  1575
+Traffic                       1258
+Homeless Encampment            948
+Vending                        575
+Noise - House of Worship       389
+Drinking                       291
+Urinating in Public            155
+Bike/Roller/Skate Chronic      124
+Disorderly Youth                79
+Illegal Fireworks               61
+Graffiti                        60
+Posting Advertisement           58
+Panhandling                     49
+Name: count, dtype: int64</code></pre>
+</div>
+</div>
+<div id="73de9607" class="cell" data-tags="[]" data-execution_count="24">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot the bar graph</span></span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>plt.bar(bk_complaint_counts[<span class="st">'Complaint Type'</span>], bk_complaint_counts[<span class="st">'counts'</span>], color<span class="op">=</span><span class="st">'blue'</span>)</span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>plt.xticks(rotation<span class="op">=</span><span class="dv">90</span>)</span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Complaint Type'</span>)</span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Counts'</span>)</span>
+<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Types of Complaints in Brooklyn'</span>)</span>
+<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/cell-25-output-1.png" width="612" height="608" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="f5c1adde" class="cell" data-tags="[]" data-execution_count="25">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create a scatter plot of the concentration of complaints across Brooklyn</span></span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>bk_data.plot.scatter(x<span class="op">=</span><span class="st">'Longitude'</span>, y<span class="op">=</span><span class="st">'Latitude'</span>, s<span class="op">=</span><span class="fl">0.1</span>, alpha<span class="op">=</span><span class="fl">0.5</span>, figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">8</span>))</span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Longitude'</span>)</span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Latitude'</span>)</span>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Scatter Plot of Complaints Concentration in Brooklyn'</span>)</span>
+<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a><span class="co"># create a hexbin plot of the concentration of complaints across Brooklyn</span></span>
+<span id="cb37-8"><a href="#cb37-8" aria-hidden="true" tabindex="-1"></a>bk_data.plot.hexbin(x<span class="op">=</span><span class="st">'Longitude'</span>, y<span class="op">=</span><span class="st">'Latitude'</span>, gridsize<span class="op">=</span><span class="dv">30</span>, cmap<span class="op">=</span><span class="st">'Blues'</span>, figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">8</span>))</span>
+<span id="cb37-9"><a href="#cb37-9" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Longitude'</span>)</span>
+<span id="cb37-10"><a href="#cb37-10" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Latitude'</span>)</span>
+<span id="cb37-11"><a href="#cb37-11" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Hexbin Plot of Complaints Concentration in Brooklyn'</span>)</span>
+<span id="cb37-12"><a href="#cb37-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-13"><a href="#cb37-13" aria-hidden="true" tabindex="-1"></a><span class="co"># show the plots</span></span>
+<span id="cb37-14"><a href="#cb37-14" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/cell-26-output-1.png" width="847" height="676" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/cell-26-output-2.png" width="792" height="676" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>This code groups the data by both city and complaint type, counts the number of occurrences for each combination, and then prints the resulting output, which shows the various types of complaints in each city.</p>
+<div id="5228076c" class="cell" data-tags="[]" data-execution_count="26">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Group by city and complaint type and count the number of occurrences</span></span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>complaints_by_city <span class="op">=</span> df.groupby([<span class="st">'City'</span>, <span class="st">'Complaint Type'</span>]).size().reset_index(name<span class="op">=</span><span class="st">'counts'</span>)</span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the various types of complaints in each city</span></span>
+<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a>complaints_by_city</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="26">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">City</th>
+<th data-quarto-table-cell-role="th">Complaint Type</th>
+<th data-quarto-table-cell-role="th">counts</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>ARVERNE</td>
+<td>Animal Abuse</td>
+<td>46</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>ARVERNE</td>
+<td>Blocked Driveway</td>
+<td>50</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>ARVERNE</td>
+<td>Derelict Vehicle</td>
+<td>32</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>ARVERNE</td>
+<td>Disorderly Youth</td>
+<td>2</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>ARVERNE</td>
+<td>Drinking</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">787</td>
+<td>Woodside</td>
+<td>Blocked Driveway</td>
+<td>27</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">788</td>
+<td>Woodside</td>
+<td>Derelict Vehicle</td>
+<td>8</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">789</td>
+<td>Woodside</td>
+<td>Illegal Parking</td>
+<td>124</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">790</td>
+<td>Woodside</td>
+<td>Noise - Commercial</td>
+<td>2</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">791</td>
+<td>Woodside</td>
+<td>Noise - Street/Sidewalk</td>
+<td>5</td>
+</tr>
+</tbody>
+</table>
+
+<p>792 rows × 3 columns</p>
+</div>
+</div>
+</div>
+<p>This code uses the <code>pd.pivot_table()</code> function to pivot the data in the original DataFrame df. The resulting DataFrame, <code>df_new</code>, has complaint types as rows, cities as columns, and the count of occurrences as the values. The fill_value=0 parameter fills any missing values with zeros. The resulting output shows the new DataFrame with cities as columns and complaint types in rows.</p>
+<div id="92fd93ce" class="cell" data-tags="[]" data-execution_count="27">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Pivot the data to create a new DataFrame</span></span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>df_new <span class="op">=</span> pd.pivot_table(df, index<span class="op">=</span><span class="st">'Complaint Type'</span>, columns<span class="op">=</span><span class="st">'City'</span>, aggfunc<span class="op">=</span><span class="bu">len</span>, fill_value<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the new DataFrame</span></span>
+<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a>df_new.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="27">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th colspan="10" data-quarto-table-cell-role="th" data-halign="left">Address Type</th>
+<th data-quarto-table-cell-role="th">...</th>
+<th colspan="10" data-quarto-table-cell-role="th" data-halign="left">request_closing_time_sec</th>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">City</th>
+<th data-quarto-table-cell-role="th">ARVERNE</th>
+<th data-quarto-table-cell-role="th">ASTORIA</th>
+<th data-quarto-table-cell-role="th">Astoria</th>
+<th data-quarto-table-cell-role="th">BAYSIDE</th>
+<th data-quarto-table-cell-role="th">BELLEROSE</th>
+<th data-quarto-table-cell-role="th">BREEZY POINT</th>
+<th data-quarto-table-cell-role="th">BRONX</th>
+<th data-quarto-table-cell-role="th">BROOKLYN</th>
+<th data-quarto-table-cell-role="th">CAMBRIA HEIGHTS</th>
+<th data-quarto-table-cell-role="th">CENTRAL PARK</th>
+<th data-quarto-table-cell-role="th">...</th>
+<th data-quarto-table-cell-role="th">SOUTH OZONE PARK</th>
+<th data-quarto-table-cell-role="th">SOUTH RICHMOND HILL</th>
+<th data-quarto-table-cell-role="th">SPRINGFIELD GARDENS</th>
+<th data-quarto-table-cell-role="th">STATEN ISLAND</th>
+<th data-quarto-table-cell-role="th">SUNNYSIDE</th>
+<th data-quarto-table-cell-role="th">Unknown City</th>
+<th data-quarto-table-cell-role="th">WHITESTONE</th>
+<th data-quarto-table-cell-role="th">WOODHAVEN</th>
+<th data-quarto-table-cell-role="th">WOODSIDE</th>
+<th data-quarto-table-cell-role="th">Woodside</th>
+</tr>
+<tr class="header">
+<th data-quarto-table-cell-role="th">Complaint Type</th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Agency Issues</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>...</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>8</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Animal Abuse</td>
+<td>46</td>
+<td>170</td>
+<td>0</td>
+<td>53</td>
+<td>15</td>
+<td>2</td>
+<td>1971</td>
+<td>3191</td>
+<td>15</td>
+<td>0</td>
+<td>...</td>
+<td>74</td>
+<td>40</td>
+<td>42</td>
+<td>786</td>
+<td>40</td>
+<td>1</td>
+<td>43</td>
+<td>57</td>
+<td>111</td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Animal in a Park</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>...</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Bike/Roller/Skate Chronic</td>
+<td>0</td>
+<td>16</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>22</td>
+<td>124</td>
+<td>0</td>
+<td>0</td>
+<td>...</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>10</td>
+<td>2</td>
+<td>2</td>
+<td>4</td>
+<td>2</td>
+<td>5</td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Blocked Driveway</td>
+<td>50</td>
+<td>3436</td>
+<td>159</td>
+<td>514</td>
+<td>138</td>
+<td>3</td>
+<td>17062</td>
+<td>36445</td>
+<td>177</td>
+<td>0</td>
+<td>...</td>
+<td>1202</td>
+<td>1946</td>
+<td>330</td>
+<td>2845</td>
+<td>278</td>
+<td>86</td>
+<td>279</td>
+<td>1363</td>
+<td>2038</td>
+<td>27</td>
+</tr>
+</tbody>
+</table>
+
+<p>5 rows × 2808 columns</p>
+</div>
+</div>
+</div>
+<div id="611b9e08" class="cell" data-tags="[]" data-execution_count="28">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Pivot table to get counts of complaint types for each city</span></span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>complaints_by_city <span class="op">=</span> pd.pivot_table(data<span class="op">=</span>df, index<span class="op">=</span><span class="st">'Complaint Type'</span>, columns<span class="op">=</span><span class="st">'City'</span>, aggfunc<span class="op">=</span><span class="st">'size'</span>, fill_value<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a>complaints_by_city.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="28">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">City</th>
+<th data-quarto-table-cell-role="th">ARVERNE</th>
+<th data-quarto-table-cell-role="th">ASTORIA</th>
+<th data-quarto-table-cell-role="th">Astoria</th>
+<th data-quarto-table-cell-role="th">BAYSIDE</th>
+<th data-quarto-table-cell-role="th">BELLEROSE</th>
+<th data-quarto-table-cell-role="th">BREEZY POINT</th>
+<th data-quarto-table-cell-role="th">BRONX</th>
+<th data-quarto-table-cell-role="th">BROOKLYN</th>
+<th data-quarto-table-cell-role="th">CAMBRIA HEIGHTS</th>
+<th data-quarto-table-cell-role="th">CENTRAL PARK</th>
+<th data-quarto-table-cell-role="th">...</th>
+<th data-quarto-table-cell-role="th">SOUTH OZONE PARK</th>
+<th data-quarto-table-cell-role="th">SOUTH RICHMOND HILL</th>
+<th data-quarto-table-cell-role="th">SPRINGFIELD GARDENS</th>
+<th data-quarto-table-cell-role="th">STATEN ISLAND</th>
+<th data-quarto-table-cell-role="th">SUNNYSIDE</th>
+<th data-quarto-table-cell-role="th">Unknown City</th>
+<th data-quarto-table-cell-role="th">WHITESTONE</th>
+<th data-quarto-table-cell-role="th">WOODHAVEN</th>
+<th data-quarto-table-cell-role="th">WOODSIDE</th>
+<th data-quarto-table-cell-role="th">Woodside</th>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">Complaint Type</th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Agency Issues</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>...</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>8</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Animal Abuse</td>
+<td>46</td>
+<td>170</td>
+<td>0</td>
+<td>53</td>
+<td>15</td>
+<td>2</td>
+<td>1971</td>
+<td>3191</td>
+<td>15</td>
+<td>0</td>
+<td>...</td>
+<td>74</td>
+<td>40</td>
+<td>42</td>
+<td>786</td>
+<td>40</td>
+<td>1</td>
+<td>43</td>
+<td>57</td>
+<td>111</td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Animal in a Park</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>...</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Bike/Roller/Skate Chronic</td>
+<td>0</td>
+<td>16</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>22</td>
+<td>124</td>
+<td>0</td>
+<td>0</td>
+<td>...</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>10</td>
+<td>2</td>
+<td>2</td>
+<td>4</td>
+<td>2</td>
+<td>5</td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Blocked Driveway</td>
+<td>50</td>
+<td>3436</td>
+<td>159</td>
+<td>514</td>
+<td>138</td>
+<td>3</td>
+<td>17062</td>
+<td>36445</td>
+<td>177</td>
+<td>0</td>
+<td>...</td>
+<td>1202</td>
+<td>1946</td>
+<td>330</td>
+<td>2845</td>
+<td>278</td>
+<td>86</td>
+<td>279</td>
+<td>1363</td>
+<td>2038</td>
+<td>27</td>
+</tr>
+</tbody>
+</table>
+
+<p>5 rows × 54 columns</p>
+</div>
+</div>
+</div>
+<div id="c5f0acba" class="cell" data-jupyter="{&quot;source_hidden&quot;:true}" data-tags="[]" data-execution_count="29">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot the pivot table as a bar chart</span></span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>sns.set_style(<span class="st">"whitegrid"</span>)</span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">20</span>,<span class="dv">10</span>))</span>
+<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a>sns.barplot(data<span class="op">=</span>complaints_by_city, palette<span class="op">=</span><span class="st">'Set3'</span>)</span>
+<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a>plt.xticks(rotation<span class="op">=</span><span class="dv">90</span>, fontsize<span class="op">=</span><span class="dv">12</span>)</span>
+<span id="cb41-6"><a href="#cb41-6" aria-hidden="true" tabindex="-1"></a>plt.yticks(fontsize<span class="op">=</span><span class="dv">12</span>)</span>
+<span id="cb41-7"><a href="#cb41-7" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'City'</span>, fontsize<span class="op">=</span><span class="dv">16</span>)</span>
+<span id="cb41-8"><a href="#cb41-8" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Complaint Type Count'</span>, fontsize<span class="op">=</span><span class="dv">16</span>)</span>
+<span id="cb41-9"><a href="#cb41-9" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Complaint Types in Each City'</span>, fontsize<span class="op">=</span><span class="dv">20</span>)</span>
+<span id="cb41-10"><a href="#cb41-10" aria-hidden="true" tabindex="-1"></a>plt.legend(loc<span class="op">=</span><span class="st">'upper right'</span>, fontsize<span class="op">=</span><span class="dv">14</span>)</span>
+<span id="cb41-11"><a href="#cb41-11" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/cell-30-output-1.png" width="1584" height="1013" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="statistical-analysis-of-request_closing_time" class="level2">
+<h2 class="anchored" data-anchor-id="statistical-analysis-of-request_closing_time">Statistical Analysis of <code>Request_Closing_Time</code></h2>
+<div id="ae6cadbe" class="cell" data-tags="[]" data-execution_count="30">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculating the response time in hrs and min.</span></span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'request_closing_time_hrs'</span>] <span class="op">=</span> df[<span class="st">'Closed Date'</span>].values <span class="op">-</span> df[<span class="st">'Created Date'</span>].values</span>
+<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'request_closing_time_min'</span>] <span class="op">=</span> df[<span class="st">'request_closing_time_hrs'</span>]<span class="op">/</span>np.timedelta64(<span class="dv">1</span>,<span class="st">'m'</span>)</span>
+<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-6"><a href="#cb42-6" aria-hidden="true" tabindex="-1"></a>df.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="30">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Unique Key</th>
+<th data-quarto-table-cell-role="th">Created Date</th>
+<th data-quarto-table-cell-role="th">Closed Date</th>
+<th data-quarto-table-cell-role="th">Agency</th>
+<th data-quarto-table-cell-role="th">Agency Name</th>
+<th data-quarto-table-cell-role="th">Complaint Type</th>
+<th data-quarto-table-cell-role="th">Descriptor</th>
+<th data-quarto-table-cell-role="th">Location Type</th>
+<th data-quarto-table-cell-role="th">Incident Zip</th>
+<th data-quarto-table-cell-role="th">Incident Address</th>
+<th data-quarto-table-cell-role="th">...</th>
+<th data-quarto-table-cell-role="th">Bridge Highway Segment</th>
+<th data-quarto-table-cell-role="th">Garage Lot Name</th>
+<th data-quarto-table-cell-role="th">Ferry Direction</th>
+<th data-quarto-table-cell-role="th">Ferry Terminal Name</th>
+<th data-quarto-table-cell-role="th">Latitude</th>
+<th data-quarto-table-cell-role="th">Longitude</th>
+<th data-quarto-table-cell-role="th">Location</th>
+<th data-quarto-table-cell-role="th">request_closing_time_sec</th>
+<th data-quarto-table-cell-role="th">request_closing_time_hrs</th>
+<th data-quarto-table-cell-role="th">request_closing_time_min</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>32310363</td>
+<td>2015-12-31 23:59:45</td>
+<td>2016-01-01 00:55:15</td>
+<td>NYPD</td>
+<td>New York City Police Department</td>
+<td>Noise - Street/Sidewalk</td>
+<td>Loud Music/Party</td>
+<td>Street/Sidewalk</td>
+<td>10034.0</td>
+<td>71 VERMILYEA AVENUE</td>
+<td>...</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>40.865682</td>
+<td>-73.923501</td>
+<td>(40.86568153633767, -73.92350095571744)</td>
+<td>3330.0</td>
+<td>0 days 00:55:30</td>
+<td>55.500000</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>32309934</td>
+<td>2015-12-31 23:59:44</td>
+<td>2016-01-01 01:26:57</td>
+<td>NYPD</td>
+<td>New York City Police Department</td>
+<td>Blocked Driveway</td>
+<td>No Access</td>
+<td>Street/Sidewalk</td>
+<td>11105.0</td>
+<td>27-07 23 AVENUE</td>
+<td>...</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>40.775945</td>
+<td>-73.915094</td>
+<td>(40.775945312321085, -73.91509393898605)</td>
+<td>5233.0</td>
+<td>0 days 01:27:13</td>
+<td>87.216667</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>32309159</td>
+<td>2015-12-31 23:59:29</td>
+<td>2016-01-01 04:51:03</td>
+<td>NYPD</td>
+<td>New York City Police Department</td>
+<td>Blocked Driveway</td>
+<td>No Access</td>
+<td>Street/Sidewalk</td>
+<td>10458.0</td>
+<td>2897 VALENTINE AVENUE</td>
+<td>...</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>40.870325</td>
+<td>-73.888525</td>
+<td>(40.870324522111424, -73.88852464418646)</td>
+<td>17494.0</td>
+<td>0 days 04:51:34</td>
+<td>291.566667</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>32305098</td>
+<td>2015-12-31 23:57:46</td>
+<td>2016-01-01 07:43:13</td>
+<td>NYPD</td>
+<td>New York City Police Department</td>
+<td>Illegal Parking</td>
+<td>Commercial Overnight Parking</td>
+<td>Street/Sidewalk</td>
+<td>10461.0</td>
+<td>2940 BAISLEY AVENUE</td>
+<td>...</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>40.835994</td>
+<td>-73.828379</td>
+<td>(40.83599404683083, -73.82837939584206)</td>
+<td>27927.0</td>
+<td>0 days 07:45:27</td>
+<td>465.450000</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>32306529</td>
+<td>2015-12-31 23:56:58</td>
+<td>2016-01-01 03:24:42</td>
+<td>NYPD</td>
+<td>New York City Police Department</td>
+<td>Illegal Parking</td>
+<td>Blocked Sidewalk</td>
+<td>Street/Sidewalk</td>
+<td>11373.0</td>
+<td>87-14 57 ROAD</td>
+<td>...</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>40.733060</td>
+<td>-73.874170</td>
+<td>(40.733059618956815, -73.87416975810375)</td>
+<td>12464.0</td>
+<td>0 days 03:27:44</td>
+<td>207.733333</td>
+</tr>
+</tbody>
+</table>
+
+<p>5 rows × 56 columns</p>
+</div>
+</div>
+</div>
+<div id="cca7e10a" class="cell" data-tags="[]" data-execution_count="31">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>,<span class="dv">5</span>))</span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>sns.barplot(x<span class="op">=</span><span class="st">'Borough'</span>,y<span class="op">=</span><span class="st">'request_closing_time_min'</span>,data<span class="op">=</span>df)</span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Cities with avg. complaint resolved time"</span>, fontsize<span class="op">=</span><span class="dv">20</span>)</span>
+<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Borough"</span>)</span>
+<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Avg. complaints resolved time(min)"</span>, labelpad<span class="op">=</span><span class="dv">30</span>)</span>
+<span id="cb43-6"><a href="#cb43-6" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/cell-32-output-1.png" width="853" height="460" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="bb23e86d" class="cell" data-execution_count="32">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the average closing time by city</span></span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>avg_closing_time_per_city <span class="op">=</span> df.groupby(<span class="st">'City'</span>)[<span class="st">'request_closing_time_min'</span>].mean().sort_values()</span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a>avg_closing_time_per_city</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="32">
+<pre><code>City
+ARVERNE                137.840605
+ROCKAWAY PARK          139.602908
+LITTLE NECK            155.031437
+OAKLAND GARDENS        156.240167
+BAYSIDE                160.062978
+FAR ROCKAWAY           161.193068
+NEW YORK               175.343723
+FLUSHING               177.446478
+FOREST HILLS           184.097636
+WHITESTONE             187.976467
+CORONA                 188.984584
+COLLEGE POINT          190.393782
+JACKSON HEIGHTS        190.885368
+ELMHURST               194.108392
+FRESH MEADOWS          200.741045
+REGO PARK              202.462138
+BREEZY POINT           205.197849
+EAST ELMHURST          206.801481
+CENTRAL PARK           206.921364
+STATEN ISLAND          228.038305
+BROOKLYN               236.607935
+Howard Beach           241.750000
+Astoria                242.452302
+Long Island City       245.388922
+ASTORIA                265.236501
+RIDGEWOOD              268.285547
+SAINT ALBANS           271.040767
+East Elmhurst          273.630556
+Woodside               281.455622
+KEW GARDENS            283.319775
+JAMAICA                305.346459
+SOUTH OZONE PARK       308.283046
+SOUTH RICHMOND HILL    318.020470
+WOODHAVEN              321.714469
+RICHMOND HILL          321.749064
+MIDDLE VILLAGE         323.290492
+OZONE PARK             328.309146
+MASPETH                328.997706
+HOLLIS                 332.061427
+HOWARD BEACH           346.959615
+BRONX                  353.116425
+LONG ISLAND CITY       367.326726
+SUNNYSIDE              380.744297
+WOODSIDE               389.758733
+NEW HYDE PARK          423.396512
+GLEN OAKS              501.653463
+SPRINGFIELD GARDENS    510.113239
+CAMBRIA HEIGHTS        542.883117
+Unknown City           556.662562
+ROSEDALE               569.194745
+BELLEROSE              576.173614
+QUEENS VILLAGE         593.920472
+FLORAL PARK            609.812160
+QUEENS                 717.171171
+Name: request_closing_time_min, dtype: float64</code></pre>
+</div>
+</div>
+<div id="2e402024" class="cell" data-tags="[]" data-execution_count="33">
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create the horizontal bar chart</span></span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">15</span>))</span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>ax.barh(avg_closing_time_per_city.index, avg_closing_time_per_city.values, color<span class="op">=</span><span class="st">'teal'</span>)</span>
+<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-5"><a href="#cb46-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Set the title and axis labels</span></span>
+<span id="cb46-6"><a href="#cb46-6" aria-hidden="true" tabindex="-1"></a>ax.set_title(<span class="st">'Average Request Closing Time by City'</span>)</span>
+<span id="cb46-7"><a href="#cb46-7" aria-hidden="true" tabindex="-1"></a><span class="co">#ax.set_xlabel('Time Delta (seconds)')</span></span>
+<span id="cb46-8"><a href="#cb46-8" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="st">'Average Request Closing Time (minutes)'</span>)</span>
+<span id="cb46-9"><a href="#cb46-9" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">'City'</span>)</span>
+<span id="cb46-10"><a href="#cb46-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-11"><a href="#cb46-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Invert the y-axis to show the cities with the highest closing times at the top</span></span>
+<span id="cb46-12"><a href="#cb46-12" aria-hidden="true" tabindex="-1"></a>ax.invert_yaxis()</span>
+<span id="cb46-13"><a href="#cb46-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-14"><a href="#cb46-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Display the plot</span></span>
+<span id="cb46-15"><a href="#cb46-15" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/cell-34-output-1.png" width="952" height="1193" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Let’s see the avg. response time across different types of complaints. We will also compare them across each borough.</p>
+<div id="3d50f9ba" class="cell" data-tags="[]" data-execution_count="34">
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the average closing time by complaint type</span></span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>avg_closing_time_per_complaint <span class="op">=</span> df.groupby(<span class="st">'Complaint Type'</span>)[<span class="st">'request_closing_time_min'</span>].mean().sort_values()</span>
+<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a>avg_closing_time_per_complaint</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="34">
+<pre><code>Complaint Type
+Posting Advertisement          121.437604
+Illegal Fireworks              168.558043
+Noise - Commercial             184.762676
+Noise - House of Worship       189.851451
+Noise - Park                   203.767592
+Noise - Street/Sidewalk        203.854924
+Traffic                        205.152002
+Disorderly Youth               206.062487
+Noise - Vehicle                209.363334
+Urinating in Public            215.988222
+Bike/Roller/Skate Chronic      218.728140
+Drinking                       230.355009
+Vending                        239.437973
+Squeegee                       242.670833
+Homeless Encampment            257.523075
+Illegal Parking                260.840595
+Panhandling                    264.225846
+Blocked Driveway               270.542025
+Animal Abuse                   300.542601
+Agency Issues                  304.818750
+Graffiti                       387.939066
+Derelict Vehicle               422.660002
+Animal in a Park             20210.566667
+Name: request_closing_time_min, dtype: float64</code></pre>
+</div>
+</div>
+<div id="36946708" class="cell" data-tags="[]" data-execution_count="35">
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create the horizontal bar chart</span></span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">15</span>))</span>
+<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a>ax.barh(avg_closing_time_per_complaint.index, avg_closing_time_per_complaint.values, color<span class="op">=</span><span class="st">'orange'</span>)</span>
+<span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-5"><a href="#cb49-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Set the title and axis labels</span></span>
+<span id="cb49-6"><a href="#cb49-6" aria-hidden="true" tabindex="-1"></a>ax.set_title(<span class="st">'Average Request Closing Time by Complaint'</span>)</span>
+<span id="cb49-7"><a href="#cb49-7" aria-hidden="true" tabindex="-1"></a><span class="co">#ax.set_xlabel('Time Delta (seconds)')</span></span>
+<span id="cb49-8"><a href="#cb49-8" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="st">'Average Request Closing Time (minutes)'</span>)</span>
+<span id="cb49-9"><a href="#cb49-9" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">'Complaint Type'</span>)</span>
+<span id="cb49-10"><a href="#cb49-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-11"><a href="#cb49-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Invert the y-axis to show the cities with the highest closing times at the top</span></span>
+<span id="cb49-12"><a href="#cb49-12" aria-hidden="true" tabindex="-1"></a>ax.invert_yaxis()</span>
+<span id="cb49-13"><a href="#cb49-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-14"><a href="#cb49-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Display the plot</span></span>
+<span id="cb49-15"><a href="#cb49-15" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/cell-36-output-1.png" width="961" height="1193" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Here you can see that the <code>Animal in a Park</code> takes almost approximately 2 weeks to resolve. Other complaint types are more frequent where <code>Posting Advertisement</code> took the fewest amount of time and <code>Derelict Vehicle</code> is responded slower than others.</p>
+<div id="4f9c1efc" class="cell" data-tags="[]" data-execution_count="36">
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a list of boroughs</span></span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>boroughs <span class="op">=</span> [<span class="st">'BRONX'</span>, <span class="st">'BROOKLYN'</span>, <span class="st">'MANHATTAN'</span>, <span class="st">'QUEENS'</span>, <span class="st">'STATEN ISLAND'</span>, <span class="st">'Unspecified'</span>]</span>
+<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-4"><a href="#cb50-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a figure with 5 subplots</span></span>
+<span id="cb50-5"><a href="#cb50-5" aria-hidden="true" tabindex="-1"></a>fig, axs <span class="op">=</span> plt.subplots(nrows<span class="op">=</span><span class="dv">2</span>, ncols<span class="op">=</span><span class="dv">3</span>, figsize<span class="op">=</span>(<span class="dv">16</span>, <span class="dv">10</span>))</span>
+<span id="cb50-6"><a href="#cb50-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-7"><a href="#cb50-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Set the title of the figure</span></span>
+<span id="cb50-8"><a href="#cb50-8" aria-hidden="true" tabindex="-1"></a>fig.suptitle(<span class="st">'Average Response Time for Complaint Types by Borough'</span>, fontsize<span class="op">=</span><span class="dv">16</span>)</span>
+<span id="cb50-9"><a href="#cb50-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-10"><a href="#cb50-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Loop through each borough and create a subplot</span></span>
+<span id="cb50-11"><a href="#cb50-11" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i, borough <span class="kw">in</span> <span class="bu">enumerate</span>(boroughs):</span>
+<span id="cb50-12"><a href="#cb50-12" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Calculate the average response time for each complaint type in the current borough</span></span>
+<span id="cb50-13"><a href="#cb50-13" aria-hidden="true" tabindex="-1"></a>    borough_df <span class="op">=</span> df[df[<span class="st">'Borough'</span>] <span class="op">==</span> borough].groupby(<span class="st">'Complaint Type'</span>)[<span class="st">'request_closing_time_min'</span>].mean().sort_values(ascending<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb50-14"><a href="#cb50-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-15"><a href="#cb50-15" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Create a subplot for the current borough</span></span>
+<span id="cb50-16"><a href="#cb50-16" aria-hidden="true" tabindex="-1"></a>    ax <span class="op">=</span> axs[i<span class="op">//</span><span class="dv">3</span>, i<span class="op">%</span><span class="dv">3</span>]</span>
+<span id="cb50-17"><a href="#cb50-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-18"><a href="#cb50-18" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Set the title and x/y axis labels for the subplot</span></span>
+<span id="cb50-19"><a href="#cb50-19" aria-hidden="true" tabindex="-1"></a>    ax.set_title(borough)</span>
+<span id="cb50-20"><a href="#cb50-20" aria-hidden="true" tabindex="-1"></a>    ax.set_xlabel(<span class="st">'Average Response Time (in minutes)'</span>)</span>
+<span id="cb50-21"><a href="#cb50-21" aria-hidden="true" tabindex="-1"></a>    ax.set_ylabel(<span class="st">'Complaint Type'</span>)</span>
+<span id="cb50-22"><a href="#cb50-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-23"><a href="#cb50-23" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Create a horizontal bar chart for the average response time for each complaint type in the current borough</span></span>
+<span id="cb50-24"><a href="#cb50-24" aria-hidden="true" tabindex="-1"></a>    ax.barh(borough_df.index, borough_df.values, color<span class="op">=</span><span class="st">'cornflowerblue'</span>)</span>
+<span id="cb50-25"><a href="#cb50-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-26"><a href="#cb50-26" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Set the x-axis limits</span></span>
+<span id="cb50-27"><a href="#cb50-27" aria-hidden="true" tabindex="-1"></a>    ax.set_xlim(<span class="dv">0</span>, <span class="dv">3000</span>)</span>
+<span id="cb50-28"><a href="#cb50-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-29"><a href="#cb50-29" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Set the y-axis tick labels to be left-aligned</span></span>
+<span id="cb50-30"><a href="#cb50-30" aria-hidden="true" tabindex="-1"></a>    ax.tick_params(axis<span class="op">=</span><span class="st">'y'</span>, which<span class="op">=</span><span class="st">'major'</span>, pad<span class="op">=</span><span class="dv">10</span>, left<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb50-31"><a href="#cb50-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-32"><a href="#cb50-32" aria-hidden="true" tabindex="-1"></a><span class="co"># Adjust the spacing between the subplots</span></span>
+<span id="cb50-33"><a href="#cb50-33" aria-hidden="true" tabindex="-1"></a>plt.subplots_adjust(left<span class="op">=</span><span class="fl">0.1</span>, bottom<span class="op">=</span><span class="fl">0.1</span>, right<span class="op">=</span><span class="fl">0.9</span>, top<span class="op">=</span><span class="fl">0.85</span>, wspace<span class="op">=</span><span class="fl">0.4</span>, hspace<span class="op">=</span><span class="fl">0.5</span>)</span>
+<span id="cb50-34"><a href="#cb50-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-35"><a href="#cb50-35" aria-hidden="true" tabindex="-1"></a><span class="co"># Display the plot</span></span>
+<span id="cb50-36"><a href="#cb50-36" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/cell-37-output-1.png" width="1471" height="907" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<section id="hypothesis-testing" class="level3">
+<h3 class="anchored" data-anchor-id="hypothesis-testing">Hypothesis Testing</h3>
+<div id="11625208" class="cell" data-tags="[]" data-execution_count="37">
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">12</span>,<span class="dv">8</span>)) <span class="co"># set the size of the plot</span></span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a>bxp <span class="op">=</span> sns.boxplot(x<span class="op">=</span><span class="st">"Complaint Type"</span>, y<span class="op">=</span><span class="st">"request_closing_time_min"</span>, data<span class="op">=</span>df)</span>
+<span id="cb51-4"><a href="#cb51-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-5"><a href="#cb51-5" aria-hidden="true" tabindex="-1"></a>plt.xticks(rotation<span class="op">=</span><span class="dv">90</span>) <span class="co"># rotate x-axis labels for readability</span></span>
+<span id="cb51-6"><a href="#cb51-6" aria-hidden="true" tabindex="-1"></a>plt.ylim((<span class="dv">0</span>,<span class="dv">2000</span>))</span>
+<span id="cb51-7"><a href="#cb51-7" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Request Closing Time vs. Complaint Type'</span>) <span class="co"># add title</span></span>
+<span id="cb51-8"><a href="#cb51-8" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Complaint Type'</span>) <span class="co"># add x-axis label</span></span>
+<span id="cb51-9"><a href="#cb51-9" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Request Closing Time (in min)'</span>) <span class="co"># add y-axis label</span></span>
+<span id="cb51-10"><a href="#cb51-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-11"><a href="#cb51-11" aria-hidden="true" tabindex="-1"></a>plt.show() <span class="co"># show the plot</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/cell-38-output-1.png" width="976" height="830" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Let’s identify the relationship between Complaint Type and Request_Closing_Time using p-values.</p>
+<div id="70747a27" class="cell" data-tags="[]" data-execution_count="38">
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> scipy.stats <span class="im">as</span> stats</span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Subset the data to only include relevant columns</span></span>
+<span id="cb52-4"><a href="#cb52-4" aria-hidden="true" tabindex="-1"></a>df_subset <span class="op">=</span> df[[<span class="st">'Complaint Type'</span>, <span class="st">'request_closing_time_min'</span>]]</span>
+<span id="cb52-5"><a href="#cb52-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-6"><a href="#cb52-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Drop rows with missing values</span></span>
+<span id="cb52-7"><a href="#cb52-7" aria-hidden="true" tabindex="-1"></a>df_subset.dropna(inplace<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb52-8"><a href="#cb52-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-9"><a href="#cb52-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a dictionary to store the p-values for each Complaint Type</span></span>
+<span id="cb52-10"><a href="#cb52-10" aria-hidden="true" tabindex="-1"></a>p_values <span class="op">=</span> {}</span>
+<span id="cb52-11"><a href="#cb52-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-12"><a href="#cb52-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Loop through each Complaint Type and perform a t-test</span></span>
+<span id="cb52-13"><a href="#cb52-13" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> complaint_type <span class="kw">in</span> df_subset[<span class="st">'Complaint Type'</span>].unique():</span>
+<span id="cb52-14"><a href="#cb52-14" aria-hidden="true" tabindex="-1"></a>    subset_data <span class="op">=</span> df_subset[df_subset[<span class="st">'Complaint Type'</span>] <span class="op">==</span> complaint_type]</span>
+<span id="cb52-15"><a href="#cb52-15" aria-hidden="true" tabindex="-1"></a>    _, p_value <span class="op">=</span> stats.ttest_ind(subset_data[<span class="st">'request_closing_time_min'</span>], df_subset[<span class="st">'request_closing_time_min'</span>], equal_var<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb52-16"><a href="#cb52-16" aria-hidden="true" tabindex="-1"></a>    p_values[complaint_type] <span class="op">=</span> p_value</span>
+<span id="cb52-17"><a href="#cb52-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-18"><a href="#cb52-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the p-values for each Complaint Type</span></span>
+<span id="cb52-19"><a href="#cb52-19" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> complaint_type, p_value <span class="kw">in</span> p_values.items():</span>
+<span id="cb52-20"><a href="#cb52-20" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>complaint_type<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>p_value<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Noise - Street/Sidewalk: 1.0418660815085685e-213
+Blocked Driveway: 4.0197589683838275e-60
+Illegal Parking: 1.5138895255889238e-12
+Derelict Vehicle: 0.0
+Noise - Commercial: 0.0
+Noise - House of Worship: 1.936694912503301e-14
+Posting Advertisement: 5.705156559333243e-84
+Noise - Vehicle: 2.5199177802871664e-98
+Animal Abuse: 5.499498875777252e-26
+Vending: 0.004485741820533039
+Traffic: 9.456336836510554e-30
+Drinking: 0.008276021427926881
+Bike/Roller/Skate Chronic: 0.0036117827071264017
+Panhandling: 0.6839990056391407
+Noise - Park: 3.112919243953218e-36
+Homeless Encampment: 0.21728278181990512
+Urinating in Public: 0.002482188862579256
+Graffiti: 0.00036920602249336374
+Disorderly Youth: 0.0002219206596024413
+Illegal Fireworks: 1.0221564314184692e-06
+Agency Issues: 0.521792708186724
+Squeegee: 0.9199000703670601
+Animal in a Park: nan</code></pre>
+</div>
+</div>
+<p>we create a contingency table using <code>pd.crosstab()</code> to count the number of complaints for each complaint type and city. Then, we use <code>chi2_contingency()</code> from the <code>scipy.stats</code> library to perform the chi-square test on the contingency table. Finally, we print the results including the chi-square value, p-value, degrees of freedom, and expected values.</p>
+<p>The null hypothesis for the chi-square test is that there is no association between the two variables (in this case, Complaint Type and City), while the alternative hypothesis is that there is some association. If the p-value is less than our chosen significance level (e.g., 0.05), we reject the null hypothesis and conclude that there is evidence of a significant association between the variables.</p>
+<div id="b6890a68" class="cell" data-tags="[]" data-execution_count="39">
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Import required libraries</span></span>
+<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.stats <span class="im">import</span> chi2_contingency</span>
+<span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-4"><a href="#cb54-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a contingency table</span></span>
+<span id="cb54-5"><a href="#cb54-5" aria-hidden="true" tabindex="-1"></a>cont_table <span class="op">=</span> pd.crosstab(df[<span class="st">'Complaint Type'</span>], df[<span class="st">'City'</span>])</span>
+<span id="cb54-6"><a href="#cb54-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-7"><a href="#cb54-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Perform the chi-square test</span></span>
+<span id="cb54-8"><a href="#cb54-8" aria-hidden="true" tabindex="-1"></a>chi2, pval, dof, expected <span class="op">=</span> chi2_contingency(cont_table)</span>
+<span id="cb54-9"><a href="#cb54-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-10"><a href="#cb54-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Set significance level</span></span>
+<span id="cb54-11"><a href="#cb54-11" aria-hidden="true" tabindex="-1"></a>alpha <span class="op">=</span> <span class="fl">0.05</span></span>
+<span id="cb54-12"><a href="#cb54-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-13"><a href="#cb54-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Print results</span></span>
+<span id="cb54-14"><a href="#cb54-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Chi-square value: </span><span class="sc">{</span>chi2<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb54-15"><a href="#cb54-15" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"P-value: </span><span class="sc">{</span>pval<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb54-16"><a href="#cb54-16" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Degrees of freedom: </span><span class="sc">{</span>dof<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb54-17"><a href="#cb54-17" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Expected frequencies:"</span>)</span>
+<span id="cb54-18"><a href="#cb54-18" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(expected)</span>
+<span id="cb54-19"><a href="#cb54-19" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">"</span>)</span>
+<span id="cb54-20"><a href="#cb54-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-21"><a href="#cb54-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Check if p-value is less than alpha</span></span>
+<span id="cb54-22"><a href="#cb54-22" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> p_value <span class="op">&lt;</span> alpha:</span>
+<span id="cb54-23"><a href="#cb54-23" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"There is a significant difference between the two groups."</span>)</span>
+<span id="cb54-24"><a href="#cb54-24" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
+<span id="cb54-25"><a href="#cb54-25" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"There is no significant difference between the two groups."</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Chi-square value: 145971.80461890675
+P-value: 0.0
+Degrees of freedom: 1166
+Expected frequencies:
+[[5.72095964e-03 1.76510380e-01 1.99902258e-02 ... 6.85189838e-02
+  9.62402361e-02 3.66671545e-03]
+ [7.53021313e+00 2.32331788e+02 2.63121347e+01 ... 9.01881124e+01
+  1.26676211e+02 4.82631421e+00]
+ [7.15119955e-04 2.20637975e-02 2.49877822e-03 ... 8.56487298e-03
+  1.20300295e-02 4.58339431e-04]
+ ...
+ [3.71576329e+00 1.14643492e+02 1.29836516e+01 ... 4.45030800e+01
+  6.25080334e+01 2.38153168e+00]
+ [4.58391891e-01 1.41428942e+01 1.60171684e+00 ... 5.49008358e+00
+  7.71124892e+00 2.93795575e-01]
+ [2.99277701e+00 9.23369927e+01 1.04573869e+01 ... 3.58439934e+01
+  5.03456735e+01 1.91815052e+00]]
+
+
+There is no significant difference between the two groups.</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="kruskal-wallis-h-test---one-way-anova" class="level2">
+<h2 class="anchored" data-anchor-id="kruskal-wallis-h-test---one-way-anova">Kruskal-Wallis H Test - One-way ANOVA</h2>
+<p>The Kruskal-Wallis H Test is a non-parametric test, meaning that it makes no assumptions about the distribution of the data. However, it does assume that the samples are independent and that the variances of the populations are equal.</p>
+<p><span class="math display">\[
+H_0: \text{There is no significant difference in the mean of Request\_Closing\_Time across Complaint types}
+\]</span></p>
+<p><span class="math display">\[
+H_1: \text{There is a significant difference in the mean of Request\_Closing\_Time across Complaint types}
+\]</span></p>
+<div id="f65be8f6" class="cell" data-tags="[]" data-execution_count="40">
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.stats <span class="im">import</span> kruskal</span>
+<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a>anova_df <span class="op">=</span> df[[<span class="st">'Complaint Type'</span>, <span class="st">'request_closing_time_min'</span>]]</span>
+<span id="cb56-4"><a href="#cb56-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-5"><a href="#cb56-5" aria-hidden="true" tabindex="-1"></a>anova_df <span class="op">=</span> anova_df.dropna()</span>
+<span id="cb56-6"><a href="#cb56-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-7"><a href="#cb56-7" aria-hidden="true" tabindex="-1"></a>anova_df.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="40">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Complaint Type</th>
+<th data-quarto-table-cell-role="th">request_closing_time_min</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>Noise - Street/Sidewalk</td>
+<td>55.500000</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>Blocked Driveway</td>
+<td>87.216667</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>Blocked Driveway</td>
+<td>291.566667</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>Illegal Parking</td>
+<td>465.450000</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>Illegal Parking</td>
+<td>207.733333</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<div id="3ee6ba9d" class="cell" data-tags="[]" data-execution_count="41">
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a dictionary to store the data for each complaint type</span></span>
+<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a>complaint_types <span class="op">=</span> df[<span class="st">'Complaint Type'</span>].unique()</span>
+<span id="cb57-3"><a href="#cb57-3" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> {complaint_type: df.loc[df[<span class="st">'Complaint Type'</span>] <span class="op">==</span> complaint_type, <span class="st">'request_closing_time_min'</span>] <span class="cf">for</span> complaint_type <span class="kw">in</span> complaint_types}</span>
+<span id="cb57-4"><a href="#cb57-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-5"><a href="#cb57-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Perform the Kruskal-Wallis H Test</span></span>
+<span id="cb57-6"><a href="#cb57-6" aria-hidden="true" tabindex="-1"></a>stat, p <span class="op">=</span> kruskal(<span class="op">*</span>data.values())</span>
+<span id="cb57-7"><a href="#cb57-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-8"><a href="#cb57-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the results</span></span>
+<span id="cb57-9"><a href="#cb57-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Kruskal-Wallis H Test Results:"</span>)</span>
+<span id="cb57-10"><a href="#cb57-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Statistic: </span><span class="sc">{</span>stat<span class="sc">:.4f}</span><span class="ss">"</span>)</span>
+<span id="cb57-11"><a href="#cb57-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"P-value: </span><span class="sc">{</span>p<span class="sc">:.4f}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Kruskal-Wallis H Test Results:
+Statistic: 11988.2694
+P-value: 0.0000</code></pre>
+</div>
+</div>
+<p>Since the p value for the Complaint is less than 0.01, we accept alternate hypothesis testing (i.e.&nbsp;there’s a significant difference in the mean response time of different types of complaints)</p>
+</section>
+<section id="observations-and-outcomes" class="level2">
+<h2 class="anchored" data-anchor-id="observations-and-outcomes">Observations and Outcomes</h2>
+<p>Here are some of the major conclusions that can be drawn from the 311 Customer Service NYC dataset:</p>
+<ol type="1">
+<li><p><strong>The most common complaint types</strong> across all boroughs are related to street parking conditions and noise.</p></li>
+<li><p><strong>Brooklyn has the highest number of complaints</strong> compared to other boroughs, while <strong>Queens takes the longest to resolve complaints</strong>.</p></li>
+<li><p><strong>The average response time varies</strong> depending on the complaint type and borough, with some types and boroughs experiencing longer response times than others.</p></li>
+<li><p><strong>The scatter and hexbin plots for Brooklyn</strong> illustrate the relationships between different complaint types and how they are clustered together.</p></li>
+<li><p><strong>The box plot shows significant variation</strong> in response times across different complaint types.</p></li>
+<li><p><strong>Hypothesis testing</strong> using the Kruskal-Wallis H Test and one-way ANOVA suggests that there are <strong>statistically significant differences in response times</strong> among different complaint types.</p></li>
+<li><p><strong>The p-value and chi-squared test</strong> suggest that there is a <strong>significant association between certain complaint types and boroughs</strong>.</p></li>
+<li><p>Overall, the <strong>analysis of the 311 customer service dataset provides valuable insights</strong> into common complaints and response times across boroughs, which can help inform decisions on <strong>resource allocation and policy changes</strong>.</p></li>
+</ol>
+
+
+</section>
+</section>
+
+<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+          // target, if specified
+          link.setAttribute("target", "_blank");
+          if (link.getAttribute("rel") === null) {
+            link.setAttribute("rel", "noopener");
+          }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>© 2025 Chaance T. Graves | Made with <a href="https://quarto.org">Quarto</a></p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/ctg123/quarto-example-site/blob/main/projects/customer-service-analysis/index.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/ctg123/quarto-example-site/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="nav-footer-right">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item">
+    <a class="nav-link" href="../../license.html">
+<p>License</p>
+</a>
+  </li>  
+</ul>
+    </div>
+  </div>
+</footer>
+
+
+
+
+<script src="../../site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>

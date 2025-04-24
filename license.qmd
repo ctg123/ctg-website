@@ -2,7 +2,7 @@
 title: "CC BY-NC-SA 4.0 license"
 ---
 
-&#169; 2024 Chaance T. Graves.
+&#169; 2025 Chaance T. Graves.
 
 My content is released under the [CC BY NC ND 4.0 license](https://creativecommons.org/licenses/by-nc-sa/4.0/).
 

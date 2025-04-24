@@ -2,13 +2,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.6.42">
+<meta name="generator" content="quarto-1.6.37">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Chaance Graves">
 <meta name="dcterms.date" content="2021-10-07">
-<meta name="description" content="Personal Project integrating custom app deployment on AWS and Kubernetes">
+<meta name="description" content="Personal project integrating a custom Python API endpoint deployed on AWS and Kubernetes.">
 
 <title>Optimizing a Flask API microservice with Kubernetes – Chaance T. Graves</title>
 <style>
@@ -72,12 +72,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-17c909d5fd25ae21b861c0c7a49b2096.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-17c909d5fd25ae21b861c0c7a49b2096.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-325f3ff2f131f9421fc6e27256f8a6fd.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-325f3ff2f131f9421fc6e27256f8a6fd.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-dd21803b97a1d27df921d45c79425bd7.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/bootstrap/bootstrap-dark-97a8ef588699ba17f47810686df7db77.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-69be4a782a4394c175109f4bcae8848c.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-e5501386b19f07ed7e69765dad1752ff.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/quarto-contrib/fontawesome6-1.2.0/all.min.css" rel="stylesheet">
+<link href="../../site_libs/quarto-contrib/fontawesome6-1.2.0/latex-fontsize.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -172,7 +174,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Contents</h2>
    
   <ul>
-  <li><a href="#background-of-the-problem-statement" id="toc-background-of-the-problem-statement" class="nav-link active" data-scroll-target="#background-of-the-problem-statement">Background of the problem statement:</a></li>
+  <li><a href="#project-description" id="toc-project-description" class="nav-link active" data-scroll-target="#project-description">Project Description:</a></li>
   <li><a href="#create-ansible-host-virtual-machine" id="toc-create-ansible-host-virtual-machine" class="nav-link" data-scroll-target="#create-ansible-host-virtual-machine">Create Ansible host Virtual Machine</a></li>
   <li><a href="#install-the-pre-requisites-from-the-ansible-kops-repository" id="toc-install-the-pre-requisites-from-the-ansible-kops-repository" class="nav-link" data-scroll-target="#install-the-pre-requisites-from-the-ansible-kops-repository">Install the pre-requisites from the Ansible-KOPS repository</a>
   <ul class="collapse">
@@ -209,11 +211,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
 <h1 class="title">Optimizing a Flask API microservice with Kubernetes</h1>
-</div>
+  <div class="quarto-categories">
+    <div class="quarto-category">ansible</div>
+    <div class="quarto-category">kubernetes</div>
+    <div class="quarto-category">AWS</div>
+    <div class="quarto-category">docker</div>
+  </div>
+  </div>
 
 <div>
   <div class="description">
-    Personal Project integrating custom app deployment on AWS and Kubernetes
+    Personal project integrating a custom Python API endpoint deployed on AWS and Kubernetes.
   </div>
 </div>
 
@@ -248,11 +256,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="background-of-the-problem-statement" class="level2">
-<h2 class="anchored" data-anchor-id="background-of-the-problem-statement">Background of the problem statement:</h2>
-<p>A popular payment application, EasyPay where users add money to their wallet accounts, faces an issue in its payment success rate. The timeout that occurs with the connectivity of the database has been the reason for the issue.</p>
+<p><span class="listing-btn-group"> <a href="https://github.com/ctg123/ansible-kops" class="btn" role="button"><i class="fa-brands fa-github" aria-label="github"></i> Code</a> </span></p>
+<section id="project-description" class="level2">
+<h2 class="anchored" data-anchor-id="project-description">Project Description:</h2>
+<p>This project is based on the scenario where users add money to their wallet accounts via an app, but faces an issue in its payment success rate. The timeout that occurs with the connectivity of the database has been the reason for the issue.</p>
 <p>While troubleshooting, it is found that the database server has several downtime instances at irregular intervals. This situation compels the company to create its own infrastructure that runs in high-availability mode.</p>
-<p>Given that online shopping experiences continue to evolve as per customer expectations, the developers are driven to make their app more reliable, fast, and secure for improving the performance of the current system.</p>
+<p>Given that online shopping experiences continue to evolve as per customer expectations, we’ll need to build infrastructe that can make the app more reliable, fast, and secure for improving the performance of the current system implementation.</p>
 </section>
 <section id="create-ansible-host-virtual-machine" class="level2">
 <h2 class="anchored" data-anchor-id="create-ansible-host-virtual-machine">Create Ansible host Virtual Machine</h2>

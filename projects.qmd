@@ -15,3 +15,5 @@ listing:
   categories: true
   #sort: "date desc"
 ---
+
+In-depth studies of my technical work and experiments, which are all open source.

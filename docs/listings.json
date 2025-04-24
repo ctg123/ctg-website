@@ -11,9 +11,9 @@
   {
     "listing": "/projects.html",
     "items": [
-      "/projects/project1/index.html",
+      "/projects/boat-classifier/index.html",
+      "/projects/customer-service-analysis/index.html",
       "/projects/ansible-kops/index.html",
-      "/projects/project2/index.html",
       "/projects/wordpress-with-lamp-stack/index.html"
     ]
   }

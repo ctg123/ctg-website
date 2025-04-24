@@ -1,0 +1,622 @@
+---
+title: NYC 311 Customer Service Requests Analysis
+description: Data analysis of service request calls from public dataset.
+author: Chaance Graves
+date: "2023-05-09" #  May 9, 2023
+categories: [applied data science, visualization]
+#image: "boat_thumbnail.jpg"
+jupyter: python3
+
+format: 
+  html:
+    toc: true
+    toc-title: Contents
+    toc-location: right
+    code-fold: false
+---
+
+<a href="https://colab.research.google.com/github/ctg123/ml-projects/blob/main/customer-service-analysis/customer_service_analysis.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a>
+
+# Customer Service Requests Analysis
+
+## Problem Statement
+
+Analyze the data on service request (311) call from New York City. Utilize Data Wrangling techniques to understand the patterns in the data and visualize the major type of complaints.
+
+## Import the libraries for analysis
+
+```{python}
+#| tags: []
+import numpy as np
+import pandas as pd
+import seaborn as sns
+
+import matplotlib.pyplot as plt
+%matplotlib inline
+
+from ydata_profiling import ProfileReport
+
+import warnings
+warnings.filterwarnings('ignore')
+```
+
+## Understanding the dataset
+
+```{python}
+#| tags: []
+# checking the info about the installed pandas package version
+print(pd.show_versions())
+```
+
+```{python}
+#| tags: []
+# Setting the constants to use throughout the notebook
+DATA_PATH = "data/"
+DATASETS_PATH = "datasets/"
+```
+
+```{python}
+#| tags: []
+df = pd.read_csv(DATASETS_PATH + "311_Service_Requests_from_2010_to_Present.csv")
+```
+
+```{python}
+#| tags: []
+df.head()
+```
+
+```{python}
+#| tags: []
+# Let's get the info about the dataset, shape of the dimensions
+df.info()
+print("\n")
+print( f"The shape of the dataset is {df.shape}")
+print("\n")
+```
+
+```{python}
+#| tags: []
+# Let's check if any null values exists
+null_counts = df.isnull().sum()
+print(null_counts)
+```
+
+**Observations:**
+
+There are null values present in the `df` dataframe for the following variables:
+
+1. Closed Date
+2. Descriptor
+3. Location Type
+etc...
+
+## Exploratory Data Analysis (EDA)
+
+we use `plt.style.use('ggplot')` to set the ggplot style for Matplotlib. We then use the same code as before to count the null values and create the bar chart, and set the chart title and axis labels using `plt.title()`, `plt.xlabel()`, and `plt.ylabel()`.
+
+```{python}
+plt.style.use('ggplot')
+
+# Create bar chart of null value counts
+null_counts.plot.barh(figsize=(15,10), stacked=True)
+
+# Set chart title and axis labels
+plt.title('Null Value Counts')
+plt.xlabel('Columns', labelpad=10)
+plt.ylabel('Count')
+
+# Show chart
+plt.show()
+```
+
+```{python}
+#| tags: []
+# Remove null values from "Closed Date" column
+df.dropna(subset=["Closed Date"], inplace=True)
+
+# Show sample of dataset with null values removed
+df.head()
+```
+
+```{python}
+#| tags: []
+# Check if null values are still present in "Closed Date" column
+if df['Closed Date'].isnull().any():
+    print('Null values still present in "Closed Date" column.')
+else:
+    print('No null values present in "Closed Date" column.')
+```
+
+```{python}
+#| tags: []
+# Convert the "Closed Date" and "Created Date" columns to datetime format
+df["Created Date"] = pd.to_datetime(df["Created Date"], format="%m/%d/%Y %I:%M:%S %p")
+df["Closed Date"] = pd.to_datetime(df["Closed Date"], format="%m/%d/%Y %I:%M:%S %p")
+df.info()
+```
+
+```{python}
+#| tags: []
+# Create a new column called "Time Delta" and calculate the time delta between "Closed Date" and "Created Date"
+df["request_closing_time_sec"] = (df["Closed Date"] - df["Created Date"]).dt.total_seconds()
+
+# View descriptive statistics of the "Time Delta" column
+df["request_closing_time_sec"].describe()
+```
+
+## Finding the major type of complaints
+
+```{python}
+#| tags: []
+# Check the number of null values in the "Complaint_Type" and "City" columns using f-strings
+print(f'Number of null values in "Complaint_Type" column: {df["Complaint Type"].isnull().sum()}')
+print(f'Number of null values in "City" column: {df["City"].isnull().sum()}')
+```
+
+```{python}
+#| tags: []
+# fill in missing values (nan) in the 'City' column with 'Unknown City'
+df['City'].fillna('Unknown City', inplace=True)
+
+# Get Unique Count using Series.unique()
+city_count = df.City.unique().size
+
+# Let's check what all unique values are in the 'City' column
+city_col = df['City'].unique()
+
+print(f"There are {city_count} values in the dataset that contain the following info: \n {city_col}")
+```
+
+```{python}
+#| tags: []
+total_city_complaints = df.groupby(['City','Complaint Type']).size().unstack().fillna(0)
+
+total_city_complaints.head()
+```
+
+```{python}
+#| tags: []
+total_city_complaints.plot.bar(figsize=(15,10), stacked=True)
+
+# set the axis labels and title
+plt.xlabel('Number of Complaints')
+plt.ylabel('City')
+plt.title('Frequency of Complaints by City')
+
+# show the plot
+plt.show()
+```
+
+## Data Visualization of the major type of complaints
+
+In order to find the major type of complaints in the dataset, the following code groups the dataset by complaint type, counts the number of occurrences for each type, and then sorts the counts in descending order. The resulting bar graph shows the counts for each complaint type.
+
+```{python}
+# Group by complaint type and count the number of occurrences
+complaint_counts = df.groupby('Complaint Type').size().reset_index(name='counts')
+
+# Sort the counts in descending order
+complaint_counts = complaint_counts.sort_values('counts', ascending=False)
+
+complaint_counts
+```
+
+```{python}
+#| tags: []
+# Plot the bar graph
+plt.bar(complaint_counts['Complaint Type'], complaint_counts['counts'])
+plt.xticks(rotation=90)
+plt.xlabel('Complaint Type')
+plt.ylabel('Counts')
+plt.title('Types of Complaints in the Total Dataset')
+plt.show()
+```
+
+From our bar chart analysis, the top 10 major complaint types are the following:
+
+1. `Blocked Driveway`
+2. `Illegal Parking`
+3. `Noisy Street/Sidewalk`
+4. `Noise - Commerical buildings`
+5. `Derelict Vehicle`
+6. `Noise - Vehicle`
+7. `Animal Abuse`
+8. `Traffic`
+9. `Homeless Encampment`
+10. `Vending`
+
+Let's explore the complaint data specifically for NYC ...
+
+This code filters the dataset to only include complaints from New York City, groups the remaining data by complaint type, counts the number of occurrences for each type, and then sorts the counts in descending order. The resulting output shows the frequency of each complaint type for New York City.
+
+```{python}
+#| tags: []
+nyc_data = df.loc[df['City'] == 'NEW YORK']
+nyc_data.head()
+```
+
+```{python}
+#| tags: []
+# Extract and count the unique values in the "Complaint Type" column
+nyc_complaint_types = len(nyc_data['Complaint Type'].unique())
+
+# Print the complaint types
+print(f"there are {nyc_complaint_types} complaint types in New York City.")
+
+# Group by complaint type and count the number of occurrences
+nyc_complaint_counts = nyc_data.groupby('Complaint Type').size().reset_index(name='counts')
+
+# Sort the counts in descending order
+nyc_complaint_counts = nyc_complaint_counts.sort_values('counts', ascending=False)
+
+nyc_data['Complaint Type'].value_counts()
+```
+
+```{python}
+#| tags: []
+# Plot the bar graph
+plt.bar(nyc_complaint_counts['Complaint Type'], nyc_complaint_counts['counts'], color='green')
+plt.xticks(rotation=90)
+plt.xlabel('Complaint Type')
+plt.ylabel('Counts')
+plt.title('Types of Complaints in New York City')
+plt.show()
+```
+
+Let's explore the complaint data specifically for Brooklyn ...
+
+This code filters the dataset to only include complaints from Brooklyn, groups the remaining data by complaint type, counts the number of occurrences for each type, and then sorts the counts in descending order. The resulting output shows the frequency of each complaint type for Brooklyn.
+
+```{python}
+#| tags: []
+bk_data = df.loc[df['City'] == 'BROOKLYN']
+bk_data.head()
+```
+
+```{python}
+#| tags: []
+# Extract and count the unique values in the "Complaint Type" column
+bk_complaint_types = len(bk_data['Complaint Type'].unique())
+
+# Print the complaint types
+print(f"there are {bk_complaint_types} complaint types in Brooklyn.")
+
+# Group by complaint type and count the number of occurrences
+bk_complaint_counts = bk_data.groupby('Complaint Type').size().reset_index(name='counts')
+
+# Sort the counts in descending order
+bk_complaint_counts = bk_complaint_counts.sort_values('counts', ascending=False)
+
+bk_data['Complaint Type'].value_counts()
+```
+
+```{python}
+#| tags: []
+# Plot the bar graph
+plt.bar(bk_complaint_counts['Complaint Type'], bk_complaint_counts['counts'], color='blue')
+plt.xticks(rotation=90)
+plt.xlabel('Complaint Type')
+plt.ylabel('Counts')
+plt.title('Types of Complaints in Brooklyn')
+plt.show()
+```
+
+```{python}
+#| tags: []
+# create a scatter plot of the concentration of complaints across Brooklyn
+bk_data.plot.scatter(x='Longitude', y='Latitude', s=0.1, alpha=0.5, figsize=(10, 8))
+plt.xlabel('Longitude')
+plt.ylabel('Latitude')
+plt.title('Scatter Plot of Complaints Concentration in Brooklyn')
+
+# create a hexbin plot of the concentration of complaints across Brooklyn
+bk_data.plot.hexbin(x='Longitude', y='Latitude', gridsize=30, cmap='Blues', figsize=(10, 8))
+plt.xlabel('Longitude')
+plt.ylabel('Latitude')
+plt.title('Hexbin Plot of Complaints Concentration in Brooklyn')
+
+# show the plots
+plt.show()
+```
+
+This code groups the data by both city and complaint type, counts the number of occurrences for each combination, and then prints the resulting output, which shows the various types of complaints in each city.
+
+```{python}
+#| tags: []
+# Group by city and complaint type and count the number of occurrences
+complaints_by_city = df.groupby(['City', 'Complaint Type']).size().reset_index(name='counts')
+
+# Print the various types of complaints in each city
+complaints_by_city
+```
+
+This code uses the `pd.pivot_table()` function to pivot the data in the original DataFrame df. The resulting DataFrame, `df_new`, has complaint types as rows, cities as columns, and the count of occurrences as the values. The fill_value=0 parameter fills any missing values with zeros. The resulting output shows the new DataFrame with cities as columns and complaint types in rows.
+
+```{python}
+#| tags: []
+# Pivot the data to create a new DataFrame
+df_new = pd.pivot_table(df, index='Complaint Type', columns='City', aggfunc=len, fill_value=0)
+
+# Print the new DataFrame
+df_new.head()
+```
+
+```{python}
+#| tags: []
+# Pivot table to get counts of complaint types for each city
+complaints_by_city = pd.pivot_table(data=df, index='Complaint Type', columns='City', aggfunc='size', fill_value=0)
+
+complaints_by_city.head()
+```
+
+```{python}
+#| jupyter: {source_hidden: true}
+#| tags: []
+# Plot the pivot table as a bar chart
+sns.set_style("whitegrid")
+plt.figure(figsize=(20,10))
+sns.barplot(data=complaints_by_city, palette='Set3')
+plt.xticks(rotation=90, fontsize=12)
+plt.yticks(fontsize=12)
+plt.xlabel('City', fontsize=16)
+plt.ylabel('Complaint Type Count', fontsize=16)
+plt.title('Complaint Types in Each City', fontsize=20)
+plt.legend(loc='upper right', fontsize=14)
+plt.show()
+```
+
+## Statistical Analysis of `Request_Closing_Time`
+
+```{python}
+#| tags: []
+# Calculating the response time in hrs and min.
+
+df['request_closing_time_hrs'] = df['Closed Date'].values - df['Created Date'].values
+df['request_closing_time_min'] = df['request_closing_time_hrs']/np.timedelta64(1,'m')
+
+df.head()
+```
+
+```{python}
+#| tags: []
+plt.figure(figsize=(10,5))
+sns.barplot(x='Borough',y='request_closing_time_min',data=df)
+plt.title("Cities with avg. complaint resolved time", fontsize=20)
+plt.xlabel("Borough")
+plt.ylabel("Avg. complaints resolved time(min)", labelpad=30)
+plt.show()
+```
+
+```{python}
+# Calculate the average closing time by city
+avg_closing_time_per_city = df.groupby('City')['request_closing_time_min'].mean().sort_values()
+
+avg_closing_time_per_city
+```
+
+```{python}
+#| tags: []
+# Create the horizontal bar chart
+fig, ax = plt.subplots(figsize=(10, 15))
+ax.barh(avg_closing_time_per_city.index, avg_closing_time_per_city.values, color='teal')
+
+# Set the title and axis labels
+ax.set_title('Average Request Closing Time by City')
+#ax.set_xlabel('Time Delta (seconds)')
+ax.set_xlabel('Average Request Closing Time (minutes)')
+ax.set_ylabel('City')
+
+# Invert the y-axis to show the cities with the highest closing times at the top
+ax.invert_yaxis()
+
+# Display the plot
+plt.show()
+```
+
+Let's see the avg. response time across different types of complaints. We will also compare them across each borough.
+
+```{python}
+#| tags: []
+# Calculate the average closing time by complaint type
+avg_closing_time_per_complaint = df.groupby('Complaint Type')['request_closing_time_min'].mean().sort_values()
+
+avg_closing_time_per_complaint
+```
+
+```{python}
+#| tags: []
+# Create the horizontal bar chart
+fig, ax = plt.subplots(figsize=(10, 15))
+ax.barh(avg_closing_time_per_complaint.index, avg_closing_time_per_complaint.values, color='orange')
+
+# Set the title and axis labels
+ax.set_title('Average Request Closing Time by Complaint')
+#ax.set_xlabel('Time Delta (seconds)')
+ax.set_xlabel('Average Request Closing Time (minutes)')
+ax.set_ylabel('Complaint Type')
+
+# Invert the y-axis to show the cities with the highest closing times at the top
+ax.invert_yaxis()
+
+# Display the plot
+plt.show()
+```
+
+Here you can see that the `Animal in a Park` takes almost approximately 2 weeks to resolve. Other complaint types are more frequent where `Posting Advertisement` took the fewest amount of time and `Derelict Vehicle` is responded slower than others.
+
+```{python}
+#| tags: []
+# Create a list of boroughs
+boroughs = ['BRONX', 'BROOKLYN', 'MANHATTAN', 'QUEENS', 'STATEN ISLAND', 'Unspecified']
+
+# Create a figure with 5 subplots
+fig, axs = plt.subplots(nrows=2, ncols=3, figsize=(16, 10))
+
+# Set the title of the figure
+fig.suptitle('Average Response Time for Complaint Types by Borough', fontsize=16)
+
+# Loop through each borough and create a subplot
+for i, borough in enumerate(boroughs):
+    # Calculate the average response time for each complaint type in the current borough
+    borough_df = df[df['Borough'] == borough].groupby('Complaint Type')['request_closing_time_min'].mean().sort_values(ascending=False)
+
+    # Create a subplot for the current borough
+    ax = axs[i//3, i%3]
+
+    # Set the title and x/y axis labels for the subplot
+    ax.set_title(borough)
+    ax.set_xlabel('Average Response Time (in minutes)')
+    ax.set_ylabel('Complaint Type')
+
+    # Create a horizontal bar chart for the average response time for each complaint type in the current borough
+    ax.barh(borough_df.index, borough_df.values, color='cornflowerblue')
+
+    # Set the x-axis limits
+    ax.set_xlim(0, 3000)
+
+    # Set the y-axis tick labels to be left-aligned
+    ax.tick_params(axis='y', which='major', pad=10, left=True)
+
+# Adjust the spacing between the subplots
+plt.subplots_adjust(left=0.1, bottom=0.1, right=0.9, top=0.85, wspace=0.4, hspace=0.5)
+
+# Display the plot
+plt.show()
+```
+
+### Hypothesis Testing
+
+```{python}
+#| tags: []
+plt.figure(figsize=(12,8)) # set the size of the plot
+
+bxp = sns.boxplot(x="Complaint Type", y="request_closing_time_min", data=df)
+
+plt.xticks(rotation=90) # rotate x-axis labels for readability
+plt.ylim((0,2000))
+plt.title('Request Closing Time vs. Complaint Type') # add title
+plt.xlabel('Complaint Type') # add x-axis label
+plt.ylabel('Request Closing Time (in min)') # add y-axis label
+
+plt.show() # show the plot
+```
+
+Let's identify the relationship between Complaint Type and Request_Closing_Time using p-values.
+
+```{python}
+#| tags: []
+import scipy.stats as stats
+
+# Subset the data to only include relevant columns
+df_subset = df[['Complaint Type', 'request_closing_time_min']]
+
+# Drop rows with missing values
+df_subset.dropna(inplace=True)
+
+# Create a dictionary to store the p-values for each Complaint Type
+p_values = {}
+
+# Loop through each Complaint Type and perform a t-test
+for complaint_type in df_subset['Complaint Type'].unique():
+    subset_data = df_subset[df_subset['Complaint Type'] == complaint_type]
+    _, p_value = stats.ttest_ind(subset_data['request_closing_time_min'], df_subset['request_closing_time_min'], equal_var=False)
+    p_values[complaint_type] = p_value
+
+# Print the p-values for each Complaint Type
+for complaint_type, p_value in p_values.items():
+    print(f"{complaint_type}: {p_value}")
+```
+
+we create a contingency table using `pd.crosstab()` to count the number of complaints for each complaint type and city. Then, we use `chi2_contingency()` from the `scipy.stats` library to perform the chi-square test on the contingency table. Finally, we print the results including the chi-square value, p-value, degrees of freedom, and expected values.
+
+The null hypothesis for the chi-square test is that there is no association between the two variables (in this case, Complaint Type and City), while the alternative hypothesis is that there is some association. If the p-value is less than our chosen significance level (e.g., 0.05), we reject the null hypothesis and conclude that there is evidence of a significant association between the variables.
+
+```{python}
+#| tags: []
+# Import required libraries
+from scipy.stats import chi2_contingency
+
+# Create a contingency table
+cont_table = pd.crosstab(df['Complaint Type'], df['City'])
+
+# Perform the chi-square test
+chi2, pval, dof, expected = chi2_contingency(cont_table)
+
+# Set significance level
+alpha = 0.05
+
+# Print results
+print(f"Chi-square value: {chi2}")
+print(f"P-value: {pval}")
+print(f"Degrees of freedom: {dof}")
+print("Expected frequencies:")
+print(expected)
+print("\n")
+
+# Check if p-value is less than alpha
+if p_value < alpha:
+    print("There is a significant difference between the two groups.")
+else:
+    print("There is no significant difference between the two groups.")
+```
+
+## Kruskal-Wallis H Test - One-way ANOVA
+
+The Kruskal-Wallis H Test is a non-parametric test, meaning that it makes no assumptions about the distribution of the data. However, it does assume that the samples are independent and that the variances of the populations are equal.
+
+$$
+H_0: \text{There is no significant difference in the mean of Request\_Closing\_Time across Complaint types}
+$$
+
+$$
+H_1: \text{There is a significant difference in the mean of Request\_Closing\_Time across Complaint types}
+$$
+
+```{python}
+#| tags: []
+from scipy.stats import kruskal
+
+anova_df = df[['Complaint Type', 'request_closing_time_min']]
+
+anova_df = anova_df.dropna()
+
+anova_df.head()
+```
+
+```{python}
+#| tags: []
+# Create a dictionary to store the data for each complaint type
+complaint_types = df['Complaint Type'].unique()
+data = {complaint_type: df.loc[df['Complaint Type'] == complaint_type, 'request_closing_time_min'] for complaint_type in complaint_types}
+
+# Perform the Kruskal-Wallis H Test
+stat, p = kruskal(*data.values())
+
+# Print the results
+print(f"Kruskal-Wallis H Test Results:")
+print(f"Statistic: {stat:.4f}")
+print(f"P-value: {p:.4f}")
+```
+
+Since the p value for the Complaint is less than 0.01, we accept alternate hypothesis testing (i.e. there's a significant difference in the mean response time of different types of complaints)
+
+## Observations and Outcomes
+
+Here are some of the major conclusions that can be drawn from the 311 Customer Service NYC dataset:
+
+1. **The most common complaint types** across all boroughs are related to street parking conditions and noise.
+
+2. **Brooklyn has the highest number of complaints** compared to other boroughs, while **Queens takes the longest to resolve complaints**.
+
+3. **The average response time varies** depending on the complaint type and borough, with some types and boroughs experiencing longer response times than others.
+
+4. **The scatter and hexbin plots for Brooklyn** illustrate the relationships between different complaint types and how they are clustered together.
+
+5. **The box plot shows significant variation** in response times across different complaint types.
+
+6. **Hypothesis testing** using the Kruskal-Wallis H Test and one-way ANOVA suggests that there are **statistically significant differences in response times** among different complaint types.
+
+7. **The p-value and chi-squared test** suggest that there is a **significant association between certain complaint types and boroughs**.
+
+8. Overall, the **analysis of the 311 customer service dataset provides valuable insights** into common complaints and response times across boroughs, which can help inform decisions on **resource allocation and policy changes**.
+
