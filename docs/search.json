@@ -46,7 +46,7 @@
     "href": "blog.html",
     "title": "My Blog",
     "section": "",
-    "text": "Welcome to my blog! We’ll embark on an a journey of learning together. I’ll be using this space to write about what I’m learning, working on, and am curious about.\n\n\n\n\n\n\n   \n     \n     \n       Order By\n       Default\n         \n          Title\n        \n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\n\n\n\n\n\nDigital Asset Display\n\n\n\n\n\n\nresources\n\n\n\nTesting image, videos, and terminal sessions display in posts\n\n\n\n\n\nNov 29, 2024\n\n\n1 min\n\n\n\n\n\n\n\n\n\n\n\n\nProgramming Syntax Comparisons and Examples\n\n\n\n\n\n\nresources\n\n\ncode\n\n\npython\n\n\n\nPost description\n\n\n\n\n\nNov 23, 2024\n\n\n5 min\n\n\n\n\n\n\n\n\n\n\n\n\nAwesome Sites! 😎\n\n\n\n\n\n\nresources\n\n\n\nEssential Resource Collections for Developers\n\n\n\n\n\nNov 5, 2024\n\n\n3 min\n\n\n\n\n\n\n\n\n\n\n\n\nAre you getting started learning Python? 🐍\n\n\n\n\n\n\nresources\n\n\ncode\n\n\npython\n\n\n\n\n\n\n\n\n\nJan 20, 2021\n\n\n2 min\n\n\n\n\n\n\nNo matching items\n\n Back to top"
+    "text": "Welcome to my blog! We’ll embark on an a journey of learning together. I’ll be using this space to write about what I’m learning, working on, and am curious about.\n\n\n\n\n\n\n   \n    \n    \n      Order By\n      Default\n      \n        Title\n      \n      \n        Date - Oldest\n      \n      \n        Date - Newest\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\n\n\n\n\n\n\nDigital Asset Display\n\n\n\nresources\n\n\n\nTesting image, videos, and terminal sessions display in posts\n\n\n\n\n\nNov 29, 2024\n\n1 min\n\n\n\n\n\n\n\n\n\n\n\nProgramming Syntax Comparisons and Examples\n\n\n\nresources\n\ncode\n\npython\n\n\n\nPost description\n\n\n\n\n\nNov 23, 2024\n\n5 min\n\n\n\n\n\n\n\n\n\n\n\nAwesome Sites! 😎\n\n\n\nresources\n\n\n\nEssential Resource Collections for Developers\n\n\n\n\n\nNov 5, 2024\n\n3 min\n\n\n\n\n\n\n\n\n\n\n\nAre you getting started learning Python? 🐍\n\n\n\nresources\n\ncode\n\npython\n\n\n\n\n\n\n\n\n\nJan 20, 2021\n\n2 min\n\n\n\n\nNo matching items\n Back to top"
   },
   {
     "objectID": "blog/awesome/index.html",
@@ -151,7 +151,7 @@
     "href": "blog/code-example-post/index.html#notes-for-future-reference",
     "title": "Programming Syntax Comparisons and Examples",
     "section": "Notes for Future Reference",
-    "text": "Notes for Future Reference\n\nPython’s type hints are optional but helpful for documentation\nRust’s ownership system requires explicit handling of references\nJavaScript’s flexibility can be both a blessing and a curse\n\nRemember to check the official documentation for each language for best practices and more detailed explanations: - Python Docs - Rust Book - MDN JavaScript"
+    "text": "Notes for Future Reference\n\nPython’s type hints are optional but helpful for documentation\nRust’s ownership system requires explicit handling of references\nJavaScript’s flexibility can be both a blessing and a curse\n\nRemember to check the official documentation for each language for best practices and more detailed explanations: - Python Docs - Rust Book - MDN JavaScript\nThis document was rendered with Quarto 1.7.29."
   },
   {
     "objectID": "projects/project1/index.html",

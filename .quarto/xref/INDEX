@@ -79,5 +79,8 @@
   },
   "projects/face-recognition/index.qmd": {
     "index.html": "22b6b145"
+  },
+  "projects/llamaindex-tts-demo/LlamaIndex_TTS_Demo.qmd": {
+    "LlamaIndex_TTS_Demo.html": "76c042c9"
   }
 }

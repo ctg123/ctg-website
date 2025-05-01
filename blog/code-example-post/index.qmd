@@ -225,3 +225,5 @@ Remember to check the official documentation for each language for best practice
 - [Python Docs](https://docs.python.org/)
 - [Rust Book](https://doc.rust-lang.org/book/)
 - [MDN JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+
+*This document was rendered with Quarto {{< version >}}.*
