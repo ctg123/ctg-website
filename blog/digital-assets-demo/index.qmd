@@ -1,0 +1,101 @@
+---
+title: "Digital Asset Display in Quarto Blog Posts"
+description: A comprehensive guide to displaying images, videos, and terminal sessions in Quarto blog posts
+author: "Chaance Graves"
+date: "2024-11-29"
+categories: [resources, tutorial]
+image: https://res.cloudinary.com/website-assets-mgmt/image/upload/c_scale,w_500/r_15/co_rgb:FFFFFF,l_text:arial_50_bold:DEMO/fl_layer_apply,g_center/f_auto/q_auto/v1/website/blog/digital-assets-demo/mtn-demo-img
+
+format: 
+  html:
+    toc: true
+    toc-title: Contents
+    toc-location: right
+---
+
+## Introduction
+
+In this post, I'll walk you through my workflow for displaying various types of digital assets in Quarto blog posts. I use a combination of tools to create an engaging and interactive reading experience:
+
+- [Cloudinary](https://cloudinary.com) for image and video hosting
+- [asciinema](https://asciinema.org/) for terminal session recordings
+- Quarto's built-in markdown features. You can find more information [here](https://quarto.org/docs/authoring/markdown-basics.html).
+
+Let's explore each of these tools and how to implement them in your blog posts.
+
+## Image Display with Cloudinary
+
+Cloudinary is a SaaS tailored for media asset managment that I discovered works pretty well for blog images, and comes with a decent amount of resources and documentation to learn to use their platform effectively. This would include some features such as:
+
+- Automated image optimization
+- Responsive image delivery and upload API
+- CDN-powered fast loading
+- Can perform image transformations
+
+### Implementation Steps
+
+1. Sign up for a Cloudinary account
+2. Upload your images to Cloudinary using the [Cloudinary Upload API](https://cloudinary.com/documentation/upload_images#upload_images_to_cloudinary) or [SDK packages](https://cloudinary.com/documentation/cloudinary_sdks) in your preferred language of choice.
+3. Use the provided URL in your Quarto markdown
+
+Here's an example of an image hosted directly on Cloudinary:
+
+![](https://res.cloudinary.com/website-assets-mgmt/image/upload/cld-sample-2.jpg)
+
+The markdown syntax is simple:
+```markdown
+![](https://res.cloudinary.com/your-account/image/upload/your-image.jpg)
+```
+
+## Terminal Session Recording with asciinema
+
+[asciinema](https://asciinema.org/) is an excellent tool for recording and sharing terminal sessions. It creates lightweight, text-based recordings that are perfect for tutorials and documentation.
+
+### How to Use asciinema
+
+1. Install asciinema via Python: `pip install asciinema`
+2. Record a session: `asciinema rec demo.cast`
+3. Upload to asciinema.org
+4. Embed in your blog using their JavaScript player
+
+Here's an example recording:
+
+<script src="https://asciinema.org/a/pNnmBhhVbOkm6vFqVtPvgYbPl.js" id="asciicast-pNnmBhhVbOkm6vFqVtPvgYbPl" async="true"></script>
+
+The embed code is straightforward:
+```html
+<script src="https://asciinema.org/a/YOUR-CAST-ID.js" id="asciicast-YOUR-CAST-ID" async="true"></script>
+```
+
+## Video Display with Cloudinary
+
+Cloudinary also excels at video hosting and delivery. It provides:
+
+- Adaptive bitrate streaming
+- Automatic format optimization
+- Global CDN delivery
+- Thumbnail generation
+
+### Adding Videos to Your Blog
+
+1. Upload your video to Cloudinary
+2. Embed the video URL in your `.qmd\.md` post document
+3. Optionally, add a poster image for the video thumbnail
+
+Here's an example video:
+
+![Sea Turtle Example Video](https://res.cloudinary.com/website-assets-mgmt/video/upload/samples/sea-turtle.mp4)
+
+## Best Practices
+
+1. **Image Optimization**: Always compress images before uploading to Cloudinary
+2. **Responsive Design**: Use Cloudinary's responsive image features
+3. **Terminal Sessions**: Keep recordings concise and focused
+4. **Video Content**: Consider adding captions and descriptions
+5. **Performance**: Monitor your page load times and optimize accordingly
+
+## Conclusion
+
+By combining these tools, you can create rich, interactive blog posts that effectively communicate your ideas. Cloudinary handles your media assets efficiently, while asciinema provides an excellent way to share terminal sessions. Quarto's markdown support makes it all work seamlessly together.
+
+Feel free to experiment with these tools if you like and adapt them to your specific needs. Also share your experiences with other alternatives too. Happy blogging!👋🏾
