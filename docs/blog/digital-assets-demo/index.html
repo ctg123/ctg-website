@@ -6,8 +6,11 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Chaance Graves">
+<meta name="dcterms.date" content="2024-11-29">
+<meta name="description" content="A comprehensive guide to displaying images, videos, and terminal sessions in Quarto blog posts">
 
-<title>About – Chaance T. Graves</title>
+<title>Digital Asset Display in Quarto Blog Posts – Chaance T. Graves</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,29 +23,65 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<link href="./assets/img/favicon.png" rel="icon" type="image/png">
-<script src="site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-3f3f9919b3835604a26bc531ace6acdb.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-3f3f9919b3835604a26bc531ace6acdb.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-3f3f9919b3835604a26bc531ace6acdb.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-eaddee0a65acfccc305f4c629ac0aff2.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-b6683f44df27126b72e4d8db2dbf929f.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="site_libs/bootstrap/bootstrap-eaddee0a65acfccc305f4c629ac0aff2.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../assets/img/favicon.png" rel="icon" type="image/png">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-3f3f9919b3835604a26bc531ace6acdb.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-3f3f9919b3835604a26bc531ace6acdb.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-3f3f9919b3835604a26bc531ace6acdb.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-eaddee0a65acfccc305f4c629ac0aff2.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-b6683f44df27126b72e4d8db2dbf929f.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-eaddee0a65acfccc305f4c629ac0aff2.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -73,10 +112,10 @@ ul.task-list li input[type="checkbox"] {
 <style>html{ scroll-behavior: smooth; }</style>
 
 
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="../../styles.css">
 </head>
 
-<body class="nav-fixed fullcontent quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+<body class="nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
     const toggleBodyColorMode = (bsSheetEl) => {
       const mode = bsSheetEl.getAttribute("data-mode");
       const bodyEl = window.document.querySelector("body");
@@ -249,11 +288,11 @@ ul.task-list li input[type="checkbox"] {
   </script>
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Chaance T. Graves</span>
     </a>
   </div>
@@ -264,7 +303,7 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="./index.html" aria-current="page"> <i class="bi bi-house-gear-fill" role="img">
+    <a class="nav-link" href="../../index.html"> <i class="bi bi-house-gear-fill" role="img">
 </i> 
 <span class="menu-text">Home</span></a>
   </li>  
@@ -274,17 +313,17 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text">Resume</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./projects.html"> <i class="bi bi-lightning-charge" role="img">
+    <a class="nav-link" href="../../projects.html"> <i class="bi bi-lightning-charge" role="img">
 </i> 
 <span class="menu-text">Projects</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./blog.html"> <i class="bi bi-layout-text-sidebar" role="img">
+    <a class="nav-link" href="../../blog.html"> <i class="bi bi-layout-text-sidebar" role="img">
 </i> 
 <span class="menu-text">Blog</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./notes.html"> <i class="bi bi-journals" role="img">
+    <a class="nav-link" href="../../notes.html"> <i class="bi bi-journals" role="img">
 </i> 
 <span class="menu-text">Notes</span></a>
   </li>  
@@ -299,79 +338,170 @@ ul.task-list li input[type="checkbox"] {
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Digital Asset Display in Quarto Blog Posts</h1>
+                  <div>
+        <div class="description">
+          A comprehensive guide to displaying images, videos, and terminal sessions in Quarto blog posts
+        </div>
+      </div>
+                          <div class="quarto-categories">
+                <div class="quarto-category">resources</div>
+                <div class="quarto-category">tutorial</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Chaance Graves </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">November 29, 2024</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Contents</h2>
+   
+  <ul>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#image-display-with-cloudinary" id="toc-image-display-with-cloudinary" class="nav-link" data-scroll-target="#image-display-with-cloudinary">Image Display with Cloudinary</a>
+  <ul class="collapse">
+  <li><a href="#implementation-steps" id="toc-implementation-steps" class="nav-link" data-scroll-target="#implementation-steps">Implementation Steps</a></li>
+  </ul></li>
+  <li><a href="#terminal-session-recording-with-asciinema" id="toc-terminal-session-recording-with-asciinema" class="nav-link" data-scroll-target="#terminal-session-recording-with-asciinema">Terminal Session Recording with asciinema</a>
+  <ul class="collapse">
+  <li><a href="#how-to-use-asciinema" id="toc-how-to-use-asciinema" class="nav-link" data-scroll-target="#how-to-use-asciinema">How to Use asciinema</a></li>
+  </ul></li>
+  <li><a href="#video-display-with-cloudinary" id="toc-video-display-with-cloudinary" class="nav-link" data-scroll-target="#video-display-with-cloudinary">Video Display with Cloudinary</a>
+  <ul class="collapse">
+  <li><a href="#adding-videos-to-your-blog" id="toc-adding-videos-to-your-blog" class="nav-link" data-scroll-target="#adding-videos-to-your-blog">Adding Videos to Your Blog</a></li>
+  </ul></li>
+  <li><a href="#best-practices" id="toc-best-practices" class="nav-link" data-scroll-target="#best-practices">Best Practices</a></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/ctg123/quarto-example-site/blob/main/blog/digital-assets-demo/index.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/ctg123/quarto-example-site/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+    </div>
 <!-- main -->
-<div class="quarto-about-trestles page-columns page-full">
-  <div class="about-entity">
-    <img src="https://res.cloudinary.com/website-assets-mgmt/image/upload/profile_pic_transparent_-_head_jspi9i.png" class="about-image
-  round " style="height: 17em; width: 17em;">
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">Chaance T. Graves</h1>
-<p class="subtitle lead">Sr.&nbsp;Electrical Engineer | AI-Driven Solutions | Transformative Leader</p>
-</div>
-<div class="quarto-title-meta">
-  </div>
-</header>
-    <div class="about-links">
-  <a href="https://github.com/ctg123" class="about-link" rel="" target="">
-    <i class="bi bi-github"></i>
-     <span class="about-link-text">GitHub</span>
-  </a>
-  <a href="https://www.linkedin.com/in/chaancegraves" class="about-link" rel="" target="">
-    <i class="bi bi-linkedin"></i>
-     <span class="about-link-text">LinkedIn</span>
-  </a>
-  <a href="https://discord.com/users/ctgadget" class="about-link" rel="" target="">
-    <i class="bi bi-discord"></i>
-     <span class="about-link-text">Discord</span>
-  </a>
-  <a href="mailto:chaance.graves@ctginnovations.io" class="about-link" rel="" target="">
-    <i class="bi bi-send-fill"></i>
-     <span class="about-link-text">Email Me</span>
-  </a>
-</div>
-  </div>
-  <div class="about-contents page-columns page-full"><main class="content page-columns page-full" id="quarto-document-content">
+<main class="content quarto-banner-title-block" id="quarto-document-content">
 
-<section id="about-me" class="level1 column-page">
-<h1>About Me</h1>
-<p>Welcome to my website! 👋🏾</p>
-<p>I’m an Electrical Engineer specializing in hardware systems development, automation, and AI-driven solutions. In particular, I’m interested in diving deeper into Embedded Systems Engineering and Low Power Design &amp; Optimization.</p>
-<p>Beyond my professional work, I’m also passionate about <a href="https://www.reddit.com/r/selfhosted/">self-hosting</a> — the practice of running your own applications and services instead of relying on third parties. It gives me more control over my data and allows me to experiment with emerging technologies on my own terms.</p>
-<section id="what-i-do" class="level2">
-<h2 data-anchor-id="what-i-do">What I Do</h2>
-<p>I bring experience in analyzing and troubleshooting complex systems, developing automation scripts, and optimizing system performance, particularly within the context of x86 and ARM-based hardware and software. My technical experience spans:</p>
+
+
+
+
+
+<section id="introduction" class="level2">
+<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
+<p>In this post, I’ll walk you through my workflow for displaying various types of digital assets in Quarto blog posts. I use a combination of tools to create an engaging and interactive reading experience:</p>
 <ul>
-<li>OEM/ODM Product Development support for Cloud &amp; Enterprise</li>
-<li>AI Infrastructure and Operations with familarity in Networking</li>
-<li>FPGA development</li>
-<li>Embedded Systems</li>
+<li><a href="https://cloudinary.com">Cloudinary</a> for image and video hosting</li>
+<li><a href="https://asciinema.org/">asciinema</a> for terminal session recordings</li>
+<li>Quarto’s built-in markdown features. You can find more information <a href="https://quarto.org/docs/authoring/markdown-basics.html">here</a>.</li>
 </ul>
+<p>Let’s explore each of these tools and how to implement them in your blog posts.</p>
 </section>
-<section id="what-youll-find-here" class="level2">
-<h2 data-anchor-id="what-youll-find-here">What You’ll Find Here</h2>
-<p>My site here will serve as my hub where I share:</p>
+<section id="image-display-with-cloudinary" class="level2">
+<h2 class="anchored" data-anchor-id="image-display-with-cloudinary">Image Display with Cloudinary</h2>
+<p>Cloudinary is a SaaS tailored for media asset managment that I discovered works pretty well for blog images, and comes with a decent amount of resources and documentation to learn to use their platform effectively. This would include some features such as:</p>
 <ul>
-<li><a href="projects.html">Projects</a>: In-depth studies of my technical work and experiments, which are all open source.</li>
-<li><a href="blog.html">Blog</a>: Insights on tech trends, tutorials, and my perspective on industry developments.</li>
-<li><a href="https://resume.chaancegraves.com">Resume</a>: My professional background and skillset.</li>
+<li>Automated image optimization</li>
+<li>Responsive image delivery and upload API</li>
+<li>CDN-powered fast loading</li>
+<li>Can perform image transformations</li>
 </ul>
+<section id="implementation-steps" class="level3">
+<h3 class="anchored" data-anchor-id="implementation-steps">Implementation Steps</h3>
+<ol type="1">
+<li>Sign up for a Cloudinary account</li>
+<li>Upload your images to Cloudinary using the <a href="https://cloudinary.com/documentation/upload_images#upload_images_to_cloudinary">Cloudinary Upload API</a> or <a href="https://cloudinary.com/documentation/cloudinary_sdks">SDK packages</a> in your preferred language of choice.</li>
+<li>Use the provided URL in your Quarto markdown</li>
+</ol>
+<p>Here’s an example of an image hosted directly on Cloudinary:</p>
+<p><img src="https://res.cloudinary.com/website-assets-mgmt/image/upload/cld-sample-2.jpg" class="img-fluid"></p>
+<p>The markdown syntax is simple:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="al">![](https://res.cloudinary.com/your-account/image/upload/your-image.jpg)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="lets-connect" class="level2">
-<h2 data-anchor-id="lets-connect">Let’s Connect</h2>
-<p>I’m always open to collaborating, mentoring, and exchanging ideas with fellow technology enthusiasts. Feel free to reach out through LinkedIn or check out my detailed experience on my resume.</p>
-<p>As a strong believer in knowledge sharing and continous learning, I’m committed to helping others who are curious or eager to grow. Whether you’re a experienced professional or just starting your tech journey, I’d love to connect!</p>
+</section>
+<section id="terminal-session-recording-with-asciinema" class="level2">
+<h2 class="anchored" data-anchor-id="terminal-session-recording-with-asciinema">Terminal Session Recording with asciinema</h2>
+<p><a href="https://asciinema.org/">asciinema</a> is an excellent tool for recording and sharing terminal sessions. It creates lightweight, text-based recordings that are perfect for tutorials and documentation.</p>
+<section id="how-to-use-asciinema" class="level3">
+<h3 class="anchored" data-anchor-id="how-to-use-asciinema">How to Use asciinema</h3>
+<ol type="1">
+<li>Install asciinema via Python: <code>pip install asciinema</code></li>
+<li>Record a session: <code>asciinema rec demo.cast</code></li>
+<li>Upload to asciinema.org</li>
+<li>Embed in your blog using their JavaScript player</li>
+</ol>
+<p>Here’s an example recording:</p>
+<script src="https://asciinema.org/a/pNnmBhhVbOkm6vFqVtPvgYbPl.js" id="asciicast-pNnmBhhVbOkm6vFqVtPvgYbPl" async="true"></script>
+<p>The embed code is straightforward:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode html code-with-copy"><code class="sourceCode html"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">script</span><span class="ot"> src</span><span class="op">=</span><span class="st">"https://asciinema.org/a/YOUR-CAST-ID.js"</span><span class="ot"> id</span><span class="op">=</span><span class="st">"asciicast-YOUR-CAST-ID"</span><span class="ot"> async</span><span class="op">=</span><span class="st">"true"</span><span class="dt">&gt;&lt;/</span><span class="kw">script</span><span class="dt">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 </section>
-
-
-<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main></div>
+<section id="video-display-with-cloudinary" class="level2">
+<h2 class="anchored" data-anchor-id="video-display-with-cloudinary">Video Display with Cloudinary</h2>
+<p>Cloudinary also excels at video hosting and delivery. It provides:</p>
+<ul>
+<li>Adaptive bitrate streaming</li>
+<li>Automatic format optimization</li>
+<li>Global CDN delivery</li>
+<li>Thumbnail generation</li>
+</ul>
+<section id="adding-videos-to-your-blog" class="level3">
+<h3 class="anchored" data-anchor-id="adding-videos-to-your-blog">Adding Videos to Your Blog</h3>
+<ol type="1">
+<li>Upload your video to Cloudinary</li>
+<li>Embed the video URL in your <code>.qmd\.md</code> post document</li>
+<li>Optionally, add a poster image for the video thumbnail</li>
+</ol>
+<p>Here’s an example video:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><video src="https://res.cloudinary.com/website-assets-mgmt/video/upload/samples/sea-turtle.mp4" class="img-fluid" controls=""><a href="https://res.cloudinary.com/website-assets-mgmt/video/upload/samples/sea-turtle.mp4">Video</a></video></p>
+<figcaption>Sea Turtle Example Video</figcaption>
+</figure>
 </div>
- <!-- /main -->
+</section>
+</section>
+<section id="best-practices" class="level2">
+<h2 class="anchored" data-anchor-id="best-practices">Best Practices</h2>
+<ol type="1">
+<li><strong>Image Optimization</strong>: Always compress images before uploading to Cloudinary</li>
+<li><strong>Responsive Design</strong>: Use Cloudinary’s responsive image features</li>
+<li><strong>Terminal Sessions</strong>: Keep recordings concise and focused</li>
+<li><strong>Video Content</strong>: Consider adding captions and descriptions</li>
+<li><strong>Performance</strong>: Monitor your page load times and optimize accordingly</li>
+</ol>
+</section>
+<section id="conclusion" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
+<p>By combining these tools, you can create rich, interactive blog posts that effectively communicate your ideas. Cloudinary handles your media assets efficiently, while asciinema provides an excellent way to share terminal sessions. Quarto’s markdown support makes it all work seamlessly together.</p>
+<p>Feel free to experiment with these tools if you like and adapt them to your specific needs. Also share your experiences with other alternatives too. Happy blogging!👋🏾</p>
+
+
+</section>
+
+<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     // Ensure there is a toggle, if there isn't float one in the top right
@@ -387,6 +517,13 @@ ul.task-list li input[type="checkbox"] {
       window.document.body.appendChild(a);
     }
     setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
     const isCodeAnnotation = (el) => {
       for (const clz of el.classList) {
         if (clz.startsWith('code-annotation-')) {                     
@@ -790,11 +927,11 @@ ul.task-list li input[type="checkbox"] {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions"><ul><li><a href="https://github.com/ctg123/quarto-example-site/blob/main/index.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/ctg123/quarto-example-site/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/ctg123/quarto-example-site/blob/main/blog/digital-assets-demo/index.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/ctg123/quarto-example-site/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
       <ul class="footer-items list-unstyled">
     <li class="nav-item">
-    <a class="nav-link" href="./license.html">
+    <a class="nav-link" href="../../license.html">
 <p>License</p>
 </a>
   </li>  
@@ -806,5 +943,5 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<script src="site_libs/quarto-html/zenscroll-min.js"></script>
+<script src="../../site_libs/quarto-html/zenscroll-min.js"></script>
 </body></html>

@@ -85,5 +85,8 @@
   },
   "blog/python-intro/index.qmd": {
     "index.html": "25df3730"
+  },
+  "blog/digital-assets-demo/index.qmd": {
+    "index.html": "9b149f65"
   }
 }

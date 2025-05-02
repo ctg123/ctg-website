@@ -41,7 +41,9 @@ execute:
 
 Welcome to my website! 👋🏾
 
-I'm an Electrical Engineer specializing in hardware systems development, automation, and AI-driven solutions. I'm currently includes a master's degree in Electrical and Computer Engineering interested in digging deeper into areas such Embedded Systems Engineering, and Low Power Design & Optimization.
+I'm an Electrical Engineer specializing in hardware systems development, automation, and AI-driven solutions. In particular, I'm interested in diving deeper into Embedded Systems Engineering and Low Power Design & Optimization.
+
+Beyond my professional work, I’m also passionate about [self-hosting](https://www.reddit.com/r/selfhosted/) — the practice of running your own applications and services instead of relying on third parties. It gives me more control over my data and allows me to experiment with emerging technologies on my own terms.
 
 ## What I Do
 
