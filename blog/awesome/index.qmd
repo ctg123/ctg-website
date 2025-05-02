@@ -4,7 +4,7 @@ description: "Essential Resource Collections for Developers"
 author: "Chaance Graves"
 date: "2024-11-05"
 categories: [resources]
-#image: "code-img.jpg"
+image: https://res.cloudinary.com/website-assets-mgmt/image/upload/v1746147620/website/blog/awesome/awesome.png
 
 format: 
   html:
@@ -73,6 +73,3 @@ To keep track of changes and new additions to these collections, I recommend usi
 These curated collections represent countless hours of community effort to organize and validate the best resources in each field. Whether you're exploring a new technology or deepening your expertise in a familiar domain, these awesome lists are invaluable starting points for your journey.
 
 Remember to contribute back to these collections if you discover valuable resources that aren't already included. The strength of these lists comes from active community participation and sharing.
-
---
-*Last updated: November 2024*-

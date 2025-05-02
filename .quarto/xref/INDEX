@@ -82,5 +82,8 @@
   },
   "projects/llamaindex-tts-demo/LlamaIndex_TTS_Demo.qmd": {
     "LlamaIndex_TTS_Demo.html": "76c042c9"
+  },
+  "blog/python-intro/index.qmd": {
+    "index.html": "25df3730"
   }
 }
