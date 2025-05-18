@@ -3,11 +3,7 @@
     "projects.qmd": [
       "projects"
     ],
-    "blog.qmd": [
-      "blog"
-    ],
     "blog/index.qmd": [
-      "blog",
       "B3049D40"
     ]
   }

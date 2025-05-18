@@ -1,13 +1,5 @@
 [
   {
-    "listing": "/blog.html",
-    "items": [
-      "/blog/digital-assets-demo/index.html",
-      "/blog/awesome/index.html",
-      "/blog/python-intro/index.html"
-    ]
-  },
-  {
     "listing": "/projects.html",
     "items": [
       "/projects/boat-classifier/index.html",
