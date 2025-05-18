@@ -41,4 +41,4 @@ You can find plentiful resources to teach yourself Python or pair with a small g
 
 [Udemy](https://www.udemy.com/topic/python/free/): You can find all sorts of courses and projects offered on this online education website. They range from beginner to advanced and have instructors teaching financial topics such as predicting stock prices, data science, full-stack web development, and more.
 
-I'm confident your programming journey will be well on its way towards success. Feel free to discuss any other valuable resources or projects you've discovered learning Python. 👌🏾
+I'm confident your programming journey will be well on its way towards success. Feel free to discuss any other valuable resources or projects you've discovered learning Python! 👌🏾

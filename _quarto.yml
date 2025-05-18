@@ -63,7 +63,7 @@ website:
   # page footer settings
   page-footer: 
     border: true
-    left: "&#169; 2025 Chaance T. Graves | Rendered with [Quarto](https://quarto.org) version {{< version >}}"  
+    left: "&#169; 2025 Chaance T. Graves | Rendered with [Quarto](https://quarto.org) v{{< version >}}"  
     right:
       - text: License
         href: license.qmd
