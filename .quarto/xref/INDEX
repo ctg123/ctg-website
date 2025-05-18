@@ -88,5 +88,14 @@
   },
   "blog/digital-assets-demo/index.qmd": {
     "index.html": "9b149f65"
+  },
+  "notes/index.qmd": {
+    "index.html": "f8929218"
+  },
+  "license/index.qmd": {
+    "index.html": "6242f2c9"
+  },
+  "blog/index.qmd": {
+    "index.html": "9d3913cc"
   }
 }

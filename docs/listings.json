@@ -17,5 +17,13 @@
       "/projects/ansible-kops/index.html",
       "/projects/wordpress-with-lamp-stack/index.html"
     ]
+  },
+  {
+    "listing": "/blog/index.html",
+    "items": [
+      "/blog/digital-assets-demo/index.html",
+      "/blog/awesome/index.html",
+      "/blog/python-intro/index.html"
+    ]
   }
 ]

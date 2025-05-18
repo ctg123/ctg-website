@@ -1,7 +1,11 @@
 ---
-title: "My Blog"
+title: "`ctgadget.log()`"
+author: ""
+title-block-banner: false
+page-layout: full
+
 listing:
-  contents: blog  # <-- the sub-directory with blog content
+  #contents: blog  # <-- the sub-directory with blog content
   type: default
   image-align: left
   fields: 
@@ -21,6 +25,6 @@ listing:
 
 ---
 
-Welcome to my blog! 🚀  \
-I'll be sharing interesting articles about my experiments, ideas, and thoughts.\
+Welcome to my blog! 👋🏾 \
+I’ll be sharing interesting articles about my experiments, ideas, and thoughts. \
 I invite you to explore, and I'm always open to further discussions.

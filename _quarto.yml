@@ -22,7 +22,9 @@ website:
   repo-actions:
     - source
     - issue
-  search: true
+  search:
+    location: navbar
+    type: textbox
   favicon: assets/img/favicon.png
   page-navigation: true
   back-to-top-navigation: true
@@ -34,8 +36,12 @@ website:
     #logo-alt: 
     collapse: true
     tools:
+      - icon: envelope-check
+        href: mailto:chaance.graves@ctginnovations.io
+
       - icon: github
         href: https://github.com/ctg123
+        
       - icon: linkedin
         href: https://linkedin.com/in/chaancegraves
 
@@ -54,11 +60,11 @@ website:
 
       - text: Blog
         icon: layout-text-sidebar
-        href: blog.qmd
+        href: blog/index.qmd
 
       - text: Notes
         icon: journals
-        href: notes.qmd
+        href: notes/index.qmd
 
   # page footer settings
   page-footer: 
@@ -66,7 +72,7 @@ website:
     left: "&#169; 2025 Chaance T. Graves | Rendered with [Quarto](https://quarto.org) v{{< version >}}"  
     right:
       - text: License
-        href: license.qmd
+        href: license/index.qmd
 
 # Formatting the website appearance
 format:

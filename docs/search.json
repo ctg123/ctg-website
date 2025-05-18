@@ -46,7 +46,7 @@
     "href": "blog.html",
     "title": "My Blog",
     "section": "",
-    "text": "Welcome to my blog! 🚀\nI’ll be sharing interesting articles about my experiments, ideas, and thoughts.\nI invite you to explore, and I’m always open to further discussions.\n\n\n\n\n\n\n   \n    \n    \n      Order By\n      Default\n      \n        Title\n      \n      \n        Date - Oldest\n      \n      \n        Date - Newest\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\n\n\n\n\n\n\nDigital Asset Display in Quarto Blog Posts\n\n\n\nresources\n\ntutorial\n\n\n\nA comprehensive guide to displaying images, videos, and terminal sessions in Quarto blog posts\n\n\n\n\n\nNov 29, 2024\n\n3 min\n\n\n\n\n\n\n\n\n\n\n\nAwesome Sites! 😎\n\n\n\nresources\n\n\n\nEssential Resource Collections for Developers\n\n\n\n\n\nNov 5, 2024\n\n3 min\n\n\n\n\n\n\n\n\n\n\n\nAre you getting started to learn Python? 🐍\n\n\n\nresources\n\ncode\n\npython\n\n\n\n\n\n\n\n\n\nJan 20, 2021\n\n2 min\n\n\n\n\nNo matching items\n Back to top"
+    "text": "Welcome to my blog, which I called ctgadget.log()🚀\nI’ll be sharing interesting articles about my experiments, ideas, and thoughts.\nI invite you to explore, and I’m always open to further discussions.\n\n\n\n\n\n\n   \n    \n    \n      Order By\n      Default\n      \n        Title\n      \n      \n        Date - Oldest\n      \n      \n        Date - Newest\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\n\n\n\n\n\n\nDigital Asset Display in Quarto Blog Posts\n\n\n\nresources\n\ntutorial\n\n\n\nA comprehensive guide to displaying images, videos, and terminal sessions in Quarto blog posts\n\n\n\n\n\nNov 29, 2024\n\n3 min\n\n\n\n\n\n\n\n\n\n\n\nAwesome Sites! 😎\n\n\n\nresources\n\n\n\nEssential Resource Collections for Developers\n\n\n\n\n\nNov 5, 2024\n\n3 min\n\n\n\n\n\n\n\n\n\n\n\nAre you getting started to learn Python? 🐍\n\n\n\nresources\n\ncode\n\npython\n\n\n\n\n\n\n\n\n\nJan 20, 2021\n\n2 min\n\n\n\n\nNo matching items\n Back to top"
   },
   {
     "objectID": "blog/awesome/index.html",
@@ -859,5 +859,26 @@
     "title": "Digital Asset Display in Quarto Blog Posts",
     "section": "Conclusion",
     "text": "Conclusion\nBy combining these tools, you can create rich, interactive blog posts that effectively communicate your ideas. Cloudinary handles your media assets efficiently, while asciinema provides an excellent way to share terminal sessions. Quarto’s markdown support makes it all work seamlessly together.\nFeel free to experiment with these tools if you like and adapt them to your specific needs. Also share your experiences with other alternatives too. Happy blogging!👋🏾"
+  },
+  {
+    "objectID": "notes/index.html",
+    "href": "notes/index.html",
+    "title": "My Notes",
+    "section": "",
+    "text": "I’ll publish my “Digital Garden” that’ll be associated with the navbar link.\nCOMING SOON …\n\n\n\n Back to top"
+  },
+  {
+    "objectID": "license/index.html",
+    "href": "license/index.html",
+    "title": "CC BY-NC-SA 4.0 license",
+    "section": "",
+    "text": "© 2025 Chaance T. Graves.\nMy content is released under the CC BY NC ND 4.0 license.\n   \nYou may share and adapt this content with appropriate credit and notation of any changes. You may not use this material for any commercial purposes.\n\n\n\n\n\n\nNote\n\n\n\nNote that my Opinions expressed are solely my own and do not express the views of my employer or any organizations I am associated with.\n\n\n\n\n\n Back to top"
+  },
+  {
+    "objectID": "blog/index.html",
+    "href": "blog/index.html",
+    "title": "ctgadget.log()",
+    "section": "",
+    "text": "Welcome to my blog! 👋🏾\nI’ll be sharing interesting articles about my experiments, ideas, and thoughts.\nI invite you to explore, and I’m always open to further discussions.\n\n\n\n\n\n\n   \n    \n    \n      Order By\n      Default\n      \n        Title\n      \n      \n        Date - Oldest\n      \n      \n        Date - Newest\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\n\n\n\n\n\n\nDigital Asset Display in Quarto Blog Posts\n\n\n\nresources\n\ntutorial\n\n\n\nA comprehensive guide to displaying images, videos, and terminal sessions in Quarto blog posts\n\n\n\n\n\nNov 29, 2024\n\n3 min\n\n\n\n\n\n\n\n\n\n\n\nAwesome Sites! 😎\n\n\n\nresources\n\n\n\nEssential Resource Collections for Developers\n\n\n\n\n\nNov 5, 2024\n\n3 min\n\n\n\n\n\n\n\n\n\n\n\nAre you getting started to learn Python? 🐍\n\n\n\nresources\n\ncode\n\npython\n\n\n\n\n\n\n\n\n\nJan 20, 2021\n\n2 min\n\n\n\n\nNo matching items\n Back to top"
   }
 ]
