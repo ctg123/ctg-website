@@ -56,7 +56,7 @@ website:
 
       - text: Projects
         icon: lightning-charge
-        href: projects.qmd
+        href: projects/index.qmd
 
       - text: Blog
         icon: layout-text-sidebar

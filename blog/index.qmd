@@ -5,7 +5,7 @@ title-block-banner: false
 page-layout: full
 
 listing:
-  #contents: blog  # <-- the sub-directory with blog content
+  contents: /  # <-- look into this directory for blog content
   type: default
   image-align: left
   fields: 

@@ -1,8 +1,8 @@
 ---
 title: "My Projects"
 listing:
-  contents: projects  # <-- the sub-directory with project content
-  type: grid          # <-- my preferred layout type
+  contents: /  # <-- look into this directory for project content
+  type: grid   # <-- my preferred layout type
   max-description-length: 100
   fields: 
     - title
@@ -12,7 +12,7 @@ listing:
   field-display-names: 
     title: "Project"
     categories: "Skills"
-  categories: true
+  categories: cloud
   #sort: "date desc"
 ---
 

@@ -97,5 +97,8 @@
   },
   "blog/index.qmd": {
     "index.html": "9d3913cc"
+  },
+  "projects/index.qmd": {
+    "index.html": "54fb108c"
   }
 }

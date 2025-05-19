@@ -1,6 +1,6 @@
 [
   {
-    "listing": "/projects.html",
+    "listing": "/projects/index.html",
     "items": [
       "/projects/boat-classifier/index.html",
       "/projects/face-recognition/index.html",
