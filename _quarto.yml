@@ -1,6 +1,6 @@
 project:
   type: website
-  output-dir: docs # <-- For setting on Github
+  output-dir: docs # <-- final docs published after "quarto render" locally.
 
   preview: 
     port: 2810
@@ -36,8 +36,8 @@ website:
     #logo-alt: 
     collapse: true
     tools:
-      - icon: envelope-check
-        href: mailto:chaance.graves@ctginnovations.io
+      #- icon: envelope-check
+      #  href: mailto:chaance.graves@ctginnovations.io
 
       - icon: github
         href: https://github.com/ctg123
@@ -46,25 +46,28 @@ website:
         href: https://linkedin.com/in/chaancegraves
 
     left:
-      - text: Home
-        icon: house-gear-fill
+      - text: "{{< fa house-user >}} Home"
+        #icon: house-gear-fill
         href: index.qmd
 
-      - text: Resume
-        icon: file-text-fill
+      - text: "{{< fa laptop-code >}} Resume"
+        #icon: file-text-fill
         href: https://resume.chaancegraves.com/
 
-      - text: Projects
-        icon: lightning-charge
+      - text: "{{< fa bolt >}} Projects"
+        #icon: lightning-charge
         href: projects/index.qmd
 
-      - text: Blog
-        icon: layout-text-sidebar
+      - text: "{{< fa rectangle-list >}} Blog"
+        #icon: layout-text-sidebar
         href: blog/index.qmd
 
-      - text: Notes
-        icon: journals
-        href: notes/index.qmd
+      #- text: Notes
+      #  icon: journals
+      #  href: notes/index.qmd
+
+      - text: "{{< fa paper-plane >}} Contact"
+        href: mailto:chaance.graves@ctginnovations.io
 
   # page footer settings
   page-footer: 
