@@ -44,9 +44,9 @@ ul.task-list li input[type="checkbox"] {
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-e4fbaa5b9575d7f6de7c906568c40117.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-7811f3086d10e3e64ca7b46ae93ed533.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-0e411750e77d2b45b2f60602310886ae.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../site_libs/bootstrap/bootstrap-7811f3086d10e3e64ca7b46ae93ed533.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-427024a4d223e2626d4889d8dc8dec7d.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-e42dec8edb97716935e519bbc7dfaec1.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-427024a4d223e2626d4889d8dc8dec7d.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <link href="../site_libs/quarto-contrib/fontawesome6-1.2.0/all.min.css" rel="stylesheet">
 <link href="../site_libs/quarto-contrib/fontawesome6-1.2.0/latex-fontsize.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
@@ -85,9 +85,9 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: ['listing-title','listing-description','listing-date','listing-image','listing-image-alt','listing-categories','listing-reading-time',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      valueNames: ['listing-project','listing-execute','listing-website','listing-format','listing-language','listing-freeze','listing-title-block-banner','listing-title','listing-description','listing-author','listing-date','listing-categories','listing-image','listing-path','listing-outputHref','listing-date-modified','listing-filename','listing-file-modified','listing-reading-time','listing-word-count',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-date-modified-sort'] },{ data: ['listing-file-modified-sort'] },{ data: ['listing-reading-time-sort'] },{ data: ['listing-word-count-sort'] }],
       
-      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description","listing-categories"],
+      searchColumns: ["listing-project","listing-execute","listing-website","listing-format","listing-language","listing-freeze","listing-title-block-banner","listing-title","listing-description","listing-author","listing-date","listing-categories","listing-image","listing-path","listing-outputHref","listing-date-modified","listing-filename","listing-file-modified","listing-reading-time","listing-word-count"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -358,14 +358,14 @@ window.Quarto = {
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         
     <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(3)</span></div><div class="category" data-category="Y29kZQ==">code <span class="quarto-category-count">(1)</span></div><div class="category" data-category="cHl0aG9u">python <span class="quarto-category-count">(1)</span></div><div class="category" data-category="cmVzb3VyY2Vz">resources <span class="quarto-category-count">(3)</span></div><div class="category" data-category="dHV0b3JpYWw=">tutorial <span class="quarto-category-count">(1)</span></div></div></div>
 <!-- main -->
-<main class="content column-page-left" id="quarto-document-content">
+<main class="content" id="quarto-document-content">
 
 
 <header id="title-block-header" class="quarto-title-block default">
@@ -375,7 +375,7 @@ window.Quarto = {
 
 
 
-<div class="quarto-title-meta column-page-left">
+<div class="quarto-title-meta">
 
     
   
@@ -390,125 +390,137 @@ window.Quarto = {
 <p>Welcome to my blog! 👋🏾<br>
 I’ll be sharing interesting articles about my experiments, ideas, and thoughts.<br>
 I invite you to explore, and I’m always open to further discussions.</p>
+<p><br>
+<!-- newline break to add a space from the blog listings --></p>
 
 
 
 
-<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
-<div class="listing-actions-group">
-   <div class="input-group input-group-sm quarto-listing-sort">
-    <span class="input-group-text"><i class="bi bi-sort-down"></i></span>
-    <select id="listing-listing-sort" class="form-select" aria-label="Order By" onchange="window['quarto-listings']['listing-listing'].sort(this.options[this.selectedIndex].value, { order: this.options[this.selectedIndex].getAttribute('data-direction')})">
-      <option value="" disabled="" selected="" hidden="">Order By</option>
-      <option value="index" data-direction="asc">Default</option>
-      <option value="listing-title" data-direction="asc">
-        Title
-      </option>
-      <option value="listing-date-sort" data-direction="asc">
-        Date - Oldest
-      </option>
-      <option value="listing-date-sort" data-direction="desc">
-        Date - Newest
-      </option>
-    </select>
-  </div>
-    <div class="input-group input-group-sm quarto-listing-filter">
-      <span class="input-group-text"><i class="bi bi-search"></i></span>
-      <input type="text" class="search form-control" placeholder="Filter">
+<div class="quarto-listing quarto-listing-container-custom" id="listing-listing">
+
+<ul class="list" style="list-style-type:none">
+
+  <li data-index="0" data-categories="cmVzb3VyY2VzJTJDdHV0b3JpYWw=" data-listing-date-sort="1732860000000" data-listing-file-modified-sort="1747553695808" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="412">
+  
+    <div id="container" style="height:100%; width:100%; overflow: hidden; display: flex; margin-left: -35px; margin-bottom: 40px; padding-bottom: 15px; border-bottom: 1px solid rgba(128, 128, 128, 0.255);">
+    
+      <div id="itemImage" style="width:200px; height:200px; background-size:contain; background-position:center; margin: 0px 30px 15px 0px;">
+      
+        <a href="../blog/digital-assets-demo/index.html" class="listing-categories">
+          <img src="https://res.cloudinary.com/website-assets-mgmt/image/upload/c_scale,w_500/r_15/co_rgb:FFFFFF,l_text:arial_50_bold:DEMO/fl_layer_apply,g_center/f_auto/q_auto/v1/website/blog/digital-assets-demo/mtn-demo-img" width="200" height="200">
+        </a>
+        
+      </div>
+    
+    <div id="itemDetails" style="width:100%;">
+    
+      <div id="itemHeader" style="justify-content: space-between; line-height:28px; margin-bottom:3px; align-items:flex-start;">
+    
+      <div id="itemTitle" style="display:block; width:95%">
+        <p style="font-size:22px">
+          <a href="../blog/digital-assets-demo/index.html" class="listing-categories">Digital Asset Display in Quarto Blog Posts
+          </a>
+        </p>
+      </div>
+    
+      <div id="itemDescription" style="margin-bottom:8px">
+        A comprehensive guide to displaying images, videos, and terminal sessions in Quarto blog posts
+      </div>
+    
+      <div id="created" style="margin-top:8px; display: flex; align-items: center; opacity: 0.8;">
+         <p style="font-size:16px; margin:0;">29 November 2024</p>
+         <p style="font-size:16px; margin:0 0 0 8px;"> | &nbsp;&nbsp;3 min</p>
+      </div>
+    
     </div>
+    
+  </div>
+  
 </div>
-<div class="list quarto-listing-default">
-<div class="quarto-post image-left" data-index="0" data-categories="cmVzb3VyY2VzJTJDdHV0b3JpYWw=" data-listing-date-sort="1732860000000" data-listing-file-modified-sort="1747553695808" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="412">
-<div class="thumbnail"><a href="../blog/digital-assets-demo/index.html" class="no-external">
 
-<img loading="lazy" src="https://res.cloudinary.com/website-assets-mgmt/image/upload/c_scale,w_500/r_15/co_rgb:FFFFFF,l_text:arial_50_bold:DEMO/fl_layer_apply,g_center/f_auto/q_auto/v1/website/blog/digital-assets-demo/mtn-demo-img" class="thumbnail-image">
+</li>
 
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../blog/digital-assets-demo/index.html" class="no-external">Digital Asset Display in Quarto Blog Posts</a>
-</h3>
-<div class="listing-categories">
+  <li data-index="1" data-categories="cmVzb3VyY2Vz" data-listing-date-sort="1730786400000" data-listing-file-modified-sort="1746199505283" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="454">
+  
+    <div id="container" style="height:100%; width:100%; overflow: hidden; display: flex; margin-left: -35px; margin-bottom: 40px; padding-bottom: 15px; border-bottom: 1px solid rgba(128, 128, 128, 0.255);">
+    
+      <div id="itemImage" style="width:200px; height:200px; background-size:contain; background-position:center; margin: 0px 30px 15px 0px;">
+      
+        <a href="../blog/awesome/index.html" class="listing-categories">
+          <img src="https://res.cloudinary.com/website-assets-mgmt/image/upload/f_auto,g_auto,q_auto/v1/website/blog/awesome/awesome" width="200" height="200">
+        </a>
+        
+      </div>
+    
+    <div id="itemDetails" style="width:100%;">
+    
+      <div id="itemHeader" style="justify-content: space-between; line-height:28px; margin-bottom:3px; align-items:flex-start;">
+    
+      <div id="itemTitle" style="display:block; width:95%">
+        <p style="font-size:22px">
+          <a href="../blog/awesome/index.html" class="listing-categories">Awesome Sites! 😎
+          </a>
+        </p>
+      </div>
+    
+      <div id="itemDescription" style="margin-bottom:8px">
+        Essential Resource Collections for Developers
+      </div>
+    
+      <div id="created" style="margin-top:8px; display: flex; align-items: center; opacity: 0.8;">
+         <p style="font-size:16px; margin:0;">05 November 2024</p>
+         <p style="font-size:16px; margin:0 0 0 8px;"> | &nbsp;&nbsp;3 min</p>
+      </div>
+    
+    </div>
+    
+  </div>
+  
+</div>
 
-<div class="listing-category" onclick="window.quartoListingCategory('cmVzb3VyY2Vz'); return false;">resources</div>
+</li>
 
-<div class="listing-category" onclick="window.quartoListingCategory('dHV0b3JpYWw='); return false;">tutorial</div>
+  <li data-index="2" data-categories="cmVzb3VyY2VzJTJDY29kZSUyQ3B5dGhvbg==" data-listing-date-sort="1611122400000" data-listing-file-modified-sort="1747551102127" data-listing-date-modified-sort="1732946400000" data-listing-reading-time-sort="2" data-listing-word-count-sort="388">
+  
+    <div id="container" style="height:100%; width:100%; overflow: hidden; display: flex; margin-left: -35px; margin-bottom: 40px; padding-bottom: 15px; border-bottom: 1px solid rgba(128, 128, 128, 0.255);">
+    
+      <div id="itemImage" style="width:200px; height:200px; background-size:contain; background-position:center; margin: 0px 30px 15px 0px;">
+      
+        <a href="../blog/python-intro/index.html" class="listing-categories">
+          <img src="https://res.cloudinary.com/website-assets-mgmt/image/upload/c_scale,w_500/r_15/f_auto/q_auto/v1/website/blog/python-intro/code-img" width="200" height="200">
+        </a>
+        
+      </div>
+    
+    <div id="itemDetails" style="width:100%;">
+    
+      <div id="itemHeader" style="justify-content: space-between; line-height:28px; margin-bottom:3px; align-items:flex-start;">
+    
+      <div id="itemTitle" style="display:block; width:95%">
+        <p style="font-size:22px">
+          <a href="../blog/python-intro/index.html" class="listing-categories">Are you getting started to learn Python? 🐍
+          </a>
+        </p>
+      </div>
+    
+      <div id="itemDescription" style="margin-bottom:8px">
+        Are you new to programming? Have questions about which language would be a good one to start?
+      </div>
+    
+      <div id="created" style="margin-top:8px; display: flex; align-items: center; opacity: 0.8;">
+         <p style="font-size:16px; margin:0;">20 January 2021</p>
+         <p style="font-size:16px; margin:0 0 0 8px;"> | &nbsp;&nbsp;2 min</p>
+      </div>
+    
+    </div>
+    
+  </div>
+  
+</div>
 
-</div>
-<div class="delink listing-description"><a href="../blog/digital-assets-demo/index.html" class="no-external">
-<p>A comprehensive guide to displaying images, videos, and terminal sessions in Quarto blog posts</p>
-</a></div>
-</div>
-<div class="metadata">
-<a href="../blog/digital-assets-demo/index.html" class="no-external">
-<div class="listing-date">
-Nov 29, 2024
-</div>
-<div class="listing-reading-time">3 min</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-left" data-index="1" data-categories="cmVzb3VyY2Vz" data-listing-date-sort="1730786400000" data-listing-file-modified-sort="1746199505283" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="454">
-<div class="thumbnail"><a href="../blog/awesome/index.html" class="no-external">
+</li>
 
-<img loading="lazy" src="https://res.cloudinary.com/website-assets-mgmt/image/upload/f_auto,g_auto,q_auto/v1/website/blog/awesome/awesome" class="thumbnail-image">
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../blog/awesome/index.html" class="no-external">Awesome Sites! 😎</a>
-</h3>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('cmVzb3VyY2Vz'); return false;">resources</div>
-
-</div>
-<div class="delink listing-description"><a href="../blog/awesome/index.html" class="no-external">
-<p>Essential Resource Collections for Developers</p>
-</a></div>
-</div>
-<div class="metadata">
-<a href="../blog/awesome/index.html" class="no-external">
-<div class="listing-date">
-Nov 5, 2024
-</div>
-<div class="listing-reading-time">3 min</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-left" data-index="2" data-categories="cmVzb3VyY2VzJTJDY29kZSUyQ3B5dGhvbg==" data-listing-date-sort="1611122400000" data-listing-file-modified-sort="1747551102127" data-listing-date-modified-sort="1732946400000" data-listing-reading-time-sort="2" data-listing-word-count-sort="388">
-<div class="thumbnail"><a href="../blog/python-intro/index.html" class="no-external">
-
-<img loading="lazy" src="https://res.cloudinary.com/website-assets-mgmt/image/upload/c_scale,w_500/r_15/f_auto/q_auto/v1/website/blog/python-intro/code-img" class="thumbnail-image">
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../blog/python-intro/index.html" class="no-external">Are you getting started to learn Python? 🐍</a>
-</h3>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('cmVzb3VyY2Vz'); return false;">resources</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('Y29kZQ=='); return false;">code</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('cHl0aG9u'); return false;">python</div>
-
-</div>
-<div class="delink listing-description"><a href="../blog/python-intro/index.html" class="no-external">
-Are you new to programming? Have questions about which language would be a good one to start?
-</a></div>
-</div>
-<div class="metadata">
-<a href="../blog/python-intro/index.html" class="no-external">
-<div class="listing-date">
-Jan 20, 2021
-</div>
-<div class="listing-reading-time">2 min</div>
-</a>
-</div>
-</div>
-</div>
+</ul>
 <div class="listing-no-matching d-none">No matching items</div>
 </div><a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

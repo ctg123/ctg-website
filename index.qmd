@@ -1,16 +1,17 @@
 ---
-pagetitle: "About"
+pagetitle: "Home"
 title: "Chaance T. Graves"
-subtitle: Sr. Electrical Engineer | AI-Driven Solutions | Transformative Leader
+subtitle: |
+  Electrical Engineer | AI Solutions | Educator
 
 #image: assets/img/...
 #image-alt: "image description"
 
 about:
-  #id: about-block
+  #id: hero-heading
   template: trestles
   image: https://res.cloudinary.com/website-assets-mgmt/image/upload/profile_pic_transparent_-_head_jspi9i.png
-  image-width: 17em
+  image-width: 14em
   image-shape: round
   links:
     - icon: github

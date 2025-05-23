@@ -6,25 +6,26 @@ page-layout: full
 
 listing:
   contents: /  # <-- look into this directory for blog content
-  type: default
-  image-align: left
-  fields: 
-    - title
-    - description
-    - date
-    - image
-    - image-alt
-    - categories
-    - reading-time
-
   categories: true
+  date-format: "DD MMMM YYYY"
+  #feed: true
+  filter-ui: false
+  image-align: left
   sort: "date desc"
-  sort-ui: true
-  filter-ui: true
+  sort-ui: false
+  type: default
+  template: blog-listing.ejs
+  exclude: 
+    category: exclude
   page-size: 5
-
+format: 
+  html:
+    page-layout: article
 ---
 
 Welcome to my blog! 👋🏾 \
 I’ll be sharing interesting articles about my experiments, ideas, and thoughts. \
 I invite you to explore, and I'm always open to further discussions.
+
+\
+<!-- newline break to add a space from the blog listings -->
