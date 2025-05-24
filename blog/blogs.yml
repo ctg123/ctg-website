@@ -1,0 +1,23 @@
+# Blog posts in chronological order
+
+- title: "Digital Asset Display in Quarto Blog Posts"
+  path: ./posts/digital-assets-demo/index.qmd
+  date: 2024-11-29
+  categories:  [resources, tutorial]
+  description: |
+    A comprehensive guide to displaying images, videos, and terminal sessions in Quarto blog posts.
+
+- title: "Awesome Sites! 😎"
+  path: ./posts/awesome/index.qmd
+  date: "2024-11-05"
+  categories: [resources]
+  description: |
+   Essential Resource Collections for Developers.
+  
+- title: "Are you getting started to learn Python? 🐍"
+  path: ./posts/python-intro/index.qmd
+  date: "2021-01-20"
+  categories: [resources, code, python]
+  description: |
+   Useful Resources for Beginners
+  

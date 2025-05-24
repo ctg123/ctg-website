@@ -38,8 +38,6 @@ execute:
 
 ::: {.column-page}
 
-# About Me
-
 Welcome to my website! 👋🏾
 
 I'm an Electrical Engineer specializing in hardware systems development, automation, and AI-driven solutions. In particular, I'm interested in diving deeper into Embedded Systems Engineering and Low Power Design & Optimization.

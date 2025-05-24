@@ -2,30 +2,29 @@
 title: "`ctgadget.log()`"
 author: ""
 title-block-banner: false
+sidebar: false
 page-layout: full
 
 listing:
-  contents: /  # <-- look into this directory for blog content
-  categories: true
-  date-format: "DD MMMM YYYY"
-  #feed: true
-  filter-ui: false
-  image-align: left
+  id: blog-listing
+  contents: [blogs.yml]  # <-- look into this directory for blog content
+  date-format: short
+  feed: true
+  filter-ui: true
+  #categories: true
+  type: table
   sort: "date desc"
   sort-ui: false
-  type: default
-  template: blog-listing.ejs
-  exclude: 
-    category: exclude
-  page-size: 5
-format: 
+  categories: false
+  fields: [date, title, description, reading-time]
+
+format:
   html:
-    page-layout: article
+    anchor-sections: true
 ---
 
 Welcome to my blog! 👋🏾 \
 I’ll be sharing interesting articles about my experiments, ideas, and thoughts. \
 I invite you to explore, and I'm always open to further discussions.
 
-\
 <!-- newline break to add a space from the blog listings -->

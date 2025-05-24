@@ -1,21 +1,14 @@
 [
   {
     "listing": "/projects/index.html",
-    "items": [
-      "/projects/boat-classifier/index.html",
-      "/projects/face-recognition/index.html",
-      "/projects/heart-disease-prediction/index.html",
-      "/projects/customer-service-analysis/index.html",
-      "/projects/ansible-kops/index.html",
-      "/projects/wordpress-with-lamp-stack/index.html"
-    ]
+    "items": []
   },
   {
     "listing": "/blog/index.html",
     "items": [
-      "/blog/digital-assets-demo/index.html",
-      "/blog/awesome/index.html",
-      "/blog/python-intro/index.html"
+      "/blog/posts/digital-assets-demo/index.html",
+      "/blog/posts/awesome/index.html",
+      "/blog/posts/python-intro/index.html"
     ]
   }
 ]

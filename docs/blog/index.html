@@ -44,9 +44,10 @@ ul.task-list li input[type="checkbox"] {
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-e4fbaa5b9575d7f6de7c906568c40117.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-427024a4d223e2626d4889d8dc8dec7d.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-e42dec8edb97716935e519bbc7dfaec1.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../site_libs/bootstrap/bootstrap-427024a4d223e2626d4889d8dc8dec7d.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-baa6c83b709fb3950d7db107ebdbb5d5.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-b80533282bbf88abb9014277572e0c54.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-baa6c83b709fb3950d7db107ebdbb5d5.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-contrib/iconify-2.1.0/iconify-icon.min.js"></script>
 <link href="../site_libs/quarto-contrib/fontawesome6-1.2.0/all.min.css" rel="stylesheet">
 <link href="../site_libs/quarto-contrib/fontawesome6-1.2.0/latex-fontsize.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
@@ -78,20 +79,20 @@ ul.task-list li input[type="checkbox"] {
 <script>
 
   window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
+    const listingTargetEl = window.document.querySelector('#listing-blog-listing .list');
     if (!listingTargetEl) {
       // No listing discovered, do not attach.
       return; 
     }
 
     const options = {
-      valueNames: ['listing-project','listing-execute','listing-website','listing-format','listing-language','listing-freeze','listing-title-block-banner','listing-title','listing-description','listing-author','listing-date','listing-categories','listing-image','listing-path','listing-outputHref','listing-date-modified','listing-filename','listing-file-modified','listing-reading-time','listing-word-count',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-date-modified-sort'] },{ data: ['listing-file-modified-sort'] },{ data: ['listing-reading-time-sort'] },{ data: ['listing-word-count-sort'] }],
+      valueNames: ['listing-date','listing-title','listing-description','listing-reading-time',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-title-sort'] }],
       
-      searchColumns: ["listing-project","listing-execute","listing-website","listing-format","listing-language","listing-freeze","listing-title-block-banner","listing-title","listing-description","listing-author","listing-date","listing-categories","listing-image","listing-path","listing-outputHref","listing-date-modified","listing-filename","listing-file-modified","listing-reading-time","listing-word-count"],
+      searchColumns: ["listing-date","listing-title","listing-author"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
+    window['quarto-listings']['listing-blog-listing'] = new List('listing-blog-listing', options);
 
     if (window['quarto-listing-loaded']) {
       window['quarto-listing-loaded']();
@@ -137,6 +138,12 @@ window.Quarto = {
 </script>
 
 <link rel="stylesheet" href="../styles.css">
+<meta property="og:title" content="ctgadget.log() – Chaance T. Graves">
+<meta property="og:description" content="My personal blog about engineering projects">
+<meta property="og:site_name" content="Chaance T. Graves">
+<meta name="twitter:title" content="ctgadget.log() – Chaance T. Graves">
+<meta name="twitter:description" content="My personal blog about engineering projects">
+<meta name="twitter:card" content="summary">
 </head>
 
 <body class="nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
@@ -358,14 +365,14 @@ window.Quarto = {
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
         
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(3)</span></div><div class="category" data-category="Y29kZQ==">code <span class="quarto-category-count">(1)</span></div><div class="category" data-category="cHl0aG9u">python <span class="quarto-category-count">(1)</span></div><div class="category" data-category="cmVzb3VyY2Vz">resources <span class="quarto-category-count">(3)</span></div><div class="category" data-category="dHV0b3JpYWw=">tutorial <span class="quarto-category-count">(1)</span></div></div></div>
+    </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content column-page" id="quarto-document-content">
 
 
 <header id="title-block-header" class="quarto-title-block default">
@@ -375,7 +382,7 @@ window.Quarto = {
 
 
 
-<div class="quarto-title-meta">
+<div class="quarto-title-meta column-page">
 
     
   
@@ -390,139 +397,94 @@ window.Quarto = {
 <p>Welcome to my blog! 👋🏾<br>
 I’ll be sharing interesting articles about my experiments, ideas, and thoughts.<br>
 I invite you to explore, and I’m always open to further discussions.</p>
-<p><br>
-<!-- newline break to add a space from the blog listings --></p>
+<!-- newline break to add a space from the blog listings -->
 
 
 
 
-<div class="quarto-listing quarto-listing-container-custom" id="listing-listing">
-
-<ul class="list" style="list-style-type:none">
-
-  <li data-index="0" data-categories="cmVzb3VyY2VzJTJDdHV0b3JpYWw=" data-listing-date-sort="1732860000000" data-listing-file-modified-sort="1747553695808" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="412">
-  
-    <div id="container" style="height:100%; width:100%; overflow: hidden; display: flex; margin-left: -35px; margin-bottom: 40px; padding-bottom: 15px; border-bottom: 1px solid rgba(128, 128, 128, 0.255);">
-    
-      <div id="itemImage" style="width:200px; height:200px; background-size:contain; background-position:center; margin: 0px 30px 15px 0px;">
-      
-        <a href="../blog/digital-assets-demo/index.html" class="listing-categories">
-          <img src="https://res.cloudinary.com/website-assets-mgmt/image/upload/c_scale,w_500/r_15/co_rgb:FFFFFF,l_text:arial_50_bold:DEMO/fl_layer_apply,g_center/f_auto/q_auto/v1/website/blog/digital-assets-demo/mtn-demo-img" width="200" height="200">
-        </a>
-        
-      </div>
-    
-    <div id="itemDetails" style="width:100%;">
-    
-      <div id="itemHeader" style="justify-content: space-between; line-height:28px; margin-bottom:3px; align-items:flex-start;">
-    
-      <div id="itemTitle" style="display:block; width:95%">
-        <p style="font-size:22px">
-          <a href="../blog/digital-assets-demo/index.html" class="listing-categories">Digital Asset Display in Quarto Blog Posts
-          </a>
-        </p>
-      </div>
-    
-      <div id="itemDescription" style="margin-bottom:8px">
-        A comprehensive guide to displaying images, videos, and terminal sessions in Quarto blog posts
-      </div>
-    
-      <div id="created" style="margin-top:8px; display: flex; align-items: center; opacity: 0.8;">
-         <p style="font-size:16px; margin:0;">29 November 2024</p>
-         <p style="font-size:16px; margin:0 0 0 8px;"> | &nbsp;&nbsp;3 min</p>
-      </div>
-    
+<div class="quarto-listing quarto-listing-container-table" id="listing-blog-listing">
+<div class="listing-actions-group">
+    <div class="input-group input-group-sm quarto-listing-filter">
+      <span class="input-group-text"><i class="bi bi-search"></i></span>
+      <input type="text" class="search form-control" placeholder="Filter">
     </div>
-    
-  </div>
-  
 </div>
+<table class="quarto-listing-table table">
+<thead>
+<tr>
 
-</li>
+<th>
+Date
+</th>
 
-  <li data-index="1" data-categories="cmVzb3VyY2Vz" data-listing-date-sort="1730786400000" data-listing-file-modified-sort="1746199505283" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="454">
-  
-    <div id="container" style="height:100%; width:100%; overflow: hidden; display: flex; margin-left: -35px; margin-bottom: 40px; padding-bottom: 15px; border-bottom: 1px solid rgba(128, 128, 128, 0.255);">
-    
-      <div id="itemImage" style="width:200px; height:200px; background-size:contain; background-position:center; margin: 0px 30px 15px 0px;">
-      
-        <a href="../blog/awesome/index.html" class="listing-categories">
-          <img src="https://res.cloudinary.com/website-assets-mgmt/image/upload/f_auto,g_auto,q_auto/v1/website/blog/awesome/awesome" width="200" height="200">
-        </a>
-        
-      </div>
-    
-    <div id="itemDetails" style="width:100%;">
-    
-      <div id="itemHeader" style="justify-content: space-between; line-height:28px; margin-bottom:3px; align-items:flex-start;">
-    
-      <div id="itemTitle" style="display:block; width:95%">
-        <p style="font-size:22px">
-          <a href="../blog/awesome/index.html" class="listing-categories">Awesome Sites! 😎
-          </a>
-        </p>
-      </div>
-    
-      <div id="itemDescription" style="margin-bottom:8px">
-        Essential Resource Collections for Developers
-      </div>
-    
-      <div id="created" style="margin-top:8px; display: flex; align-items: center; opacity: 0.8;">
-         <p style="font-size:16px; margin:0;">05 November 2024</p>
-         <p style="font-size:16px; margin:0 0 0 8px;"> | &nbsp;&nbsp;3 min</p>
-      </div>
-    
-    </div>
-    
-  </div>
-  
-</div>
+<th>
+Title
+</th>
 
-</li>
+<th>
+Description
+</th>
 
-  <li data-index="2" data-categories="cmVzb3VyY2VzJTJDY29kZSUyQ3B5dGhvbg==" data-listing-date-sort="1611122400000" data-listing-file-modified-sort="1747551102127" data-listing-date-modified-sort="1732946400000" data-listing-reading-time-sort="2" data-listing-word-count-sort="388">
-  
-    <div id="container" style="height:100%; width:100%; overflow: hidden; display: flex; margin-left: -35px; margin-bottom: 40px; padding-bottom: 15px; border-bottom: 1px solid rgba(128, 128, 128, 0.255);">
-    
-      <div id="itemImage" style="width:200px; height:200px; background-size:contain; background-position:center; margin: 0px 30px 15px 0px;">
-      
-        <a href="../blog/python-intro/index.html" class="listing-categories">
-          <img src="https://res.cloudinary.com/website-assets-mgmt/image/upload/c_scale,w_500/r_15/f_auto/q_auto/v1/website/blog/python-intro/code-img" width="200" height="200">
-        </a>
-        
-      </div>
-    
-    <div id="itemDetails" style="width:100%;">
-    
-      <div id="itemHeader" style="justify-content: space-between; line-height:28px; margin-bottom:3px; align-items:flex-start;">
-    
-      <div id="itemTitle" style="display:block; width:95%">
-        <p style="font-size:22px">
-          <a href="../blog/python-intro/index.html" class="listing-categories">Are you getting started to learn Python? 🐍
-          </a>
-        </p>
-      </div>
-    
-      <div id="itemDescription" style="margin-bottom:8px">
-        Are you new to programming? Have questions about which language would be a good one to start?
-      </div>
-    
-      <div id="created" style="margin-top:8px; display: flex; align-items: center; opacity: 0.8;">
-         <p style="font-size:16px; margin:0;">20 January 2021</p>
-         <p style="font-size:16px; margin:0 0 0 8px;"> | &nbsp;&nbsp;2 min</p>
-      </div>
-    
-    </div>
-    
-  </div>
-  
-</div>
+<th>
+Reading Time
+</th>
 
-</li>
+</tr>
+</thead>
+<tbody class="list">
 
-</ul>
+<tr data-index="0" data-categories="cmVzb3VyY2VzJTJDdHV0b3JpYWw=" data-listing-date-sort="1732860000000" data-listing-file-modified-sort="1748099193010" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="412" data-listing-title-sort="Digital Asset Display in Quarto Blog Posts" data-listing-filename-sort="index.qmd">
+<td>
+<span class="listing-date">11/29/24</span>
+</td>
+<td>
+<a href="../blog/posts/digital-assets-demo/index.html" class="title listing-title">Digital Asset Display in Quarto Blog Posts</a>
+</td>
+<td>
+<span class="listing-description">A comprehensive guide to displaying images, videos, and terminal sessions in Quarto blog posts. </span>
+</td>
+<td>
+<span class="listing-reading-time">3 min</span>
+</td>
+
+</tr>
+
+<tr data-index="1" data-categories="cmVzb3VyY2Vz" data-listing-date-sort="1730786400000" data-listing-file-modified-sort="1748100031781" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="454" data-listing-title-sort="Awesome Sites! 😎" data-listing-filename-sort="index.qmd">
+<td>
+<span class="listing-date">11/5/24</span>
+</td>
+<td>
+<a href="../blog/posts/awesome/index.html" class="title listing-title">Awesome Sites! 😎</a>
+</td>
+<td>
+<span class="listing-description">Essential Resource Collections for Developers. </span>
+</td>
+<td>
+<span class="listing-reading-time">3 min</span>
+</td>
+
+</tr>
+
+<tr data-index="2" data-categories="cmVzb3VyY2VzJTJDY29kZSUyQ3B5dGhvbg==" data-listing-date-sort="1611122400000" data-listing-file-modified-sort="1747551102127" data-listing-date-modified-sort="1732946400000" data-listing-reading-time-sort="2" data-listing-word-count-sort="388" data-listing-title-sort="Are you getting started to learn Python? 🐍" data-listing-filename-sort="index.qmd">
+<td>
+<span class="listing-date">1/20/21</span>
+</td>
+<td>
+<a href="../blog/posts/python-intro/index.html" class="title listing-title">Are you getting started to learn Python? 🐍</a>
+</td>
+<td>
+<span class="listing-description">Useful Resources for Beginners </span>
+</td>
+<td>
+<span class="listing-reading-time">2 min</span>
+</td>
+
+</tr>
+
+</tbody>
+</table>
 <div class="listing-no-matching d-none">No matching items</div>
-</div><a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
+</div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     // Ensure there is a toggle, if there isn't float one in the top right
@@ -944,20 +906,14 @@ I invite you to explore, and I’m always open to further discussions.</p>
 <footer class="footer">
   <div class="nav-footer">
     <div class="nav-footer-left">
-<p>© 2025 Chaance T. Graves | Rendered with <a href="https://quarto.org">Quarto</a> v1.7.31</p>
+<p>Powered by <a href="https://quarto.org"><iconify-icon role="img" inline="" icon="simple-icons:quarto" aria-label="Quarto Logo" title="Quarto Logo"></iconify-icon> Quarto</a> v1.7.31.</p>
 </div>   
     <div class="nav-footer-center">
-      &nbsp;
-    <div class="toc-actions"><ul><li><a href="https://github.com/ctg123/quarto-example-site/blob/main/blog/index.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/ctg123/quarto-example-site/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+<p>© <span id="current-year"></span> Chaance T. Graves</p>
+<div class="toc-actions"><ul><li><a href="https://github.com/ctg123/quarto-example-site/blob/main/blog/index.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/ctg123/quarto-example-site/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
-      <ul class="footer-items list-unstyled">
-    <li class="nav-item">
-    <a class="nav-link" href="../license/index.html">
-<p>License</p>
-</a>
-  </li>  
-</ul>
-    </div>
+<p>License: <a href="license/index.qmd">CC BY NC SA 4.0</a></p>
+</div>
   </div>
 </footer>
 

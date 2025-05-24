@@ -182,57 +182,50 @@
     "text": "Conclusion\nWow, this was quite a project! If you made it this far, congratulations! You have a fully capable microservices application deployed to a Highly Available Kubernetes cluster 👏🏾\nIf you enjoyed this project or have any other suggestions, leave a comment below. Your feedback is always welcome."
   },
   {
-    "objectID": "projects/index.html",
-    "href": "projects/index.html",
-    "title": "My Projects",
-    "section": "",
-    "text": "In-depth studies of my technical work and experiments, which are all open source.\n\n\n\n\n\n\n\n\n\n\n\n\nBoat Image Classification with CNN and Transfer Learning\n\n\n\ndeep learning\n\ncomputer vision\n\ntransfer learning\n\nCNN\n\n\n\nBuilding and comparing custom CNN and MobileNetV2 models for an image classification example.\n\n\n\n\n\n\n\n\n\n\nFace Recognition using Convolutional Neural Networks\n\n\n\ndeep learning\n\ncomputer vision\n\nCNN\n\n\n\nBuilding a CNN model for facial recognition using the ORL database.\n\n\n\n\n\n\n\n\n\n\nHeart Disease Prediction Random Forest Classifer\n\n\n\napplied data science\n\nvisualization\n\n\n\nApplied data analysis and graph visualization using RFC algorithms on a public dataset.\n\n\n\n\n\n\n\n\n\n\nNYC 311 Customer Service Requests Analysis\n\n\n\napplied data science\n\nvisualization\n\n\n\nData analysis of service request calls from public dataset.\n\n\n\n\n\n\n\n\n\n\n\n\nOptimizing a Flask API microservice with Kubernetes\n\n\n\nansible\n\nkubernetes\n\nAWS\n\ndocker\n\n\n\nPersonal project integrating a custom Python API endpoint deployed on AWS and Kubernetes.\n\n\n\n\n\n\n\n\n\n\n\n\nWordPress with LAMP Stack\n\n\n\nansible\n\n\n\nConfiguration Mgmt. Demo using LAMP application.\n\n\n\n\n\nNo matching items\n Back to top"
-  },
-  {
-    "objectID": "blog/digital-assets-demo/index.html",
-    "href": "blog/digital-assets-demo/index.html",
+    "objectID": "blog/posts/digital-assets-demo/index.html",
+    "href": "blog/posts/digital-assets-demo/index.html",
     "title": "Digital Asset Display in Quarto Blog Posts",
     "section": "",
     "text": "In this post, I’ll walk you through my workflow for displaying various types of digital assets in Quarto blog posts. I use a combination of tools to create an engaging and interactive reading experience:\n\nCloudinary for image and video hosting\nasciinema for terminal session recordings\nQuarto’s built-in markdown features. You can find more information here.\n\nLet’s explore each of these tools and how to implement them in your blog posts."
   },
   {
-    "objectID": "blog/digital-assets-demo/index.html#introduction",
-    "href": "blog/digital-assets-demo/index.html#introduction",
+    "objectID": "blog/posts/digital-assets-demo/index.html#introduction",
+    "href": "blog/posts/digital-assets-demo/index.html#introduction",
     "title": "Digital Asset Display in Quarto Blog Posts",
     "section": "",
     "text": "In this post, I’ll walk you through my workflow for displaying various types of digital assets in Quarto blog posts. I use a combination of tools to create an engaging and interactive reading experience:\n\nCloudinary for image and video hosting\nasciinema for terminal session recordings\nQuarto’s built-in markdown features. You can find more information here.\n\nLet’s explore each of these tools and how to implement them in your blog posts."
   },
   {
-    "objectID": "blog/digital-assets-demo/index.html#image-display-with-cloudinary",
-    "href": "blog/digital-assets-demo/index.html#image-display-with-cloudinary",
+    "objectID": "blog/posts/digital-assets-demo/index.html#image-display-with-cloudinary",
+    "href": "blog/posts/digital-assets-demo/index.html#image-display-with-cloudinary",
     "title": "Digital Asset Display in Quarto Blog Posts",
     "section": "Image Display with Cloudinary",
     "text": "Image Display with Cloudinary\nCloudinary is a SaaS tailored for media asset managment that I discovered works pretty well for blog images, and comes with a decent amount of resources and documentation to learn to use their platform effectively. This would include some features such as:\n\nAutomated image optimization\nResponsive image delivery and upload API\nCDN-powered fast loading\nCan perform image transformations\n\n\nImplementation Steps\n\nSign up for a Cloudinary account\nUpload your images to Cloudinary using the Cloudinary Upload API or SDK packages in your preferred language of choice.\nUse the provided URL in your Quarto markdown\n\nHere’s an example of an image hosted directly on Cloudinary:\n\nThe markdown syntax is simple:\n![](https://res.cloudinary.com/your-account/image/upload/your-image.jpg)"
   },
   {
-    "objectID": "blog/digital-assets-demo/index.html#terminal-session-recording-with-asciinema",
-    "href": "blog/digital-assets-demo/index.html#terminal-session-recording-with-asciinema",
+    "objectID": "blog/posts/digital-assets-demo/index.html#terminal-session-recording-with-asciinema",
+    "href": "blog/posts/digital-assets-demo/index.html#terminal-session-recording-with-asciinema",
     "title": "Digital Asset Display in Quarto Blog Posts",
     "section": "Terminal Session Recording with asciinema",
     "text": "Terminal Session Recording with asciinema\nasciinema is an excellent tool for recording and sharing terminal sessions. It creates lightweight, text-based recordings that are perfect for tutorials and documentation.\n\nHow to Use asciinema\n\nInstall asciinema via Python: pip install asciinema\nRecord a session: asciinema rec demo.cast\nUpload to asciinema.org\nEmbed in your blog using their JavaScript player\n\nHere’s an example recording:\n\nThe embed code is straightforward:\n&lt;script src=\"https://asciinema.org/a/YOUR-CAST-ID.js\" id=\"asciicast-YOUR-CAST-ID\" async=\"true\"&gt;&lt;/script&gt;"
   },
   {
-    "objectID": "blog/digital-assets-demo/index.html#video-display-with-cloudinary",
-    "href": "blog/digital-assets-demo/index.html#video-display-with-cloudinary",
+    "objectID": "blog/posts/digital-assets-demo/index.html#video-display-with-cloudinary",
+    "href": "blog/posts/digital-assets-demo/index.html#video-display-with-cloudinary",
     "title": "Digital Asset Display in Quarto Blog Posts",
     "section": "Video Display with Cloudinary",
     "text": "Video Display with Cloudinary\nCloudinary also excels at video hosting and delivery. It provides:\n\nAdaptive bitrate streaming\nAutomatic format optimization\nGlobal CDN delivery\nThumbnail generation\n\n\nAdding Videos to Your Blog\n\nUpload your video to Cloudinary\nEmbed the video URL in your .qmd\\.md post document\nOptionally, add a poster image for the video thumbnail\n\nHere’s an example video:\n\n\nVideo\nSea Turtle Example Video"
   },
   {
-    "objectID": "blog/digital-assets-demo/index.html#best-practices",
-    "href": "blog/digital-assets-demo/index.html#best-practices",
+    "objectID": "blog/posts/digital-assets-demo/index.html#best-practices",
+    "href": "blog/posts/digital-assets-demo/index.html#best-practices",
     "title": "Digital Asset Display in Quarto Blog Posts",
     "section": "Best Practices",
     "text": "Best Practices\n\nImage Optimization: Always compress images before uploading to Cloudinary\nResponsive Design: Use Cloudinary’s responsive image features\nTerminal Sessions: Keep recordings concise and focused\nVideo Content: Consider adding captions and descriptions\nPerformance: Monitor your page load times and optimize accordingly"
   },
   {
-    "objectID": "blog/digital-assets-demo/index.html#conclusion",
-    "href": "blog/digital-assets-demo/index.html#conclusion",
+    "objectID": "blog/posts/digital-assets-demo/index.html#conclusion",
+    "href": "blog/posts/digital-assets-demo/index.html#conclusion",
     "title": "Digital Asset Display in Quarto Blog Posts",
     "section": "Conclusion",
     "text": "Conclusion\nBy combining these tools, you can create rich, interactive blog posts that effectively communicate your ideas. Cloudinary handles your media assets efficiently, while asciinema provides an excellent way to share terminal sessions. Quarto’s markdown support makes it all work seamlessly together.\nFeel free to experiment with these tools if you like and adapt them to your specific needs. Also share your experiences with other alternatives too. Happy blogging!👋🏾"
@@ -242,21 +235,21 @@
     "href": "blog/index.html",
     "title": "ctgadget.log()",
     "section": "",
-    "text": "Welcome to my blog! 👋🏾\nI’ll be sharing interesting articles about my experiments, ideas, and thoughts.\nI invite you to explore, and I’m always open to further discussions.\n\n\n\n\n\n\n\n\n\n\n  \n  \n    \n    \n      \n      \n        \n          \n        \n        \n      \n    \n    \n    \n      \n    \n      \n        \n          Digital Asset Display in Quarto Blog Posts\n          \n        \n      \n    \n      \n        A comprehensive guide to displaying images, videos, and terminal sessions in Quarto blog posts\n      \n    \n      \n         29 November 2024\n          |   3 min\n      \n    \n    \n    \n  \n  \n\n\n\n\n  \n  \n    \n    \n      \n      \n        \n          \n        \n        \n      \n    \n    \n    \n      \n    \n      \n        \n          Awesome Sites! 😎\n          \n        \n      \n    \n      \n        Essential Resource Collections for Developers\n      \n    \n      \n         05 November 2024\n          |   3 min\n      \n    \n    \n    \n  \n  \n\n\n\n\n  \n  \n    \n    \n      \n      \n        \n          \n        \n        \n      \n    \n    \n    \n      \n    \n      \n        \n          Are you getting started to learn Python? 🐍\n          \n        \n      \n    \n      \n        \n      \n    \n      \n         20 January 2021\n          |   2 min\n      \n    \n    \n    \n  \n  \n\n\n\n\n\nNo matching items\n Back to top"
+    "text": "Welcome to my blog! 👋🏾\nI’ll be sharing interesting articles about my experiments, ideas, and thoughts.\nI invite you to explore, and I’m always open to further discussions.\n\n\n\n\n\n\n\n    \n      \n      \n    \n\n\n\n\n\n\nDate\n\n\n\nTitle\n\n\n\nDescription\n\n\n\nReading Time\n\n\n\n\n\n\n\n\n11/29/24\n\n\nDigital Asset Display in Quarto Blog Posts\n\n\nA comprehensive guide to displaying images, videos, and terminal sessions in Quarto blog posts. \n\n\n3 min\n\n\n\n\n\n\n11/5/24\n\n\nAwesome Sites! 😎\n\n\nEssential Resource Collections for Developers. \n\n\n3 min\n\n\n\n\n\n\n1/20/21\n\n\nAre you getting started to learn Python? 🐍\n\n\nUseful Resources for Beginners \n\n\n2 min\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "notes/index.html",
     "href": "notes/index.html",
     "title": "My Notes",
     "section": "",
-    "text": "I’ll publish my “Digital Garden” that’ll be associated with the navbar link.\nCOMING SOON …\n\n\n\n Back to top"
+    "text": "I’ll publish my “Digital Garden” that’ll be associated with the navbar link.\nCOMING SOON …"
   },
   {
     "objectID": "resume.html",
     "href": "resume.html",
     "title": "My Resume",
     "section": "",
-    "text": "Download PDF file.\n\n\n\n Back to top"
+    "text": "Download PDF file."
   },
   {
     "objectID": "index.html",
@@ -287,32 +280,32 @@
     "text": "I’m always open to collaborating, mentoring, and exchanging ideas with fellow technology enthusiasts. Feel free to reach out through LinkedIn or check out my detailed experience on my resume.\nAs a strong believer in knowledge sharing and continous learning, I’m committed to helping others who are curious or eager to grow. Whether you’re a experienced professional or just starting your tech journey, I’d love to connect!"
   },
   {
-    "objectID": "blog/awesome/index.html",
-    "href": "blog/awesome/index.html",
+    "objectID": "blog/posts/awesome/index.html",
+    "href": "blog/posts/awesome/index.html",
     "title": "Awesome Sites! 😎",
     "section": "",
     "text": "If you’re a developer/engineer that’s constantly searching for high-quality resources to enhance our skills and discover new tools like I am, you can check out the “awesome” lists on GitHub which have become a cornerstone of community-curated knowledge sharing. These collections are meticulously maintained by passionate developers worldwide, offering carefully selected resources across various technological domains.\nThe concept started with Sindre Sorhus’s original awesome list, which has since spawned thousands of specialized collections. These lists follow strict guidelines to ensure quality and relevance, making them invaluable for both beginners and experienced developers. I’ve highlighted some lists based on the domain that you can explore further into.\n\n\n\nAwesome Machine Learning\n\nA comprehensive collection of ML frameworks, libraries, and software\nCovers multiple programming languages including Python, R, Java, and more\nIncludes sections on computer vision, natural language processing, and deep learning\n\n\n\n\n\n\nAwesome Python\n\nEssential Python frameworks, libraries, and resources\nOrganized by application domain (web development, data science, testing, etc.)\nExcellent for both Python beginners and advanced developers\n\nAwesome Rust\n\nCurated resources for Rust programming language\nApplications, development tools, and learning materials\nGreat for those interested in systems programming and performance\n\n\n\n\n\n\nAwesome Embedded\n\nResources for embedded systems development\nHardware platforms, tools, and frameworks\nEssential for IoT, Hardware and Embedded Software Engineers\n\nAwesome Self Hosted\n\nTons of SaaS tools which you can host on your own servers\nAlternatives to popular cloud services\nExcellet for individuals and organizations focused on data privacy and goverenance\n\nAwesome Quarto\n\nQuarto specific curated content!\n\n\n\n\n\n\nAwesome Static Site Generators\n\nTools for building modern static websites\nFrameworks across multiple programming languages\nIncludes JAMstack resources and deployment options\n\n\n\n\n\n\nAwesome Prompts\n\nCollection of effective prompts for AI models\nBest practices for prompt engineering\nExamples for various use cases and applications\n\n\n\n\n\nTo keep track of changes and new additions to these collections, I recommend using Track Awesome List. This tool helps you monitor updates to your favorite awesome lists and discover new resources regularly.\n\n\n\nThese curated collections represent countless hours of community effort to organize and validate the best resources in each field. Whether you’re exploring a new technology or deepening your expertise in a familiar domain, these awesome lists are invaluable starting points for your journey.\nRemember to contribute back to these collections if you discover valuable resources that aren’t already included. The strength of these lists comes from active community participation and sharing."
   },
   {
-    "objectID": "blog/awesome/index.html#staying-updated",
-    "href": "blog/awesome/index.html#staying-updated",
+    "objectID": "blog/posts/awesome/index.html#staying-updated",
+    "href": "blog/posts/awesome/index.html#staying-updated",
     "title": "Awesome Sites! 😎",
     "section": "",
     "text": "To keep track of changes and new additions to these collections, I recommend using Track Awesome List. This tool helps you monitor updates to your favorite awesome lists and discover new resources regularly."
   },
   {
-    "objectID": "blog/awesome/index.html#final-thoughts",
-    "href": "blog/awesome/index.html#final-thoughts",
+    "objectID": "blog/posts/awesome/index.html#final-thoughts",
+    "href": "blog/posts/awesome/index.html#final-thoughts",
     "title": "Awesome Sites! 😎",
     "section": "",
     "text": "These curated collections represent countless hours of community effort to organize and validate the best resources in each field. Whether you’re exploring a new technology or deepening your expertise in a familiar domain, these awesome lists are invaluable starting points for your journey.\nRemember to contribute back to these collections if you discover valuable resources that aren’t already included. The strength of these lists comes from active community participation and sharing."
   },
   {
-    "objectID": "blog/python-intro/index.html",
-    "href": "blog/python-intro/index.html",
+    "objectID": "blog/posts/python-intro/index.html",
+    "href": "blog/posts/python-intro/index.html",
     "title": "Are you getting started to learn Python? 🐍",
     "section": "",
-    "text": "Are you new to programming? Have questions about which language would be a good one to start?\nChoosing which programming language to learn is more a personal preference depending on what project and solution you’re looking to achieve. However, for a beginner, you have lots of flexibility to experiment with which one is right for you. One programming language I enjoy working with and others have found helpful is Python. I recommend installing Python 3 to have more community support to be developed and used for years to come.\nThere are likely millions of developers worldwide using Python to build projects, tools and using it to teach others the fundamentals of programming. You can do all kinds of other fantastic work in a multitude of domains.\n\nExample applications:\n\nWeb applications\nMachine Learning / Deep learning\nAutomating weekly emails\nSetting up jobs to update a spreadsheet\netc.\n\n\n\nHelpful online resources & books\nYou can find plentiful resources to teach yourself Python or pair with a small group to work on projects!\nCodeacademy: Codeacademy offers free code tutorials that are very popular for a good reason. The tutorials should give you a good idea of what it’s like to code Python with hands-on lessons to write code.\nLearn Python the Hard Way by Zed Shaw: This book is well received and aims to teach beginners how to read and write basic Python to understand other books on Python. It is high quality which I recommend regardless of where your current skill is. You can try the free sample to see if it would work for you.\nReal Python: This website offers in-depth tutorials to learn any aspect of Python you may be curious to explore. Check it out and keep a list of articles for future reference!\nAutomate the boring stuff with Python by Al Sweigart: This is an enjoyable read and practical for anyone who is currently working a tedious, routine job! He also offers a video course provided through Udemy.\nUdemy: You can find all sorts of courses and projects offered on this online education website. They range from beginner to advanced and have instructors teaching financial topics such as predicting stock prices, data science, full-stack web development, and more.\nI’m confident your programming journey will be well on its way towards success. Feel free to discuss any other valuable resources or projects you’ve discovered learning Python! 👌🏾\n\n\n\n\n Back to top"
+    "text": "Are you new to programming? Have questions about which language would be a good one to start?\nChoosing which programming language to learn is more a personal preference depending on what project and solution you’re looking to achieve. However, for a beginner, you have lots of flexibility to experiment with which one is right for you. One programming language I enjoy working with and others have found helpful is Python. I recommend installing Python 3 to have more community support to be developed and used for years to come.\nThere are likely millions of developers worldwide using Python to build projects, tools and using it to teach others the fundamentals of programming. You can do all kinds of other fantastic work in a multitude of domains.\n\nExample applications:\n\nWeb applications\nMachine Learning / Deep learning\nAutomating weekly emails\nSetting up jobs to update a spreadsheet\netc.\n\n\n\nHelpful online resources & books\nYou can find plentiful resources to teach yourself Python or pair with a small group to work on projects!\nCodeacademy: Codeacademy offers free code tutorials that are very popular for a good reason. The tutorials should give you a good idea of what it’s like to code Python with hands-on lessons to write code.\nLearn Python the Hard Way by Zed Shaw: This book is well received and aims to teach beginners how to read and write basic Python to understand other books on Python. It is high quality which I recommend regardless of where your current skill is. You can try the free sample to see if it would work for you.\nReal Python: This website offers in-depth tutorials to learn any aspect of Python you may be curious to explore. Check it out and keep a list of articles for future reference!\nAutomate the boring stuff with Python by Al Sweigart: This is an enjoyable read and practical for anyone who is currently working a tedious, routine job! He also offers a video course provided through Udemy.\nUdemy: You can find all sorts of courses and projects offered on this online education website. They range from beginner to advanced and have instructors teaching financial topics such as predicting stock prices, data science, full-stack web development, and more.\nI’m confident your programming journey will be well on its way towards success. Feel free to discuss any other valuable resources or projects you’ve discovered learning Python! 👌🏾"
   },
   {
     "objectID": "projects/heart-disease-prediction/index.html#importing-libraries",
@@ -550,6 +543,6 @@
     "href": "license/index.html",
     "title": "CC BY-NC-SA 4.0 license",
     "section": "",
-    "text": "© 2025 Chaance T. Graves.\nMy content is released under the CC BY NC ND 4.0 license.\n   \nYou may share and adapt this content with appropriate credit and notation of any changes. You may not use this material for any commercial purposes.\n\n\n\n\n\n\nNote\n\n\n\nNote that my Opinions expressed are solely my own and do not express the views of my employer or any organizations I am associated with.\n\n\n\n\n\n Back to top"
+    "text": "©  Chaance T. Graves\nMy content is released under the CC BY NC ND 4.0 license.\n   \nYou may share and adapt this content with appropriate credit and notation of any changes. You may not use this material for any commercial purposes.\n\n\n\n\n\n\nNote\n\n\n\nNote that my Opinions expressed are solely my own and do not express the views of my employer or any organizations I am associated with."
   }
 ]

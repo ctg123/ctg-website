@@ -1,10 +1,10 @@
 {
   "listingMap": {
     "blog/index.qmd": [
-      "/"
+      "blogs.yml"
     ],
     "projects/index.qmd": [
-      "/"
+      "projects.yml"
     ]
   }
 }

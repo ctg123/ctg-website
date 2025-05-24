@@ -215,3 +215,10 @@ div.quarto-post .listing-categories .listing-category:hover, .quarto-category:ho
 .page-item.active .page-link {
     background-color: $secondary;
 }
+
+// Cards
+
+// Project cards - consistent styling
+.card-header {
+   background-color: $mine-shaft !important;
+}

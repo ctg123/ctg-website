@@ -1,6 +1,6 @@
 ---
 title: "Awesome Sites! 😎"
-description: "Essential Resource Collections for Developers"
+description: "Essential Resource Collections for Developers."
 author: "Chaance Graves"
 date: "2024-11-05"
 categories: [resources]

@@ -1,0 +1,65 @@
+# Projects listed in chronlogical order
+
+- category: Machine Learning
+  description: |
+    collections of machine learning projects and notebooks.
+  tiles:
+
+    - title: Face Recognition using Convolutional Neural Networks
+      #description: Building a CNN model for facial recognition using the ORL database.
+      skills: [deep learning, computer vision, CNN]
+      date: 2023-11-21
+      code: https://github.com/ctg123/ml-projects/blob/main/facial-recognition-cnn/face_recognition_cnn.ipynb
+      live: https://colab.research.google.com/github/ctg123/ml-projects/blob/main/facial-recognition-cnn/face_recognition_cnn.ipynb
+      thumbnail: https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=1600
+      href: ./face-recognition/index.qmd
+
+    - title: Boat Image Classification with CNN and Transfer Learning
+      #description: Building and comparing custom CNN and MobileNetV2 models for an image classification example.
+      skills: [deep learning, computer vision, transfer learning, CNN]
+      date: 2023-11-04
+      code: https://github.com/ctg123/ml-projects/blob/main/boat-image-classifier/boat_img_classifier.ipynb
+      live: https://colab.research.google.com/github/ctg123/ml-projects/blob/main/boat-image-classifier/boat_img_classifier.ipynb
+      thumbnail: https://res.cloudinary.com/website-assets-mgmt/image/upload/c_scale,w_500/r_15/co_rgb:FFFFFF,l_text:arial_50_bold:DEMO/fl_layer_apply,g_center/f_auto/q_auto/v1/website/blog/digital-assets-demo/mtn-demo-img
+      href: ./boat-classifier/index.qmd
+
+    - title: Heart Disease Prediction Random Forest Classifer
+      #description: Applied data analysis and graph visualization using RFC algorithms on a public dataset.
+      skills: [applied data science, visualization]
+      date: 2023-09-20
+      code: https://github.com/ctg123/ml-projects/tree/main/heart-disease-random-forest
+      live: https://colab.research.google.com/github/ctg123/ml-projects/blob/main/heart-disease-random-forest/heart_disease_prediction.ipynb
+      thumbnail: https://res.cloudinary.com/website-assets-mgmt/image/upload/c_scale,w_500/r_15/co_rgb:FFFFFF,l_text:arial_50_bold:DEMO/fl_layer_apply,g_center/f_auto/q_auto/v1/website/blog/digital-assets-demo/mtn-demo-img
+      href: ./heart-disease-prediction/index.qmd
+
+    - title: NYC 311 Customer Service Requests Analysis
+      #description: Data analysis of service request calls from a public dataset.
+      skills: [applied data science, visualization]
+      date: 2023-05-09
+      code: https://github.com/ctg123/ml-projects/blob/main/customer-service-analysis/customer_service_analysis.ipynb
+      live: https://colab.research.google.com/github/ctg123/ml-projects/blob/main/customer-service-analysis/customer_service_analysis.ipynb
+      thumbnail: https://res.cloudinary.com/website-assets-mgmt/image/upload/c_scale,w_500/r_15/co_rgb:FFFFFF,l_text:arial_50_bold:DEMO/fl_layer_apply,g_center/f_auto/q_auto/v1/website/blog/digital-assets-demo/mtn-demo-img
+      href: ./customer-service-analysis/index.qmd
+
+
+- category: DevOps & Cloud 
+  description: |
+   DevOps tooling demos and deployment projects.
+  tiles:
+
+    - title: Optimizing a Flask API microservice with Kubernetes
+      skills: [Ansible,Kubernetes,AWS,Docker]
+      #description: Personal project integrating a custom Python API endpoint deployed on AWS and Kubernetes.
+      date: 2021-10-07
+      code: https://github.com/ctg123/ansible-kops
+      thumbnail: https://res.cloudinary.com/website-assets-mgmt/image/upload/featured_ydp5ad.png
+      href: ./ansible-kops/index.qmd
+
+    - title: "Wordpress with LAMP Stack"
+      skills: [Ansible]
+      #description: Configuration Mgmt. Demo using LAMP application.
+      date: 2021-08-23
+      code: https://github.com/ctg123/wordpress-ansible
+      thumbnail: https://res.cloudinary.com/website-assets-mgmt/image/upload/v1732902618/Wordpress_Ansible_su8tcu.png
+      href: ./wordpress-with-lamp-stack/index.qmd
+      

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>My Projects – Chaance T. Graves</title>
+<title>Launch Pad 🚀 – Chaance T. Graves</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -43,9 +43,10 @@ ul.task-list li input[type="checkbox"] {
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-e4fbaa5b9575d7f6de7c906568c40117.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-427024a4d223e2626d4889d8dc8dec7d.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-e42dec8edb97716935e519bbc7dfaec1.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../site_libs/bootstrap/bootstrap-427024a4d223e2626d4889d8dc8dec7d.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-baa6c83b709fb3950d7db107ebdbb5d5.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-b80533282bbf88abb9014277572e0c54.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-baa6c83b709fb3950d7db107ebdbb5d5.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-contrib/iconify-2.1.0/iconify-icon.min.js"></script>
 <link href="../site_libs/quarto-contrib/fontawesome6-1.2.0/all.min.css" rel="stylesheet">
 <link href="../site_libs/quarto-contrib/fontawesome6-1.2.0/latex-fontsize.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
@@ -77,20 +78,20 @@ ul.task-list li input[type="checkbox"] {
 <script>
 
   window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
+    const listingTargetEl = window.document.querySelector('#listing-projects .list');
     if (!listingTargetEl) {
       // No listing discovered, do not attach.
       return; 
     }
 
     const options = {
-      valueNames: ['listing-title','listing-description','listing-image','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      valueNames: ['listing-category','listing-description','listing-tiles',{ data: ['index'] },{ data: ['categories'] }],
       
-      searchColumns: ["listing-title","listing-author","listing-date","listing-image","listing-description","listing-categories"],
+      searchColumns: ["listing-category","listing-description","listing-tiles"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
+    window['quarto-listings']['listing-projects'] = new List('listing-projects', options);
 
     if (window['quarto-listing-loaded']) {
       window['quarto-listing-loaded']();
@@ -136,6 +137,16 @@ window.Quarto = {
 </script>
 
 <link rel="stylesheet" href="../styles.css">
+<meta property="og:title" content="Launch Pad 🚀 – Chaance T. Graves">
+<meta property="og:description" content="My personal blog about engineering projects">
+<meta property="og:image" content="https://res.cloudinary.com/website-assets-mgmt/image/upload/featured_ydp5ad.png">
+<meta property="og:site_name" content="Chaance T. Graves">
+<meta property="og:image:alt" content="">
+<meta name="twitter:title" content="Launch Pad 🚀 – Chaance T. Graves">
+<meta name="twitter:description" content="My personal blog about engineering projects">
+<meta name="twitter:image" content="https://res.cloudinary.com/website-assets-mgmt/image/upload/featured_ydp5ad.png">
+<meta name="twitter:image:alt" content="">
+<meta name="twitter:card" content="summary_large_image">
 </head>
 
 <body class="nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
@@ -357,24 +368,22 @@ window.Quarto = {
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-cloud"><div class="category" data-category="YW5zaWJsZQ=="><span class="quarto-category-count category-cloud-4">ansible</span></div><div class="category" data-category="YXBwbGllZCUyMGRhdGElMjBzY2llbmNl"><span class="quarto-category-count category-cloud-4">applied data science</span></div><div class="category" data-category="QVdT"><span class="quarto-category-count category-cloud-2">AWS</span></div><div class="category" data-category="Q05O"><span class="quarto-category-count category-cloud-4">CNN</span></div><div class="category" data-category="Y29tcHV0ZXIlMjB2aXNpb24="><span class="quarto-category-count category-cloud-4">computer vision</span></div><div class="category" data-category="ZGVlcCUyMGxlYXJuaW5n"><span class="quarto-category-count category-cloud-4">deep learning</span></div><div class="category" data-category="ZG9ja2Vy"><span class="quarto-category-count category-cloud-2">docker</span></div><div class="category" data-category="a3ViZXJuZXRlcw=="><span class="quarto-category-count category-cloud-2">kubernetes</span></div><div class="category" data-category="dHJhbnNmZXIlMjBsZWFybmluZw=="><span class="quarto-category-count category-cloud-2">transfer learning</span></div><div class="category" data-category="dmlzdWFsaXphdGlvbg=="><span class="quarto-category-count category-cloud-4">visualization</span></div></div></div>
+    
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content column-page" id="quarto-document-content">
 
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">My Projects</h1>
+<h1 class="title"><code>Launch Pad</code> 🚀</h1>
 </div>
 
 
 
-<div class="quarto-title-meta">
+<div class="quarto-title-meta column-page">
 
     
   
@@ -391,149 +400,466 @@ window.Quarto = {
 
 
 
-<div class="quarto-listing quarto-listing-container-grid" id="listing-listing">
-<div class="list grid quarto-listing-cols-3">
-<div class="g-col-1" data-index="0" data-categories="ZGVlcCUyMGxlYXJuaW5nJTJDY29tcHV0ZXIlMjB2aXNpb24lMkN0cmFuc2ZlciUyMGxlYXJuaW5nJTJDQ05O" data-listing-date-sort="1699074000000" data-listing-file-modified-sort="1745503247033" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="11" data-listing-word-count-sort="2038">
-<a href="../projects/boat-classifier/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top"><img src="boat-classifier/index_files/figure-html/cell-14-output-1.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Boat Image Classification with CNN and Transfer Learning
-</h5>
-<div class="listing-categories">
+<div class="quarto-listing quarto-listing-container-custom" id="listing-projects">
 
-<div class="listing-category" onclick="window.quartoListingCategory('ZGVlcCUyMGxlYXJuaW5n'); return false;">deep learning</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('Y29tcHV0ZXIlMjB2aXNpb24='); return false;">computer vision</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('dHJhbnNmZXIlMjBsZWFybmluZw=='); return false;">transfer learning</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('Q05O'); return false;">CNN</div>
-
-</div>
-<div class="card-text listing-description delink">
-<p>Building and comparing custom CNN and MobileNetV2 models for an image classification example.</p>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="1" data-categories="ZGVlcCUyMGxlYXJuaW5nJTJDY29tcHV0ZXIlMjB2aXNpb24lMkNDTk4=" data-listing-date-sort="1700546400000" data-listing-file-modified-sort="1745503243133" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="8" data-listing-word-count-sort="1416">
-<a href="../projects/face-recognition/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top"><img src="face-recognition/index_files/figure-html/cell-8-output-1.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Face Recognition using Convolutional Neural Networks
-</h5>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('ZGVlcCUyMGxlYXJuaW5n'); return false;">deep learning</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('Y29tcHV0ZXIlMjB2aXNpb24='); return false;">computer vision</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('Q05O'); return false;">CNN</div>
-
-</div>
-<div class="card-text listing-description delink">
-<p>Building a CNN model for facial recognition using the ORL database.</p>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="2" data-categories="YXBwbGllZCUyMGRhdGElMjBzY2llbmNlJTJDdmlzdWFsaXphdGlvbg==" data-listing-date-sort="1695186000000" data-listing-file-modified-sort="1745496003761" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="13" data-listing-word-count-sort="2452">
-<a href="../projects/heart-disease-prediction/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top"><img src="heart-disease-prediction/index_files/figure-html/cell-9-output-1.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Heart Disease Prediction Random Forest Classifer
-</h5>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('YXBwbGllZCUyMGRhdGElMjBzY2llbmNl'); return false;">applied data science</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('dmlzdWFsaXphdGlvbg=='); return false;">visualization</div>
-
-</div>
-<div class="card-text listing-description delink">
-<p>Applied data analysis and graph visualization using RFC algorithms on a public dataset.</p>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="3" data-categories="YXBwbGllZCUyMGRhdGElMjBzY2llbmNlJTJDdmlzdWFsaXphdGlvbg==" data-listing-date-sort="1683608400000" data-listing-file-modified-sort="1745496880068" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="11" data-listing-word-count-sort="2131">
-<a href="../projects/customer-service-analysis/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top"><img src="customer-service-analysis/index_files/figure-html/cell-9-output-1.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-NYC 311 Customer Service Requests Analysis
-</h5>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('YXBwbGllZCUyMGRhdGElMjBzY2llbmNl'); return false;">applied data science</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('dmlzdWFsaXphdGlvbg=='); return false;">visualization</div>
-
-</div>
-<div class="card-text listing-description delink">
-<p>Data analysis of service request calls from public dataset.</p>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="4" data-categories="YW5zaWJsZSUyQ2t1YmVybmV0ZXMlMkNBV1MlMkNkb2NrZXI=" data-listing-date-sort="1633582800000" data-listing-file-modified-sort="1745444550248" data-listing-date-modified-sort="1732341600000" data-listing-reading-time-sort="52" data-listing-word-count-sort="10332">
-<a href="../projects/ansible-kops/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="https://res.cloudinary.com/website-assets-mgmt/image/upload/featured_ydp5ad.png" class="thumbnail-image card-img" style="height: 150px;">
+  <h2 class="anchored">Machine Learning</h2>
+  <p>collections of machine learning projects and notebooks.
 </p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Optimizing a Flask API microservice with Kubernetes
-</h5>
-<div class="listing-categories">
+  
+  <div class="list grid" style="column-gap: 20px; row-gap: 20px;">
+    
+      <div class="card border-2 rounded-3 g-col-12 g-col-sm-6 g-col-md-4" data-index="0">
+        
+        <!-- Card Header with Theme-Independent Neutral Color -->
+        <div class="card-header py-2 px-3 border-bottom border-1">
+          <div class="d-flex justify-content-between align-items-start">
+            <div class="flex-grow-1">
+              <h6 class="card-title mb-1 anchored">
+                <a href="../projects/face-recognition/index.html" class="listing-title text-decoration-none fw-bold">
+                  Face Recognition using Convolutional Neural Networks
+                </a>
+              </h6>
+              
+            </div>
+          </div>
+          
+          <!-- Skills/Tech Stack with Navbar Color -->
+          
+            <div class="listing-skills mt-2">
+              
+                <span class="badge me-1 mb-1" style="color: #f3f3f3; font-size: 0.7em; border: 0.10rem solid;">
+                  deep learning
+                </span>
+              
+                <span class="badge me-1 mb-1" style="color: #f3f3f3; font-size: 0.7em; border: 0.10rem solid;">
+                  computer vision
+                </span>
+              
+                <span class="badge me-1 mb-1" style="color: #f3f3f3; font-size: 0.7em; border: 0.10rem solid;">
+                  CNN
+                </span>
+              
+            </div>
+          
+        </div>
 
-<div class="listing-category" onclick="window.quartoListingCategory('YW5zaWJsZQ=='); return false;">ansible</div>
+        <!-- Project Screenshot/Thumbnail -->
+        <a href="../projects/face-recognition/index.html" class="text-decoration-none">
+          <img src="https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1600" alt="" class="card-img-top" style="height: 200px; object-fit: cover;">
+        </a>
+        
+        <!-- Card Body with Description -->
+        
+        
+        <!-- Card Footer with Date and Right-Aligned Buttons -->
+        
+          <div class="card-footer bg-transparent border-top-0 py-2 px-3">
+            <div class="d-flex justify-content-between align-items-center">
+              <!-- Left side: Date -->
+              
+                <small class="text-muted listing-date">
+                  <i class="bi bi-calendar3"></i> 2023-11-21
+                </small>
+              
+              
+              <!-- Right side: Demo and GitHub buttons -->
+              <div class="d-flex gap-2">
+                <!-- Demo/Live Button -->
+                
+                  <a href="https://colab.research.google.com/github/ctg123/ml-projects/blob/main/facial-recognition-cnn/face_recognition_cnn.ipynb" title="View live demo" class="btn btn-sm" target="_blank">
+                    <i class="bi bi-box-arrow-up-right"></i>
+                  </a>
+                
+                
+                <!-- GitHub Button (furthest right) -->
+                 
+                  <a href="https://github.com/ctg123/ml-projects/blob/main/facial-recognition-cnn/face_recognition_cnn.ipynb" title="View source code" class="btn btn-sm" target="_blank">
+                    <i class="bi bi-github"></i>
+                  </a>
+                
+              </div>
+            </div>
+          </div>
+        
+        
+      </div>
+    
+      <div class="card border-2 rounded-3 g-col-12 g-col-sm-6 g-col-md-4" data-index="1">
+        
+        <!-- Card Header with Theme-Independent Neutral Color -->
+        <div class="card-header py-2 px-3 border-bottom border-1">
+          <div class="d-flex justify-content-between align-items-start">
+            <div class="flex-grow-1">
+              <h6 class="card-title mb-1 anchored">
+                <a href="../projects/boat-classifier/index.html" class="listing-title text-decoration-none fw-bold">
+                  Boat Image Classification with CNN and Transfer Learning
+                </a>
+              </h6>
+              
+            </div>
+          </div>
+          
+          <!-- Skills/Tech Stack with Navbar Color -->
+          
+            <div class="listing-skills mt-2">
+              
+                <span class="badge me-1 mb-1" style="color: #f3f3f3; font-size: 0.7em; border: 0.10rem solid;">
+                  deep learning
+                </span>
+              
+                <span class="badge me-1 mb-1" style="color: #f3f3f3; font-size: 0.7em; border: 0.10rem solid;">
+                  computer vision
+                </span>
+              
+                <span class="badge me-1 mb-1" style="color: #f3f3f3; font-size: 0.7em; border: 0.10rem solid;">
+                  transfer learning
+                </span>
+              
+                <span class="badge me-1 mb-1" style="color: #f3f3f3; font-size: 0.7em; border: 0.10rem solid;">
+                  CNN
+                </span>
+              
+            </div>
+          
+        </div>
 
-<div class="listing-category" onclick="window.quartoListingCategory('a3ViZXJuZXRlcw=='); return false;">kubernetes</div>
+        <!-- Project Screenshot/Thumbnail -->
+        <a href="../projects/boat-classifier/index.html" class="text-decoration-none">
+          <img src="https://res.cloudinary.com/website-assets-mgmt/image/upload/c_scale,w_500/r_15/co_rgb:FFFFFF,l_text:arial_50_bold:DEMO/fl_layer_apply,g_center/f_auto/q_auto/v1/website/blog/digital-assets-demo/mtn-demo-img" alt="" class="card-img-top" style="height: 200px; object-fit: cover;">
+        </a>
+        
+        <!-- Card Body with Description -->
+        
+        
+        <!-- Card Footer with Date and Right-Aligned Buttons -->
+        
+          <div class="card-footer bg-transparent border-top-0 py-2 px-3">
+            <div class="d-flex justify-content-between align-items-center">
+              <!-- Left side: Date -->
+              
+                <small class="text-muted listing-date">
+                  <i class="bi bi-calendar3"></i> 2023-11-04
+                </small>
+              
+              
+              <!-- Right side: Demo and GitHub buttons -->
+              <div class="d-flex gap-2">
+                <!-- Demo/Live Button -->
+                
+                  <a href="https://colab.research.google.com/github/ctg123/ml-projects/blob/main/boat-image-classifier/boat_img_classifier.ipynb" title="View live demo" class="btn btn-sm" target="_blank">
+                    <i class="bi bi-box-arrow-up-right"></i>
+                  </a>
+                
+                
+                <!-- GitHub Button (furthest right) -->
+                 
+                  <a href="https://github.com/ctg123/ml-projects/blob/main/boat-image-classifier/boat_img_classifier.ipynb" title="View source code" class="btn btn-sm" target="_blank">
+                    <i class="bi bi-github"></i>
+                  </a>
+                
+              </div>
+            </div>
+          </div>
+        
+        
+      </div>
+    
+      <div class="card border-2 rounded-3 g-col-12 g-col-sm-6 g-col-md-4" data-index="2">
+        
+        <!-- Card Header with Theme-Independent Neutral Color -->
+        <div class="card-header py-2 px-3 border-bottom border-1">
+          <div class="d-flex justify-content-between align-items-start">
+            <div class="flex-grow-1">
+              <h6 class="card-title mb-1 anchored">
+                <a href="../projects/heart-disease-prediction/index.html" class="listing-title text-decoration-none fw-bold">
+                  Heart Disease Prediction Random Forest Classifer
+                </a>
+              </h6>
+              
+            </div>
+          </div>
+          
+          <!-- Skills/Tech Stack with Navbar Color -->
+          
+            <div class="listing-skills mt-2">
+              
+                <span class="badge me-1 mb-1" style="color: #f3f3f3; font-size: 0.7em; border: 0.10rem solid;">
+                  applied data science
+                </span>
+              
+                <span class="badge me-1 mb-1" style="color: #f3f3f3; font-size: 0.7em; border: 0.10rem solid;">
+                  visualization
+                </span>
+              
+            </div>
+          
+        </div>
 
-<div class="listing-category" onclick="window.quartoListingCategory('QVdT'); return false;">AWS</div>
+        <!-- Project Screenshot/Thumbnail -->
+        <a href="../projects/heart-disease-prediction/index.html" class="text-decoration-none">
+          <img src="https://res.cloudinary.com/website-assets-mgmt/image/upload/c_scale,w_500/r_15/co_rgb:FFFFFF,l_text:arial_50_bold:DEMO/fl_layer_apply,g_center/f_auto/q_auto/v1/website/blog/digital-assets-demo/mtn-demo-img" alt="" class="card-img-top" style="height: 200px; object-fit: cover;">
+        </a>
+        
+        <!-- Card Body with Description -->
+        
+        
+        <!-- Card Footer with Date and Right-Aligned Buttons -->
+        
+          <div class="card-footer bg-transparent border-top-0 py-2 px-3">
+            <div class="d-flex justify-content-between align-items-center">
+              <!-- Left side: Date -->
+              
+                <small class="text-muted listing-date">
+                  <i class="bi bi-calendar3"></i> 2023-09-20
+                </small>
+              
+              
+              <!-- Right side: Demo and GitHub buttons -->
+              <div class="d-flex gap-2">
+                <!-- Demo/Live Button -->
+                
+                  <a href="https://colab.research.google.com/github/ctg123/ml-projects/blob/main/heart-disease-random-forest/heart_disease_prediction.ipynb" title="View live demo" class="btn btn-sm" target="_blank">
+                    <i class="bi bi-box-arrow-up-right"></i>
+                  </a>
+                
+                
+                <!-- GitHub Button (furthest right) -->
+                 
+                  <a href="https://github.com/ctg123/ml-projects/tree/main/heart-disease-random-forest" title="View source code" class="btn btn-sm" target="_blank">
+                    <i class="bi bi-github"></i>
+                  </a>
+                
+              </div>
+            </div>
+          </div>
+        
+        
+      </div>
+    
+      <div class="card border-2 rounded-3 g-col-12 g-col-sm-6 g-col-md-4" data-index="3">
+        
+        <!-- Card Header with Theme-Independent Neutral Color -->
+        <div class="card-header py-2 px-3 border-bottom border-1">
+          <div class="d-flex justify-content-between align-items-start">
+            <div class="flex-grow-1">
+              <h6 class="card-title mb-1 anchored">
+                <a href="../projects/customer-service-analysis/index.html" class="listing-title text-decoration-none fw-bold">
+                  NYC 311 Customer Service Requests Analysis
+                </a>
+              </h6>
+              
+            </div>
+          </div>
+          
+          <!-- Skills/Tech Stack with Navbar Color -->
+          
+            <div class="listing-skills mt-2">
+              
+                <span class="badge me-1 mb-1" style="color: #f3f3f3; font-size: 0.7em; border: 0.10rem solid;">
+                  applied data science
+                </span>
+              
+                <span class="badge me-1 mb-1" style="color: #f3f3f3; font-size: 0.7em; border: 0.10rem solid;">
+                  visualization
+                </span>
+              
+            </div>
+          
+        </div>
 
-<div class="listing-category" onclick="window.quartoListingCategory('ZG9ja2Vy'); return false;">docker</div>
+        <!-- Project Screenshot/Thumbnail -->
+        <a href="../projects/customer-service-analysis/index.html" class="text-decoration-none">
+          <img src="https://res.cloudinary.com/website-assets-mgmt/image/upload/c_scale,w_500/r_15/co_rgb:FFFFFF,l_text:arial_50_bold:DEMO/fl_layer_apply,g_center/f_auto/q_auto/v1/website/blog/digital-assets-demo/mtn-demo-img" alt="" class="card-img-top" style="height: 200px; object-fit: cover;">
+        </a>
+        
+        <!-- Card Body with Description -->
+        
+        
+        <!-- Card Footer with Date and Right-Aligned Buttons -->
+        
+          <div class="card-footer bg-transparent border-top-0 py-2 px-3">
+            <div class="d-flex justify-content-between align-items-center">
+              <!-- Left side: Date -->
+              
+                <small class="text-muted listing-date">
+                  <i class="bi bi-calendar3"></i> 2023-05-09
+                </small>
+              
+              
+              <!-- Right side: Demo and GitHub buttons -->
+              <div class="d-flex gap-2">
+                <!-- Demo/Live Button -->
+                
+                  <a href="https://colab.research.google.com/github/ctg123/ml-projects/blob/main/customer-service-analysis/customer_service_analysis.ipynb" title="View live demo" class="btn btn-sm" target="_blank">
+                    <i class="bi bi-box-arrow-up-right"></i>
+                  </a>
+                
+                
+                <!-- GitHub Button (furthest right) -->
+                 
+                  <a href="https://github.com/ctg123/ml-projects/blob/main/customer-service-analysis/customer_service_analysis.ipynb" title="View source code" class="btn btn-sm" target="_blank">
+                    <i class="bi bi-github"></i>
+                  </a>
+                
+              </div>
+            </div>
+          </div>
+        
+        
+      </div>
+    
+  </div>
 
-</div>
-<div class="card-text listing-description delink">
-<p>Personal project integrating a custom Python API endpoint deployed on AWS and Kubernetes.</p>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="5" data-categories="YW5zaWJsZQ==" data-listing-date-sort="1629694800000" data-listing-file-modified-sort="1745451375161" data-listing-date-modified-sort="1732341600000" data-listing-reading-time-sort="10" data-listing-word-count-sort="1882">
-<a href="../projects/wordpress-with-lamp-stack/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="https://res.cloudinary.com/website-assets-mgmt/image/upload/v1732902618/Wordpress_Ansible_su8tcu.png" class="thumbnail-image card-img" style="height: 150px;">
+  <h2 class="anchored">DevOps &amp; Cloud</h2>
+  <p>DevOps tooling demos and deployment projects.
 </p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-WordPress with LAMP Stack
-</h5>
-<div class="listing-categories">
+  
+  <div class="list grid" style="column-gap: 20px; row-gap: 20px;">
+    
+      <div class="card border-2 rounded-3 g-col-12 g-col-sm-6 g-col-md-4" data-index="4">
+        
+        <!-- Card Header with Theme-Independent Neutral Color -->
+        <div class="card-header py-2 px-3 border-bottom border-1">
+          <div class="d-flex justify-content-between align-items-start">
+            <div class="flex-grow-1">
+              <h6 class="card-title mb-1 anchored">
+                <a href="../projects/ansible-kops/index.html" class="listing-title text-decoration-none fw-bold">
+                  Optimizing a Flask API microservice with Kubernetes
+                </a>
+              </h6>
+              
+            </div>
+          </div>
+          
+          <!-- Skills/Tech Stack with Navbar Color -->
+          
+            <div class="listing-skills mt-2">
+              
+                <span class="badge me-1 mb-1" style="color: #f3f3f3; font-size: 0.7em; border: 0.10rem solid;">
+                  Ansible
+                </span>
+              
+                <span class="badge me-1 mb-1" style="color: #f3f3f3; font-size: 0.7em; border: 0.10rem solid;">
+                  Kubernetes
+                </span>
+              
+                <span class="badge me-1 mb-1" style="color: #f3f3f3; font-size: 0.7em; border: 0.10rem solid;">
+                  AWS
+                </span>
+              
+                <span class="badge me-1 mb-1" style="color: #f3f3f3; font-size: 0.7em; border: 0.10rem solid;">
+                  Docker
+                </span>
+              
+            </div>
+          
+        </div>
 
-<div class="listing-category" onclick="window.quartoListingCategory('YW5zaWJsZQ=='); return false;">ansible</div>
+        <!-- Project Screenshot/Thumbnail -->
+        <a href="../projects/ansible-kops/index.html" class="text-decoration-none">
+          <img src="https://res.cloudinary.com/website-assets-mgmt/image/upload/featured_ydp5ad.png" alt="" class="card-img-top" style="height: 200px; object-fit: cover;">
+        </a>
+        
+        <!-- Card Body with Description -->
+        
+        
+        <!-- Card Footer with Date and Right-Aligned Buttons -->
+        
+          <div class="card-footer bg-transparent border-top-0 py-2 px-3">
+            <div class="d-flex justify-content-between align-items-center">
+              <!-- Left side: Date -->
+              
+                <small class="text-muted listing-date">
+                  <i class="bi bi-calendar3"></i> 2021-10-07
+                </small>
+              
+              
+              <!-- Right side: Demo and GitHub buttons -->
+              <div class="d-flex gap-2">
+                <!-- Demo/Live Button -->
+                
+                
+                <!-- GitHub Button (furthest right) -->
+                 
+                  <a href="https://github.com/ctg123/ansible-kops" title="View source code" class="btn btn-sm" target="_blank">
+                    <i class="bi bi-github"></i>
+                  </a>
+                
+              </div>
+            </div>
+          </div>
+        
+        
+      </div>
+    
+      <div class="card border-2 rounded-3 g-col-12 g-col-sm-6 g-col-md-4" data-index="5">
+        
+        <!-- Card Header with Theme-Independent Neutral Color -->
+        <div class="card-header py-2 px-3 border-bottom border-1">
+          <div class="d-flex justify-content-between align-items-start">
+            <div class="flex-grow-1">
+              <h6 class="card-title mb-1 anchored">
+                <a href="../projects/wordpress-with-lamp-stack/index.html" class="listing-title text-decoration-none fw-bold">
+                  Wordpress with LAMP Stack
+                </a>
+              </h6>
+              
+            </div>
+          </div>
+          
+          <!-- Skills/Tech Stack with Navbar Color -->
+          
+            <div class="listing-skills mt-2">
+              
+                <span class="badge me-1 mb-1" style="color: #f3f3f3; font-size: 0.7em; border: 0.10rem solid;">
+                  Ansible
+                </span>
+              
+            </div>
+          
+        </div>
 
-</div>
-<div class="card-text listing-description delink">
-<p>Configuration Mgmt. Demo using LAMP application.</p>
-</div>
-</div>
-</div></a>
-</div>
-</div>
+        <!-- Project Screenshot/Thumbnail -->
+        <a href="../projects/wordpress-with-lamp-stack/index.html" class="text-decoration-none">
+          <img src="https://res.cloudinary.com/website-assets-mgmt/image/upload/v1732902618/Wordpress_Ansible_su8tcu.png" alt="" class="card-img-top" style="height: 200px; object-fit: cover;">
+        </a>
+        
+        <!-- Card Body with Description -->
+        
+        
+        <!-- Card Footer with Date and Right-Aligned Buttons -->
+        
+          <div class="card-footer bg-transparent border-top-0 py-2 px-3">
+            <div class="d-flex justify-content-between align-items-center">
+              <!-- Left side: Date -->
+              
+                <small class="text-muted listing-date">
+                  <i class="bi bi-calendar3"></i> 2021-08-23
+                </small>
+              
+              
+              <!-- Right side: Demo and GitHub buttons -->
+              <div class="d-flex gap-2">
+                <!-- Demo/Live Button -->
+                
+                
+                <!-- GitHub Button (furthest right) -->
+                 
+                  <a href="https://github.com/ctg123/wordpress-ansible" title="View source code" class="btn btn-sm" target="_blank">
+                    <i class="bi bi-github"></i>
+                  </a>
+                
+              </div>
+            </div>
+          </div>
+        
+        
+      </div>
+    
+  </div>
+
 <div class="listing-no-matching d-none">No matching items</div>
-</div><a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
+</div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     // Ensure there is a toggle, if there isn't float one in the top right
@@ -955,20 +1281,14 @@ WordPress with LAMP Stack
 <footer class="footer">
   <div class="nav-footer">
     <div class="nav-footer-left">
-<p>© 2025 Chaance T. Graves | Rendered with <a href="https://quarto.org">Quarto</a> v1.7.31</p>
+<p>Powered by <a href="https://quarto.org"><iconify-icon role="img" inline="" icon="simple-icons:quarto" aria-label="Quarto Logo" title="Quarto Logo"></iconify-icon> Quarto</a> v1.7.31.</p>
 </div>   
     <div class="nav-footer-center">
-      &nbsp;
-    <div class="toc-actions"><ul><li><a href="https://github.com/ctg123/quarto-example-site/blob/main/projects/index.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/ctg123/quarto-example-site/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+<p>© <span id="current-year"></span> Chaance T. Graves</p>
+<div class="toc-actions"><ul><li><a href="https://github.com/ctg123/quarto-example-site/blob/main/projects/index.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/ctg123/quarto-example-site/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
-      <ul class="footer-items list-unstyled">
-    <li class="nav-item">
-    <a class="nav-link" href="../license/index.html">
-<p>License</p>
-</a>
-  </li>  
-</ul>
-    </div>
+<p>License: <a href="license/index.qmd">CC BY NC SA 4.0</a></p>
+</div>
   </div>
 </footer>
 

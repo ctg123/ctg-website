@@ -227,3 +227,9 @@ div.quarto-post .listing-categories .listing-category:hover, .quarto-category:ho
 .quarto-grid-item .card-attribution{
   color: $gray-light;
 }
+
+// Project cards - consistent styling
+.card-header {
+   background-color: $gray-dark !important;
+}
+

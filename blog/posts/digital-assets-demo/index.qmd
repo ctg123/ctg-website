@@ -1,6 +1,6 @@
 ---
 title: "Digital Asset Display in Quarto Blog Posts"
-description: A comprehensive guide to displaying images, videos, and terminal sessions in Quarto blog posts
+description: A comprehensive guide to displaying images, videos, and terminal sessions in Quarto blog posts.
 author: "Chaance Graves"
 date: "2024-11-29"
 categories: [resources, tutorial]

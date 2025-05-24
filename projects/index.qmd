@@ -1,19 +1,17 @@
 ---
-title: "My Projects"
+title: "`Launch Pad` 🚀"
+format: 
+  html: 
+    toc: false
+search: false
+execute: 
+  echo: false
 listing:
-  contents: /  # <-- look into this directory for project content
-  type: grid   # <-- my preferred layout type
-  max-description-length: 100
-  fields: 
-    - title
-    - description
-    - image
-    - categories
-  field-display-names: 
-    title: "Project"
-    categories: "Skills"
-  categories: cloud
-  #sort: "date desc"
+  - id: projects
+    template: projects-listing.ejs
+    contents: projects.yml
+
+page-layout: full
 ---
 
 In-depth studies of my technical work and experiments, which are all open source.

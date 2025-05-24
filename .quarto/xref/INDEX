@@ -100,5 +100,14 @@
   },
   "projects/index.qmd": {
     "index.html": "54fb108c"
+  },
+  "blog/posts/awesome/index.qmd": {
+    "index.html": "27b636ad"
+  },
+  "blog/posts/digital-assets-demo/index.qmd": {
+    "index.html": "5f7052ef"
+  },
+  "blog/posts/python-intro/index.qmd": {
+    "index.html": "57474dab"
   }
 }

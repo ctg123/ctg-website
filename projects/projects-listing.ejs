@@ -1,0 +1,97 @@
+```{=html}
+<% for (const item of items) { %>
+  <h2><%- item.category %></h2>
+  <p><%- item.description %></p>
+  
+  <div class="list grid" style="column-gap: 20px; row-gap: 20px;">
+    <% for (const tile of item.tiles) { %>
+      <div class="card border-2 rounded-3 g-col-12 g-col-sm-6 g-col-md-4" <%= metadataAttrs(tile) %>>
+        
+        <!-- Card Header with Theme-Independent Neutral Color -->
+        <div class="card-header py-2 px-3 border-bottom border-1">
+          <div class="d-flex justify-content-between align-items-start">
+            <div class="flex-grow-1">
+              <h6 class="card-title mb-1">
+                <a href="<%- tile.href %>" 
+                   class="listing-title text-decoration-none fw-bold">
+                  <%= tile.title %>
+                </a>
+              </h6>
+              <% if (tile.subtitle) { %>
+                <small class="text-muted listing-subtitle d-block"><%= tile.subtitle %></small>
+              <% } %>
+            </div>
+          </div>
+          
+          <!-- Skills/Tech Stack with Navbar Color -->
+          <% if (tile.skills) { %>
+            <div class="listing-skills mt-2">
+              <% tile.skills.forEach(function(skill) { %>
+                <span class="badge me-1 mb-1" 
+                      style="color: #f3f3f3; font-size: 0.7em; border: 0.10rem solid;">
+                  <%= skill %>
+                </span>
+              <% }); %>
+            </div>
+          <% } %>
+        </div>
+
+        <!-- Project Screenshot/Thumbnail -->
+        <a href="<%- tile.href %>" class="text-decoration-none">
+          <img src="<%- tile.thumbnail %>" 
+               alt="<%- tile.description %>" 
+               class="card-img-top"
+               style="height: 200px; object-fit: cover;"/>
+        </a>
+        
+        <!-- Card Body with Description -->
+        <% if (tile.description) { %>
+          <div class="card-body py-2 px-3">
+            <p class="card-text small text-muted mb-0"><%= tile.description %></p>
+          </div>
+        <% } %>
+        
+        <!-- Card Footer with Date and Right-Aligned Buttons -->
+        <% if (tile.date || tile.demo || tile.live || tile.github || tile.code) { %>
+          <div class="card-footer bg-transparent border-top-0 py-2 px-3">
+            <div class="d-flex justify-content-between align-items-center">
+              <!-- Left side: Date -->
+              <% if (tile.date) { %>
+                <small class="text-muted listing-date">
+                  <i class="bi bi-calendar3"></i> <%= tile.date %>
+                </small>
+              <% } else { %>
+                <span></span> <!-- Empty span to push buttons right when no date -->
+              <% } %>
+              
+              <!-- Right side: Demo and GitHub buttons -->
+              <div class="d-flex gap-2">
+                <!-- Demo/Live Button -->
+                <% if (tile.demo || tile.live) { %>
+                  <a href="<%- tile.demo || tile.live %>" 
+                     title="View live demo" 
+                     class="btn btn-sm"
+                     target="_blank">
+                    <i class="bi bi-box-arrow-up-right"></i>
+                  </a>
+                <% } %>
+                
+                <!-- GitHub Button (furthest right) -->
+                <% if (tile.github || tile.code) { %> 
+                  <a href="<%- tile.github || tile.code %>" 
+                     title="View source code" 
+                     class="btn btn-sm"
+                     target="_blank">
+                    <i class="bi bi-github"></i>
+                  </a>
+                <% } %>
+              </div>
+            </div>
+          </div>
+        <% } %>
+        
+      </div>
+    <% } %>
+  </div>
+<% } %>
+```
