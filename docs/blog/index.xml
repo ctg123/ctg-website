@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss  xmlns:atom="http://www.w3.org/2005/Atom" 
+      xmlns:media="http://search.yahoo.com/mrss/" 
+      xmlns:content="http://purl.org/rss/1.0/modules/content/" 
+      xmlns:dc="http://purl.org/dc/elements/1.1/" 
+      version="2.0">
+<channel>
+<title>Chaance T. Graves</title>
+<link>https://ctg-quarto-example.netlify.app/blog/</link>
+<atom:link href="https://ctg-quarto-example.netlify.app/blog/index.xml" rel="self" type="application/rss+xml"/>
+<description>My personal blog about engineering projects</description>
+<generator>quarto-1.7.31</generator>
+<lastBuildDate>Fri, 29 Nov 2024 06:00:00 GMT</lastBuildDate>
+<item>
+  <title>Digital Asset Display in Quarto Blog Posts</title>
+  <dc:creator>Chaance Graves</dc:creator>
+  <link>https://ctg-quarto-example.netlify.app/blog/posts/digital-assets-demo/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+
+<section id="introduction" class="level2">
+<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
+<p>In this post, I’ll walk you through my workflow for displaying various types of digital assets in Quarto blog posts. I use a combination of tools to create an engaging and interactive reading experience:</p>
+<ul>
+<li><a href="https://cloudinary.com">Cloudinary</a> for image and video hosting</li>
+<li><a href="https://asciinema.org/">asciinema</a> for terminal session recordings</li>
+<li>Quarto’s built-in markdown features. You can find more information <a href="https://quarto.org/docs/authoring/markdown-basics.html">here</a>.</li>
+</ul>
+<p>Let’s explore each of these tools and how to implement them in your blog posts.</p>
+</section>
+<section id="image-display-with-cloudinary" class="level2">
+<h2 class="anchored" data-anchor-id="image-display-with-cloudinary">Image Display with Cloudinary</h2>
+<p>Cloudinary is a SaaS tailored for media asset managment that I discovered works pretty well for blog images, and comes with a decent amount of resources and documentation to learn to use their platform effectively. This would include some features such as:</p>
+<ul>
+<li>Automated image optimization</li>
+<li>Responsive image delivery and upload API</li>
+<li>CDN-powered fast loading</li>
+<li>Can perform image transformations</li>
+</ul>
+<section id="implementation-steps" class="level3">
+<h3 class="anchored" data-anchor-id="implementation-steps">Implementation Steps</h3>
+<ol type="1">
+<li>Sign up for a Cloudinary account</li>
+<li>Upload your images to Cloudinary using the <a href="https://cloudinary.com/documentation/upload_images#upload_images_to_cloudinary">Cloudinary Upload API</a> or <a href="https://cloudinary.com/documentation/cloudinary_sdks">SDK packages</a> in your preferred language of choice.</li>
+<li>Use the provided URL in your Quarto markdown</li>
+</ol>
+<p>Here’s an example of an image hosted directly on Cloudinary:</p>
+<p><img src="https://res.cloudinary.com/website-assets-mgmt/image/upload/cld-sample-2.jpg" class="img-fluid"></p>
+<p>The markdown syntax is simple:</p>
+<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><span class="al" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">![](https://res.cloudinary.com/your-account/image/upload/your-image.jpg)</span></span></code></pre></div>
+</section>
+</section>
+<section id="terminal-session-recording-with-asciinema" class="level2">
+<h2 class="anchored" data-anchor-id="terminal-session-recording-with-asciinema">Terminal Session Recording with asciinema</h2>
+<p><a href="https://asciinema.org/">asciinema</a> is an excellent tool for recording and sharing terminal sessions. It creates lightweight, text-based recordings that are perfect for tutorials and documentation.</p>
+<section id="how-to-use-asciinema" class="level3">
+<h3 class="anchored" data-anchor-id="how-to-use-asciinema">How to Use asciinema</h3>
+<ol type="1">
+<li>Install asciinema via Python: <code>pip install asciinema</code></li>
+<li>Record a session: <code>asciinema rec demo.cast</code></li>
+<li>Upload to asciinema.org</li>
+<li>Embed in your blog using their JavaScript player</li>
+</ol>
+<p>Here’s an example recording:</p>
+<script src="https://asciinema.org/a/6NkC3SnVbW8slxabemumt6I0T.js" id="asciicast-6NkC3SnVbW8slxabemumt6I0T" async="true"></script>
+<p>The embed code is straightforward:</p>
+<div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode html code-with-copy"><code class="sourceCode html"><span id="cb2-1"><span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">&lt;</span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">script</span><span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;"> src</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"https://asciinema.org/a/YOUR-CAST-ID.js"</span><span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;"> id</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"asciicast-YOUR-CAST-ID"</span><span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;"> async</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"true"</span><span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">&gt;&lt;/</span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">script</span><span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">&gt;</span></span></code></pre></div>
+</section>
+</section>
+<section id="video-display-with-cloudinary" class="level2">
+<h2 class="anchored" data-anchor-id="video-display-with-cloudinary">Video Display with Cloudinary</h2>
+<p>Cloudinary also excels at video hosting and delivery. It provides:</p>
+<ul>
+<li>Adaptive bitrate streaming</li>
+<li>Automatic format optimization</li>
+<li>Global CDN delivery</li>
+<li>Thumbnail generation</li>
+</ul>
+<section id="adding-videos-to-your-blog" class="level3">
+<h3 class="anchored" data-anchor-id="adding-videos-to-your-blog">Adding Videos to Your Blog</h3>
+<ol type="1">
+<li>Upload your video to Cloudinary</li>
+<li>Embed the video URL in your <code>.qmd\.md</code> post document</li>
+<li>Optionally, add a poster image for the video thumbnail</li>
+</ol>
+<p>Here’s an example video:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><video src="https://res.cloudinary.com/website-assets-mgmt/video/upload/samples/sea-turtle.mp4" class="img-fluid" controls=""><a href="https://res.cloudinary.com/website-assets-mgmt/video/upload/samples/sea-turtle.mp4">Video</a></video></p>
+<figcaption>Sea Turtle Example Video</figcaption>
+</figure>
+</div>
+</section>
+</section>
+<section id="best-practices" class="level2">
+<h2 class="anchored" data-anchor-id="best-practices">Best Practices</h2>
+<ol type="1">
+<li><strong>Image Optimization</strong>: Always compress images before uploading to Cloudinary</li>
+<li><strong>Responsive Design</strong>: Use Cloudinary’s responsive image features</li>
+<li><strong>Terminal Sessions</strong>: Keep recordings concise and focused</li>
+<li><strong>Video Content</strong>: Consider adding captions and descriptions</li>
+<li><strong>Performance</strong>: Monitor your page load times and optimize accordingly</li>
+</ol>
+</section>
+<section id="conclusion" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
+<p>By combining these tools, you can create rich, interactive blog posts that effectively communicate your ideas. Cloudinary handles your media assets efficiently, while asciinema provides an excellent way to share terminal sessions. Quarto’s markdown support makes it all work seamlessly together.</p>
+<p>Feel free to experiment with these tools if you like and adapt them to your specific needs. Also share your experiences with other alternatives too. Happy blogging!👋🏾</p>
+
+
+</section>
+
+ ]]></description>
+  <category>resources</category>
+  <category>tutorial</category>
+  <guid>https://ctg-quarto-example.netlify.app/blog/posts/digital-assets-demo/</guid>
+  <pubDate>Fri, 29 Nov 2024 06:00:00 GMT</pubDate>
+  <media:content url="https://res.cloudinary.com/website-assets-mgmt/image/upload/c_scale,w_500/r_15/co_rgb:FFFFFF,l_text:arial_50_bold:DEMO/fl_layer_apply,g_center/f_auto/q_auto/v1/website/blog/digital-assets-demo/mtn-demo-img" medium="image"/>
+</item>
+<item>
+  <title>Awesome Sites! 😎</title>
+  <dc:creator>Chaance Graves</dc:creator>
+  <link>https://ctg-quarto-example.netlify.app/blog/posts/awesome/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+
+<section id="what-are-awesome-lists" class="level1">
+<h1>What Are Awesome Lists?</h1>
+<p>If you’re a developer/engineer that’s constantly searching for high-quality resources to enhance our skills and discover new tools like I am, you can check out the <strong>“awesome”</strong> lists on GitHub which have become a cornerstone of community-curated knowledge sharing. These collections are meticulously maintained by passionate developers worldwide, offering carefully selected resources across various technological domains.</p>
+<p>The concept started with <a href="https://github.com/sindresorhus/awesome">Sindre Sorhus’s original awesome list</a>, which has since spawned thousands of specialized collections. These lists follow strict guidelines to ensure quality and relevance, making them invaluable for both beginners and experienced developers. I’ve highlighted some lists based on the domain that you can explore further into.</p>
+<section id="for-ai-and-machine-learning-enthusiasts" class="level3">
+<h3 class="anchored" data-anchor-id="for-ai-and-machine-learning-enthusiasts">For AI and Machine Learning Enthusiasts</h3>
+<ul>
+<li><strong><a href="https://github.com/josephmisiti/awesome-machine-learning">Awesome Machine Learning</a></strong>
+<ul>
+<li>A comprehensive collection of ML frameworks, libraries, and software</li>
+<li>Covers multiple programming languages including Python, R, Java, and more</li>
+<li>Includes sections on computer vision, natural language processing, and deep learning</li>
+</ul></li>
+</ul>
+</section>
+<section id="for-language-specific-development" class="level3">
+<h3 class="anchored" data-anchor-id="for-language-specific-development">For Language-Specific Development</h3>
+<ul>
+<li><strong><a href="https://github.com/dylanhogg/awesome-python">Awesome Python</a></strong>
+<ul>
+<li>Essential Python frameworks, libraries, and resources</li>
+<li>Organized by application domain (web development, data science, testing, etc.)</li>
+<li>Excellent for both Python beginners and advanced developers</li>
+</ul></li>
+<li><strong><a href="https://github.com/rust-unofficial/awesome-rust">Awesome Rust</a></strong>
+<ul>
+<li>Curated resources for Rust programming language</li>
+<li>Applications, development tools, and learning materials</li>
+<li>Great for those interested in systems programming and performance</li>
+</ul></li>
+</ul>
+</section>
+<section id="for-specialized-domains" class="level3">
+<h3 class="anchored" data-anchor-id="for-specialized-domains">For Specialized Domains</h3>
+<ul>
+<li><strong><a href="https://github.com/nhivp/Awesome-Embedded">Awesome Embedded</a></strong>
+<ul>
+<li>Resources for embedded systems development</li>
+<li>Hardware platforms, tools, and frameworks</li>
+<li>Essential for IoT, Hardware and Embedded Software Engineers</li>
+</ul></li>
+<li><strong><a href="https://github.com/awesome-selfhosted/awesome-selfhosted">Awesome Self Hosted</a></strong>
+<ul>
+<li>Tons of SaaS tools which you can host on your own servers</li>
+<li>Alternatives to popular cloud services</li>
+<li>Excellet for individuals and organizations focused on data privacy and goverenance</li>
+</ul></li>
+<li><strong><a href="https://github.com/mcanouil/awesome-quarto">Awesome Quarto</a></strong>
+<ul>
+<li>Quarto specific curated content!</li>
+</ul></li>
+</ul>
+</section>
+<section id="for-web-development" class="level3">
+<h3 class="anchored" data-anchor-id="for-web-development">For Web Development</h3>
+<ul>
+<li><strong><a href="https://github.com/myles/awesome-static-generators">Awesome Static Site Generators</a></strong>
+<ul>
+<li>Tools for building modern static websites</li>
+<li>Frameworks across multiple programming languages</li>
+<li>Includes JAMstack resources and deployment options</li>
+</ul></li>
+</ul>
+</section>
+<section id="for-ai-prompt-engineering" class="level3">
+<h3 class="anchored" data-anchor-id="for-ai-prompt-engineering">For AI Prompt Engineering</h3>
+<ul>
+<li><strong><a href="https://prompts.chat/">Awesome Prompts</a></strong>
+<ul>
+<li>Collection of effective prompts for AI models</li>
+<li>Best practices for prompt engineering</li>
+<li>Examples for various use cases and applications</li>
+</ul></li>
+</ul>
+</section>
+<section id="staying-updated" class="level2">
+<h2 class="anchored" data-anchor-id="staying-updated">Staying Updated</h2>
+<p>To keep track of changes and new additions to these collections, I recommend using <a href="https://www.trackawesomelist.com/#top-50-awesome-list">Track Awesome List</a>. This tool helps you monitor updates to your favorite awesome lists and discover new resources regularly.</p>
+</section>
+<section id="final-thoughts" class="level2">
+<h2 class="anchored" data-anchor-id="final-thoughts">Final Thoughts</h2>
+<p>These curated collections represent countless hours of community effort to organize and validate the best resources in each field. Whether you’re exploring a new technology or deepening your expertise in a familiar domain, these awesome lists are invaluable starting points for your journey.</p>
+<p>Remember to contribute back to these collections if you discover valuable resources that aren’t already included. The strength of these lists comes from active community participation and sharing.</p>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <category>resources</category>
+  <guid>https://ctg-quarto-example.netlify.app/blog/posts/awesome/</guid>
+  <pubDate>Tue, 05 Nov 2024 06:00:00 GMT</pubDate>
+  <media:content url="https://res.cloudinary.com/website-assets-mgmt/image/upload/f_auto,g_auto,q_auto/v1/website/blog/awesome/awesome" medium="image"/>
+</item>
+<item>
+  <title>Are you getting started to learn Python? 🐍</title>
+  <dc:creator>Chaance Graves</dc:creator>
+  <link>https://ctg-quarto-example.netlify.app/blog/posts/python-intro/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+
+<p>Are you new to programming? Have questions about which language would be a good one to start?</p>
+<p>Choosing which programming language to learn is more a personal preference depending on what project and solution you’re looking to achieve. However, for a beginner, you have lots of flexibility to experiment with which one is right for you. One programming language I enjoy working with and others have found helpful is Python. I recommend installing <a href="https://www.python.org/downloads/">Python 3</a> to have more community support to be developed and used for years to come.</p>
+<p>There are likely millions of developers worldwide using Python to build projects, tools and using it to teach others the fundamentals of programming. You can do all kinds of other fantastic work in a multitude of domains.</p>
+<section id="example-applications" class="level4">
+<h4 class="anchored" data-anchor-id="example-applications">Example applications:</h4>
+<ul>
+<li>Web applications</li>
+<li>Machine Learning / Deep learning</li>
+<li>Automating weekly emails</li>
+<li>Setting up jobs to update a spreadsheet</li>
+<li>etc.</li>
+</ul>
+</section>
+<section id="helpful-online-resources-books" class="level4">
+<h4 class="anchored" data-anchor-id="helpful-online-resources-books">Helpful online resources &amp; books</h4>
+<p>You can find plentiful resources to teach yourself Python or pair with a small group to work on projects!</p>
+<p><a href="https://www.codecademy.com/learn/learn-python-3">Codeacademy</a>: Codeacademy offers free code tutorials that are very popular for a good reason. The tutorials should give you a good idea of what it’s like to code Python with hands-on lessons to write code.</p>
+<p><a href="https://learncodethehardway.org/python/">Learn Python the Hard Way by Zed Shaw</a>: This book is well received and aims to teach beginners how to read and write basic Python to understand other books on Python. It is high quality which I recommend regardless of where your current skill is. You can try the <a href="https://learnpythonthehardway.org/python3/">free sample</a> to see if it would work for you.</p>
+<p><a href="https://realpython.com/">Real Python</a>: This website offers in-depth tutorials to learn any aspect of Python you may be curious to explore. Check it out and keep a list of articles for future reference!</p>
+<p><a href="https://automatetheboringstuff.com/">Automate the boring stuff with Python by Al Sweigart</a>: This is an enjoyable read and practical for anyone who is currently working a tedious, routine job! He also offers a video course provided through Udemy.</p>
+<p><a href="https://www.udemy.com/topic/python/free/">Udemy</a>: You can find all sorts of courses and projects offered on this online education website. They range from beginner to advanced and have instructors teaching financial topics such as predicting stock prices, data science, full-stack web development, and more.</p>
+<p>I’m confident your programming journey will be well on its way towards success. Feel free to discuss any other valuable resources or projects you’ve discovered learning Python! 👌🏾</p>
+
+
+</section>
+
+ ]]></description>
+  <category>resources</category>
+  <category>code</category>
+  <category>python</category>
+  <guid>https://ctg-quarto-example.netlify.app/blog/posts/python-intro/</guid>
+  <pubDate>Wed, 20 Jan 2021 06:00:00 GMT</pubDate>
+  <media:content url="https://res.cloudinary.com/website-assets-mgmt/image/upload/c_scale,w_500/r_15/f_auto/q_auto/v1/website/blog/python-intro/code-img" medium="image"/>
+</item>
+</channel>
+</rss>

@@ -17,7 +17,7 @@ execute:
 website:
   title: "Chaance T. Graves"
   description: "My personal blog about engineering projects"
-  #site-url:
+  site-url: https://ctg-quarto-example.netlify.app/
   repo-url: https://github.com/ctg123/quarto-example-site
   repo-actions:
     - source
@@ -76,9 +76,9 @@ website:
     left: |
       Powered by [{{< iconify simple-icons:quarto title="Quarto Logo" label="Quarto Logo" >}} Quarto](https://quarto.org) v{{< version >}}.
     center: |
-      &copy; []{#current-year} Chaance T. Graves 
+      &copy; 2025 Chaance T. Graves 
     right: |
-      License: [CC BY NC SA 4.0](license/index.qmd)
+      License: [CC BY NC SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/)
       
 # Formatting the website appearance
 format:

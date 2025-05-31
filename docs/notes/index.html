@@ -424,7 +424,7 @@ ul.task-list li input[type="checkbox"] {
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp('/' + window.location.host + '/');
+        var filterRegex = new RegExp("https:\/\/ctg-quarto-example\.netlify\.app\/");
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
@@ -766,7 +766,7 @@ ul.task-list li input[type="checkbox"] {
 <p>© <span id="current-year"></span> Chaance T. Graves</p>
 <div class="toc-actions"><ul><li><a href="https://github.com/ctg123/quarto-example-site/blob/main/notes/index.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/ctg123/quarto-example-site/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
-<p>License: <a href="license/index.qmd">CC BY NC SA 4.0</a></p>
+<p>License: <a href="../license/index.html">CC BY NC SA 4.0</a></p>
 </div>
   </div>
 </footer>
