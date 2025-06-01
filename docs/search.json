@@ -238,20 +238,6 @@
     "text": "Welcome to my blog! 👋🏾\nI’ll be sharing interesting articles about my experiments, ideas, and thoughts.\nI invite you to explore, and I’m always open to further discussions.\n\n\n\n\n\n\n\n    \n      \n      \n    \n\n\n\n\n\n\nDate\n\n\n\nTitle\n\n\n\nDescription\n\n\n\nReading Time\n\n\n\n\n\n\n\n\n11/29/24\n\n\nDigital Asset Display in Quarto Blog Posts\n\n\nA comprehensive guide to displaying images, videos, and terminal sessions in Quarto blog posts. \n\n\n3 min\n\n\n\n\n\n\n11/5/24\n\n\nAwesome Sites! 😎\n\n\nEssential Resource Collections for Developers. \n\n\n3 min\n\n\n\n\n\n\n1/20/21\n\n\nAre you getting started to learn Python? 🐍\n\n\nUseful Resources for Beginners \n\n\n2 min\n\n\n\n\n\n\nNo matching items"
   },
   {
-    "objectID": "notes/index.html",
-    "href": "notes/index.html",
-    "title": "My Notes",
-    "section": "",
-    "text": "I’ll publish my “Digital Garden” that’ll be associated with the navbar link.\nCOMING SOON …"
-  },
-  {
-    "objectID": "resume.html",
-    "href": "resume.html",
-    "title": "My Resume",
-    "section": "",
-    "text": "Download PDF file."
-  },
-  {
     "objectID": "index.html",
     "href": "index.html",
     "title": "Chaance T. Graves",
@@ -278,6 +264,27 @@
     "title": "Chaance T. Graves",
     "section": "",
     "text": "I’m always open to collaborating, mentoring, and exchanging ideas with fellow technology enthusiasts. Feel free to reach out through LinkedIn or check out my detailed experience on my resume.\nAs a strong believer in knowledge sharing and continous learning, I’m committed to helping others who are curious or eager to grow. Whether you’re a experienced professional or just starting your tech journey, I’d love to connect!"
+  },
+  {
+    "objectID": "resume.html",
+    "href": "resume.html",
+    "title": "My Resume",
+    "section": "",
+    "text": "Download PDF file."
+  },
+  {
+    "objectID": "notes/index.html",
+    "href": "notes/index.html",
+    "title": "My Notes",
+    "section": "",
+    "text": "I’ll publish my “Digital Garden” that’ll be associated with the navbar link.\nCOMING SOON …"
+  },
+  {
+    "objectID": "license.html",
+    "href": "license.html",
+    "title": "CC BY-NC-SA 4.0 license",
+    "section": "",
+    "text": "©  Chaance T. Graves\nMy content is released under the CC BY NC ND 4.0 license.\n   \nYou may share and adapt this content with appropriate credit and notation of any changes. You may not use this material for any commercial purposes.\n\n\n\n\n\n\nNote\n\n\n\nNote that my Opinions expressed are solely my own and do not express the views of my employer or any organizations I am associated with."
   },
   {
     "objectID": "blog/posts/awesome/index.html",
@@ -541,13 +548,6 @@
   {
     "objectID": "license/index.html",
     "href": "license/index.html",
-    "title": "CC BY-NC-SA 4.0 license",
-    "section": "",
-    "text": "©  Chaance T. Graves\nMy content is released under the CC BY NC ND 4.0 license.\n   \nYou may share and adapt this content with appropriate credit and notation of any changes. You may not use this material for any commercial purposes.\n\n\n\n\n\n\nNote\n\n\n\nNote that my Opinions expressed are solely my own and do not express the views of my employer or any organizations I am associated with."
-  },
-  {
-    "objectID": "license.html",
-    "href": "license.html",
     "title": "CC BY-NC-SA 4.0 license",
     "section": "",
     "text": "©  Chaance T. Graves\nMy content is released under the CC BY NC ND 4.0 license.\n   \nYou may share and adapt this content with appropriate credit and notation of any changes. You may not use this material for any commercial purposes.\n\n\n\n\n\n\nNote\n\n\n\nNote that my Opinions expressed are solely my own and do not express the views of my employer or any organizations I am associated with."

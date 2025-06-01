@@ -16,11 +16,11 @@
 
     - title: Boat Image Classification with CNN and Transfer Learning
       #description: Building and comparing custom CNN and MobileNetV2 models for an image classification example.
-      skills: [deep learning, computer vision, transfer learning, CNN]
+      skills: [deep learning, computer vision, CNN]
       date: 2023-11-04
       code: https://github.com/ctg123/ml-projects/blob/main/boat-image-classifier/boat_img_classifier.ipynb
       live: https://colab.research.google.com/github/ctg123/ml-projects/blob/main/boat-image-classifier/boat_img_classifier.ipynb
-      thumbnail: https://res.cloudinary.com/website-assets-mgmt/image/upload/c_scale,w_500/r_15/co_rgb:FFFFFF,l_text:arial_50_bold:DEMO/fl_layer_apply,g_center/f_auto/q_auto/v1/website/blog/digital-assets-demo/mtn-demo-img
+      thumbnail: https://res.cloudinary.com/website-assets-mgmt/image/upload/c_scale,w_350/r_15/f_auto/q_auto/v1/website/projects/boat-classifier/boat-classifier-img
       href: ./boat-classifier/index.qmd
 
     - title: Heart Disease Prediction Random Forest Classifer
@@ -29,7 +29,7 @@
       date: 2023-09-20
       code: https://github.com/ctg123/ml-projects/tree/main/heart-disease-random-forest
       live: https://colab.research.google.com/github/ctg123/ml-projects/blob/main/heart-disease-random-forest/heart_disease_prediction.ipynb
-      thumbnail: https://res.cloudinary.com/website-assets-mgmt/image/upload/c_scale,w_500/r_15/co_rgb:FFFFFF,l_text:arial_50_bold:DEMO/fl_layer_apply,g_center/f_auto/q_auto/v1/website/blog/digital-assets-demo/mtn-demo-img
+      thumbnail: https://res.cloudinary.com/website-assets-mgmt/image/upload/c_scale,w_500/r_15/f_auto/q_auto/v1/website/projects/heart-disease-prediction/heart-disease-proj-img
       href: ./heart-disease-prediction/index.qmd
 
     - title: NYC 311 Customer Service Requests Analysis
@@ -38,7 +38,7 @@
       date: 2023-05-09
       code: https://github.com/ctg123/ml-projects/blob/main/customer-service-analysis/customer_service_analysis.ipynb
       live: https://colab.research.google.com/github/ctg123/ml-projects/blob/main/customer-service-analysis/customer_service_analysis.ipynb
-      thumbnail: https://res.cloudinary.com/website-assets-mgmt/image/upload/c_scale,w_500/r_15/co_rgb:FFFFFF,l_text:arial_50_bold:DEMO/fl_layer_apply,g_center/f_auto/q_auto/v1/website/blog/digital-assets-demo/mtn-demo-img
+      thumbnail: https://res.cloudinary.com/website-assets-mgmt/image/upload/c_scale,w_500/r_15/f_auto/q_auto/v1/website/projects/customer-service-analysis/nyc-data-analysis-proj-img
       href: ./customer-service-analysis/index.qmd
 
 

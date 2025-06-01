@@ -25,16 +25,20 @@
     <lastmod>2025-05-24T14:50:57.053Z</lastmod>
   </url>
   <url>
-    <loc>https://ctg-quarto-example.netlify.app/notes/index.html</loc>
-    <lastmod>2025-05-18T08:28:46.560Z</lastmod>
+    <loc>https://ctg-quarto-example.netlify.app/index.html</loc>
+    <lastmod>2025-05-23T22:31:36.863Z</lastmod>
   </url>
   <url>
     <loc>https://ctg-quarto-example.netlify.app/resume.html</loc>
     <lastmod>2025-04-23T15:05:07.288Z</lastmod>
   </url>
   <url>
-    <loc>https://ctg-quarto-example.netlify.app/index.html</loc>
-    <lastmod>2025-05-23T22:31:36.863Z</lastmod>
+    <loc>https://ctg-quarto-example.netlify.app/notes/index.html</loc>
+    <lastmod>2025-05-18T08:28:46.560Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ctg-quarto-example.netlify.app/license.html</loc>
+    <lastmod>2025-05-25T11:56:39.937Z</lastmod>
   </url>
   <url>
     <loc>https://ctg-quarto-example.netlify.app/blog/posts/awesome/index.html</loc>
@@ -59,9 +63,5 @@
   <url>
     <loc>https://ctg-quarto-example.netlify.app/license/index.html</loc>
     <lastmod>2025-05-24T12:56:39.046Z</lastmod>
-  </url>
-  <url>
-    <loc>https://ctg-quarto-example.netlify.app/license.html</loc>
-    <lastmod>2025-05-25T11:56:39.937Z</lastmod>
   </url>
 </urlset>

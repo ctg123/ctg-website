@@ -37,11 +37,12 @@
         </div>
 
         <!-- Project Screenshot/Thumbnail -->
-        <a href="<%- tile.href %>" class="text-decoration-none">
+        <a href="<%- tile.href %>">
           <img src="<%- tile.thumbnail %>" 
                alt="<%- tile.description %>" 
                class="card-img-top"
-               style="height: 200px; object-fit: cover;"/>
+               loading="lazy"
+               decoding="async"/>
         </a>
         
         <!-- Card Body with Description -->
