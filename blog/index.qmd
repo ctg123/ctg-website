@@ -1,5 +1,6 @@
 ---
 title: "`ctgadget.log()`"
+#comments: false
 author: ""
 title-block-banner: false
 sidebar: false

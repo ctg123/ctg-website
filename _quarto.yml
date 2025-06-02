@@ -89,6 +89,19 @@ format:
       dark: assets/styling/ctg-theme-dark.scss
     mainfont: Rubik
     css: styles.css
+    # enabling comments
+    #comments: 
+    #  giscus: 
+    #    repo: ctg123/ctg-website
+    #    repo-id: R_kgDONUzeaA
+    #    category: Announcements
+    #    category-id: DIC_kwDONUzeaM4Cq7a3
+    #    mapping: url
+    #    reactions-enabled: true
+    #    loading: lazy
+    #    input-position: top
+    #    theme: dark_protanopia
+    #    language: en
     toc: true
     smooth-scroll: true
     link-external-newwindow: true

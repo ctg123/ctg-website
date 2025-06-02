@@ -5,4 +5,10 @@
 freeze: true
 
 # Enable banner style title blocks
-title-block-banner: true
+title-block-banner: false
+
+# relative path to the website root
+include-in-header: ../../_includes/giscus-mode-toggle.html
+include-after-body: ../../_includes/div-giscus.html
+
+

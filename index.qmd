@@ -1,5 +1,6 @@
 ---
 pagetitle: "Home"
+comments: false
 title: "Chaance T. Graves"
 subtitle: |
   Electrical Engineer | AI Solutions | Educator

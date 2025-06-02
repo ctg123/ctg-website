@@ -1,5 +1,6 @@
 ---
 title: "`Launch Pad` 🚀"
+#comments: false
 format: 
   html: 
     toc: false

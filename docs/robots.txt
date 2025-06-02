@@ -1,1 +1,1 @@
-Sitemap: https://ctg-website.netlify.app/sitemap.xml
+Sitemap: https://chaancegraves.com/sitemap.xml

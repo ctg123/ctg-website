@@ -76,6 +76,59 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 <style>html{ scroll-behavior: smooth; }</style>
+<script>
+  
+  function getGiscusTheme() {
+  const quartoTheme = localStorage.getItem("quarto-color-scheme");
+  const giscusTheme = quartoTheme === "alternate" ? "dark" : "light";
+  // const giscusTheme = quartoTheme === "alternate" ? "dark" : "assets/giscus-light-custom.css";
+  return giscusTheme;
+}
+
+function setGiscusTheme() {
+  function sendMessage(message) {
+    const iframe = document.querySelector('iframe.giscus-frame');
+    if (!iframe) return;
+    iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+  }
+  sendMessage({
+    setConfig: {
+      theme: getGiscusTheme(),
+    },
+  });
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+  const giscusAttributes = {
+    "src": "https://giscus.app/client.js",
+    "data-repo": "ctg123/ctg-website",
+    "data-repo-id": "R_kgDONUzeaA",
+    "data-category": "Announcements",
+    "data-category-id": "DIC_kwDONUzeaM4Cq7a3",
+    "data-mapping": "url",
+    "data-strict": "0",
+    "data-reactions-enabled": "1",
+    "data-emit-metadata": "0",
+    "data-input-position": "bottom",
+    "data-theme": getGiscusTheme(),
+    "data-lang": "en",
+    "crossorigin": "anonymous",
+    "async": "",
+  };
+
+  // Dynamically create script tag
+  const giscusScript = document.createElement("script");
+  Object.entries(giscusAttributes).forEach(([key, value]) => giscusScript.setAttribute(key, value));
+  document.body.appendChild(giscusScript);
+
+  // Update giscus theme when theme switcher is clicked
+  const toggle = document.querySelector('.quarto-color-scheme-toggle');
+  if (toggle) {
+    toggle.addEventListener('click', setGiscusTheme);
+  }
+});
+  
+</script>
 
 
 <link rel="stylesheet" href="../../../styles.css">
@@ -388,6 +441,7 @@ ul.task-list li input[type="checkbox"] {
 </section>
 
 </main> <!-- /main -->
+<div class="giscus">
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     // Ensure there is a toggle, if there isn't float one in the top right
@@ -473,7 +527,7 @@ ul.task-list li input[type="checkbox"] {
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp("https:\/\/ctg-website\.netlify\.app");
+        var filterRegex = new RegExp("https:\/\/chaancegraves\.com");
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
@@ -823,5 +877,5 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<script src="../../../site_libs/quarto-html/zenscroll-min.js"></script>
+</div><script src="../../../site_libs/quarto-html/zenscroll-min.js"></script>
 </body></html>

@@ -6,15 +6,15 @@
       version="2.0">
 <channel>
 <title>CTG</title>
-<link>https://ctg-website.netlify.app/blog/</link>
-<atom:link href="https://ctg-website.netlify.app/blog/index.xml" rel="self" type="application/rss+xml"/>
+<link>https://chaancegraves.com/blog/</link>
+<atom:link href="https://chaancegraves.com/blog/index.xml" rel="self" type="application/rss+xml"/>
 <description>My personal blog about engineering projects</description>
 <generator>quarto-1.7.31</generator>
 <lastBuildDate>Fri, 29 Nov 2024 06:00:00 GMT</lastBuildDate>
 <item>
   <title>Digital Asset Display in Quarto Blog Posts</title>
   <dc:creator>Chaance Graves</dc:creator>
-  <link>https://ctg-website.netlify.app/blog/posts/digital-assets-demo/</link>
+  <link>https://chaancegraves.com/blog/posts/digital-assets-demo/</link>
   <description><![CDATA[ 
 
 
@@ -149,14 +149,14 @@ font-style: inherit;">&gt;</span></span></code></pre></div>
  ]]></description>
   <category>resources</category>
   <category>tutorial</category>
-  <guid>https://ctg-website.netlify.app/blog/posts/digital-assets-demo/</guid>
+  <guid>https://chaancegraves.com/blog/posts/digital-assets-demo/</guid>
   <pubDate>Fri, 29 Nov 2024 06:00:00 GMT</pubDate>
   <media:content url="https://res.cloudinary.com/website-assets-mgmt/image/upload/c_scale,w_500/r_15/co_rgb:FFFFFF,l_text:arial_50_bold:DEMO/fl_layer_apply,g_center/f_auto/q_auto/v1/website/blog/digital-assets-demo/mtn-demo-img" medium="image"/>
 </item>
 <item>
   <title>Awesome Sites! 😎</title>
   <dc:creator>Chaance Graves</dc:creator>
-  <link>https://ctg-website.netlify.app/blog/posts/awesome/</link>
+  <link>https://chaancegraves.com/blog/posts/awesome/</link>
   <description><![CDATA[ 
 
 
@@ -254,14 +254,14 @@ font-style: inherit;">&gt;</span></span></code></pre></div>
 
  ]]></description>
   <category>resources</category>
-  <guid>https://ctg-website.netlify.app/blog/posts/awesome/</guid>
+  <guid>https://chaancegraves.com/blog/posts/awesome/</guid>
   <pubDate>Tue, 05 Nov 2024 06:00:00 GMT</pubDate>
   <media:content url="https://res.cloudinary.com/website-assets-mgmt/image/upload/f_auto,g_auto,q_auto/v1/website/blog/awesome/awesome" medium="image"/>
 </item>
 <item>
   <title>Are you getting started to learn Python? 🐍</title>
   <dc:creator>Chaance Graves</dc:creator>
-  <link>https://ctg-website.netlify.app/blog/posts/python-intro/</link>
+  <link>https://chaancegraves.com/blog/posts/python-intro/</link>
   <description><![CDATA[ 
 
 
@@ -299,7 +299,7 @@ font-style: inherit;">&gt;</span></span></code></pre></div>
   <category>resources</category>
   <category>code</category>
   <category>python</category>
-  <guid>https://ctg-website.netlify.app/blog/posts/python-intro/</guid>
+  <guid>https://chaancegraves.com/blog/posts/python-intro/</guid>
   <pubDate>Wed, 20 Jan 2021 06:00:00 GMT</pubDate>
   <media:content url="https://res.cloudinary.com/website-assets-mgmt/image/upload/c_scale,w_500/r_15/f_auto/q_auto/v1/website/blog/python-intro/code-img" medium="image"/>
 </item>

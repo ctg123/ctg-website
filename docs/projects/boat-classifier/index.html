@@ -112,6 +112,59 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 <style>html{ scroll-behavior: smooth; }</style>
+<script>
+  
+  function getGiscusTheme() {
+  const quartoTheme = localStorage.getItem("quarto-color-scheme");
+  const giscusTheme = quartoTheme === "alternate" ? "dark" : "light";
+  // const giscusTheme = quartoTheme === "alternate" ? "dark" : "assets/giscus-light-custom.css";
+  return giscusTheme;
+}
+
+function setGiscusTheme() {
+  function sendMessage(message) {
+    const iframe = document.querySelector('iframe.giscus-frame');
+    if (!iframe) return;
+    iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+  }
+  sendMessage({
+    setConfig: {
+      theme: getGiscusTheme(),
+    },
+  });
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+  const giscusAttributes = {
+    "src": "https://giscus.app/client.js",
+    "data-repo": "ctg123/ctg-website",
+    "data-repo-id": "R_kgDONUzeaA",
+    "data-category": "Announcements",
+    "data-category-id": "DIC_kwDONUzeaM4Cq7a3",
+    "data-mapping": "url",
+    "data-strict": "0",
+    "data-reactions-enabled": "1",
+    "data-emit-metadata": "0",
+    "data-input-position": "bottom",
+    "data-theme": getGiscusTheme(),
+    "data-lang": "en",
+    "crossorigin": "anonymous",
+    "async": "",
+  };
+
+  // Dynamically create script tag
+  const giscusScript = document.createElement("script");
+  Object.entries(giscusAttributes).forEach(([key, value]) => giscusScript.setAttribute(key, value));
+  document.body.appendChild(giscusScript);
+
+  // Update giscus theme when theme switcher is clicked
+  const toggle = document.querySelector('.quarto-color-scheme-toggle');
+  if (toggle) {
+    toggle.addEventListener('click', setGiscusTheme);
+  }
+});
+  
+</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
 
 <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
@@ -120,13 +173,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link rel="stylesheet" href="../../styles.css">
 <meta property="og:title" content="Boat Image Classification with CNN and Transfer Learning – CTG">
 <meta property="og:description" content="Building and comparing custom CNN and MobileNetV2 models for an image classification example.">
-<meta property="og:image" content="https://ctg-website.netlify.app/projects/boat-classifier/index_files/figure-html/cell-14-output-1.png">
+<meta property="og:image" content="https://chaancegraves.com/projects/boat-classifier/index_files/figure-html/cell-14-output-1.png">
 <meta property="og:site_name" content="CTG">
 <meta property="og:image:height" content="1658">
 <meta property="og:image:width" content="1507">
 <meta name="twitter:title" content="Boat Image Classification with CNN and Transfer Learning – CTG">
 <meta name="twitter:description" content="Building and comparing custom CNN and MobileNetV2 models for an image classification example.">
-<meta name="twitter:image" content="https://ctg-website.netlify.app/projects/boat-classifier/index_files/figure-html/cell-14-output-1.png">
+<meta name="twitter:image" content="https://chaancegraves.com/projects/boat-classifier/index_files/figure-html/cell-14-output-1.png">
 <meta name="twitter:image-height" content="1658">
 <meta name="twitter:image-width" content="1507">
 <meta name="twitter:card" content="summary_large_image">
@@ -1511,6 +1564,7 @@ Test Precision: 49.64 %</code></pre>
 </section>
 
 </main> <!-- /main -->
+<div class="giscus">
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     // Ensure there is a toggle, if there isn't float one in the top right
@@ -1596,7 +1650,7 @@ Test Precision: 49.64 %</code></pre>
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp("https:\/\/ctg-website\.netlify\.app");
+        var filterRegex = new RegExp("https:\/\/chaancegraves\.com");
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
@@ -1946,5 +2000,5 @@ Test Precision: 49.64 %</code></pre>
 
 
 
-<script src="../../site_libs/quarto-html/zenscroll-min.js"></script>
+</div><script src="../../site_libs/quarto-html/zenscroll-min.js"></script>
 </body></html>
