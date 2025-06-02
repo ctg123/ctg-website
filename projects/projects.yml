@@ -11,7 +11,7 @@
       date: 2023-11-21
       code: https://github.com/ctg123/ml-projects/blob/main/facial-recognition-cnn/face_recognition_cnn.ipynb
       live: https://colab.research.google.com/github/ctg123/ml-projects/blob/main/facial-recognition-cnn/face_recognition_cnn.ipynb
-      thumbnail: https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=1600
+      thumbnail: https://res.cloudinary.com/website-assets-mgmt/image/upload/c_scale,w_500/r_15/f_auto/q_auto/v1/website/projects/face-recognition/face-recognition-img
       href: ./face-recognition/index.qmd
 
     - title: Boat Image Classification with CNN and Transfer Learning
