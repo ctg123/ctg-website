@@ -17,7 +17,7 @@ execute:
 website:
   title: "CTG"
   description: "My personal blog about engineering projects"
-  site-url: https://ctg-website.netlify.app
+  site-url: https://chaancegraves.com
   repo-url: https://github.com/ctg123/ctg-website
   repo-actions:
     - source
