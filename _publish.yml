@@ -1,4 +1,6 @@
 - source: project
   netlify:
     - id: f74d39fe-2d5e-45c1-b740-2c879b3de41d
-      url: https://ctg-quarto-example.netlify.app
+      url: https://ctg-website.netlify.app
+
+

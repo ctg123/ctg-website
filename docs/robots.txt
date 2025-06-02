@@ -1,1 +1,1 @@
-Sitemap: https://ctg-quarto-example.netlify.app/sitemap.xml
+Sitemap: https://ctg-website.netlify.app/sitemap.xml

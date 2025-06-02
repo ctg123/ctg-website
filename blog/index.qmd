@@ -27,4 +27,8 @@ Welcome to my blog! 👋🏾 \
 I’ll be sharing interesting articles about my experiments, ideas, and thoughts. \
 I invite you to explore, and I'm always open to further discussions.
 
+::: {.callout-note}
+My opinions expressed are solely my own and do not express the views of my employer or any organizations I am associated with.
+:::
+
 <!-- newline break to add a space from the blog listings -->

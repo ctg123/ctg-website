@@ -1,67 +1,63 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://ctg-quarto-example.netlify.app/projects/wordpress-with-lamp-stack/index.html</loc>
-    <lastmod>2025-04-23T23:36:15.161Z</lastmod>
+    <loc>https://ctg-website.netlify.app/projects/face-recognition/index.html</loc>
+    <lastmod>2025-06-02T04:53:41.816Z</lastmod>
   </url>
   <url>
-    <loc>https://ctg-quarto-example.netlify.app/projects/boat-classifier/index.html</loc>
-    <lastmod>2025-04-24T14:00:47.033Z</lastmod>
+    <loc>https://ctg-website.netlify.app/projects/customer-service-analysis/index.html</loc>
+    <lastmod>2025-06-02T04:53:41.816Z</lastmod>
   </url>
   <url>
-    <loc>https://ctg-quarto-example.netlify.app/projects/ansible-kops/index.html</loc>
-    <lastmod>2025-04-23T21:42:30.248Z</lastmod>
+    <loc>https://ctg-website.netlify.app/projects/heart-disease-prediction/index.html</loc>
+    <lastmod>2025-06-02T04:53:41.816Z</lastmod>
   </url>
   <url>
-    <loc>https://ctg-quarto-example.netlify.app/projects/index.html</loc>
-    <lastmod>2025-05-23T22:25:38.230Z</lastmod>
+    <loc>https://ctg-website.netlify.app/blog/posts/python-intro/index.html</loc>
+    <lastmod>2025-06-02T04:53:41.765Z</lastmod>
   </url>
   <url>
-    <loc>https://ctg-quarto-example.netlify.app/blog/posts/digital-assets-demo/index.html</loc>
-    <lastmod>2025-05-24T15:06:33.010Z</lastmod>
+    <loc>https://ctg-website.netlify.app/blog/posts/awesome/index.html</loc>
+    <lastmod>2025-06-02T04:53:41.765Z</lastmod>
   </url>
   <url>
-    <loc>https://ctg-quarto-example.netlify.app/blog/index.html</loc>
-    <lastmod>2025-05-24T14:50:57.053Z</lastmod>
+    <loc>https://ctg-website.netlify.app/license.html</loc>
+    <lastmod>2025-06-02T04:53:41.812Z</lastmod>
   </url>
   <url>
-    <loc>https://ctg-quarto-example.netlify.app/index.html</loc>
-    <lastmod>2025-05-23T22:31:36.863Z</lastmod>
+    <loc>https://ctg-website.netlify.app/notes/index.html</loc>
+    <lastmod>2025-06-02T04:53:41.812Z</lastmod>
   </url>
   <url>
-    <loc>https://ctg-quarto-example.netlify.app/resume.html</loc>
-    <lastmod>2025-04-23T15:05:07.288Z</lastmod>
+    <loc>https://ctg-website.netlify.app/resume.html</loc>
+    <lastmod>2025-06-02T04:53:41.816Z</lastmod>
   </url>
   <url>
-    <loc>https://ctg-quarto-example.netlify.app/notes/index.html</loc>
-    <lastmod>2025-05-18T08:28:46.560Z</lastmod>
+    <loc>https://ctg-website.netlify.app/index.html</loc>
+    <lastmod>2025-06-02T05:41:48.728Z</lastmod>
   </url>
   <url>
-    <loc>https://ctg-quarto-example.netlify.app/license.html</loc>
-    <lastmod>2025-05-25T11:56:39.937Z</lastmod>
+    <loc>https://ctg-website.netlify.app/blog/index.html</loc>
+    <lastmod>2025-06-02T05:43:59.185Z</lastmod>
   </url>
   <url>
-    <loc>https://ctg-quarto-example.netlify.app/blog/posts/awesome/index.html</loc>
-    <lastmod>2025-05-24T15:20:31.781Z</lastmod>
+    <loc>https://ctg-website.netlify.app/blog/posts/digital-assets-demo/index.html</loc>
+    <lastmod>2025-06-02T04:53:41.765Z</lastmod>
   </url>
   <url>
-    <loc>https://ctg-quarto-example.netlify.app/blog/posts/python-intro/index.html</loc>
-    <lastmod>2025-05-18T06:51:42.127Z</lastmod>
+    <loc>https://ctg-website.netlify.app/projects/index.html</loc>
+    <lastmod>2025-06-02T04:53:41.816Z</lastmod>
   </url>
   <url>
-    <loc>https://ctg-quarto-example.netlify.app/projects/heart-disease-prediction/index.html</loc>
-    <lastmod>2025-04-24T12:00:03.761Z</lastmod>
+    <loc>https://ctg-website.netlify.app/projects/ansible-kops/index.html</loc>
+    <lastmod>2025-06-02T04:53:41.812Z</lastmod>
   </url>
   <url>
-    <loc>https://ctg-quarto-example.netlify.app/projects/customer-service-analysis/index.html</loc>
-    <lastmod>2025-04-24T12:14:40.068Z</lastmod>
+    <loc>https://ctg-website.netlify.app/projects/boat-classifier/index.html</loc>
+    <lastmod>2025-06-02T04:53:41.812Z</lastmod>
   </url>
   <url>
-    <loc>https://ctg-quarto-example.netlify.app/projects/face-recognition/index.html</loc>
-    <lastmod>2025-04-24T14:00:43.133Z</lastmod>
-  </url>
-  <url>
-    <loc>https://ctg-quarto-example.netlify.app/license/index.html</loc>
-    <lastmod>2025-05-24T12:56:39.046Z</lastmod>
+    <loc>https://ctg-website.netlify.app/projects/wordpress-with-lamp-stack/index.html</loc>
+    <lastmod>2025-06-02T04:53:41.816Z</lastmod>
   </url>
 </urlset>
