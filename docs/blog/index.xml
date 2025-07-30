@@ -9,7 +9,7 @@
 <link>https://chaancegraves.com/blog/</link>
 <atom:link href="https://chaancegraves.com/blog/index.xml" rel="self" type="application/rss+xml"/>
 <description>My personal blog about engineering projects</description>
-<generator>quarto-1.7.31</generator>
+<generator>quarto-1.7.32</generator>
 <lastBuildDate>Fri, 29 Nov 2024 06:00:00 GMT</lastBuildDate>
 <item>
   <title>Digital Asset Display in Quarto Blog Posts</title>
@@ -49,11 +49,20 @@
 <li>Use the provided URL in your Quarto markdown</li>
 </ol>
 <p>Here’s an example of an image hosted directly on Cloudinary:</p>
-<p><img src="https://res.cloudinary.com/website-assets-mgmt/image/upload/cld-sample-2.jpg" class="img-fluid"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="https://res.cloudinary.com/website-assets-mgmt/image/upload/cld-sample-2.jpg" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Mountain Example"><img src="https://res.cloudinary.com/website-assets-mgmt/image/upload/cld-sample-2.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:90.0%" alt="Mountain Example"></a></p>
+</figure>
+</div>
+<figcaption>Mountain Example</figcaption>
+</figure>
+</div>
 <p>The markdown syntax is simple:</p>
 <div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><span class="al" style="color: #AD0000;
 background-color: null;
-font-style: inherit;">![](https://res.cloudinary.com/your-account/image/upload/your-image.jpg)</span></span></code></pre></div>
+font-style: inherit;">![Mountain Example](https://res.cloudinary.com/your-account/image/upload/your-image.jpg)</span></span></code></pre></div>
 </section>
 </section>
 <section id="terminal-session-recording-with-asciinema" class="level2">
@@ -122,7 +131,7 @@ font-style: inherit;">&gt;</span></span></code></pre></div>
 <p>Here’s an example video:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><video src="https://res.cloudinary.com/website-assets-mgmt/video/upload/samples/sea-turtle.mp4" class="img-fluid" controls=""><a href="https://res.cloudinary.com/website-assets-mgmt/video/upload/samples/sea-turtle.mp4">Video</a></video></p>
+<p><a href="https://res.cloudinary.com/website-assets-mgmt/video/upload/samples/sea-turtle.mp4" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="Sea Turtle Example Video"><video src="https://res.cloudinary.com/website-assets-mgmt/video/upload/samples/sea-turtle.mp4" class="img-fluid" controls=""></video></a><a href="https://res.cloudinary.com/website-assets-mgmt/video/upload/samples/sea-turtle.mp4">Sea Turtle Example Video</a></p>
 <figcaption>Sea Turtle Example Video</figcaption>
 </figure>
 </div>

@@ -5,6 +5,15 @@
     collections of machine learning projects and notebooks.
   tiles:
 
+    - title: NYC 311 Customer Service Requests Analysis
+      #description: Data analysis of service request calls from a public dataset.
+      skills: [applied data science, visualization]
+      date: 2025-06-26
+      code: https://github.com/ctg123/ml-projects/blob/main/customer-service-analysis/customer_service_analysis.ipynb
+      live: https://colab.research.google.com/github/ctg123/ml-projects/blob/main/customer-service-analysis/customer_service_analysis.ipynb
+      thumbnail: https://res.cloudinary.com/website-assets-mgmt/image/upload/c_scale,w_500/r_15/f_auto/q_auto/v1/website/projects/customer-service-analysis/nyc-data-analysis-img
+      href: ./customer-service-analysis/index.qmd
+
     - title: Face Recognition using Convolutional Neural Networks
       #description: Building a CNN model for facial recognition using the ORL database.
       skills: [deep learning, computer vision, CNN]
@@ -32,14 +41,6 @@
       thumbnail: https://res.cloudinary.com/website-assets-mgmt/image/upload/c_scale,w_500/r_15/f_auto/q_auto/v1/website/projects/heart-disease-prediction/heart-disease-proj-img
       href: ./heart-disease-prediction/index.qmd
 
-    - title: NYC 311 Customer Service Requests Analysis
-      #description: Data analysis of service request calls from a public dataset.
-      skills: [applied data science, visualization]
-      date: 2023-05-09
-      code: https://github.com/ctg123/ml-projects/blob/main/customer-service-analysis/customer_service_analysis.ipynb
-      live: https://colab.research.google.com/github/ctg123/ml-projects/blob/main/customer-service-analysis/customer_service_analysis.ipynb
-      thumbnail: https://res.cloudinary.com/website-assets-mgmt/image/upload/c_scale,w_500/r_15/f_auto/q_auto/v1/website/projects/customer-service-analysis/nyc-data-analysis-proj-img
-      href: ./customer-service-analysis/index.qmd
 
 
 - category: DevOps & Cloud 
