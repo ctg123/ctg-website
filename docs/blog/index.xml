@@ -214,6 +214,10 @@ font-style: inherit;">&gt;</span></span></code></pre></div>
 <li>Hardware platforms, tools, and frameworks</li>
 <li>Essential for IoT, Hardware and Embedded Software Engineers</li>
 </ul></li>
+<li><strong><a href="https://github.com/aolofsson/awesome-opensource-hardware">Awesome Open Source Hardware</a></strong>
+<ul>
+<li>A curated list of awesome open source hardware tools, generators, and reusable designs.</li>
+</ul></li>
 <li><strong><a href="https://github.com/awesome-selfhosted/awesome-selfhosted">Awesome Self Hosted</a></strong>
 <ul>
 <li>Tons of SaaS tools which you can host on your own servers</li>

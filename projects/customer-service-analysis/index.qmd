@@ -23,6 +23,8 @@ format:
         href: https://github.com/ctg123/ml-projects/blob/main/customer-service-analysis/fetch_nyc_data.py
 ---
 
+<a href="https://colab.research.google.com/github/ctg123/ml-projects/blob/main/customer-service-analysis/customer_service_analysis.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a>
+
 ## Project Description
 
 This project analyzes New York City's 311 service request data to identify patterns and visualize the most common types of citizen complaints. Using the NYC Open Data API, I developed a CLI script to collect updated data from API endpoint at **https://data.cityofnewyork.us/resource/erm2-nwe9.json**. 

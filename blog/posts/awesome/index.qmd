@@ -1,8 +1,9 @@
 ---
 title: "Awesome Sites! 😎"
-description: "Essential Resource Collections for Developers."
+description: "Essential Resource Collections for Engineers, Developers, and Makers of all types!"
 author: "Chaance Graves"
-date: "2024-11-05"
+date: "2024-11-05" # Nov 05, 2024
+date-modified: "2025-07-30" # July 30, 2025
 categories: [resources]
 image: https://res.cloudinary.com/website-assets-mgmt/image/upload/f_auto,g_auto,q_auto/v1/website/blog/awesome/awesome
 
@@ -41,6 +42,9 @@ The concept started with [Sindre Sorhus's original awesome list](https://github.
   - Resources for embedded systems development
   - Hardware platforms, tools, and frameworks
   - Essential for IoT, Hardware and Embedded Software Engineers
+
+- **[Awesome Open Source Hardware](https://github.com/aolofsson/awesome-opensource-hardware)**
+  - A curated list of awesome open source hardware tools, generators, and reusable designs.
 
 - **[Awesome Self Hosted](https://github.com/awesome-selfhosted/awesome-selfhosted)**
   - Tons of SaaS tools which you can host on your own servers
